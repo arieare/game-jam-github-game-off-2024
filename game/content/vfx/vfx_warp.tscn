@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://b233b7echdela"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lmnqb"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 14.62
+
+[sub_resource type="Curve" id="Curve_m4svp"]
+max_value = 3.0
+_data = [Vector2(0, 3), 0.0, 0.0, 0, 0, Vector2(1, 0.386902), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_p35xg"]
+curve = SubResource("Curve_m4svp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s6aba"]
+emission_shape = 1
+emission_sphere_radius = 0.2
+direction = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+spread = 0.0
+initial_velocity_max = 25.51
+gravity = Vector3(2.08165e-12, 2.08165e-12, 1)
+attractor_interaction_enabled = false
+scale_min = 0.0
+scale_over_velocity_max = 8.0
+scale_over_velocity_curve = SubResource("CurveTexture_p35xg")
+
+[sub_resource type="SphereMesh" id="SphereMesh_f2ldq"]
+radius = 0.05
+height = 0.1
+
+[node name="vfx_warp" type="GPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.626027, 0)
+material_override = SubResource("StandardMaterial3D_lmnqb")
+cast_shadow = 0
+emitting = false
+amount = 100
+speed_scale = 29.07
+process_material = SubResource("ParticleProcessMaterial_s6aba")
+draw_pass_1 = SubResource("SphereMesh_f2ldq")

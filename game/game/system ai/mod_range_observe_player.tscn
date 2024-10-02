@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c647specabjj2"]
+
+[ext_resource type="Script" path="res://game/system ai/MODRangeObservePlayer.gd" id="1_f5we8"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7yixe"]
+radius = 8.0
+
+[node name="RangeObservePlayer" type="Area3D"]
+collision_mask = 2
+script = ExtResource("1_f5we8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_7yixe")

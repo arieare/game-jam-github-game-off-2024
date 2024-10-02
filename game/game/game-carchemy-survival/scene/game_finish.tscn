@@ -1,0 +1,179 @@
+[gd_scene load_steps=11 format=3 uid="uid://b4opvda7fqddr"]
+
+[ext_resource type="Texture2D" uid="uid://d1prejy8rv1nx" path="res://asset/main_menu.png" id="2_btg01"]
+[ext_resource type="FontFile" uid="uid://d21k7xwyvgk1f" path="res://asset/Kenney Mini Square.ttf" id="4_d0rc1"]
+[ext_resource type="Texture2D" uid="uid://vpis0ijm82dp" path="res://asset/logo_jester_suit.png" id="5_3bg58"]
+[ext_resource type="Script" path="res://script/menu/main_menu_button_play.gd" id="6_13p5u"]
+
+[sub_resource type="Gradient" id="Gradient_00nff"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.6946)
+colors = PackedColorArray(0.58, 0.58, 0.58, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bkrkf"]
+gradient = SubResource("Gradient_00nff")
+width = 100
+height = 100
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="GDScript" id="GDScript_gt73y"]
+script/source = "extends PointLight2D
+
+var rnd:RandomNumberGenerator = RandomNumberGenerator.new()
+var time_passed : float = 0.0
+@export var size_min = 0.5
+@export var size_max = 0.75
+
+func _process(delta: float) -> void:
+	self.texture_scale = rnd.randf_range(1, 1.1)
+"
+
+[sub_resource type="Theme" id="Theme_vsjes"]
+default_font_size = 40
+
+[sub_resource type="Theme" id="Theme_66mmn"]
+default_font_size = 12
+
+[sub_resource type="Theme" id="Theme_1hda1"]
+default_font = ExtResource("4_d0rc1")
+default_font_size = 23
+
+[node name="game_finish" type="Node2D"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+texture_filter = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 800.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(800, 450)
+render_target_update_mode = 4
+
+[node name="fx_storm_overlay" type="CanvasModulate" parent="SubViewportContainer/SubViewport"]
+color = Color(0.95, 0.927833, 0.684, 1)
+
+[node name="bg_image" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_btg01")
+
+[node name="fx_lighthouse_light" type="PointLight2D" parent="SubViewportContainer/SubViewport"]
+texture_filter = 2
+position = Vector2(136, 100)
+texture = SubResource("GradientTexture2D_bkrkf")
+script = SubResource("GDScript_gt73y")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="SubViewportContainer/SubViewport"]
+
+[node name="ui_title" type="Node2D" parent="SubViewportContainer/SubViewport/CanvasLayer"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewportContainer/SubViewport/CanvasLayer/ui_title"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 500.0
+offset_top = 50.0
+offset_right = 800.0
+offset_bottom = 968.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SubViewportContainer/SubViewport/CanvasLayer/ui_title/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_d0rc1")
+text = "the tiny"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="SubViewportContainer/SubViewport/CanvasLayer/ui_title/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_vsjes")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_d0rc1")
+text = "lighthouse"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="SubViewportContainer/SubViewport/CanvasLayer/ui_title/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_vsjes")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_d0rc1")
+text = "witch"
+fit_content = true
+scroll_active = false
+
+[node name="Node2D" type="Node2D" parent="SubViewportContainer/SubViewport/CanvasLayer/ui_title"]
+position = Vector2(-475, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer/SubViewport/CanvasLayer/ui_title/Node2D"]
+texture_filter = 1
+position = Vector2(530, 400)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_3bg58")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SubViewportContainer/SubViewport/CanvasLayer/ui_title/Node2D"]
+texture_filter = 1
+offset_left = 575.0
+offset_top = 380.0
+offset_right = 975.0
+offset_bottom = 1060.0
+size_flags_horizontal = 3
+theme = SubResource("Theme_66mmn")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_d0rc1")
+text = "a game by
+jestersuitsgame
+@arieare"
+fit_content = true
+scroll_active = false
+
+[node name="ui_menu_button" type="VBoxContainer" parent="SubViewportContainer/SubViewport/CanvasLayer"]
+texture_filter = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -4.0
+offset_right = -150.0
+offset_bottom = 74.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="ui_btn_play" type="Button" parent="SubViewportContainer/SubViewport/CanvasLayer/ui_menu_button"]
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_1hda1")
+theme_override_colors/font_color = Color(0.94, 0.893, 0, 1)
+text = "replay"
+flat = true
+alignment = 0
+script = ExtResource("6_13p5u")
+
+[node name="ui_btn_main" type="Button" parent="SubViewportContainer/SubViewport/CanvasLayer/ui_menu_button"]
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_1hda1")
+theme_override_colors/font_color = Color(0.94, 0.893, 0, 1)
+text = "main menu"
+flat = true
+alignment = 0
