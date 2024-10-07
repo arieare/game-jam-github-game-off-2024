@@ -8,15 +8,22 @@ extends NodeControlPlus
 	"tiny_tale": root.ui_node["the_tiny_tale_main_menu"],
 	"carchemy_survival": root.ui_node["carchemy_survival_main_menu"]
 }
+@onready var game_icon = {
+	"tiny_tale": ResourceLoader.load("res://content/collection/game_the_tiny_tale/icon.png"),
+	"carchemy_survival": ResourceLoader.load("res://content/collection/game_carchemy_survival/icon.png")
+}
 
 var game_button_dictionary = {}
 
 func _ready() -> void:
 	for key in game_dictionary:
-		var btn = btn_game_scn.instantiate()
+		var btn:TextureButton = btn_game_scn.instantiate()
 		btn.name = key
 		game_button_dictionary[btn] = game_dictionary[key]
+		if game_icon[key]:
+			btn.texture_normal = game_icon[key]
 		button_container.add_child(btn)
+		btn.grab_focus()
 
 func _input(event: InputEvent) -> void:
 	for key in game_button_dictionary:
