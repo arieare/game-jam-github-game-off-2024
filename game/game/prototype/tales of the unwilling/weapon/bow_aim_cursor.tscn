@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://o2ll0xy63oe"]
+
+[ext_resource type="Texture2D" uid="uid://cf25jdtfjq7lb" path="res://weapon/sprites/_aim_cursor.png" id="1_vlx3w"]
+
+[node name="bowAimCursor" type="Node2D"]
+z_index = 4
+position = Vector2(2.08165e-12, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vlx3w")

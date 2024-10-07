@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://module/mesh/draw_line_3d.gd" type="Script" id=1]
+[ext_resource path="res://material/energy_field.gdshader" type="Shader" id=2]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 2 )
+shader_param/albedo = Color( 0.996078, 0.176471, 0.176471, 1 )
+shader_param/emission_color = Color( 0.913725, 0.0745098, 0.0745098, 1 )
+shader_param/emission_amount = 5.778
+shader_param/rim_steepness = 1.183
+shader_param/uv_scale = null
+shader_param/uv_offset = null
+
+[sub_resource type="Curve3D" id=1]
+_data = {
+"points": PackedVector3Array( -0.728728, 1.53138, 2.97873, 0.728728, -1.53138, -2.97873, -0.692032, 0.329841, 3.52793, 0.175224, -0.0126009, -2.7665, -0.175224, 0.0126009, 2.7665, -0.606112, 2.60183, -0.720829, 0.0148487, -0.221279, 1.25248, -0.0148487, 0.221279, -1.25248, 0.455426, -0.12095, -3.33729, 0, 0, 0, 0, 0, 0, -0.1155, 5.93378, 0.0134784 ),
+"tilts": PackedFloat32Array( 0, 0, 0, 0 )
+}
+
+[node name="Line" type="Node3D"]
+script = ExtResource( 1 )
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+mode = 2
+path_node = NodePath("../Path3D")
+path_interval_type = 1
+path_interval = 0.05
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = true
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = SubResource( 2 )
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0101213 )
+curve = SubResource( 1 )

@@ -1,2 +1,0 @@
-- component should not need to care what the actors are
-- it can manipulate directly the actor

@@ -1,0 +1,3 @@
+- component should not need to care what the actors are
+- it can manipulate directly the actor
+- no need to know the component around it

@@ -1,0 +1,145 @@
+[gd_scene load_steps=20 format=3 uid="uid://dwadgo3xr1nu4"]
+
+[ext_resource type="PackedScene" uid="uid://dwfc4upoxonxv" path="res://game/prototype/tales of the unwilling/player/player.tscn" id="1_360j5"]
+[ext_resource type="PackedScene" uid="uid://b3hk436irlgay" path="res://game/prototype/tales of the unwilling/prototype/environment.tscn" id="2_xkwue"]
+[ext_resource type="Texture2D" uid="uid://bbgdl5csyclk" path="res://game/prototype/tales of the unwilling/ui/sprites/stamina_ring.png" id="5_o7q33"]
+[ext_resource type="PackedScene" uid="uid://o4kfd520rvqn" path="res://game/prototype/tales of the unwilling/objectInteractive/object_interactive.tscn" id="5_okmea"]
+[ext_resource type="Script" path="res://game/prototype/tales of the unwilling/ui/scripts/ui_staminaMeter.gd" id="6_sdf8o"]
+[ext_resource type="Script" path="res://game/prototype/tales of the unwilling/enemy/script/enemy.gd" id="9_gye4x"]
+[ext_resource type="Resource" uid="uid://bwyoegf8cc4e8" path="res://game/prototype/tales of the unwilling/enemy/src/enemyType1Health.tres" id="10_obqxm"]
+[ext_resource type="Resource" uid="uid://ddswq8ajlo44d" path="res://game/prototype/tales of the unwilling/enemy/src/enm_boar_mushroom.tres" id="10_tuxlv"]
+[ext_resource type="PackedScene" uid="uid://q4qg763jaxe4" path="res://game/prototype/tales of the unwilling/src/modular_component/hurt_box.tscn" id="12_8qgpx"]
+[ext_resource type="Texture2D" uid="uid://gmnusy7lbn1w" path="res://game/prototype/tales of the unwilling/player/sprites/Fantasy Knight/_Attack2NoMovement.png" id="12_mn0od"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ol63e"]
+atlas = ExtResource("12_mn0od")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_do3fg"]
+atlas = ExtResource("12_mn0od")
+region = Rect2(120, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8u5mc"]
+atlas = ExtResource("12_mn0od")
+region = Rect2(240, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7vbh"]
+atlas = ExtResource("12_mn0od")
+region = Rect2(360, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxh7k"]
+atlas = ExtResource("12_mn0od")
+region = Rect2(480, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyq23"]
+atlas = ExtResource("12_mn0od")
+region = Rect2(600, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05k3f"]
+atlas = ExtResource("12_mn0od")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_53jmv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ol63e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_do3fg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8u5mc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7vbh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxh7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyq23")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05k3f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05k3f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05k3f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05k3f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05k3f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05k3f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05k3f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05k3f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wcxsf"]
+radius = 11.0
+height = 38.0
+
+[node name="world" type="Node2D"]
+
+[node name="objectInteractive" parent="." instance=ExtResource("5_okmea")]
+position = Vector2(249, 237)
+script = null
+
+[node name="player" parent="." instance=ExtResource("1_360j5")]
+position = Vector2(41, 269)
+script = null
+
+[node name="environment" parent="." instance=ExtResource("2_xkwue")]
+position = Vector2(136, -161)
+collision_mask = 0
+script = null
+
+[node name="enemy" type="CharacterBody2D" parent="." node_paths=PackedStringArray("objectSprite")]
+position = Vector2(483, 297)
+collision_layer = 8
+script = ExtResource("9_gye4x")
+kindOf = ExtResource("10_tuxlv")
+health = ExtResource("10_obqxm")
+objectSprite = NodePath("AnimatedSprite2D")
+
+[node name="hurtBox" parent="enemy" instance=ExtResource("12_8qgpx")]
+position = Vector2(0, 0)
+collision_mask = 32
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enemy"]
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_53jmv")
+autoplay = "default"
+frame_progress = 0.638336
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy"]
+position = Vector2(7, 21)
+shape = SubResource("CapsuleShape2D_wcxsf")
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="staminaMeter" type="TextureProgressBar" parent="ui"]
+offset_right = 16.0
+offset_bottom = 16.0
+value = 60.0
+fill_mode = 4
+texture_under = ExtResource("5_o7q33")
+texture_progress = ExtResource("5_o7q33")
+script = ExtResource("6_sdf8o")
+
+[connection signal="area_entered" from="enemy/hurtBox" to="enemy" method="_on_hurt_box_area_entered"]
+[connection signal="body_entered" from="enemy/hurtBox" to="enemy" method="_on_hurt_box_body_entered"]

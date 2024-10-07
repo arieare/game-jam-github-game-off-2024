@@ -1,0 +1,87 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddo2d56ehlmnc"]
+
+[sub_resource type="Gradient" id="Gradient_oi2xs"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dus84"]
+gradient = SubResource("Gradient_oi2xs")
+
+[sub_resource type="BoxMesh" id="BoxMesh_au7jx"]
+
+[node name="root" type="Node"]
+
+[node name="view" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="view"]
+handle_input_locally = false
+size = Vector2i(1600, 900)
+render_target_update_mode = 4
+
+[node name="Node2D" type="Node2D" parent="view/SubViewport"]
+
+[node name="Camera2D" type="Camera2D" parent="view/SubViewport/Node2D"]
+position_smoothing_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="view/SubViewport/Node2D"]
+position = Vector2(400, 400)
+texture = SubResource("GradientTexture2D_dus84")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="view/SubViewport/Node2D"]
+mesh = SubResource("BoxMesh_au7jx")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="view/SubViewport/Node2D"]
+energy = 1.07
+
+[node name="CanvasModulate" type="CanvasModulate" parent="view/SubViewport/Node2D"]
+color = Color(0.388235, 1, 1, 1)
+
+[node name="game" type="Node" parent="."]
+
+[node name="ui" type="Node" parent="."]
+
+[node name="view" type="SubViewportContainer" parent="ui"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="ui/view"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1600, 900)
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="ui/view/SubViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSlider" type="HSlider" parent="ui/view/SubViewport/Control"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 16.0
+tick_count = 5
+ticks_on_borders = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ui/view/SubViewport/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "tiny lighthouse wizard_alpha"

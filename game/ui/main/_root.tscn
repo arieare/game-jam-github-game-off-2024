@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://blu8emt5l7yex"]
+
+[ext_resource type="Script" path="res://ui/main/root.gd" id="1_4pd4o"]
+[ext_resource type="Script" path="res://app/app.gd" id="2_26n78"]
+
+[node name="root" type="Node"]
+script = ExtResource("1_4pd4o")
+
+[node name="app" type="Node" parent="."]
+script = ExtResource("2_26n78")
+
+[node name="game" type="Node" parent="."]
+
+[node name="ui" type="Node" parent="."]
+
+[node name="fx_transition" type="CanvasLayer" parent="ui"]

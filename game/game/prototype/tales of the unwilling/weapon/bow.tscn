@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://d4kdqceqd1cm"]
+
+[ext_resource type="Script" path="res://game/prototype/tales of the unwilling/weapon/script/bow.gd" id="1_jyplw"]
+[ext_resource type="Texture2D" uid="uid://sbnm7bckkukj" path="res://game/prototype/tales of the unwilling/weapon/sprites/_weapon_pointer.png" id="2_8i66y"]
+[ext_resource type="Script" path="res://game/prototype/tales of the unwilling/weapon/script/bowState.gd" id="3_denvd"]
+[ext_resource type="Script" path="res://game/prototype/tales of the unwilling/weapon/script/READY.gd" id="4_sj3oo"]
+[ext_resource type="Script" path="res://game/prototype/tales of the unwilling/weapon/script/DRAW.gd" id="5_3lvt3"]
+[ext_resource type="Script" path="res://game/prototype/tales of the unwilling/weapon/script/AIM.gd" id="6_ph5vp"]
+[ext_resource type="Script" path="res://game/prototype/tales of the unwilling/weapon/script/SHOOT.gd" id="7_duibq"]
+
+[node name="bow" type="Node2D" node_paths=PackedStringArray("stateMachine")]
+script = ExtResource("1_jyplw")
+stateMachine = NodePath("bowState")
+
+[node name="bowSprite" type="Sprite2D" parent="."]
+position = Vector2(2.08165e-12, 2.08165e-12)
+texture = ExtResource("2_8i66y")
+offset = Vector2(20, 2.08165e-12)
+
+[node name="bowState" type="Node" parent="." node_paths=PackedStringArray("state", "actor")]
+script = ExtResource("3_denvd")
+state = NodePath("READY")
+actor = NodePath("..")
+
+[node name="READY" type="Node" parent="bowState"]
+script = ExtResource("4_sj3oo")
+
+[node name="DRAW" type="Node" parent="bowState"]
+script = ExtResource("5_3lvt3")
+
+[node name="AIM" type="Node" parent="bowState"]
+script = ExtResource("6_ph5vp")
+
+[node name="SHOOT" type="Node" parent="bowState"]
+script = ExtResource("7_duibq")

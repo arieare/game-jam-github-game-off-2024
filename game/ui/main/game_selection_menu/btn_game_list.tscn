@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc1l26f3r7nv7"]
+
+[sub_resource type="Gradient" id="Gradient_e8u0a"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pto6c"]
+gradient = SubResource("Gradient_e8u0a")
+width = 128
+height = 128
+
+[node name="TextureButton" type="TextureButton"]
+custom_minimum_size = Vector2(128, 128)
+texture_normal = SubResource("GradientTexture2D_pto6c")
+ignore_texture_size = true

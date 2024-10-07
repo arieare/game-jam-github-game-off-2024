@@ -1,0 +1,390 @@
+[gd_scene load_steps=35 format=3 uid="uid://ivekcb4ts8x7"]
+
+[ext_resource type="Shader" path="res://material/sea.gdshader" id="1_dagtw"]
+[ext_resource type="Texture2D" uid="uid://c4wt3kv65dpge" path="res://game/collection/game_carchemy_survival/asset/level.png" id="2_fejpk"]
+[ext_resource type="Script" path="res://script/fx/thunder_flash.gd" id="3_tomb6"]
+[ext_resource type="Script" path="res://script/player/ray_trail.gd" id="4_bt3f4"]
+[ext_resource type="Script" path="res://script/player/character_controller.gd" id="5_v4k2t"]
+[ext_resource type="Gradient" uid="uid://c8jry3ydjmhtw" path="res://game/collection/game_carchemy_survival/asset/fx/texture_spark_light.tres" id="6_bxuo8"]
+[ext_resource type="Script" path="res://script/fx/flickering_light.gd" id="7_nujdw"]
+[ext_resource type="Texture2D" path="res://asset/_tiny_witch.png" id="8_wvf4t"]
+[ext_resource type="Script" path="res://script/core_crystal.gd" id="9_la5ym"]
+[ext_resource type="Script" path="res://script/game_ui.gd" id="10_2x63p"]
+[ext_resource type="FontFile" uid="uid://d21k7xwyvgk1f" path="res://game/collection/game_carchemy_survival/asset/Kenney Mini Square.ttf" id="11_0yuqg"]
+[ext_resource type="Texture2D" path="res://asset/_ship.png" id="12_ny0s6"]
+[ext_resource type="Texture2D" uid="uid://dxivl5xgfnnb6" path="res://game/collection/game_carchemy_survival/asset/icon_lighthouse.png" id="13_rh8iq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j7os6"]
+resource_local_to_scene = true
+shader = ExtResource("1_dagtw")
+shader_parameter/uv_scale = 10.0
+shader_parameter/color_alpha = 1.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_2fodf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g0iw2"]
+size = Vector2(300, 31)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kbvbv"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q54o2"]
+size = Vector2(32, 32)
+
+[sub_resource type="Gradient" id="Gradient_0u7k6"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.324022, 0.524096, 0.698795)
+colors = PackedColorArray(1, 0.981333, 0.93, 1, 0.41024, 0.41024, 0.41024, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_71l2d"]
+gradient = SubResource("Gradient_0u7k6")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_36hxo"]
+radius = 4.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_kn6rv"]
+radius = 2.0
+height = 4.0
+
+[sub_resource type="Gradient" id="Gradient_6w8vs"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.567251, 0.906433)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0.290196, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cd1pp"]
+gradient = SubResource("Gradient_6w8vs")
+width = 1
+use_hdr = true
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.519231, 1)
+
+[sub_resource type="Environment" id="Environment_rk3ji"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.0
+glow_bloom = 0.3
+glow_hdr_threshold = 0.52
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_aaqpn"]
+gradient = ExtResource("6_bxuo8")
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ak4dh"]
+radius = 8.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_77ikv"]
+light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_o8mhd"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ls52w"]
+gradient = SubResource("Gradient_o8mhd")
+width = 4
+height = 4
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Theme" id="Theme_pt4e8"]
+default_font_size = 12
+
+[sub_resource type="Theme" id="Theme_f5j0w"]
+default_font_size = 12
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pnij5"]
+shader = ExtResource("1_dagtw")
+shader_parameter/uv_scale = 2.9
+shader_parameter/color_alpha = 1.0
+
+[sub_resource type="Theme" id="Theme_xadvy"]
+default_font = ExtResource("11_0yuqg")
+
+[node name="stage" type="Node2D"]
+
+[node name="level" type="Node2D" parent="."]
+
+[node name="sea" type="Control" parent="level"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="level/sea"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 800.0
+offset_bottom = 450.0
+stretch = true
+stretch_shrink = 5
+
+[node name="SubViewport" type="SubViewport" parent="level/sea/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(160, 90)
+render_target_update_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="level/sea/SubViewportContainer/SubViewport"]
+material = SubResource("ShaderMaterial_j7os6")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_2fodf")
+
+[node name="level" type="Sprite2D" parent="level"]
+texture_filter = 1
+position = Vector2(280.5, 221.5)
+scale = Vector2(2.00513, 2.00513)
+texture = ExtResource("2_fejpk")
+
+[node name="alchemy_crystal" type="Node2D" parent="level"]
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="level/alchemy_crystal" groups=["alchemy_crystal"]]
+position = Vector2(369, 225)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="level/alchemy_crystal/StaticBody2D8"]
+position = Vector2(-302, -75)
+rotation = -1.0472
+shape = SubResource("RectangleShape2D_g0iw2")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="level/alchemy_crystal/StaticBody2D8"]
+position = Vector2(-302, 75)
+rotation = 1.0472
+shape = SubResource("RectangleShape2D_g0iw2")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="level/alchemy_crystal/StaticBody2D8"]
+position = Vector2(128, -75)
+rotation = 1.0472
+shape = SubResource("RectangleShape2D_g0iw2")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="level/alchemy_crystal/StaticBody2D8"]
+position = Vector2(128, 75)
+rotation = -1.0472
+shape = SubResource("RectangleShape2D_g0iw2")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="level/alchemy_crystal/StaticBody2D8"]
+position = Vector2(-87, -200)
+shape = SubResource("RectangleShape2D_g0iw2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level/alchemy_crystal/StaticBody2D8"]
+position = Vector2(-87, 200)
+shape = SubResource("RectangleShape2D_g0iw2")
+
+[node name="core_crystal" type="StaticBody2D" parent="level/alchemy_crystal/StaticBody2D8" node_paths=PackedStringArray("core_light") groups=["alchemy_crystal"]]
+position = Vector2(-87, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("9_la5ym")
+core_light = NodePath("PointLight2D2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="level/alchemy_crystal/StaticBody2D8/core_crystal"]
+rotation = 0.785398
+scale = Vector2(98, 98.125)
+mesh = SubResource("BoxMesh_kbvbv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level/alchemy_crystal/StaticBody2D8/core_crystal"]
+rotation = 0.785398
+shape = SubResource("RectangleShape2D_q54o2")
+
+[node name="PointLight2D2" type="PointLight2D" parent="level/alchemy_crystal/StaticBody2D8/core_crystal"]
+texture_filter = 2
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_71l2d")
+
+[node name="ray_bullet" type="CharacterBody2D" parent="." node_paths=PackedStringArray("player")]
+position = Vector2(400, 225)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_bt3f4")
+player = NodePath("../player")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ray_bullet"]
+shape = SubResource("CircleShape2D_36hxo")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="ray_bullet"]
+position = Vector2(0, 4.76837e-07)
+scale = Vector2(2.00227, 2.00227)
+mesh = SubResource("SphereMesh_kn6rv")
+
+[node name="beam_group" type="CanvasLayer" parent="."]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="beam_group"]
+position = Vector2(2.08165e-12, -100)
+amount = 100
+preprocess = 0.2
+speed_scale = 12.69
+randomness = 0.32
+texture = SubResource("GradientTexture2D_cd1pp")
+emission_shape = 3
+emission_rect_extents = Vector2(800, 1)
+gravity = Vector2(2.08165e-12, 980)
+initial_velocity_max = 217.95
+angle_min = 15.0
+angle_max = 15.0
+
+[node name="env" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="env"]
+environment = SubResource("Environment_rk3ji")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.0842025, 0.0896354, 0.264473, 1)
+script = ExtResource("3_tomb6")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(400, 225)
+
+[node name="player" type="CharacterBody2D" parent="."]
+position = Vector2(400, 225)
+script = ExtResource("5_v4k2t")
+
+[node name="PointLight2D" type="PointLight2D" parent="player"]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_aaqpn")
+script = ExtResource("7_nujdw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+shape = SubResource("CircleShape2D_ak4dh")
+
+[node name="body" type="Node2D" parent="player"]
+
+[node name="Sprite2D" type="Sprite2D" parent="player/body"]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_77ikv")
+rotation = -1.5708
+texture = ExtResource("8_wvf4t")
+
+[node name="arm" type="Node2D" parent="player/body"]
+
+[node name="arm_left" type="Sprite2D" parent="player/body/arm"]
+position = Vector2(4, -12)
+texture = SubResource("GradientTexture2D_ls52w")
+
+[node name="arm_right" type="Sprite2D" parent="player/body/arm"]
+position = Vector2(4, 12)
+texture = SubResource("GradientTexture2D_ls52w")
+
+[node name="cape" type="Node2D" parent="player/body"]
+
+[node name="ray_beam" type="Node2D" parent="player"]
+
+[node name="ui_layer" type="CanvasLayer" parent="."]
+layer = 98
+
+[node name="ui" type="Control" parent="ui_layer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="cursor" type="Node2D" parent="ui_layer/ui"]
+script = ExtResource("10_2x63p")
+
+[node name="game_meter" type="ProgressBar" parent="ui_layer/ui"]
+visible = false
+offset_left = 609.0
+offset_top = 412.0
+offset_right = 725.0
+offset_bottom = 425.0
+theme = SubResource("Theme_pt4e8")
+value = 100.0
+show_percentage = false
+
+[node name="game_prompt" type="RichTextLabel" parent="ui_layer/ui"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 324.0
+offset_top = 20.0
+offset_right = 478.0
+offset_bottom = 60.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("11_0yuqg")
+text = "Dispel the shadow!"
+fit_content = true
+scroll_active = false
+
+[node name="cursor_label" type="RichTextLabel" parent="ui_layer/ui"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -467.0
+offset_right = 37.0
+offset_bottom = -450.0
+grow_vertical = 0
+pivot_offset = Vector2(2.08165e-12, 2.08165e-12)
+theme = SubResource("Theme_f5j0w")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("11_0yuqg")
+text = "shoot"
+fit_content = true
+scroll_active = false
+
+[node name="meter" type="Control" parent="ui_layer/ui"]
+anchors_preset = 0
+offset_left = 559.0
+offset_top = 400.0
+offset_right = 759.0
+offset_bottom = 416.0
+
+[node name="bg" type="ColorRect" parent="ui_layer/ui/meter"]
+offset_right = 200.0
+offset_bottom = 16.0
+color = Color(0, 0, 0, 1)
+
+[node name="progress" type="SubViewportContainer" parent="ui_layer/ui/meter"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 16.0
+stretch = true
+stretch_shrink = 2
+
+[node name="SubViewport" type="SubViewport" parent="ui_layer/ui/meter/progress"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(100, 8)
+render_target_update_mode = 4
+
+[node name="sea_tex" type="ColorRect" parent="ui_layer/ui/meter/progress/SubViewport"]
+material = SubResource("ShaderMaterial_pnij5")
+offset_right = 200.0
+offset_bottom = 16.0
+color = Color(0.22, 0.506, 1, 1)
+
+[node name="icon_ship" type="Sprite2D" parent="ui_layer/ui/meter"]
+texture_filter = 1
+position = Vector2(199, 1)
+texture = ExtResource("12_ny0s6")
+
+[node name="icon_lighthouse" type="Sprite2D" parent="ui_layer/ui/meter"]
+texture_filter = 1
+position = Vector2(-2, -15)
+texture = ExtResource("13_rh8iq")
+
+[node name="game_timer" type="Label" parent="ui_layer/ui/meter"]
+texture_filter = 1
+layout_mode = 2
+offset_left = -9.0
+offset_top = 14.0
+offset_right = 41.0
+offset_bottom = 34.0
+theme = SubResource("Theme_xadvy")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "00.0"
+uppercase = true

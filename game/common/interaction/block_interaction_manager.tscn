@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://brj8m71cptbtw"]
+
+[ext_resource type="Script" path="res://common/interaction/module_interaction_manager.gd" id="1_ky0g4"]
+[ext_resource type="FontFile" uid="uid://w3076qvrbys5" path="res://content/font/DepartureMono-Regular.otf" id="2_cup5y"]
+[ext_resource type="Texture2D" uid="uid://5goohppg6liu" path="res://content/sprite/button_base_sprite.png" id="2_k1bxa"]
+
+[sub_resource type="Theme" id="Theme_4j8u8"]
+default_font = ExtResource("2_cup5y")
+
+[node name="interaction_manager" type="Node3D" node_paths=PackedStringArray("interaction_label", "label_container")]
+script = ExtResource("1_ky0g4")
+interaction_label = NodePath("layer/hbox/label")
+label_container = NodePath("layer/hbox")
+
+[node name="layer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_4j8u8")
+
+[node name="hbox" type="HBoxContainer" parent="layer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = -20.0
+offset_right = 92.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="icon" type="TextureRect" parent="layer/hbox"]
+layout_mode = 2
+texture = ExtResource("2_k1bxa")
+expand_mode = 3
+
+[node name="key" type="Label" parent="layer/hbox/icon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.262745, 0.290196, 0.372549, 1)
+theme_override_constants/shadow_outline_size = 1
+theme_override_font_sizes/font_size = 21
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="label" type="Label" parent="layer/hbox"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "to interact"

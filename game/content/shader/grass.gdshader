@@ -4,6 +4,9 @@ render_mode cull_disabled, diffuse_toon, specular_schlick_ggx;
 
 uniform vec3 top_color: source_color;
 uniform vec3 bottom_color: source_color;
+uniform sampler2D color_noise;
+uniform float noise_scale = 20.0;
+varying vec3 world_pos;
 uniform sampler2D tex_img;
 uniform float ambient_occlusion_factor: hint_range(0.0, 1.0, 0.01) = 0.3;
 uniform float specular_strength: hint_range(0.0, 1.0, 0.01) = 0.4;
@@ -20,6 +23,13 @@ uniform float wind_noise_speed: hint_range(0.0, 1.0, 0.001) = 0.1;
 instance uniform vec3 player_position;
 
 void vertex() {
+mat4 modified_model_view = VIEW_MATRIX * mat4(
+        INV_VIEW_MATRIX[0],
+        INV_VIEW_MATRIX[1],
+        INV_VIEW_MATRIX[2],
+        MODEL_MATRIX[3]
+    );
+    MODELVIEW_MATRIX = modified_model_view;
 	vec3 world_position = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
 
 	vec3 wind_texture = texture(wind_noise, world_position.xz * wind_noise_size + normalize(-wind_direction.xz) * (TIME + UV.y / 2.5) * wind_noise_speed).rgb;
@@ -41,18 +51,18 @@ void vertex() {
 }
 
 void fragment() {
+	vec3 noise_level = texture(color_noise, world_pos.xz / noise_scale).rgb;
 	vec3 color = mix(bottom_color, top_color, 1.0 - UV.y);
 
 	// Add fake ambient occlusion by darkening the base of the mesh
 	float ao_fallof = pow(UV.y, 5.0);
 	vec3 ao_color = bottom_color * (1.0 - ambient_occlusion_factor);
 
-	// ALBEDO = mix(color, ao_color, ao_fallof);
-	ALBEDO = texture(tex_img, UV).rgb * top_color;
-	ALPHA = texture(tex_img, UV).a;
-	ROUGHNESS = 0.0;
-
-	// Increase the Specular with Grass Height
+	 ALBEDO = mix(color, ao_color, ao_fallof);
+	//ALBEDO = texture(tex_img, UV).rgb * top_color;
+	//ALBEDO = mix(top_color, bottom_color, UV.y);
+	//ALPHA = texture(tex_img, UV).a;
+	ROUGHNESS = 0.5;
 	SPECULAR *= (1.0 - UV.y) * specular_strength;
 
 	// Just removing some funny shading
