@@ -6,8 +6,8 @@
 [resource]
 resource_local_to_scene = true
 shader = ExtResource("1_seg2a")
-shader_parameter/levels = 6
-shader_parameter/threshold = 0.05
-shader_parameter/colors = 8
-shader_parameter/pixelate = 2
+shader_parameter/levels = 8
+shader_parameter/threshold = 0.1
+shader_parameter/colors = 12
+shader_parameter/pixelate = 5
 shader_parameter/dither_texture = ExtResource("2_vvvbx")

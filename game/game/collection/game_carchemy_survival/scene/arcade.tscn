@@ -1,24 +1,21 @@
-[gd_scene load_steps=39 format=3 uid="uid://63hv64wm2eyp"]
+[gd_scene load_steps=31 format=3 uid="uid://63hv64wm2eyp"]
 
-[ext_resource type="Script" path="res://script/game/arcade.gd" id="1_w8vc8"]
-[ext_resource type="Script" path="res://script/utility/camera_shake_2d.gd" id="2_qjomg"]
-[ext_resource type="Script" path="res://script/crystal/spikes.gd" id="3_aklbb"]
-[ext_resource type="Texture2D" uid="uid://c6he3lkg75fub" path="res://game/collection/game_carchemy_survival/asset/arena.png" id="3_uf3vp"]
-[ext_resource type="Script" path="res://script/player/car_control.gd" id="4_ibuxf"]
-[ext_resource type="Texture2D" uid="uid://cdo3ctlouuppv" path="res://game/collection/game_carchemy_survival/asset/tiny_cars.png" id="4_p4t68"]
-[ext_resource type="Texture2D" uid="uid://dp6cwsj4p7i5j" path="res://game/collection/game_carchemy_survival/asset/tiny_cars_shadow.png" id="5_i88c0"]
+[ext_resource type="Script" path="res://game/collection/game_carchemy_survival/script/game/arcade.gd" id="1_w8vc8"]
+[ext_resource type="Script" path="res://game/collection/game_carchemy_survival/script/utility/camera_shake_2d.gd" id="2_qjomg"]
+[ext_resource type="Script" path="res://game/collection/game_carchemy_survival/script/crystal/spikes.gd" id="3_aklbb"]
+[ext_resource type="Texture2D" uid="uid://c6he3lkg75fub" path="res://content/collection/game_carchemy_survival/bg/arena.png" id="3_uf3vp"]
+[ext_resource type="Script" path="res://game/collection/game_carchemy_survival/script/player/car_control.gd" id="4_ibuxf"]
+[ext_resource type="Texture2D" uid="uid://cdo3ctlouuppv" path="res://content/collection/game_carchemy_survival/sprite/tiny_cars.png" id="4_p4t68"]
+[ext_resource type="Texture2D" uid="uid://dp6cwsj4p7i5j" path="res://content/collection/game_carchemy_survival/sprite/tiny_cars_shadow.png" id="5_i88c0"]
 [ext_resource type="AudioStream" uid="uid://bhurxcx8fcqas" path="res://game/collection/game_carchemy_survival/asset/sound/sfx_crystal_hit.ogg" id="6_8xbtl"]
 [ext_resource type="AudioStream" uid="uid://cojctrtm3ls5s" path="res://game/collection/game_carchemy_survival/asset/sound/sfx_bell.ogg" id="6_aiyw3"]
 [ext_resource type="AudioStream" uid="uid://bi8am5g6muilr" path="res://game/collection/game_carchemy_survival/asset/sound/sfx_smash.ogg" id="7_4o1f3"]
 [ext_resource type="Gradient" uid="uid://c8jry3ydjmhtw" path="res://game/collection/game_carchemy_survival/asset/fx/texture_spark_light.tres" id="7_vt30k"]
 [ext_resource type="AudioStream" uid="uid://c2lxoew4tf2ha" path="res://game/collection/game_carchemy_survival/asset/sound/sfx_pedal.ogg" id="9_ik1d0"]
-[ext_resource type="Script" path="res://script/game_ui.gd" id="10_noue2"]
-[ext_resource type="FontFile" uid="uid://d21k7xwyvgk1f" path="res://game/collection/game_carchemy_survival/asset/Kenney Mini Square.ttf" id="11_2y2tw"]
-[ext_resource type="Script" path="res://script/enemy/enemy_follow.gd" id="12_diyvg"]
-[ext_resource type="Script" path="res://script/crystal/crystal_alchemy.gd" id="12_xvqbf"]
+[ext_resource type="Script" path="res://game/collection/game_carchemy_survival/script/enemy/enemy_follow.gd" id="12_diyvg"]
+[ext_resource type="Script" path="res://game/collection/game_carchemy_survival/script/crystal/crystal_alchemy.gd" id="12_xvqbf"]
 [ext_resource type="AudioStream" uid="uid://dxuxik0lb7h63" path="res://game/collection/game_carchemy_survival/asset/sound/sfx_fall.ogg" id="13_nhl4s"]
-[ext_resource type="Script" path="res://script/ui_control_hint.gd" id="16_8yhsf"]
-[ext_resource type="Texture2D" uid="uid://buvqg2mjkp4jb" path="res://game/collection/game_carchemy_survival/asset/accessibility_key_arrow.png" id="16_4581i"]
+[ext_resource type="PackedScene" uid="uid://b3f74co2cfds5" path="res://ui/collection/game_carchemy_survival/arcade_ui/arcade_ui.tscn" id="17_yien1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_46ini"]
 radius = 210.0
@@ -93,39 +90,32 @@ point_count = 1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pxqsv"]
 
-[sub_resource type="Theme" id="Theme_02wye"]
-default_font = ExtResource("11_2y2tw")
-default_font_size = 12
-
-[sub_resource type="Theme" id="Theme_yyh21"]
-default_font = ExtResource("11_2y2tw")
-
-[sub_resource type="Theme" id="Theme_f5j0w"]
-default_font_size = 12
-
-[sub_resource type="Theme" id="Theme_xadvy"]
-default_font = ExtResource("11_2y2tw")
-default_font_size = 48
-
-[sub_resource type="Theme" id="Theme_e0eiw"]
-default_font = ExtResource("11_2y2tw")
-default_font_size = 12
-
-[node name="stage" type="Node2D"]
+[node name="stage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_w8vc8")
 
-[node name="level" type="Node2D" parent="."]
+[node name="level" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="ColorRect" type="ColorRect" parent="level"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -100.0
-offset_right = 900.0
-offset_bottom = 550.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0666667, 0.0705882, 0.14902, 1)
@@ -146,14 +136,12 @@ collision_mask = 3
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_46ini")
 
-[node name="crystal_alchemy" type="Node2D" parent="level" node_paths=PackedStringArray("stage_node")]
+[node name="crystal_alchemy" type="Node2D" parent="level"]
 script = ExtResource("12_xvqbf")
-stage_node = NodePath("../..")
 
-[node name="spikes" type="Node2D" parent="level" node_paths=PackedStringArray("player", "stage_node")]
+[node name="spikes" type="Node2D" parent="level" node_paths=PackedStringArray("player")]
 script = ExtResource("3_aklbb")
 player = NodePath("../../player")
-stage_node = NodePath("../..")
 
 [node name="env" type="Node" parent="."]
 
@@ -169,10 +157,9 @@ environment = SubResource("Environment_rk3ji")
 [node name="CanvasModulate" type="CanvasModulate" parent="env"]
 color = Color(0.47651, 0.481399, 0.589328, 1)
 
-[node name="player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("stage_node")]
+[node name="player" type="CharacterBody2D" parent="."]
 position = Vector2(400, 225)
 script = ExtResource("4_ibuxf")
-stage_node = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
 shape = SubResource("CircleShape2D_ak4dh")
@@ -284,13 +271,12 @@ parameters/looping = true
 [node name="sfx_fall" type="AudioStreamPlayer" parent="player/sfx"]
 stream = ExtResource("13_nhl4s")
 
-[node name="enemy_path" type="Path2D" parent="." node_paths=PackedStringArray("player", "follow_progress", "stage_node")]
+[node name="enemy_path" type="Path2D" parent="." node_paths=PackedStringArray("player", "follow_progress")]
 position = Vector2(-1000, -1000)
 curve = SubResource("Curve2D_s3lq7")
 script = ExtResource("12_diyvg")
 player = NodePath("../player")
 follow_progress = NodePath("PathFollow2D")
-stage_node = NodePath("..")
 
 [node name="sfx_rev_enemy" type="AudioStreamPlayer" parent="enemy_path"]
 stream = ExtResource("9_ik1d0")
@@ -340,153 +326,7 @@ shape = SubResource("CircleShape2D_pxqsv")
 [node name="ui_layer" type="CanvasLayer" parent="."]
 layer = 98
 
-[node name="ui" type="Control" parent="ui_layer" node_paths=PackedStringArray("player", "stage_node")]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("10_noue2")
-player = NodePath("../../player")
-stage_node = NodePath("../..")
-
-[node name="car_id" type="Label" parent="ui_layer/ui"]
-texture_filter = 5
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -40.5
-offset_top = -255.0
-offset_right = 30.5
-offset_bottom = -240.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = SubResource("Theme_02wye")
-text = "normal car"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="game_prompt" type="Label" parent="ui_layer/ui"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -91.0
-offset_top = -213.0
-offset_right = 91.0
-offset_bottom = -173.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource("Theme_yyh21")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-text = "keep moving."
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="cursor_label" type="RichTextLabel" parent="ui_layer/ui"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -467.0
-offset_right = 37.0
-offset_bottom = -450.0
-grow_vertical = 0
-pivot_offset = Vector2(2.08165e-12, 2.08165e-12)
-theme = SubResource("Theme_f5j0w")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("11_2y2tw")
-text = "shoot"
-fit_content = true
-scroll_active = false
-
-[node name="elapsed_time" type="Label" parent="ui_layer/ui"]
-texture_filter = 1
-layout_mode = 1
-offset_left = 12.0
-offset_right = 284.0
-offset_bottom = 60.0
-theme = SubResource("Theme_xadvy")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-text = "00:00
-"
-vertical_alignment = 1
-uppercase = true
-
-[node name="elapsed_time_label" type="Label" parent="ui_layer/ui"]
-texture_filter = 1
-layout_mode = 1
-offset_left = 12.0
-offset_top = 50.0
-offset_right = 92.0
-offset_bottom = 69.0
-theme = SubResource("Theme_e0eiw")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-text = "elapsed time"
-uppercase = true
-
-[node name="velocity_meter" type="Label" parent="ui_layer/ui"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -198.0
-offset_right = -17.0
-offset_bottom = 60.0
-grow_horizontal = 0
-theme = SubResource("Theme_xadvy")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-text = "00.0"
-horizontal_alignment = 2
-vertical_alignment = 1
-uppercase = true
-
-[node name="px_s" type="Label" parent="ui_layer/ui"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -85.0
-offset_top = 50.0
-offset_right = -12.0
-offset_bottom = 69.0
-grow_horizontal = 0
-theme = SubResource("Theme_e0eiw")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-text = "px/second"
-uppercase = true
-
-[node name="control_hint" type="Control" parent="ui_layer/ui"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 362.0
-offset_top = -60.0
-offset_right = 438.0
-offset_bottom = -10.0
-grow_vertical = 0
-script = ExtResource("16_8yhsf")
-
-[node name="control_hint" type="Sprite2D" parent="ui_layer/ui/control_hint"]
-modulate = Color(1, 1, 1, 0.470588)
-texture_filter = 1
-position = Vector2(38, 25)
-scale = Vector2(2, 2)
-texture = ExtResource("16_4581i")
+[node name="ui" parent="ui_layer" instance=ExtResource("17_yien1")]
 
 [connection signal="body_exited" from="level/Area2D" to="player" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="enemy_path/PathFollow2D/shadow_body" to="player" method="_on_shadow_body_body_entered"]

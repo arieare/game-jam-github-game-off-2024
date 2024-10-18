@@ -12,13 +12,13 @@ config_version=5
 
 config/name="the hidden jam"
 config/tags=PackedStringArray("game", "wip")
-run/main_scene="res://ui/main/_root.tscn"
+run/main_scene="res://_root.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://app/app_icon.svg"
 
 [autoload]
 
-global="*res://common/module/module_global.gd"
+util="*res://common/utility/utility.gd"
 
 [display]
 
@@ -28,7 +28,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/terrain_3d/plugin.cfg")
+enabled=PackedStringArray()
 
 [file_customization]
 
@@ -43,6 +43,7 @@ folder_colors={
 [global_group]
 
 player=""
+hit_box=""
 
 [input]
 

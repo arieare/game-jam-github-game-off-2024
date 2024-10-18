@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 var elapsed_timer: float
 signal arcade_state

@@ -27,11 +27,19 @@ var collide_with
 enum car_type{NORMAL,ICE,FIRE,STEAM,WATER}
 var current_car_type
 @onready var car_sprite:Sprite2D = $body/Sprite2D
-var car_normal_sprite = preload("res://asset/tiny_cars.png")
-var car_ice_sprite = preload("res://asset/tiny_cars_ice.png")
-var car_fire_sprite = preload("res://asset/tiny_cars_fire.png")
-var car_steam_sprite = preload("res://asset/tiny_cars_steam.png")
-var car_water_sprite = preload("res://asset/tiny_cars_water.png")
+
+
+
+
+#"res://game/collection/game_carchemy_survival/content/sprite/tiny_cars_shadow.png"
+
+
+
+var car_normal_sprite = preload("res://content/collection/game_carchemy_survival/sprite/tiny_cars.png")
+var car_ice_sprite = preload("res://content/collection/game_carchemy_survival/sprite/tiny_cars_ice.png")
+var car_fire_sprite = preload("res://content/collection/game_carchemy_survival/sprite/tiny_cars_fire.png")
+var car_steam_sprite = preload("res://content/collection/game_carchemy_survival/sprite/tiny_cars_steam.png")
+var car_water_sprite = preload("res://content/collection/game_carchemy_survival/sprite/tiny_cars_water.png")
 @onready var car_id_label_node = $"../ui_layer/ui/car_id"
 
 

@@ -2,7 +2,7 @@ extends Node
 class_name class_player_input
 
 func _ready() -> void:
-	global.input_map.input_setting()
+	util.input_map.input_setting()
 
 func get_direction():
 	var input: Vector2 = Input.get_vector(

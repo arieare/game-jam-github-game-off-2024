@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://crw87s058muqy"]
 
 [ext_resource type="Script" path="res://game/collection/game_carchemy_survival/script/fx/thunder_flash.gd" id="1_5jq8w"]
-[ext_resource type="Texture2D" uid="uid://d1prejy8rv1nx" path="res://game/collection/game_carchemy_survival/asset/main_menu.png" id="2_cyb1l"]
+[ext_resource type="Texture2D" uid="uid://d1prejy8rv1nx" path="res://content/collection/game_carchemy_survival/bg/main_menu.png" id="2_cyb1l"]
 [ext_resource type="Script" path="res://game/collection/game_carchemy_survival/script/menu/main_menu_flicker.gd" id="3_taucu"]
 [ext_resource type="FontFile" uid="uid://d21k7xwyvgk1f" path="res://game/collection/game_carchemy_survival/asset/Kenney Mini Square.ttf" id="4_1dxe2"]
 [ext_resource type="Texture2D" uid="uid://vpis0ijm82dp" path="res://game/collection/game_carchemy_survival/asset/logo_jester_suit.png" id="5_slk0c"]

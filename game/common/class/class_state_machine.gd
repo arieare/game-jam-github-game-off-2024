@@ -1,5 +1,4 @@
-extends NodePlus
-class_name class_state_machine
+class_name class_state_machine extends Node
 
 @export var initial_state: class_state
 var current_state: class_state

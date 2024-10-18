@@ -1,0 +1,470 @@
+[gd_scene load_steps=48 format=3 uid="uid://dn0h6w1278b6y"]
+
+[ext_resource type="Script" path="res://common/component/player_3d/player_controller.gd" id="1_wrxx6"]
+[ext_resource type="Script" path="res://common/component/player_3d/player_input_3d.gd" id="2_7eeft"]
+[ext_resource type="Script" path="res://common/component/ray_cast_3d/compose_ray_3d_down_cast.gd" id="2_smlu1"]
+[ext_resource type="Script" path="res://common/component/player_3d/movement/movement_bobbing.gd" id="8_dve63"]
+[ext_resource type="PackedScene" uid="uid://ue41weqbhwmi" path="res://content/vfx/warp_start_vfx.tscn" id="9_2w26g"]
+[ext_resource type="Shader" path="res://content/shader/glass.gdshader" id="13_hwtq7"]
+[ext_resource type="PackedScene" uid="uid://bqxe1645pw8ku" path="res://common/component/player_3d/weapons/projectile.tscn" id="14_8673b"]
+[ext_resource type="PackedScene" uid="uid://b2c3ojnu6xfo7" path="res://content/vfx/running_dust_vfx.tscn" id="15_bkycr"]
+[ext_resource type="PackedScene" uid="uid://dcayiboph0oe6" path="res://content/vfx/slash_vfx.tscn" id="16_enbpp"]
+[ext_resource type="Script" path="res://common/component/player_3d/player_state/warp_state.gd" id="17_5og5j"]
+[ext_resource type="Script" path="res://common/component/player_3d/player_state/movement_state_machine.gd" id="18_n6nuk"]
+[ext_resource type="Script" path="res://common/component/player_3d/player_state/idle_state.gd" id="18_yj4js"]
+[ext_resource type="Script" path="res://common/component/player_3d/player_state/jump_state.gd" id="20_bx6nq"]
+[ext_resource type="Script" path="res://common/component/player_3d/player_state/on_ground_state.gd" id="21_bjuqh"]
+[ext_resource type="Script" path="res://common/component/player_3d/player_state/fall_state.gd" id="21_hdg3a"]
+[ext_resource type="Script" path="res://common/component/player_3d/player_state/walk_state.gd" id="21_nucca"]
+[ext_resource type="Script" path="res://common/component/player_3d/player_state/position_state_machine.gd" id="23_x3smm"]
+[ext_resource type="Script" path="res://common/component/player_3d/player_state/skill_state_machine.gd" id="24_2gqg8"]
+[ext_resource type="Script" path="res://common/component/player_3d/player_state/on_air_state.gd" id="24_ift68"]
+[ext_resource type="Script" path="res://common/component/player_3d/player_state/melee_state.gd" id="25_pqlhu"]
+[ext_resource type="Script" path="res://common/component/player_3d/player_state/range_state.gd" id="26_3grhu"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i1yth"]
+radius = 0.25
+height = 0.75
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vbdkw"]
+diffuse_mode = 3
+albedo_color = Color(0.2575, 1, 0.19, 1)
+roughness = 0.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0a3lm"]
+material = SubResource("StandardMaterial3D_vbdkw")
+top_radius = 0.0
+bottom_radius = 0.1
+height = 0.3
+radial_segments = 12
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vloh5"]
+shading_mode = 0
+albedo_color = Color(0.2575, 1, 0.19, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ymmc7"]
+material = SubResource("StandardMaterial3D_vloh5")
+radius = 0.2
+height = 0.05
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0nwyf"]
+render_priority = 0
+shader = ExtResource("13_hwtq7")
+shader_parameter/albedo = Color(0.414, 0.726033, 0.92, 0.0784314)
+shader_parameter/roughness = 0.15
+shader_parameter/normal_strength = 1.0
+shader_parameter/edge_color = Color(0.933333, 1, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ydgfx"]
+material = SubResource("ShaderMaterial_0nwyf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_guhrw"]
+diffuse_mode = 3
+albedo_color = Color(0.673282, 0.332954, 0.262096, 1)
+roughness = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_d8rtc"]
+material = SubResource("StandardMaterial3D_guhrw")
+radius = 0.3
+height = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d2dv0"]
+diffuse_mode = 3
+roughness = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_adauk"]
+material = SubResource("StandardMaterial3D_d2dv0")
+radius = 0.2
+height = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_viyto"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_v1u5a"]
+material = SubResource("StandardMaterial3D_viyto")
+radius = 0.03
+height = 0.02
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n8723"]
+diffuse_mode = 3
+albedo_color = Color(1, 0, 0, 1)
+roughness = 0.0
+emission_enabled = true
+emission = Color(0.894846, 0, 0.327938, 1)
+emission_energy_multiplier = 1.95
+
+[sub_resource type="SphereMesh" id="SphereMesh_ce7m5"]
+material = SubResource("StandardMaterial3D_n8723")
+radius = 0.05
+height = 0.1
+radial_segments = 12
+rings = 8
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_rycxo"]
+material = SubResource("StandardMaterial3D_d2dv0")
+radius = 0.15
+height = 0.3
+radial_segments = 12
+
+[sub_resource type="SphereMesh" id="SphereMesh_ggbyi"]
+material = SubResource("StandardMaterial3D_guhrw")
+radius = 0.1
+height = 0.1
+radial_segments = 12
+is_hemisphere = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b27o8"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_0gyj3"]
+material = SubResource("StandardMaterial3D_b27o8")
+radius = 0.2
+height = 0.4
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7wdxb"]
+material = SubResource("StandardMaterial3D_guhrw")
+radius = 0.3
+height = 0.8
+radial_segments = 12
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yw7ja"]
+diffuse_mode = 3
+albedo_color = Color(0.48323, 0.4761, 0.69, 1)
+roughness = 0.0
+rim_enabled = true
+rim_tint = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_sn48k"]
+material = SubResource("StandardMaterial3D_yw7ja")
+radius = 0.2
+height = 0.4
+
+[sub_resource type="SphereMesh" id="SphereMesh_5yddk"]
+material = SubResource("StandardMaterial3D_yw7ja")
+radius = 0.15
+height = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7qyu"]
+diffuse_mode = 3
+albedo_color = Color(0.143, 0.16055, 0.26, 1)
+roughness = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_2t6u4"]
+material = SubResource("StandardMaterial3D_x7qyu")
+radius = 0.15
+height = 0.3
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_v3es2"]
+material = SubResource("StandardMaterial3D_x7qyu")
+top_radius = 0.01
+bottom_radius = 0.03
+height = 1.0
+
+[node name="player" type="RigidBody3D" node_paths=PackedStringArray("collider", "ray", "skin", "body", "body_head", "body_torso", "body_right_arm", "body_left_arm", "target_default_right_arm", "target_default_left_arm", "move_bobbing", "player_input", "movement_state_machine", "position_state_machine", "skill_state_machine", "slash_vfx", "running_dust_vfx", "warp_start_vfx") groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+collision_layer = 2
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.8, 0)
+freeze_mode = 1
+script = ExtResource("1_wrxx6")
+collider = NodePath("collider")
+ray = NodePath("ray")
+skin = NodePath("skin")
+body = NodePath("skin/body")
+body_head = NodePath("skin/head")
+body_torso = NodePath("skin/body/torso")
+body_right_arm = NodePath("skin/body/arm/right_arm")
+body_left_arm = NodePath("skin/body/arm/left_arm")
+target_default_right_arm = NodePath("skin/body/arm/arm_target/target_default_right")
+target_default_left_arm = NodePath("skin/body/arm/arm_target/target_default_left")
+move_bobbing = NodePath("movement/bobbing")
+player_input = NodePath("controller/input")
+movement_state_machine = NodePath("controller/movement_state_machine")
+position_state_machine = NodePath("controller/position_state_machine")
+skill_state_machine = NodePath("controller/skill_state_machine")
+slash_vfx = NodePath("skin/body/vfx/slash_vfx")
+running_dust_vfx = NodePath("skin/body/vfx/running_dust_vfx")
+warp_start_vfx = NodePath("skin/body/vfx/aposition/warp_start_vfx")
+
+[node name="collider" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_i1yth")
+
+[node name="ray" type="RayCast3D" parent="."]
+script = ExtResource("2_smlu1")
+
+[node name="movement" type="Node3D" parent="."]
+
+[node name="bobbing" type="Node3D" parent="movement" node_paths=PackedStringArray("left_target", "right_target", "feet_ray")]
+script = ExtResource("8_dve63")
+left_target = NodePath("../../skin/body/feet/left_target")
+right_target = NodePath("../../skin/body/feet/right_target")
+feet_ray = NodePath("../../skin/body/feet/feet_ray")
+
+[node name="skin" type="Node3D" parent="."]
+
+[node name="head" type="Node3D" parent="skin"]
+
+[node name="hat" type="Node3D" parent="skin/head"]
+transform = Transform3D(1, 0, 0, 0, 0.944674, -0.328009, 0, 0.328009, 0.944674, 0, 1.52033, 0.270491)
+visible = false
+
+[node name="hat_tip" type="MeshInstance3D" parent="skin/head/hat"]
+mesh = SubResource("CylinderMesh_0a3lm")
+
+[node name="hat_shade" type="MeshInstance3D" parent="skin/head/hat"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.141607, 0)
+mesh = SubResource("SphereMesh_ymmc7")
+
+[node name="helmet" type="MeshInstance3D" parent="skin/head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.803579, 0.00108908)
+mesh = SubResource("SphereMesh_ydgfx")
+skeleton = NodePath("../../root/@EditorNode@17030/@Panel@13/@VBoxContainer@14/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@25/DockVSplitCenter/@VSplitContainer@52/@VBoxContainer@53/@PanelContainer@98/MainScreen/@CanvasItemEditor@9331/@VSplitContainer@9153/@HSplitContainer@9155/@HSplitContainer@9157/@Control@9158/@SubViewportContainer@9159/@SubViewport@9160/player/body")
+
+[node name="mouse" type="Node3D" parent="skin/head"]
+visible = false
+
+[node name="head" type="MeshInstance3D" parent="skin/head/mouse"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.686566, 0)
+mesh = SubResource("SphereMesh_d8rtc")
+skeleton = NodePath("../../root/@EditorNode@17030/@Panel@13/@VBoxContainer@14/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@25/DockVSplitCenter/@VSplitContainer@52/@VBoxContainer@53/@PanelContainer@98/MainScreen/@CanvasItemEditor@9331/@VSplitContainer@9153/@HSplitContainer@9155/@HSplitContainer@9157/@Control@9158/@SubViewportContainer@9159/@SubViewport@9160/player/body")
+
+[node name="face" type="MeshInstance3D" parent="skin/head/mouse"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.686035, -0.0814021)
+mesh = SubResource("SphereMesh_adauk")
+skeleton = NodePath("../../root/@EditorNode@17030/@Panel@13/@VBoxContainer@14/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@25/DockVSplitCenter/@VSplitContainer@52/@VBoxContainer@53/@PanelContainer@98/MainScreen/@CanvasItemEditor@9331/@VSplitContainer@9153/@HSplitContainer@9155/@HSplitContainer@9157/@Control@9158/@SubViewportContainer@9159/@SubViewport@9160/player/body")
+
+[node name="eye" type="Node3D" parent="skin/head/mouse"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.700853, -0.330748)
+
+[node name="left_eye" type="MeshInstance3D" parent="skin/head/mouse/eye"]
+transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, 0.0749559, 0, 0)
+mesh = SubResource("SphereMesh_v1u5a")
+
+[node name="right_eye" type="MeshInstance3D" parent="skin/head/mouse/eye"]
+transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, -0.075, 0, 0)
+mesh = SubResource("SphereMesh_v1u5a")
+
+[node name="nose" type="MeshInstance3D" parent="skin/head/mouse"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.576384, -0.450044)
+mesh = SubResource("SphereMesh_ce7m5")
+skeleton = NodePath("../beak")
+
+[node name="beak" type="MeshInstance3D" parent="skin/head/mouse"]
+transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, 0, 0.537359, -0.233362)
+mesh = SubResource("CapsuleMesh_rycxo")
+skeleton = NodePath("../../root/@EditorNode@17030/@Panel@13/@VBoxContainer@14/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@25/DockVSplitCenter/@VSplitContainer@52/@VBoxContainer@53/@PanelContainer@98/MainScreen/@CanvasItemEditor@9331/@VSplitContainer@9153/@HSplitContainer@9155/@HSplitContainer@9157/@Control@9158/@SubViewportContainer@9159/@SubViewport@9160/player/body")
+
+[node name="ear_left" type="MeshInstance3D" parent="skin/head/mouse"]
+transform = Transform3D(0.866026, -0.482963, 0.12941, 0, 0.258819, 0.965926, -0.5, -0.836516, 0.224144, -0.35, 1, 0.075)
+mesh = SubResource("SphereMesh_ggbyi")
+skeleton = NodePath("../../root/@EditorNode@17030/@Panel@13/@VBoxContainer@14/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@25/DockVSplitCenter/@VSplitContainer@52/@VBoxContainer@53/@PanelContainer@98/MainScreen/@CanvasItemEditor@9331/@VSplitContainer@9153/@HSplitContainer@9155/@HSplitContainer@9157/@Control@9158/@SubViewportContainer@9159/@SubViewport@9160/player/body")
+
+[node name="ear_right" type="MeshInstance3D" parent="skin/head/mouse"]
+transform = Transform3D(0.866026, 0.482963, -0.12941, 0, 0.258819, 0.965926, 0.5, -0.836516, 0.224144, 0.35, 1, 0.075)
+mesh = SubResource("SphereMesh_ggbyi")
+skeleton = NodePath("../../root/@EditorNode@17030/@Panel@13/@VBoxContainer@14/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@25/DockVSplitCenter/@VSplitContainer@52/@VBoxContainer@53/@PanelContainer@98/MainScreen/@CanvasItemEditor@9331/@VSplitContainer@9153/@HSplitContainer@9155/@HSplitContainer@9157/@Control@9158/@SubViewportContainer@9159/@SubViewport@9160/player/body")
+
+[node name="bear" type="Node3D" parent="skin/head"]
+
+[node name="head" type="MeshInstance3D" parent="skin/head/bear"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.686566, 0)
+mesh = SubResource("SphereMesh_d8rtc")
+skeleton = NodePath("../../root/@EditorNode@17030/@Panel@13/@VBoxContainer@14/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@25/DockVSplitCenter/@VSplitContainer@52/@VBoxContainer@53/@PanelContainer@98/MainScreen/@CanvasItemEditor@9331/@VSplitContainer@9153/@HSplitContainer@9155/@HSplitContainer@9157/@Control@9158/@SubViewportContainer@9159/@SubViewport@9160/player/body")
+
+[node name="face" type="MeshInstance3D" parent="skin/head/bear"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.686035, -0.106255)
+mesh = SubResource("SphereMesh_adauk")
+skeleton = NodePath("../../root/@EditorNode@17030/@Panel@13/@VBoxContainer@14/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@25/DockVSplitCenter/@VSplitContainer@52/@VBoxContainer@53/@PanelContainer@98/MainScreen/@CanvasItemEditor@9331/@VSplitContainer@9153/@HSplitContainer@9155/@HSplitContainer@9157/@Control@9158/@SubViewportContainer@9159/@SubViewport@9160/player/body")
+
+[node name="eye" type="Node3D" parent="skin/head/bear"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.76776, -0.330748)
+
+[node name="left_eye" type="MeshInstance3D" parent="skin/head/bear/eye"]
+transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, 0.106229, -0.0422783, 0)
+mesh = SubResource("SphereMesh_v1u5a")
+
+[node name="right_eye" type="MeshInstance3D" parent="skin/head/bear/eye"]
+transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, -0.106, -0.042, 0)
+mesh = SubResource("SphereMesh_v1u5a")
+
+[node name="nose" type="MeshInstance3D" parent="skin/head/bear"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.627661, -0.339005)
+mesh = SubResource("SphereMesh_ce7m5")
+skeleton = NodePath("../beak")
+
+[node name="beak" type="MeshInstance3D" parent="skin/head/bear"]
+transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, 0, 0.579056, -0.233362)
+mesh = SubResource("CapsuleMesh_rycxo")
+skeleton = NodePath("../../root/@EditorNode@17030/@Panel@13/@VBoxContainer@14/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@25/DockVSplitCenter/@VSplitContainer@52/@VBoxContainer@53/@PanelContainer@98/MainScreen/@CanvasItemEditor@9331/@VSplitContainer@9153/@HSplitContainer@9155/@HSplitContainer@9157/@Control@9158/@SubViewportContainer@9159/@SubViewport@9160/player/body")
+
+[node name="ear_left" type="MeshInstance3D" parent="skin/head/bear"]
+transform = Transform3D(0.866026, -0.482963, 0.12941, 0, 0.258819, 0.965926, -0.5, -0.836516, 0.224144, -0.210841, 0.885179, 0.075)
+mesh = SubResource("SphereMesh_ggbyi")
+skeleton = NodePath("../../root/@EditorNode@17030/@Panel@13/@VBoxContainer@14/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@25/DockVSplitCenter/@VSplitContainer@52/@VBoxContainer@53/@PanelContainer@98/MainScreen/@CanvasItemEditor@9331/@VSplitContainer@9153/@HSplitContainer@9155/@HSplitContainer@9157/@Control@9158/@SubViewportContainer@9159/@SubViewport@9160/player/body")
+
+[node name="ear_right" type="MeshInstance3D" parent="skin/head/bear"]
+transform = Transform3D(0.866026, 0.482963, -0.12941, 0, 0.258819, 0.965926, 0.5, -0.836516, 0.224144, 0.211, 0.885, 0.075)
+mesh = SubResource("SphereMesh_ggbyi")
+skeleton = NodePath("../../root/@EditorNode@17030/@Panel@13/@VBoxContainer@14/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@25/DockVSplitCenter/@VSplitContainer@52/@VBoxContainer@53/@PanelContainer@98/MainScreen/@CanvasItemEditor@9331/@VSplitContainer@9153/@HSplitContainer@9155/@HSplitContainer@9157/@Control@9158/@SubViewportContainer@9159/@SubViewport@9160/player/body")
+
+[node name="body" type="Node3D" parent="skin"]
+
+[node name="body_soul" type="Node3D" parent="skin/body"]
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="skin/body/body_soul"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.656882, 0)
+cast_shadow = 0
+mesh = SubResource("SphereMesh_0gyj3")
+
+[node name="torso" type="MeshInstance3D" parent="skin/body"]
+mesh = SubResource("CapsuleMesh_7wdxb")
+
+[node name="arm" type="Node3D" parent="skin/body"]
+
+[node name="left_arm" type="MeshInstance3D" parent="skin/body/arm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, -0.25, 0)
+mesh = SubResource("SphereMesh_sn48k")
+skeleton = NodePath("../right_arm")
+
+[node name="right_arm" type="MeshInstance3D" parent="skin/body/arm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, -0.25, 0)
+mesh = SubResource("SphereMesh_sn48k")
+
+[node name="arm_target" type="Node3D" parent="skin/body/arm"]
+
+[node name="target_slash" type="Node3D" parent="skin/body/arm/arm_target"]
+
+[node name="target_slash_start" type="Marker3D" parent="skin/body/arm/arm_target/target_slash"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.817306, -0.406611, -1.02316)
+
+[node name="target_slash_end" type="Marker3D" parent="skin/body/arm/arm_target/target_slash"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01028, 0.611347, -0.738855)
+
+[node name="target_slash_left" type="Marker3D" parent="skin/body/arm/arm_target/target_slash"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.400601, 0.0561566, 0.870597)
+
+[node name="target_default_right" type="Marker3D" parent="skin/body/arm/arm_target"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, -0.25, 0)
+
+[node name="target_default_left" type="Marker3D" parent="skin/body/arm/arm_target"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, -0.25, 0)
+
+[node name="target_falling" type="Node3D" parent="skin/body/arm/arm_target"]
+
+[node name="target_falling_right" type="Marker3D" parent="skin/body/arm/arm_target/target_falling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 1.3779, 0)
+
+[node name="target_falling_left" type="Marker3D" parent="skin/body/arm/arm_target/target_falling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 1.3779, 0)
+
+[node name="target_falling_mid_right" type="Marker3D" parent="skin/body/arm/arm_target/target_falling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 0.439529, -0.644731)
+
+[node name="target_falling_mid_left" type="Marker3D" parent="skin/body/arm/arm_target/target_falling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 0.439529, -0.644731)
+
+[node name="feet" type="Node" parent="skin/body"]
+
+[node name="left_target" type="MeshInstance3D" parent="skin/body/feet"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.351133, 0.733488, 0)
+mesh = SubResource("SphereMesh_5yddk")
+
+[node name="right_target" type="MeshInstance3D" parent="skin/body/feet"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.351, 0.733, 0)
+mesh = SubResource("SphereMesh_2t6u4")
+
+[node name="feet_ray" type="RayCast3D" parent="skin/body/feet"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 3, 0)
+target_position = Vector3(0, -2, 0)
+
+[node name="tail" type="Node3D" parent="skin/body"]
+visible = false
+
+[node name="tail" type="MeshInstance3D" parent="skin/body/tail"]
+transform = Transform3D(0.999998, -0.00176494, 0.000716791, 0.000405908, -0.170226, -0.985405, 0.00186119, 0.985403, -0.170225, 0, -0.250253, 0.416827)
+mesh = SubResource("CylinderMesh_v3es2")
+skeleton = NodePath("../../root/@EditorNode@17030/@Panel@13/@VBoxContainer@14/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@25/DockVSplitCenter/@VSplitContainer@52/@VBoxContainer@53/@PanelContainer@98/MainScreen/@CanvasItemEditor@9331/@VSplitContainer@9153/@HSplitContainer@9155/@HSplitContainer@9157/@Control@9158/@SubViewportContainer@9159/@SubViewport@9160/player/body")
+
+[node name="weapon" type="Node3D" parent="skin/body"]
+
+[node name="range" type="Node3D" parent="skin/body/weapon"]
+
+[node name="hit_box" type="Area3D" parent="skin/body/weapon/range"]
+
+[node name="melee" type="Node3D" parent="skin/body/weapon"]
+
+[node name="vfx" type="Node3D" parent="skin/body"]
+
+[node name="running_dust_vfx" parent="skin/body/vfx" instance=ExtResource("15_bkycr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
+emitting = false
+amount = 8
+lifetime = 0.3
+speed_scale = 1.0
+
+[node name="slash_vfx" parent="skin/body/vfx" instance=ExtResource("16_enbpp")]
+
+[node name="aposition" type="Node" parent="skin/body/vfx"]
+
+[node name="warp_start_vfx" parent="skin/body/vfx/aposition" instance=ExtResource("9_2w26g")]
+
+[node name="controller" type="Node" parent="."]
+
+[node name="input" type="Node" parent="controller"]
+script = ExtResource("2_7eeft")
+
+[node name="movement_state_machine" type="Node" parent="controller" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("18_n6nuk")
+initial_state = NodePath("idle")
+
+[node name="idle" type="Node" parent="controller/movement_state_machine"]
+script = ExtResource("18_yj4js")
+
+[node name="walk" type="Node" parent="controller/movement_state_machine"]
+script = ExtResource("21_nucca")
+
+[node name="jump" type="Node" parent="controller/movement_state_machine"]
+script = ExtResource("20_bx6nq")
+
+[node name="fall" type="Node" parent="controller/movement_state_machine" node_paths=PackedStringArray("arm_target_fall_right", "arm_target_fall_left", "arm_target_fall_mid_right", "arm_target_fall_mid_left", "arm_target_default_right", "arm_target_default_left")]
+script = ExtResource("21_hdg3a")
+arm_target_fall_right = NodePath("../../../skin/body/arm/arm_target/target_falling/target_falling_right")
+arm_target_fall_left = NodePath("../../../skin/body/arm/arm_target/target_falling/target_falling_left")
+arm_target_fall_mid_right = NodePath("../../../skin/body/arm/arm_target/target_falling/target_falling_mid_right")
+arm_target_fall_mid_left = NodePath("../../../skin/body/arm/arm_target/target_falling/target_falling_mid_left")
+arm_target_default_right = NodePath("../../../skin/body/arm/arm_target/target_default_right")
+arm_target_default_left = NodePath("../../../skin/body/arm/arm_target/target_default_left")
+
+[node name="warp" type="Node" parent="controller/movement_state_machine"]
+script = ExtResource("17_5og5j")
+
+[node name="position_state_machine" type="Node" parent="controller" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("23_x3smm")
+initial_state = NodePath("on_air")
+
+[node name="on_ground" type="Node" parent="controller/position_state_machine"]
+script = ExtResource("21_bjuqh")
+
+[node name="on_air" type="Node" parent="controller/position_state_machine"]
+script = ExtResource("24_ift68")
+
+[node name="skill_state_machine" type="Node" parent="controller" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("24_2gqg8")
+initial_state = NodePath("melee")
+
+[node name="melee" type="Node" parent="controller/skill_state_machine" node_paths=PackedStringArray("right_arm_target_slash_start", "right_arm_target_slash_end", "left_arm_target_slash_left")]
+script = ExtResource("25_pqlhu")
+right_arm_target_slash_start = NodePath("../../../skin/body/arm/arm_target/target_slash/target_slash_start")
+right_arm_target_slash_end = NodePath("../../../skin/body/arm/arm_target/target_slash/target_slash_end")
+left_arm_target_slash_left = NodePath("../../../skin/body/arm/arm_target/target_slash/target_slash_left")
+
+[node name="range" type="Node" parent="controller/skill_state_machine" node_paths=PackedStringArray("right_arm_target_slash_start", "right_arm_target_slash_end", "left_arm_target_slash_left")]
+script = ExtResource("26_3grhu")
+right_arm_target_slash_start = NodePath("../../../skin/body/arm/arm_target/target_slash/target_slash_start")
+right_arm_target_slash_end = NodePath("../../../skin/body/arm/arm_target/target_slash/target_slash_end")
+left_arm_target_slash_left = NodePath("../../../skin/body/arm/arm_target/target_slash/target_slash_left")
+projectile = ExtResource("14_8673b")

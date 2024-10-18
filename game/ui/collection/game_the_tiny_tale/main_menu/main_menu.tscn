@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://b4p6kmywhq548"]
 
 [ext_resource type="FontFile" uid="uid://w3076qvrbys5" path="res://content/font/DepartureMono-Regular.otf" id="1_5eqlk"]
-[ext_resource type="Script" path="res://ui/collection/game_the_tiny_tale/main_menu/main_menu.gd" id="1_hm830"]
-[ext_resource type="Script" path="res://common/component/component_ui_btn_quit.gd" id="3_lqj61"]
+[ext_resource type="Script" path="res://ui/collection/game_the_tiny_tale/main_menu/btn_start.gd" id="3_6loal"]
+[ext_resource type="Script" path="res://common/component/ui_component/component_ui_btn_quit.gd" id="3_lqj61"]
 
 [sub_resource type="Theme" id="Theme_utnof"]
 default_font = ExtResource("1_5eqlk")
 
-[node name="main_menu" type="Control" node_paths=PackedStringArray("start_btn")]
+[node name="main_menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,8 +15,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_utnof")
-script = ExtResource("1_hm830")
-start_btn = NodePath("marginbox/vbox/vbox/start_btn")
 
 [node name="bg" type="ColorRect" parent="."]
 layout_mode = 1
@@ -66,6 +64,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 32
 text = "start"
+script = ExtResource("3_6loal")
 
 [node name="quit_btn_component" type="Button" parent="marginbox/vbox/vbox"]
 layout_mode = 2

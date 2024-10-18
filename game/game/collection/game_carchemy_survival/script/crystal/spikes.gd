@@ -1,5 +1,5 @@
 extends Node2D
-var spike_scene = preload("res://scene/spike.tscn")
+var spike_scene = ResourceLoader.load("res://game/collection/game_carchemy_survival/content/scene/spike.tscn")
 @onready var root_node = get_tree().get_root().get_child(0)
 var spike_array : PackedVector2Array = []
 var spike_array_max_size : int = 10

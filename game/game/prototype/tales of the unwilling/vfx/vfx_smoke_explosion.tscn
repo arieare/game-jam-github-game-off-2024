@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://game/prototype/tales of the unwilling/vfx/script/vfxInstance.gd" id="2_i0vx0"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_450s6"]
-load_path = "res://.godot/imported/Free Smoke Fx  Pixel 06.png-8fed0507a7cbaecb67d3729339c74bbd.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d0xo5"]
 atlas = SubResource("CompressedTexture2D_450s6")

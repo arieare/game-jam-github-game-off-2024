@@ -1,5 +1,4 @@
-extends NodePlus
-class_name class_state
+class_name class_state extends Node
 
 var state_machine_parent: class_state_machine
 var actor: Variant

@@ -43,4 +43,5 @@ theme_override_constants/v_separation = 24
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
+theme_override_font_sizes/font_size = 80
 text = "game_title"

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://ui/main/root_main_menu/btn_start.gd" id="1_8twxj"]
 [ext_resource type="Theme" uid="uid://b65kj6xp1d4ud" path="res://content/ui/button_style.tres" id="2_c0l1i"]
-[ext_resource type="Script" path="res://common/component/component_ui_btn_quit.gd" id="2_hln06"]
+[ext_resource type="Script" path="res://common/component/ui_component/component_ui_btn_quit.gd" id="2_hln06"]
 
 [node name="root_main_menu" type="Control"]
 layout_mode = 3

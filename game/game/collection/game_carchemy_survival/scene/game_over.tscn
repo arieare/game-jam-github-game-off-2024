@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://4yeldt0bdr6s"]
 
 [ext_resource type="Script" path="res://script/game/game_over.gd" id="1_lyblp"]
-[ext_resource type="Texture2D" uid="uid://c1g38uuifptkt" path="res://game/collection/game_carchemy_survival/asset/game_over_screen.png" id="2_413wh"]
+[ext_resource type="Texture2D" uid="uid://c1g38uuifptkt" path="res://content/collection/game_carchemy_survival/bg/game_over_screen.png" id="2_413wh"]
 [ext_resource type="FontFile" uid="uid://d21k7xwyvgk1f" path="res://game/collection/game_carchemy_survival/asset/Kenney Mini Square.ttf" id="3_74oc2"]
 [ext_resource type="Script" path="res://script/fx/skull_eye.gd" id="3_jfdn4"]
 [ext_resource type="Script" path="res://script/menu/menu_button_main.gd" id="5_aaics"]

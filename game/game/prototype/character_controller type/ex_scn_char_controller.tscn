@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://game/prototype/character_controller type/script/state_ground_move.gd" id="5_qdogf"]
 [ext_resource type="Script" path="res://game/prototype/character_controller type/script/state_fall.gd" id="6_c4ka2"]
 [ext_resource type="Script" path="res://game/prototype/character_controller type/script/state_jump.gd" id="7_gehhl"]
-[ext_resource type="PackedScene" uid="uid://be2x17x326kf6" path="res://content/scene/grass_terrain.tscn" id="8_qdcj1"]
+[ext_resource type="PackedScene" uid="uid://be2x17x326kf6" path="res://content/scene/grass_terrain_3d.tscn" id="8_qdcj1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8fs3k"]
 radius = 0.35

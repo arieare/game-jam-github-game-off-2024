@@ -1,5 +1,5 @@
 extends Node2D
-var crystal_scene = preload("res://scene/crystal.tscn")
+var crystal_scene = preload("res://content/collection/game_carchemy_survival/scene/crystal.tscn")
 @onready var root_node = get_tree().get_root().get_child(0)
 var is_crystal_message_displayed: bool = false
 @export var stage_node: Node2D

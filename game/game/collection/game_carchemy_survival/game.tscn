@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cf304rualgqlq"]
 
-[ext_resource type="Script" path="res://game/collection/game_carchemy_survival/script/game/game_manager.gd" id="1_re28e"]
+[ext_resource type="Script" path="res://game/collection/game_carchemy_survival/game.gd" id="1_re28e"]
 [ext_resource type="Shader" path="res://game/collection/game_carchemy_survival/material/transition_circle.gdshader" id="2_lqopg"]
 [ext_resource type="AudioStream" uid="uid://dksr2ldhori2t" path="res://game/collection/game_carchemy_survival/asset/sound/bgm.wav" id="3_om0ph"]
 [ext_resource type="AudioStream" uid="uid://b1osgle2nqa74" path="res://game/collection/game_carchemy_survival/asset/sound/bgm_main_menu.mp3" id="4_qjc85"]
@@ -24,22 +24,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [1.05]
-}
-
-[sub_resource type="Animation" id="Animation_aoi07"]
-resource_name = "transition_in"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:material:shader_parameter/circle_size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.05]
 }
 
 [sub_resource type="Animation" id="Animation_wcndj"]
@@ -72,16 +56,31 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_aoi07"]
+resource_name = "transition_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/circle_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.05]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jupix"]
 _data = {
-&"RESET": SubResource("Animation_jpyiu"),
 &"transition_in": SubResource("Animation_aoi07"),
+&"RESET": SubResource("Animation_jpyiu"),
 &"transition_out": SubResource("Animation_wcndj")
 }
 
-[node name="game" type="Node2D" node_paths=PackedStringArray("runtime_node", "transition_node")]
+[node name="game" type="Node2D" node_paths=PackedStringArray("transition_node")]
 script = ExtResource("1_re28e")
-runtime_node = NodePath("runtime_instance")
 transition_node = NodePath("transition")
 
 [node name="transition" type="Node2D" parent="."]
