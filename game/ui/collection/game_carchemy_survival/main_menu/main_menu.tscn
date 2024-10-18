@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://dnqu1uuknd7dm"]
 
 [ext_resource type="Script" path="res://ui/collection/game_carchemy_survival/main_menu/main_menu.gd" id="1_1c6o0"]
-[ext_resource type="Script" path="res://game/collection/game_carchemy_survival/script/fx/thunder_flash.gd" id="1_yp2l0"]
+[ext_resource type="Script" path="res://common/component/weather_3d/thunder_flash.gd" id="1_yp2l0"]
 [ext_resource type="Texture2D" uid="uid://1qfliqivug85" path="res://content/collection/game_carchemy_survival/bg/main_menu_arcade.png" id="2_xupee"]
 [ext_resource type="Texture2D" uid="uid://cdo3ctlouuppv" path="res://content/collection/game_carchemy_survival/sprite/tiny_cars.png" id="3_16ctb"]
 [ext_resource type="Texture2D" uid="uid://dp6cwsj4p7i5j" path="res://content/collection/game_carchemy_survival/sprite/tiny_cars_shadow.png" id="4_awakl"]
-[ext_resource type="FontFile" uid="uid://d21k7xwyvgk1f" path="res://game/collection/game_carchemy_survival/asset/Kenney Mini Square.ttf" id="5_4xv4f"]
+[ext_resource type="FontFile" uid="uid://d21k7xwyvgk1f" path="res://content/font/Kenney Mini Square.ttf" id="5_4xv4f"]
 [ext_resource type="AudioStream" uid="uid://dl1lgmybutfh0" path="res://game/collection/game_carchemy_survival/asset/sound/sfx_click.ogg" id="6_x6pt8"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_x0s38"]

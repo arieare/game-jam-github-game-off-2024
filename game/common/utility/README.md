@@ -1,1 +1,1 @@
-- util is a reusable functions that only did one job
+- util is a reusable functions that only did one functional job

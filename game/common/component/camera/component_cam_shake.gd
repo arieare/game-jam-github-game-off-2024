@@ -1,5 +1,4 @@
-extends NodePlus
-class_name component_cam_shake
+class_name component_cam_shake extends Node
 
 # Shake variables
 var decay = 0.8  # How quickly the shaking stops [0, 1].

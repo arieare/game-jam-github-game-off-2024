@@ -1,21 +1,21 @@
 [gd_scene load_steps=31 format=3 uid="uid://63hv64wm2eyp"]
 
-[ext_resource type="Script" path="res://game/collection/game_carchemy_survival/script/game/arcade.gd" id="1_w8vc8"]
-[ext_resource type="Script" path="res://game/collection/game_carchemy_survival/script/utility/camera_shake_2d.gd" id="2_qjomg"]
-[ext_resource type="Script" path="res://game/collection/game_carchemy_survival/script/crystal/spikes.gd" id="3_aklbb"]
-[ext_resource type="Texture2D" uid="uid://c6he3lkg75fub" path="res://content/collection/game_carchemy_survival/bg/arena.png" id="3_uf3vp"]
-[ext_resource type="Script" path="res://game/collection/game_carchemy_survival/script/player/car_control.gd" id="4_ibuxf"]
-[ext_resource type="Texture2D" uid="uid://cdo3ctlouuppv" path="res://content/collection/game_carchemy_survival/sprite/tiny_cars.png" id="4_p4t68"]
-[ext_resource type="Texture2D" uid="uid://dp6cwsj4p7i5j" path="res://content/collection/game_carchemy_survival/sprite/tiny_cars_shadow.png" id="5_i88c0"]
-[ext_resource type="AudioStream" uid="uid://bhurxcx8fcqas" path="res://game/collection/game_carchemy_survival/asset/sound/sfx_crystal_hit.ogg" id="6_8xbtl"]
-[ext_resource type="AudioStream" uid="uid://cojctrtm3ls5s" path="res://game/collection/game_carchemy_survival/asset/sound/sfx_bell.ogg" id="6_aiyw3"]
-[ext_resource type="AudioStream" uid="uid://bi8am5g6muilr" path="res://game/collection/game_carchemy_survival/asset/sound/sfx_smash.ogg" id="7_4o1f3"]
-[ext_resource type="Gradient" uid="uid://c8jry3ydjmhtw" path="res://game/collection/game_carchemy_survival/asset/fx/texture_spark_light.tres" id="7_vt30k"]
-[ext_resource type="AudioStream" uid="uid://c2lxoew4tf2ha" path="res://game/collection/game_carchemy_survival/asset/sound/sfx_pedal.ogg" id="9_ik1d0"]
-[ext_resource type="Script" path="res://game/collection/game_carchemy_survival/script/enemy/enemy_follow.gd" id="12_diyvg"]
-[ext_resource type="Script" path="res://game/collection/game_carchemy_survival/script/crystal/crystal_alchemy.gd" id="12_xvqbf"]
-[ext_resource type="AudioStream" uid="uid://dxuxik0lb7h63" path="res://game/collection/game_carchemy_survival/asset/sound/sfx_fall.ogg" id="13_nhl4s"]
-[ext_resource type="PackedScene" uid="uid://b3f74co2cfds5" path="res://ui/collection/game_carchemy_survival/arcade_ui/arcade_ui.tscn" id="17_yien1"]
+[ext_resource type="Script" path="res://game/collection/game_carchemy_survival/arcade.gd" id="1_ejdhm"]
+[ext_resource type="Texture2D" uid="uid://c6he3lkg75fub" path="res://content/collection/game_carchemy_survival/bg/arena.png" id="2_822e6"]
+[ext_resource type="Script" path="res://game/collection/game_carchemy_survival/crystal/crystal_alchemy.gd" id="3_i315x"]
+[ext_resource type="Script" path="res://game/collection/game_carchemy_survival/spike/spikes.gd" id="4_tsxv8"]
+[ext_resource type="Script" path="res://game/collection/game_carchemy_survival/script/utility/camera_shake_2d.gd" id="5_m62pj"]
+[ext_resource type="Script" path="res://game/collection/game_carchemy_survival/script/player/car_control.gd" id="6_ljf5q"]
+[ext_resource type="Texture2D" uid="uid://cdo3ctlouuppv" path="res://content/collection/game_carchemy_survival/sprite/tiny_cars.png" id="7_a87te"]
+[ext_resource type="Gradient" uid="uid://c8jry3ydjmhtw" path="res://game/collection/game_carchemy_survival/asset/fx/texture_spark_light.tres" id="8_s7tbb"]
+[ext_resource type="AudioStream" uid="uid://cojctrtm3ls5s" path="res://game/collection/game_carchemy_survival/asset/sound/sfx_bell.ogg" id="9_tak8j"]
+[ext_resource type="AudioStream" uid="uid://bhurxcx8fcqas" path="res://game/collection/game_carchemy_survival/asset/sound/sfx_crystal_hit.ogg" id="10_ucslo"]
+[ext_resource type="AudioStream" uid="uid://bi8am5g6muilr" path="res://game/collection/game_carchemy_survival/asset/sound/sfx_smash.ogg" id="11_irqmv"]
+[ext_resource type="AudioStream" uid="uid://c2lxoew4tf2ha" path="res://game/collection/game_carchemy_survival/asset/sound/sfx_pedal.ogg" id="12_maewt"]
+[ext_resource type="AudioStream" uid="uid://dxuxik0lb7h63" path="res://game/collection/game_carchemy_survival/asset/sound/sfx_fall.ogg" id="13_lh1xx"]
+[ext_resource type="Script" path="res://game/collection/game_carchemy_survival/script/enemy/enemy_follow.gd" id="14_d1rkg"]
+[ext_resource type="Texture2D" uid="uid://dp6cwsj4p7i5j" path="res://content/collection/game_carchemy_survival/sprite/tiny_cars_shadow.png" id="15_qiew1"]
+[ext_resource type="PackedScene" uid="uid://b3f74co2cfds5" path="res://ui/collection/game_carchemy_survival/arcade_ui/arcade_ui.tscn" id="16_ki8n0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_46ini"]
 radius = 210.0
@@ -59,7 +59,7 @@ fill_from = Vector2(0.5, 0.5)
 light_mode = 1
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_aaqpn"]
-gradient = ExtResource("7_vt30k")
+gradient = ExtResource("8_s7tbb")
 width = 32
 height = 32
 use_hdr = true
@@ -99,7 +99,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_w8vc8")
+script = ExtResource("1_ejdhm")
 
 [node name="level" type="Control" parent="."]
 layout_mode = 1
@@ -125,7 +125,7 @@ modulate = Color(0.769383, 0.812335, 0.962531, 1)
 texture_filter = 1
 position = Vector2(400, 225)
 scale = Vector2(4, 4)
-texture = ExtResource("3_uf3vp")
+texture = ExtResource("2_822e6")
 
 [node name="Area2D" type="Area2D" parent="level"]
 position = Vector2(400, 225)
@@ -137,10 +137,10 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_46ini")
 
 [node name="crystal_alchemy" type="Node2D" parent="level"]
-script = ExtResource("12_xvqbf")
+script = ExtResource("3_i315x")
 
 [node name="spikes" type="Node2D" parent="level" node_paths=PackedStringArray("player")]
-script = ExtResource("3_aklbb")
+script = ExtResource("4_tsxv8")
 player = NodePath("../../player")
 
 [node name="env" type="Node" parent="."]
@@ -149,7 +149,7 @@ player = NodePath("../../player")
 position = Vector2(400, 225)
 
 [node name="camera_shake_2d" type="Node" parent="env/Camera2D"]
-script = ExtResource("2_qjomg")
+script = ExtResource("5_m62pj")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="env"]
 environment = SubResource("Environment_rk3ji")
@@ -159,7 +159,7 @@ color = Color(0.47651, 0.481399, 0.589328, 1)
 
 [node name="player" type="CharacterBody2D" parent="."]
 position = Vector2(400, 225)
-script = ExtResource("4_ibuxf")
+script = ExtResource("6_ljf5q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
 shape = SubResource("CircleShape2D_ak4dh")
@@ -210,7 +210,7 @@ hue_variation_max = 0.23
 texture_filter = 3
 material = SubResource("CanvasItemMaterial_77ikv")
 rotation = 1.5708
-texture = ExtResource("4_p4t68")
+texture = ExtResource("7_a87te")
 
 [node name="cape" type="Node2D" parent="player/body"]
 
@@ -251,35 +251,35 @@ hue_variation_max = 1.0
 [node name="sfx" type="Node" parent="player"]
 
 [node name="sfx_bell" type="AudioStreamPlayer" parent="player/sfx"]
-stream = ExtResource("6_aiyw3")
+stream = ExtResource("9_tak8j")
 volume_db = 4.0
 
 [node name="sfx_crystal_hit" type="AudioStreamPlayer" parent="player/sfx"]
-stream = ExtResource("6_8xbtl")
+stream = ExtResource("10_ucslo")
 pitch_scale = 0.71
 
 [node name="sfx_smash" type="AudioStreamPlayer" parent="player/sfx"]
-stream = ExtResource("7_4o1f3")
+stream = ExtResource("11_irqmv")
 volume_db = 1.2
 pitch_scale = 0.4
 
 [node name="sfx_rev" type="AudioStreamPlayer" parent="player/sfx"]
-stream = ExtResource("9_ik1d0")
+stream = ExtResource("12_maewt")
 volume_db = -17.0
 parameters/looping = true
 
 [node name="sfx_fall" type="AudioStreamPlayer" parent="player/sfx"]
-stream = ExtResource("13_nhl4s")
+stream = ExtResource("13_lh1xx")
 
 [node name="enemy_path" type="Path2D" parent="." node_paths=PackedStringArray("player", "follow_progress")]
 position = Vector2(-1000, -1000)
 curve = SubResource("Curve2D_s3lq7")
-script = ExtResource("12_diyvg")
+script = ExtResource("14_d1rkg")
 player = NodePath("../player")
 follow_progress = NodePath("PathFollow2D")
 
 [node name="sfx_rev_enemy" type="AudioStreamPlayer" parent="enemy_path"]
-stream = ExtResource("9_ik1d0")
+stream = ExtResource("12_maewt")
 pitch_scale = 1.34
 parameters/looping = true
 
@@ -291,7 +291,7 @@ loop = false
 [node name="Sprite2D" type="Sprite2D" parent="enemy_path/PathFollow2D"]
 texture_filter = 1
 rotation = 1.5708
-texture = ExtResource("5_i88c0")
+texture = ExtResource("15_qiew1")
 
 [node name="fx_car_engine" type="CPUParticles2D" parent="enemy_path/PathFollow2D/Sprite2D"]
 texture_filter = 1
@@ -326,7 +326,7 @@ shape = SubResource("CircleShape2D_pxqsv")
 [node name="ui_layer" type="CanvasLayer" parent="."]
 layer = 98
 
-[node name="ui" parent="ui_layer" instance=ExtResource("17_yien1")]
+[node name="ui" parent="ui_layer" instance=ExtResource("16_ki8n0")]
 
 [connection signal="body_exited" from="level/Area2D" to="player" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="enemy_path/PathFollow2D/shadow_body" to="player" method="_on_shadow_body_body_entered"]

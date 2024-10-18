@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://b3f74co2cfds5"]
+[gd_scene load_steps=9 format=3 uid="uid://b3f74co2cfds5"]
 
 [ext_resource type="Script" path="res://ui/collection/game_carchemy_survival/arcade_ui/game_ui.gd" id="1_1v3nq"]
-[ext_resource type="FontFile" uid="uid://d21k7xwyvgk1f" path="res://game/collection/game_carchemy_survival/asset/Kenney Mini Square.ttf" id="2_qu3gf"]
-[ext_resource type="Script" path="res://ui/collection/game_carchemy_survival/arcade_ui/ui_control_hint.gd" id="3_8duty"]
+[ext_resource type="FontFile" uid="uid://d21k7xwyvgk1f" path="res://content/font/Kenney Mini Square.ttf" id="2_qu3gf"]
 [ext_resource type="Texture2D" uid="uid://buvqg2mjkp4jb" path="res://content/collection/game_carchemy_survival/sprite/accessibility_key_arrow.png" id="4_yvtoa"]
 
 [sub_resource type="Theme" id="Theme_02wye"]
@@ -23,7 +22,7 @@ default_font_size = 48
 default_font = ExtResource("2_qu3gf")
 default_font_size = 12
 
-[node name="arcade_ui" type="Control"]
+[node name="arcade_ui" type="Control" node_paths=PackedStringArray("control_ui")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,6 +30,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1v3nq")
+control_ui = NodePath("control_hint")
 
 [node name="car_id" type="Label" parent="."]
 texture_filter = 5
@@ -159,7 +159,6 @@ offset_left = 100.0
 offset_top = -50.0
 offset_right = 176.0
 grow_vertical = 0
-script = ExtResource("3_8duty")
 
 [node name="control_hint" type="Sprite2D" parent="control_hint"]
 modulate = Color(1, 1, 1, 0.470588)

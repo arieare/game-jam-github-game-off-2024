@@ -1,4 +1,4 @@
-extends NodePlus
+extends Node
 class_name component_cam_filter_dither
 
 ## plug pixelated camera effect

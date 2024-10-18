@@ -18,7 +18,7 @@ var currentCompObjState := compObjStates.COMP_PUT
 
 func _ready():
 	game.worldNode = get_parent()
-	game.mainCam = game.worldNode.get_viewport().get_camera_3d()
+	game.mainCam = get_viewport().get_camera_3d()
 	mainObjectNode = get_parent().get_node("MainObject")
 	pickedComponentNode = get_parent().get_node("PickedComponent")
 	dismantledComponentNode = get_parent().get_node("DismantledComponent")

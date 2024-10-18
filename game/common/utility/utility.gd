@@ -6,8 +6,8 @@ extends Node
 @onready var mouse := util_mouse_ray_cast.new()
 @onready var look_at_target := util_look_at_target.new()
 
-@onready var input_map: module_input_map = module_input_map.new()
-@onready var interaction_manager: module_interaction_manager = module_interaction_manager.new()
+#@onready var input_map: module_input_map = module_input_map.new()
+#@onready var interaction_manager: module_interaction_manager = module_interaction_manager.new()
 
 @onready var hit_stop := util_hit_stop.new()
 @onready var slow_mo := util_slow_mo.new()
@@ -21,4 +21,3 @@ func _ready() -> void:
 	self.connect("root_ready",_on_root_ready)
 func _on_root_ready(node:Variant):
 	root = node
-	print("the root is " + str(root))

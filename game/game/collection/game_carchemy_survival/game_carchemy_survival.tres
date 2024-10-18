@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="GameNodeList" load_steps=3 format=3 uid="uid://b2re18xhmnfkr"]
 
-[ext_resource type="PackedScene" uid="uid://63hv64wm2eyp" path="res://game/collection/game_carchemy_survival/scene/arcade.tscn" id="1_3yvnj"]
+[ext_resource type="PackedScene" uid="uid://63hv64wm2eyp" path="res://game/collection/game_carchemy_survival/scene_0.tscn" id="1_3yvnj"]
 [ext_resource type="Script" path="res://common/resource/game_node.gd" id="1_fdtsd"]
 
 [resource]

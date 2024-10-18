@@ -1,5 +1,4 @@
-extends RayCast3D
-class_name compose_ray_3d_down_cast
+class_name compose_ray_3d_down_cast extends RayCast3D
 
 var actor: RigidBody3D
 

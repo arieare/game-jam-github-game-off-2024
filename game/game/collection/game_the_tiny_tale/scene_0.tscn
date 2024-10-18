@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://8ju41ke7f60g" path="res://content/scene/collectible.tscn" id="6_fc313"]
 [ext_resource type="PackedScene" uid="uid://dd3lqfs6p0cn5" path="res://common/component/interaction/interaction_area_module.tscn" id="7_ciyiu"]
 [ext_resource type="Script" path="res://common/component/enemy/enemy.gd" id="8_qg4pe"]
-[ext_resource type="Script" path="res://common/system ai/MODRangeObservePlayer.gd" id="9_qsccp"]
-[ext_resource type="Script" path="res://common/component/component_interaction_area.gd" id="10_qufh1"]
+[ext_resource type="Script" path="res://common/component/interaction/component_trait_observer.gd" id="9_qsccp"]
+[ext_resource type="Script" path="res://common/component/interaction/component_interaction_area.gd" id="10_qufh1"]
 [ext_resource type="Script" path="res://common/component/cursor_3d/aim_cursor.gd" id="12_ggv0d"]
 [ext_resource type="PackedScene" uid="uid://be2x17x326kf6" path="res://content/scene/grass_terrain_3d.tscn" id="13_e0tx2"]
 

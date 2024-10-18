@@ -43,3 +43,27 @@
 - player needs to fix the rocket by collecting artefacts for fixing the rocket and going back home.
 - the incident where the rocket blow up in the atmosphere turns out spreads an alien spore which makes the peaceful island a parasite monster invested place.
 - can the player go back home after befriending the locals?
+
+
+Script structure from https://github.com/abmarnie/godot-architecture-organization-advice:
+	
+01. @tool
+02. class_name (PascalCase)
+03. extends
+04. # docstring
+
+05. signals (snake_case)
+06. enums (PascalCase, members are CONSTANT_CASE)
+07. constants (CONSTANT_CASE)
+08. @export variables (snake_case)
+09. public variables (non-underscore-prefixed snake_case)
+10. private variables (underscore-prefixed _snake_case)
+11. @onready variables (snake_case)
+
+12. optional built-in virtual _init method
+13. optional built-in virtual _enter_tree() method
+14. built-in virtual _ready method
+15. remaining built-in virtual methods (underscore-prefixed _snake_case)
+16. public methods (non-underscore-prefixed snake_case)
+17. private methods (underscore-prefixed _snake_case)
+18. subclasses (PascalCase)

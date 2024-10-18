@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://d21k7xwyvgk1f"
-path="res://.godot/imported/Kenney Mini Square.ttf-974f0b147706b56f5c9506e4a7f871ab.fontdata"
+path="res://.godot/imported/Kenney Mini Square.ttf-43e5b3c2fb48cc76c00b810103341df1.fontdata"
 
 [deps]
 
-source_file="res://game/collection/game_carchemy_survival/asset/Kenney Mini Square.ttf"
-dest_files=["res://.godot/imported/Kenney Mini Square.ttf-974f0b147706b56f5c9506e4a7f871ab.fontdata"]
+source_file="res://content/font/Kenney Mini Square.ttf"
+dest_files=["res://.godot/imported/Kenney Mini Square.ttf-43e5b3c2fb48cc76c00b810103341df1.fontdata"]
 
 [params]
 

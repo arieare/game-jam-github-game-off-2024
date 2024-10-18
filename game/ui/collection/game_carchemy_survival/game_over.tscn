@@ -1,10 +1,10 @@
 [gd_scene load_steps=16 format=3 uid="uid://4yeldt0bdr6s"]
 
-[ext_resource type="Script" path="res://script/game/game_over.gd" id="1_lyblp"]
-[ext_resource type="Texture2D" uid="uid://c1g38uuifptkt" path="res://content/collection/game_carchemy_survival/bg/game_over_screen.png" id="2_413wh"]
-[ext_resource type="FontFile" uid="uid://d21k7xwyvgk1f" path="res://game/collection/game_carchemy_survival/asset/Kenney Mini Square.ttf" id="3_74oc2"]
-[ext_resource type="Script" path="res://script/fx/skull_eye.gd" id="3_jfdn4"]
-[ext_resource type="Script" path="res://script/menu/menu_button_main.gd" id="5_aaics"]
+[ext_resource type="Script" path="res://ui/collection/game_carchemy_survival/game_over.gd" id="1_kg5mc"]
+[ext_resource type="Texture2D" uid="uid://c1g38uuifptkt" path="res://content/collection/game_carchemy_survival/bg/game_over_screen.png" id="2_ehc54"]
+[ext_resource type="Script" path="res://game/collection/game_carchemy_survival/script/fx/skull_eye.gd" id="3_cix1k"]
+[ext_resource type="FontFile" uid="uid://d21k7xwyvgk1f" path="res://content/font/Kenney Mini Square.ttf" id="4_ycjd4"]
+[ext_resource type="Script" path="res://game/collection/game_carchemy_survival/script/menu/menu_button_main.gd" id="5_70tsy"]
 
 [sub_resource type="GDScript" id="GDScript_lojxp"]
 script/source = "extends CanvasModulate
@@ -57,18 +57,18 @@ fill_from = Vector2(0.5, 0)
 fill_to = Vector2(0.519231, 1)
 
 [sub_resource type="Theme" id="Theme_wpvdm"]
-default_font = ExtResource("3_74oc2")
+default_font = ExtResource("4_ycjd4")
 
 [sub_resource type="Theme" id="Theme_xwomq"]
-default_font = ExtResource("3_74oc2")
+default_font = ExtResource("4_ycjd4")
 default_font_size = 28
 
 [sub_resource type="Theme" id="Theme_sdmru"]
-default_font = ExtResource("3_74oc2")
+default_font = ExtResource("4_ycjd4")
 default_font_size = 56
 
 [sub_resource type="Theme" id="Theme_lvt16"]
-default_font = ExtResource("3_74oc2")
+default_font = ExtResource("4_ycjd4")
 default_font_size = 23
 
 [sub_resource type="GDScript" id="GDScript_h3f4c"]
@@ -88,7 +88,7 @@ func _process(delta: float) -> void:
 "
 
 [node name="game_over" type="Node2D"]
-script = ExtResource("1_lyblp")
+script = ExtResource("1_kg5mc")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 texture_filter = 2
@@ -117,17 +117,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_413wh")
+texture = ExtResource("2_ehc54")
 
 [node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer/SubViewport/bg_image"]
 position = Vector2(345, 265)
 texture = SubResource("GradientTexture2D_oiby3")
-script = ExtResource("3_jfdn4")
+script = ExtResource("3_cix1k")
 
 [node name="Sprite2D2" type="Sprite2D" parent="SubViewportContainer/SubViewport/bg_image"]
 position = Vector2(445, 205)
 texture = SubResource("GradientTexture2D_oiby3")
-script = ExtResource("3_jfdn4")
+script = ExtResource("3_cix1k")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="SubViewportContainer/SubViewport"]
 follow_viewport_enabled = true
@@ -238,4 +238,4 @@ theme_override_colors/font_color = Color(0.94, 0.893, 0, 1)
 text = "main menu"
 flat = true
 alignment = 0
-script = ExtResource("5_aaics")
+script = ExtResource("5_70tsy")

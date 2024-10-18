@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://common/component/weather_3d/module_day_weather.gd" id="1_undve"]
 [ext_resource type="Script" path="res://common/component/weather_3d/world_lighting.gd" id="2_6dd63"]
 [ext_resource type="Script" path="res://common/component/weather_3d/component_weather_overcast.gd" id="4_q2sg1"]
-[ext_resource type="Script" path="res://common/component/weather_3d/vfx_thunder_flash.gd" id="4_t4o85"]
-[ext_resource type="PackedScene" uid="uid://dmfbntej2pnc5" path="res://content/vfx/weather_rain_vfx.tscn" id="6_b7t8m"]
+[ext_resource type="Script" path="res://common/component/weather_3d/thunder_flash_3d_vfx.gd" id="4_t4o85"]
+[ext_resource type="PackedScene" uid="uid://dmfbntej2pnc5" path="res://content/vfx/weather_rain_3d_vfx.tscn" id="6_b7t8m"]
 [ext_resource type="Script" path="res://common/component/weather_3d/vfx_rain.gd" id="6_h031o"]
 [ext_resource type="PackedScene" uid="uid://cfe1msgrty8bu" path="res://content/vfx/weather_ripple_vfx.tscn" id="7_kgo47"]
 

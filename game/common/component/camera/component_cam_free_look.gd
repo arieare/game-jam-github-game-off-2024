@@ -1,4 +1,4 @@
-extends NodePlus
+extends Node
 class_name component_cam_free_look
 
 var free_look_speed_degree: float = 3.0

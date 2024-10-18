@@ -6,6 +6,11 @@ extends Control
 @onready var car_id_label_node = $car_id
 @onready var game_prompt_node = $game_prompt
 
+var wasd_asset = preload("res://content/collection/game_carchemy_survival/sprite/accessibility_key_wasd.png")
+var arrow_asset = preload("res://content/collection/game_carchemy_survival/sprite/accessibility_key_arrow.png")
+@export var control_ui: Control
+var switch_counter: int = 0
+
 func _ready() -> void:
 	stage_node.connect("arcade_state",on_arcade_state_change)
 
@@ -21,7 +26,24 @@ func _physics_process(_delta: float) -> void:
 		$velocity_meter.add_theme_color_override("font_color",Color.RED)	
 	else:
 		$velocity_meter.add_theme_color_override("font_color",Color.WHITE)			
-	
+
+func _process(delta: float) -> void:
+	control_hint()	
 	
 func on_arcade_state_change(state_message):
 	game_prompt_node.text = state_message
+
+func control_hint():
+	if switch_counter == 0:
+		control_ui.get_child(0).texture = wasd_asset
+		await get_tree().create_timer(0.5).timeout
+		switch_counter = 1
+	else:
+		control_ui.get_child(0).texture = arrow_asset
+		await get_tree().create_timer(0.5).timeout
+		switch_counter = 0
+	
+	
+	if Input.is_action_just_pressed("move_down") or Input.is_action_just_pressed("move_up") or Input.is_action_just_pressed("move_left") or Input.is_action_just_pressed("move_right"):
+		await get_tree().create_timer(2.0).timeout
+		control_ui.get_child(0).modulate.a = 0	

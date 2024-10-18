@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cfd0ueywwa76r" path="res://content/collection/game_carchemy_survival/sprite/crystal_ice.png" id="1_ji2nl"]
 [ext_resource type="Script" path="res://script/crystal/crystal.gd" id="1_r83ik"]
-[ext_resource type="FontFile" uid="uid://d21k7xwyvgk1f" path="res://game/collection/game_carchemy_survival/asset/Kenney Mini Square.ttf" id="2_2bcbv"]
+[ext_resource type="FontFile" uid="uid://d21k7xwyvgk1f" path="res://content/font/Kenney Mini Square.ttf" id="2_2bcbv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dmj36"]
 radius = 12.0

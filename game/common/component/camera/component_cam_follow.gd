@@ -1,5 +1,4 @@
-extends NodePlus
-class_name component_cam_follow
+class_name component_cam_follow extends Node
 
 var follow_dampen: float = 0.05
 

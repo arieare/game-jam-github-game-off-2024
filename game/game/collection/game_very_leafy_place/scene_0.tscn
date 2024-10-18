@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://common/component/camera/component_cam_filter_pixelated.gd" id="1_xs6k6"]
 [ext_resource type="Script" path="res://common/component/camera/component_cam_filter_pixel_outline.gd" id="2_86iqh"]
-[ext_resource type="Script" path="res://game/collection/game_very_leafy_place/input_map.gd" id="3_b46p0"]
+[ext_resource type="Script" path="res://game/collection/game_very_leafy_place/core/input_map.gd" id="3_b46p0"]
 [ext_resource type="Shader" path="res://content/shader/canvas_godray.gdshader" id="4_q3yfk"]
 [ext_resource type="PackedScene" uid="uid://chl74min4e67j" path="res://content/scene/bon_fire_2d.tscn" id="5_3x1ju"]
 [ext_resource type="Script" path="res://game/collection/game_very_leafy_place/leaf/leaf_emitter.gd" id="6_h75r1"]
