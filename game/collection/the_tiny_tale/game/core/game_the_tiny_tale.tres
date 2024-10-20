@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="GameNodeList" load_steps=3 format=3 uid="uid://brt3qaf1iyv8o"]
+
+[ext_resource type="Script" path="res://common/resource/game_node.gd" id="1_aw5uk"]
+[ext_resource type="PackedScene" uid="uid://1gla7vs7sdie" path="res://collection/the_tiny_tale/game/scene/scene_0.tscn" id="1_iruiu"]
+
+[resource]
+script = ExtResource("1_aw5uk")
+game_node = Dictionary[String, PackedScene]({
+"game": ExtResource("1_iruiu")
+})

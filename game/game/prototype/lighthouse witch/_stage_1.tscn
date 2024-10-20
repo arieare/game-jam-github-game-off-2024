@@ -1,16 +1,16 @@
 [gd_scene load_steps=33 format=3 uid="uid://ivekcb4ts8x7"]
 
 [ext_resource type="Shader" path="res://game/prototype/lighthouse witch/sea.gdshader" id="1_5tdmp"]
-[ext_resource type="Texture2D" uid="uid://c4wt3kv65dpge" path="res://game/collection/game_carchemy_survival/asset/level.png" id="2_3wca3"]
-[ext_resource type="Script" path="res://game/collection/game_carchemy_survival/script/core_crystal.gd" id="3_857ts"]
-[ext_resource type="Script" path="res://game/collection/game_carchemy_survival/script/player/ray_trail.gd" id="4_8uoac"]
+[ext_resource type="Texture2D" uid="uid://c4wt3kv65dpge" path="res://game/prototype/lighthouse witch/asset/level.png" id="2_3wca3"]
+[ext_resource type="Script" path="res://game/prototype/lighthouse witch/core_crystal.gd" id="3_857ts"]
+[ext_resource type="Script" path="res://game/collection/game_carchemy_survival/player/ray_trail.gd" id="4_8uoac"]
 [ext_resource type="Script" path="res://common/component/weather_3d/thunder_flash.gd" id="5_fuke3"]
-[ext_resource type="Script" path="res://game/collection/game_carchemy_survival/script/player/character_controller.gd" id="6_op1x7"]
+[ext_resource type="Script" path="res://game/collection/game_carchemy_survival/player/character_controller.gd" id="6_op1x7"]
 [ext_resource type="Gradient" uid="uid://c8jry3ydjmhtw" path="res://game/collection/game_carchemy_survival/asset/fx/texture_spark_light.tres" id="7_lcatp"]
 [ext_resource type="Script" path="res://game/collection/game_carchemy_survival/script/fx/flickering_light.gd" id="8_sykv1"]
 [ext_resource type="Script" path="res://ui/collection/game_carchemy_survival/arcade_ui/game_ui.gd" id="9_3u7fy"]
 [ext_resource type="FontFile" uid="uid://d21k7xwyvgk1f" path="res://content/font/Kenney Mini Square.ttf" id="10_m2ox4"]
-[ext_resource type="Texture2D" uid="uid://dxivl5xgfnnb6" path="res://game/collection/game_carchemy_survival/asset/icon_lighthouse.png" id="11_nttkx"]
+[ext_resource type="Texture2D" uid="uid://dxivl5xgfnnb6" path="res://game/prototype/lighthouse witch/asset/icon_lighthouse.png" id="11_nttkx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j7os6"]
 resource_local_to_scene = true

@@ -1,8 +1,8 @@
 [gd_scene load_steps=48 format=3 uid="uid://dn0h6w1278b6y"]
 
 [ext_resource type="Script" path="res://common/component/player_3d/player_controller.gd" id="1_wrxx6"]
-[ext_resource type="Script" path="res://common/component/player_3d/player_input_3d.gd" id="2_7eeft"]
 [ext_resource type="Script" path="res://common/component/ray_cast_3d/compose_ray_3d_down_cast.gd" id="2_smlu1"]
+[ext_resource type="Script" path="res://collection/the_tiny_tale/game/core/input_map.gd" id="8_6lghi"]
 [ext_resource type="Script" path="res://common/component/player_3d/movement/movement_bobbing.gd" id="8_dve63"]
 [ext_resource type="PackedScene" uid="uid://ue41weqbhwmi" path="res://content/vfx/warp_start_vfx.tscn" id="9_2w26g"]
 [ext_resource type="Shader" path="res://content/shader/glass.gdshader" id="13_hwtq7"]
@@ -415,7 +415,7 @@ speed_scale = 1.0
 [node name="controller" type="Node" parent="."]
 
 [node name="input" type="Node" parent="controller"]
-script = ExtResource("2_7eeft")
+script = ExtResource("8_6lghi")
 
 [node name="movement_state_machine" type="Node" parent="controller" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("18_n6nuk")

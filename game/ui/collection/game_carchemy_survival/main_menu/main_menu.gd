@@ -8,3 +8,4 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if !event.is_echo() and start_btn.button_pressed:
 		util.scene_manager.change( util.root.game_container, util.root.game_instance.game.carchemy_survival.game_node.game)	
+		util.scene_manager.change( util.root.ui_container, null)	

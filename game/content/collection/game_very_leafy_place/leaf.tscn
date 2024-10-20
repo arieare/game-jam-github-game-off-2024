@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bjlb0lligjxbm"]
 
-[ext_resource type="Script" path="res://game/collection/game_very_leafy_place/leaf/leaf.gd" id="1_ihaha"]
+[ext_resource type="Script" path="res://collection/very_leafy_place/game/prefab/leaf/leaf.gd" id="1_ihaha"]
 [ext_resource type="Texture2D" uid="uid://bwlfaoglfi8fq" path="res://content/sprite/single_leaf_sprite.png" id="2_cd0j6"]
 [ext_resource type="Script" path="res://common/component/interaction/component_hurt_box_2d.gd" id="3_jjn2u"]
 

@@ -1,5 +1,5 @@
 extends Node2D
-var crystal_scene = preload("res://content/collection/game_carchemy_survival/scene/crystal.tscn")
+@export var crystal_scene : PackedScene
 @onready var root_node = get_tree().get_root().get_child(0)
 var is_crystal_message_displayed: bool = false
 @export var stage_node: Node2D
@@ -7,9 +7,9 @@ var is_crystal_message_displayed: bool = false
 func _ready() -> void:
 	root_node.connect("crystal_hit", on_hit)
 	await get_tree().create_timer(2.0).timeout
-	if !is_crystal_message_displayed:
-		stage_node.emit_signal("arcade_state", "stay in the middle.")
-		is_crystal_message_displayed = true
+	#if !is_crystal_message_displayed:
+		#stage_node.emit_signal("arcade_state", "stay in the middle.")
+		#is_crystal_message_displayed = true
 	var new_crystal = crystal_scene.instantiate()
 	new_crystal.crystal = new_crystal.crystal_type.values().pick_random()
 	self.add_child(new_crystal)

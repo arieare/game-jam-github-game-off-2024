@@ -9,7 +9,7 @@ var knockback_timer: float = 0.0
 
 func _ready() -> void:
 	interaction.interact = Callable(self, "_test_interact")
-	hurt_box.attack = Callable(self, "_test_attack")
+	#hurt_box.attack = Callable(self, "_test_attack")
 	
 func _physics_process(delta: float) -> void:
 	if knockback_vector > 0:

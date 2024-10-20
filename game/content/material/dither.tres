@@ -9,5 +9,5 @@ shader = ExtResource("1_seg2a")
 shader_parameter/levels = 8
 shader_parameter/threshold = 0.1
 shader_parameter/colors = 12
-shader_parameter/pixelate = 5
+shader_parameter/pixelate = 1
 shader_parameter/dither_texture = ExtResource("2_vvvbx")

@@ -1,0 +1,278 @@
+[gd_scene load_steps=36 format=3 uid="uid://1gla7vs7sdie"]
+
+[ext_resource type="PackedScene" uid="uid://brj8m71cptbtw" path="res://common/component/interaction/block_interaction_manager.tscn" id="1_7iamw"]
+[ext_resource type="Shader" path="res://content/shader/sky.gdshader" id="2_8xts5"]
+[ext_resource type="Script" path="res://common/component/camera/compose_cam_pod_3d.gd" id="3_2lxub"]
+[ext_resource type="Script" path="res://common/component/weather_3d/component_weather_overcast.gd" id="4_kq8n8"]
+[ext_resource type="PackedScene" uid="uid://dn0h6w1278b6y" path="res://common/component/player_3d/player.tscn" id="5_44qgh"]
+[ext_resource type="PackedScene" uid="uid://8ju41ke7f60g" path="res://content/scene/collectible.tscn" id="6_fc313"]
+[ext_resource type="PackedScene" uid="uid://dd3lqfs6p0cn5" path="res://common/component/interaction/interaction_area_module.tscn" id="7_ciyiu"]
+[ext_resource type="Script" path="res://common/component/enemy/enemy.gd" id="8_qg4pe"]
+[ext_resource type="Script" path="res://common/component/interaction/component_trait_observer.gd" id="9_qsccp"]
+[ext_resource type="Script" path="res://common/component/interaction/component_interaction_area.gd" id="10_qufh1"]
+[ext_resource type="Script" path="res://common/component/cursor_3d/aim_cursor.gd" id="12_ggv0d"]
+[ext_resource type="PackedScene" uid="uid://be2x17x326kf6" path="res://content/scene/grass_terrain_3d.tscn" id="13_e0tx2"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_n7q2r"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0453e"]
+seamless = true
+noise = SubResource("FastNoiseLite_n7q2r")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4kvq3"]
+seamless = true
+noise = SubResource("FastNoiseLite_n7q2r")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0rnj0"]
+shader = ExtResource("2_8xts5")
+shader_parameter/offset_horizon = -0.128
+shader_parameter/horizon_intensity = -0.384
+shader_parameter/sun_set = Color(0.56, 0.24, 0, 1)
+shader_parameter/horizon_color_day = Color(1, 0.47, 0.47, 1)
+shader_parameter/horizon_color_night = Color(0, 0.8, 1, 1)
+shader_parameter/sun_color = Color(10, 8, 1, 1)
+shader_parameter/sun_radius = 0.2
+shader_parameter/flat_sun = true
+shader_parameter/moon_color = Color(1, 0.95, 0.7, 1)
+shader_parameter/moon_radius = 0.05
+shader_parameter/moon_crescent = -0.024
+shader_parameter/dark_falloff = 3.915
+shader_parameter/enable_horizon_fade = false
+shader_parameter/horizon_fade_size = 0.2
+shader_parameter/horizon_fade_blend = 0.1
+shader_parameter/day_bottom_color = Color(0.4, 0.8, 1, 1)
+shader_parameter/day_top_color = Color(0.1, 0.6, 1, 1)
+shader_parameter/night_bottom_color = Color(0.1, 0, 0.2, 1)
+shader_parameter/night_top_color = Color(0.229755, 0.000285969, 0.325042, 1)
+shader_parameter/stars_speed = 1.0
+shader_parameter/stars_cutoff = 0.702
+shader_parameter/stars_sky_color = Color(0, 0.11, 0.05, 1)
+shader_parameter/offset_stars = 0.083
+shader_parameter/stars_intensity = 0.0
+shader_parameter/star_falloff = 1.79
+shader_parameter/stars_fade_modulation = 0.91
+shader_parameter/cloud_noise1 = SubResource("NoiseTexture2D_0453e")
+shader_parameter/cloud_noise2 = SubResource("NoiseTexture2D_4kvq3")
+shader_parameter/cloud_edge_day_color = Color(0.9, 0.9, 0.9, 1)
+shader_parameter/cloud_main_day_color = Color(1, 1, 1, 1)
+shader_parameter/cloud_edge_night_color = Color(0.15, 0.19, 0.25, 1)
+shader_parameter/cloud_main_night_color = Color(0.15, 0.16, 0.2, 1)
+shader_parameter/cloud_speed_1 = 0.01
+shader_parameter/cloud_speed_2 = 0.02
+shader_parameter/cloud_speed_3 = 0.02
+shader_parameter/cloud_scale_1 = 0.425
+shader_parameter/cloud_scale_2 = 0.074
+shader_parameter/cloud_scale_3 = 0.075
+shader_parameter/cloud_distortion = 0.0
+shader_parameter/cloud_strength = 0.5
+shader_parameter/cloud_cutoff = 0.0
+shader_parameter/cloud_fuzziness = 0.0
+
+[sub_resource type="Sky" id="Sky_8cv30"]
+sky_material = SubResource("ShaderMaterial_0rnj0")
+
+[sub_resource type="Environment" id="Environment_drocl"]
+background_mode = 2
+background_color = Color(0.1026, 0.45315, 0.57, 1)
+sky = SubResource("Sky_8cv30")
+reflected_light_source = 2
+tonemap_mode = 3
+tonemap_exposure = 1.1
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+glow_enabled = true
+glow_intensity = 0.9
+glow_bloom = 1.0
+glow_blend_mode = 4
+glow_hdr_threshold = 0.2
+fog_mode = 1
+fog_light_color = Color(0.220615, 0.241218, 0.748047, 1)
+fog_density = 0.3
+fog_aerial_perspective = 0.05
+volumetric_fog_density = 0.01
+volumetric_fog_albedo = Color(0.0328979, 0.224666, 0.765625, 1)
+volumetric_fog_length = 24.0
+adjustment_enabled = true
+adjustment_contrast = 1.25
+adjustment_saturation = 0.6
+
+[sub_resource type="Gradient" id="Gradient_cynkf"]
+interpolation_mode = 2
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0.321888, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bd2fa"]
+noise_type = 3
+frequency = 0.0134
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tg3td"]
+seamless = true
+seamless_blend_skirt = 1.0
+normalize = false
+color_ramp = SubResource("Gradient_cynkf")
+noise = SubResource("FastNoiseLite_bd2fa")
+
+[sub_resource type="BoxMesh" id="BoxMesh_bp30f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02obb"]
+albedo_color = Color(0.321569, 0.321569, 0.321569, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lg181"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_8owoy"]
+size = Vector3(0.4, 0.6, 0.4)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4qyp5"]
+radius = 8.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_w8cif"]
+radius = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tm4uj"]
+albedo_color = Color(0.14144, 0.388815, 0.61126, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8def8"]
+material = SubResource("StandardMaterial3D_tm4uj")
+size = Vector2(2000, 2000)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tpgop"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+albedo_texture_force_srgb = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_d52e8"]
+material = SubResource("StandardMaterial3D_tpgop")
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="Gradient" id="Gradient_sixna"]
+offsets = PackedFloat32Array(0.0105634, 0.996479)
+colors = PackedColorArray(0.272017, 0.38, 0.171, 1, 0, 0.507818, 0.206744, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dfwse"]
+noise_type = 4
+frequency = 0.0184
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_abf3f"]
+seamless = true
+color_ramp = SubResource("Gradient_sixna")
+noise = SubResource("FastNoiseLite_dfwse")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_by54h"]
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("NoiseTexture2D_abf3f")
+anisotropy = -1.0
+uv1_triplanar_sharpness = 150.0
+
+[node name="game" type="Node3D"]
+
+[node name="interaction_manager" parent="." instance=ExtResource("1_7iamw")]
+
+[node name="env" type="Node3D" parent="."]
+
+[node name="world" type="WorldEnvironment" parent="env"]
+environment = SubResource("Environment_drocl")
+
+[node name="light" type="DirectionalLight3D" parent="env"]
+transform = Transform3D(0.707107, -0.306643, -0.637157, -7.87747e-08, -0.901076, 0.433659, -0.707107, -0.306643, -0.637157, 0, 0, 0)
+shadow_enabled = true
+shadow_blur = 0.03
+
+[node name="cam" type="Node3D" parent="env" node_paths=PackedStringArray("cam_target", "cam_root")]
+script = ExtResource("3_2lxub")
+cam_target = NodePath("../../player")
+cam_root = NodePath("../..")
+
+[node name="vfx_overcast" type="Decal" parent="env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.775546, 0)
+size = Vector3(100, 2, 100)
+texture_albedo = SubResource("NoiseTexture2D_tg3td")
+albedo_mix = 0.23
+script = ExtResource("4_kq8n8")
+
+[node name="player" parent="." node_paths=PackedStringArray("look_aim") instance=ExtResource("5_44qgh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.15849, 0)
+look_aim = NodePath("../aim_cursor/pointer")
+
+[node name="collectibles" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.58336, 0)
+
+[node name="collectible" parent="collectibles" instance=ExtResource("6_fc313")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.88284, 0.5, -3.28339)
+
+[node name="interaction_area" parent="collectibles/collectible" node_paths=PackedStringArray("interaction_manager") instance=ExtResource("7_ciyiu")]
+interaction_name = "pick"
+interaction_manager = NodePath("../../../interaction_manager")
+
+[node name="fragment" parent="collectibles" instance=ExtResource("6_fc313")]
+
+[node name="interaction_area" parent="collectibles/fragment" node_paths=PackedStringArray("interaction_manager") instance=ExtResource("7_ciyiu")]
+interaction_name = "picks"
+interaction_manager = NodePath("../../../interaction_manager")
+
+[node name="enemy" type="RigidBody3D" parent="." node_paths=PackedStringArray("interaction") groups=["enemy"]]
+transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-16, -3.48787e-16, 3.48787e-16, 1, -3.10343, 4.78451, -11.2302)
+collision_layer = 4
+mass = 2.0
+script = ExtResource("8_qg4pe")
+interaction = NodePath("interaction_area")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="enemy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_bp30f")
+surface_material_override/0 = SubResource("StandardMaterial3D_02obb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="enemy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_lg181")
+
+[node name="Face" type="MeshInstance3D" parent="enemy"]
+transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 2.08165e-12, 0.6, -0.8)
+mesh = SubResource("PrismMesh_8owoy")
+
+[node name="RangeObservePlayer" type="Area3D" parent="enemy"]
+script = ExtResource("9_qsccp")
+observeRadius = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="enemy/RangeObservePlayer"]
+shape = SubResource("SphereShape3D_4qyp5")
+
+[node name="interaction_area" type="Area3D" parent="enemy" node_paths=PackedStringArray("interaction_manager", "collision")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("10_qufh1")
+interaction_name = "talk"
+interaction_manager = NodePath("../../interaction_manager")
+collision = NodePath("collision")
+collision_radius = 5.0
+
+[node name="collision" type="CollisionShape3D" parent="enemy/interaction_area"]
+shape = SubResource("SphereShape3D_w8cif")
+
+[node name="water" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.76324, 0)
+visible = false
+mesh = SubResource("PlaneMesh_8def8")
+skeleton = NodePath("")
+
+[node name="aim_cursor" type="Node3D" parent="."]
+script = ExtResource("12_ggv0d")
+
+[node name="pointer" type="MeshInstance3D" parent="aim_cursor"]
+mesh = SubResource("BoxMesh_d52e8")
+skeleton = NodePath("../../root/@EditorNode@17030/@Panel@13/@VBoxContainer@14/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@25/DockVSplitCenter/@VSplitContainer@52/@VBoxContainer@53/@PanelContainer@98/MainScreen/@CanvasItemEditor@9331/@VSplitContainer@9153/@HSplitContainer@9155/@HSplitContainer@9157/@Control@9158/@SubViewportContainer@9159/@SubViewport@9160/player")
+
+[node name="GrassTerrain" parent="." instance=ExtResource("13_e0tx2")]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_by54h")
+
+[connection signal="body_entered" from="enemy/interaction_area" to="enemy/interaction_area" method="_on_body_entered"]
+[connection signal="body_exited" from="enemy/interaction_area" to="enemy/interaction_area" method="_on_body_exited"]

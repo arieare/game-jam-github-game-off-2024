@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://game/collection/game_very_leafy_place/core/input_map.gd" id="3_b46p0"]
 [ext_resource type="Shader" path="res://content/shader/canvas_godray.gdshader" id="4_q3yfk"]
 [ext_resource type="PackedScene" uid="uid://chl74min4e67j" path="res://content/scene/bon_fire_2d.tscn" id="5_3x1ju"]
-[ext_resource type="Script" path="res://game/collection/game_very_leafy_place/leaf/leaf_emitter.gd" id="6_h75r1"]
+[ext_resource type="Script" path="res://collection/very_leafy_place/game/prefab/leaf/leaf_emitter.gd" id="6_h75r1"]
 [ext_resource type="Script" path="res://game/collection/game_very_leafy_place/blower.gd" id="7_lku6o"]
 [ext_resource type="Texture2D" uid="uid://bwlfaoglfi8fq" path="res://content/sprite/single_leaf_sprite.png" id="8_uxakt"]
 

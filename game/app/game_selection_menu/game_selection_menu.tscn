@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfbb7vdq7d4e0"]
+
+[ext_resource type="FontFile" uid="uid://c6fpvgggmmj81" path="res://content/font/Ranyth.ttf" id="1_ajo5c"]
+[ext_resource type="Script" path="res://app/game_selection_menu/game_selection_menu.gd" id="1_txec2"]
+[ext_resource type="PackedScene" uid="uid://bc1l26f3r7nv7" path="res://app/game_selection_menu/btn_game_list.tscn" id="2_desgd"]
+
+[sub_resource type="Theme" id="Theme_y7a5l"]
+default_font = ExtResource("1_ajo5c")
+
+[node name="game_selection_menu" type="Control" node_paths=PackedStringArray("button_container", "game_title_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_y7a5l")
+script = ExtResource("1_txec2")
+btn_game_scn = ExtResource("2_desgd")
+button_container = NodePath("margin/hflow")
+game_title_label = NodePath("margin/game_title")
+
+[node name="bg" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="hflow" type="HFlowContainer" parent="margin"]
+layout_mode = 2
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 24
+
+[node name="game_title" type="Label" parent="margin"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 80
+text = "game_title"

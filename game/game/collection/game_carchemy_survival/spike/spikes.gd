@@ -30,13 +30,13 @@ func _physics_process(_delta: float) -> void:
 		
 	if is_spawn_spike == true:
 		
-		if !is_spike_message_displayed:
-			stage_node.emit_signal("arcade_state", "beware of spikes.")
-			is_spike_message_displayed = true	
-		else:
-			if !is_general_message_displayed:
-				stage_node.emit_signal("arcade_state", "survive as long as you can.")
-				is_general_message_displayed = true		
+		#if !is_spike_message_displayed:
+			#stage_node.emit_signal("arcade_state", "beware of spikes.")
+			#is_spike_message_displayed = true	
+		#else:
+			#if !is_general_message_displayed:
+				#stage_node.emit_signal("arcade_state", "survive as long as you can.")
+				#is_general_message_displayed = true		
 
 		var new_spike = spike_scene.instantiate()
 		new_spike.global_position.x = randi_range(20, 700)

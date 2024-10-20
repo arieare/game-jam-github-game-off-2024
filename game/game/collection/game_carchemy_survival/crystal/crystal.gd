@@ -7,8 +7,8 @@ enum crystal_type{ICE,FIRE}
 
 @export var crystal = crystal_type.ICE
 
-var crystal_ice_sprite = preload("res://asset/crystal_ice.png")
-var crystal_fire_sprite = preload("res://asset/crystal_fire.png")
+var crystal_ice_sprite = preload("res://content/collection/game_carchemy_survival/sprite/crystal_ice.png")
+var crystal_fire_sprite = preload("res://content/collection/game_carchemy_survival/sprite/crystal_fire.png")
 
 @onready var crystal_label = $crystal_label
 @onready var crystal_sprite_node = $Sprite2D
