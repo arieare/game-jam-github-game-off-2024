@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3hk436irlgay"]
+
+[ext_resource type="Script" path="res://prototype/tales of the unwilling/prototype/scripts/environment.gd" id="1_kxk1d"]
+
+[node name="environment" type="StaticBody2D"]
+script = ExtResource("1_kxk1d")
+
+[node name="collision" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, 64)
+polygon = PackedVector2Array(-176, -16, -128, -16, 656, -16, 656, 16, -128, 16, -128, 544, 640, 544, 640, 480, 992, 480, 992, -16, 1024, -16, 1024, 592, -176, 592)
+
+[node name="shape" type="Polygon2D" parent="collision"]
+color = Color(0, 0, 0, 1)

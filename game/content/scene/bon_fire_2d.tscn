@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://chl74min4e67j"]
 
-[ext_resource type="Script" path="res://game/collection/game_very_leafy_place/bon_fire.gd" id="1_yg7rv"]
+[ext_resource type="Script" path="res://collection/very_leafy_place/game/prefab/bon_fire.gd" id="1_yg7rv"]
 
 [sub_resource type="Gradient" id="Gradient_ht1fu"]
 interpolation_mode = 1

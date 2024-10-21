@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyType" load_steps=3 format=3 uid="uid://ddswq8ajlo44d"]
+
+[ext_resource type="Script" path="res://src/custom_resource/enemyType.gd" id="1_02w12"]
+[ext_resource type="Resource" uid="uid://bwyoegf8cc4e8" path="res://prototype/tales of the unwilling/enemy/src/enemyType1Health.tres" id="1_ouiso"]
+
+[resource]
+script = ExtResource("1_02w12")
+enemyName = "Mushroam"
+weight = 100.0
+health = ExtResource("1_ouiso")

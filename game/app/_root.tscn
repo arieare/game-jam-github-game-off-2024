@@ -1,13 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://blu8emt5l7yex"]
+[gd_scene load_steps=5 format=3 uid="uid://blu8emt5l7yex"]
 
 [ext_resource type="Script" path="res://app/_root.gd" id="1_4pd4o"]
 [ext_resource type="Script" path="res://app/app.gd" id="2_26n78"]
+[ext_resource type="PackedScene" uid="uid://dpwptdy7uwyy6" path="res://app/root_main_menu/root_main_menu.tscn" id="2_np0tx"]
+[ext_resource type="PackedScene" uid="uid://cfbb7vdq7d4e0" path="res://app/game_selection_menu/game_selection_menu.tscn" id="3_kacif"]
 
 [node name="root" type="Node" node_paths=PackedStringArray("data_container", "game_container", "ui_container")]
 script = ExtResource("1_4pd4o")
 data_container = NodePath("data")
 game_container = NodePath("game")
 ui_container = NodePath("ui")
+root_menu = ExtResource("2_np0tx")
+root_game_select_menu = ExtResource("3_kacif")
 
 [node name="app" type="Node" parent="."]
 script = ExtResource("2_26n78")

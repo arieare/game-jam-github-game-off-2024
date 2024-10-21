@@ -1,0 +1,199 @@
+[gd_scene load_steps=25 format=3 uid="uid://nqio1cicduqk"]
+
+[ext_resource type="Script" path="res://prototype/character_controller type/script/player_physics_based_controller.gd" id="1_qa33p"]
+[ext_resource type="Script" path="res://prototype/character_controller type/script/player_char_controller.gd" id="2_itce3"]
+[ext_resource type="Script" path="res://prototype/character_controller type/script/character_movement_state_machine.gd" id="3_1aip3"]
+[ext_resource type="Script" path="res://prototype/character_controller type/script/state_idle.gd" id="4_k143v"]
+[ext_resource type="Script" path="res://prototype/character_controller type/script/state_ground_move.gd" id="5_qdogf"]
+[ext_resource type="Script" path="res://prototype/character_controller type/script/state_fall.gd" id="6_c4ka2"]
+[ext_resource type="Script" path="res://prototype/character_controller type/script/state_jump.gd" id="7_gehhl"]
+[ext_resource type="PackedScene" uid="uid://be2x17x326kf6" path="res://content/scene/grass_terrain_3d.tscn" id="8_qdcj1"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8fs3k"]
+radius = 0.35
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v6a6t"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.2184, 0.42, 0.1512, 1)
+roughness = 0.0
+emission_enabled = true
+emission = Color(0, 0.630902, 0.732533, 1)
+emission_energy_multiplier = 0.27
+ao_enabled = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ync3c"]
+material = SubResource("StandardMaterial3D_v6a6t")
+radius = 0.35
+height = 1.0
+radial_segments = 12
+
+[sub_resource type="SphereMesh" id="SphereMesh_xj7bb"]
+material = SubResource("StandardMaterial3D_v6a6t")
+radius = 0.3
+height = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nansp"]
+albedo_color = Color(0.144063, 0.144063, 0.144063, 1)
+metallic = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_7um0n"]
+material = SubResource("StandardMaterial3D_nansp")
+radius = 0.25
+height = 0.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_71nm5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s17ej"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(1, 1, 0, 1)
+roughness = 0.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bhevr"]
+material = SubResource("StandardMaterial3D_s17ej")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_abf5v"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0, 1, 1, 1)
+roughness = 0.0
+rim_tint = 1.0
+ao_enabled = true
+ao_light_affect = 0.88
+texture_filter = 0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yvpg2"]
+material = SubResource("StandardMaterial3D_abf5v")
+
+[sub_resource type="Gradient" id="Gradient_2kbam"]
+offsets = PackedFloat32Array(0.0105634, 0.996479)
+colors = PackedColorArray(0.272017, 0.38, 0.171, 1, 0, 0.36, 0.138, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_d142m"]
+noise_type = 4
+frequency = 0.0184
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1k1x8"]
+seamless = true
+color_ramp = SubResource("Gradient_2kbam")
+noise = SubResource("FastNoiseLite_d142m")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ay1m"]
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("NoiseTexture2D_1k1x8")
+anisotropy = -1.0
+uv1_triplanar_sharpness = 150.0
+
+[sub_resource type="Environment" id="Environment_8exdj"]
+background_mode = 1
+background_color = Color(0.122113, 0.714158, 0.896977, 1)
+tonemap_mode = 3
+tonemap_exposure = 1.69
+ssao_enabled = true
+ssil_enabled = true
+glow_enabled = true
+
+[node name="Root" type="Node3D"]
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="." node_paths=PackedStringArray("levRay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.19862, -1.75963)
+script = ExtResource("1_qa33p")
+acceleration = 10.0
+jumpDownSpeed = 15.0
+levitationDistance = 1.0
+levitationStiffness = 100.0
+levitationDamp = 10.0
+snapDistanceMultiplier = 1.0
+levRay = NodePath("RayCast3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
+shape = SubResource("CapsuleShape3D_8fs3k")
+
+[node name="body" type="MeshInstance3D" parent="RigidBody3D2"]
+mesh = SubResource("CapsuleMesh_ync3c")
+
+[node name="head" type="MeshInstance3D" parent="RigidBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.656769, -0.107784)
+mesh = SubResource("SphereMesh_xj7bb")
+
+[node name="face" type="MeshInstance3D" parent="RigidBody3D2/head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0174098, -0.0904882)
+mesh = SubResource("SphereMesh_7um0n")
+skeleton = NodePath("../..")
+
+[node name="RayCast3D" type="RayCast3D" parent="RigidBody3D2"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.68296, 1.77809)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_71nm5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_bhevr")
+
+[node name="charController" type="Node" parent="CharacterBody3D"]
+script = ExtResource("2_itce3")
+
+[node name="CharacterBody3D2" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.74056, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D2"]
+shape = SubResource("CapsuleShape3D_71nm5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D2"]
+mesh = SubResource("CapsuleMesh_yvpg2")
+
+[node name="stateMachineMovement" type="Node" parent="CharacterBody3D2"]
+script = ExtResource("3_1aip3")
+
+[node name="idle" type="Node" parent="CharacterBody3D2/stateMachineMovement"]
+script = ExtResource("4_k143v")
+
+[node name="groundMove" type="Node" parent="CharacterBody3D2/stateMachineMovement"]
+script = ExtResource("5_qdogf")
+
+[node name="fall" type="Node" parent="CharacterBody3D2/stateMachineMovement"]
+script = ExtResource("6_c4ka2")
+
+[node name="jump" type="Node" parent="CharacterBody3D2/stateMachineMovement"]
+script = ExtResource("7_gehhl")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.5, 2.08165e-12)
+use_collision = true
+size = Vector3(50, 1, 50)
+material = SubResource("StandardMaterial3D_8ay1m")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707106, 0.707106, 0, -0.707106, 0.707106, 0, 20, 15)
+projection = 1
+current = true
+size = 15.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+shadow_enabled = true
+
+[node name="GrassTerrain" parent="." instance=ExtResource("8_qdcj1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.221, 0, 1.045)
+
+[node name="GrassTerrain2" parent="." instance=ExtResource("8_qdcj1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.221, 0, -8.4635)
+
+[node name="GrassTerrain3" parent="." instance=ExtResource("8_qdcj1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.86921, 0, -8.4635)
+
+[node name="GrassTerrain4" parent="." instance=ExtResource("8_qdcj1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.86921, 0, 1.18054)
+
+[node name="GrassTerrain5" parent="." instance=ExtResource("8_qdcj1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.86921, 0, 9.9952)
+
+[node name="GrassTerrain6" parent="." instance=ExtResource("8_qdcj1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24385, 0, 9.9952)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8exdj")

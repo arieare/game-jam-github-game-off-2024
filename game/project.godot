@@ -36,10 +36,7 @@ folder_colors={
 "res://app/": "pink",
 "res://collection/": "teal",
 "res://common/": "yellow",
-"res://content/": "orange",
-"res://game/": "purple",
-"res://game/collection/game_balloon_in_the_space/": "purple",
-"res://ui/": "green"
+"res://content/": "orange"
 }
 
 [global_group]

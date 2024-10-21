@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DataNodeList" load_steps=3 format=3 uid="uid://brmc2bk5hrmfw"]
+
+[ext_resource type="PackedScene" uid="uid://cf304rualgqlq" path="res://collection/carchemy_survival/game/core/game_data.tscn" id="1_7ku58"]
+[ext_resource type="Script" path="res://common/resource/data_node.gd" id="1_mym7s"]
+
+[resource]
+script = ExtResource("1_mym7s")
+data_node = Dictionary[String, PackedScene]({
+"data": ExtResource("1_7ku58")
+})

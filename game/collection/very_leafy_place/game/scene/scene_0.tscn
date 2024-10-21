@@ -1,0 +1,159 @@
+[gd_scene load_steps=18 format=3 uid="uid://dx4een77xvbum"]
+
+[ext_resource type="Script" path="res://common/component/camera/component_cam_filter_pixelated.gd" id="1_xs6k6"]
+[ext_resource type="Script" path="res://common/component/camera/component_cam_filter_pixel_outline.gd" id="2_86iqh"]
+[ext_resource type="Script" path="res://game/collection/game_very_leafy_place/core/input_map.gd" id="3_b46p0"]
+[ext_resource type="Shader" path="res://content/shader/canvas_godray.gdshader" id="4_q3yfk"]
+[ext_resource type="PackedScene" uid="uid://chl74min4e67j" path="res://content/scene/bon_fire_2d.tscn" id="5_3x1ju"]
+[ext_resource type="Script" path="res://collection/very_leafy_place/game/prefab/leaf/leaf_emitter.gd" id="6_h75r1"]
+[ext_resource type="Script" path="res://collection/very_leafy_place/game/prefab/blower.gd" id="7_lku6o"]
+[ext_resource type="Texture2D" uid="uid://bwlfaoglfi8fq" path="res://content/sprite/single_leaf_sprite.png" id="8_uxakt"]
+
+[sub_resource type="Gradient" id="Gradient_yv16a"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.683673)
+colors = PackedColorArray(0.811765, 0.623529, 0.301961, 1, 0.823529, 0.690196, 0.305882, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qh7sq"]
+noise_type = 2
+frequency = 0.0081
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_k3trx"]
+width = 1600
+height = 900
+color_ramp = SubResource("Gradient_yv16a")
+noise = SubResource("FastNoiseLite_qh7sq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e061x"]
+shader = ExtResource("4_q3yfk")
+shader_parameter/angle = 0.0
+shader_parameter/position = 0.0
+shader_parameter/spread = 0.671
+shader_parameter/cutoff = 0.219
+shader_parameter/falloff = 0.0
+shader_parameter/edge_fade = 0.049
+shader_parameter/speed = 1.0
+shader_parameter/ray1_density = 8.0
+shader_parameter/ray2_density = 30.0
+shader_parameter/ray2_intensity = 0.642
+shader_parameter/color = Color(0.725833, 1, 0.65, 0.176471)
+shader_parameter/hdr = true
+shader_parameter/seed = 5.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5pvc8"]
+size = Vector2(300, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ul3x"]
+radius = 50.0
+
+[sub_resource type="Gradient" id="Gradient_1jf1g"]
+offsets = PackedFloat32Array(0, 0.18408, 0.766169, 0.985075)
+colors = PackedColorArray(1, 0.26, 0.26, 0, 1, 0.26, 0.26, 0.478431, 1, 0.258824, 0.258824, 0.478431, 1, 0.26, 0.26, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ijwqi"]
+gradient = SubResource("Gradient_1jf1g")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pt64d"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(800, 450, 1)
+direction = Vector3(1, 0.5, 0)
+spread = 20.0
+initial_velocity_min = 5.0
+initial_velocity_max = 50.0
+angular_velocity_min = -90.0
+angular_velocity_max = 90.0
+gravity = Vector3(0, 5, 0)
+scale_min = 0.2
+color_ramp = SubResource("GradientTexture1D_ijwqi")
+hue_variation_min = -0.04
+hue_variation_max = 0.04
+anim_speed_min = 1.0
+anim_speed_max = 3.0
+turbulence_noise_speed = Vector3(1, 1, 0)
+
+[node name="game" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(800, 450)
+
+[node name="cam_filter_dither" type="Node" parent="Camera2D"]
+script = ExtResource("1_xs6k6")
+
+[node name="cam_filter_pixel_outline" type="Node" parent="Camera2D"]
+script = ExtResource("2_86iqh")
+
+[node name="input" type="Node" parent="."]
+script = ExtResource("3_b46p0")
+
+[node name="stage" type="Control" parent="."]
+custom_minimum_size = Vector2(1600, 900)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1600.0
+offset_bottom = 900.0
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="stage"]
+layer = -1
+
+[node name="bg" type="TextureRect" parent="stage/CanvasLayer2"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_k3trx")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="stage/CanvasLayer2"]
+visible = false
+color = Color(0.471314, 0.431774, 0.692023, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="stage"]
+
+[node name="godray" type="ColorRect" parent="stage/CanvasLayer"]
+material = SubResource("ShaderMaterial_e061x")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bon_fire_2d" parent="stage/CanvasLayer" instance=ExtResource("5_3x1ju")]
+modulate = Color(1, 1, 1, 0.501961)
+position = Vector2(800, 890)
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="stage"]
+
+[node name="leaf_emitter" type="Node2D" parent="stage/CanvasLayer3"]
+script = ExtResource("6_h75r1")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-72, -32, -72, 952, 1632, 952, 1632, -48, -72, -80, 24, -8, 1584, 8, 1560, 880, 8, 888, 8, 0)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(800, 500)
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("RectangleShape2D_5pvc8")
+
+[node name="CollisionPolygon2D2" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(-432, -208)
+shape = SubResource("RectangleShape2D_5pvc8")
+
+[node name="blower" type="Area2D" parent="." groups=["hit_box"]]
+script = ExtResource("7_lku6o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="blower"]
+shape = SubResource("CircleShape2D_3ul3x")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+texture_filter = 1
+position = Vector2(800, 450)
+amount = 50
+lifetime = 4.0
+fixed_fps = 12
+visibility_rect = Rect2(-800, -450, 1600, 900)
+texture = ExtResource("8_uxakt")
+process_material = SubResource("ParticleProcessMaterial_pt64d")

@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cf304rualgqlq"]
-
-[ext_resource type="Script" path="res://game/collection/game_carchemy_survival/core/game_data.gd" id="1_v62jb"]
-
-[node name="game" type="Node2D" node_paths=PackedStringArray("transition_node")]
-script = ExtResource("1_v62jb")
-transition_node = NodePath("")

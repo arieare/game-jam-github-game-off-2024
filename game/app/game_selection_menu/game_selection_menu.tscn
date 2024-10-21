@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfbb7vdq7d4e0"]
+[gd_scene load_steps=4 format=3 uid="uid://cfbb7vdq7d4e0"]
 
 [ext_resource type="FontFile" uid="uid://c6fpvgggmmj81" path="res://content/font/Ranyth.ttf" id="1_ajo5c"]
 [ext_resource type="Script" path="res://app/game_selection_menu/game_selection_menu.gd" id="1_txec2"]
-[ext_resource type="PackedScene" uid="uid://bc1l26f3r7nv7" path="res://app/game_selection_menu/btn_game_list.tscn" id="2_desgd"]
 
 [sub_resource type="Theme" id="Theme_y7a5l"]
 default_font = ExtResource("1_ajo5c")
@@ -16,7 +15,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_y7a5l")
 script = ExtResource("1_txec2")
-btn_game_scn = ExtResource("2_desgd")
 button_container = NodePath("margin/hflow")
 game_title_label = NodePath("margin/game_title")
 
