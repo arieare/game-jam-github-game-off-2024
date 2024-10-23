@@ -1,6 +1,6 @@
 extends Node2D
 
-var leaf_scene = preload("res://content/collection/game_very_leafy_place/leaf.tscn")
+@export var leaf_scene: PackedScene
 
 var leaf_size: int = 10
 var leaf_counter: int = leaf_size

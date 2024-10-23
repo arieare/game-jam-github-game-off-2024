@@ -14,6 +14,7 @@ extends Node
 
 @onready var scene_manager := util_scene_manager.new()
 @onready var child_node := util_get_child_node.new()
+@onready var save_load := util_save_load.new()
 
 signal root_ready
 var root: Variant

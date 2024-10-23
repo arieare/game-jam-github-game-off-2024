@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="GameNodeList" load_steps=3 format=3 uid="uid://dnpdbibj84138"]
+
+[ext_resource type="Script" path="res://common/resource/game_node.gd" id="1_4h54r"]
+[ext_resource type="PackedScene" uid="uid://dwy8hxvqu7ppf" path="res://collection/the_dismantler/game/scene/scene_0.tscn" id="1_hwtqa"]
+
+[resource]
+script = ExtResource("1_4h54r")
+game_node = Dictionary[String, PackedScene]({
+"scene_0": ExtResource("1_hwtqa")
+})

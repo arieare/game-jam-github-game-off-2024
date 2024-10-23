@@ -17,8 +17,8 @@ enum compObjStates {COMP_PICKUP, COMP_PUT}
 var currentCompObjState := compObjStates.COMP_PUT
 
 func _ready():
-	game.worldNode = get_parent()
-	game.mainCam = get_viewport().get_camera_3d()
+	#game.worldNode = get_parent()
+	#game.mainCam = get_viewport().get_camera_3d()
 	mainObjectNode = get_parent().get_node("MainObject")
 	pickedComponentNode = get_parent().get_node("PickedComponent")
 	dismantledComponentNode = get_parent().get_node("DismantledComponent")
@@ -26,7 +26,7 @@ func _ready():
 	InitDismantlePlay()
 
 func _process(delta):
-	rayCast = game.RayCastFromMouse()
+	rayCast = util.mouse.cast(get_viewport().get_camera_3d(), get_viewport())
 	
 	match currentMainObjState:
 		mainObjStates.OBJ_PUT:

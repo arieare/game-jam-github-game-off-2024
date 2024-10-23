@@ -1,0 +1,1 @@
+extends class_state_machine

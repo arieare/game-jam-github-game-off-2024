@@ -1,12 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://dx4een77xvbum"]
+[gd_scene load_steps=19 format=3 uid="uid://dx4een77xvbum"]
 
 [ext_resource type="Script" path="res://common/component/camera/component_cam_filter_pixelated.gd" id="1_xs6k6"]
 [ext_resource type="Script" path="res://common/component/camera/component_cam_filter_pixel_outline.gd" id="2_86iqh"]
-[ext_resource type="Script" path="res://game/collection/game_very_leafy_place/core/input_map.gd" id="3_b46p0"]
+[ext_resource type="Script" path="res://collection/carchemy_survival/game/core/input_map.gd" id="3_b46p0"]
 [ext_resource type="Shader" path="res://content/shader/canvas_godray.gdshader" id="4_q3yfk"]
 [ext_resource type="PackedScene" uid="uid://chl74min4e67j" path="res://content/scene/bon_fire_2d.tscn" id="5_3x1ju"]
 [ext_resource type="Script" path="res://collection/very_leafy_place/game/prefab/leaf/leaf_emitter.gd" id="6_h75r1"]
 [ext_resource type="Script" path="res://collection/very_leafy_place/game/prefab/blower.gd" id="7_lku6o"]
+[ext_resource type="PackedScene" uid="uid://bjlb0lligjxbm" path="res://collection/very_leafy_place/game/prefab/leaf/leaf.tscn" id="7_nyo27"]
 [ext_resource type="Texture2D" uid="uid://bwlfaoglfi8fq" path="res://content/sprite/single_leaf_sprite.png" id="8_uxakt"]
 
 [sub_resource type="Gradient" id="Gradient_yv16a"]
@@ -126,6 +127,7 @@ position = Vector2(800, 890)
 
 [node name="leaf_emitter" type="Node2D" parent="stage/CanvasLayer3"]
 script = ExtResource("6_h75r1")
+leaf_scene = ExtResource("7_nyo27")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

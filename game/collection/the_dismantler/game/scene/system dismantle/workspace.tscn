@@ -1,22 +1,20 @@
-[gd_scene load_steps=12 format=3 uid="uid://c4gv44i1sobp4"]
+[gd_scene load_steps=9 format=3 uid="uid://c4gv44i1sobp4"]
 
-[ext_resource type="Script" path="res://common/system dismantle/PickableManager.gd" id="2_572vh"]
-[ext_resource type="PackedScene" uid="uid://c4kdtl1aduc5k" path="res://common/system dismantle/key items/key_item_template.tscn" id="3_454tk"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b13pc"]
-albedo_color = Color(0.890196, 0.890196, 0.890196, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_c204r"]
-material = SubResource("StandardMaterial3D_b13pc")
-size = Vector2(10, 10)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_i8dkt"]
-size = Vector3(10, 0.1, 10)
+[ext_resource type="Script" path="res://collection/the_dismantler/game/scene/system dismantle/PickableManager.gd" id="2_572vh"]
+[ext_resource type="PackedScene" uid="uid://c4kdtl1aduc5k" path="res://collection/the_dismantler/game/scene/system dismantle/key items/key_item_template.tscn" id="3_454tk"]
 
 [sub_resource type="Environment" id="Environment_qh8qx"]
 background_mode = 1
 background_color = Color(0.745098, 0.792157, 0.960784, 1)
 fog_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_rq4lo"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_htjoo"]
+gradient = SubResource("Gradient_rq4lo")
+width = 12
 
 [sub_resource type="Curve" id="Curve_8vt14"]
 _data = [Vector2(0.0662984, 1), 0.0, 0.0, 0, 0]
@@ -36,14 +34,6 @@ attractor_interaction_enabled = false
 scale_min = 0.5
 emission_curve = SubResource("CurveTexture_2walj")
 
-[sub_resource type="Gradient" id="Gradient_rq4lo"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_htjoo"]
-gradient = SubResource("Gradient_rq4lo")
-width = 12
-
 [node name="WorkSpace" type="Node3D"]
 
 [node name="PickableManager" type="Node" parent="."]
@@ -62,16 +52,6 @@ transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-
 [node name="PickedComponent" type="Node3D" parent="."]
 
 [node name="DismantledComponent" type="Node3D" parent="."]
-
-[node name="Surface" type="StaticBody3D" parent="." groups=["dismantleSurface"]]
-
-[node name="Mesh" type="MeshInstance3D" parent="Surface"]
-mesh = SubResource("PlaneMesh_c204r")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Surface"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.05, 2.08165e-12)
-shape = SubResource("BoxShape3D_i8dkt")
 
 [node name="Env" type="Node3D" parent="."]
 
@@ -95,8 +75,6 @@ distance_fade_enabled = true
 top_level = true
 texture_filter = 1
 emitting = false
-process_material = SubResource("ParticleProcessMaterial_p4ukf")
-texture = SubResource("GradientTexture1D_htjoo")
 lifetime = 0.75
 one_shot = true
 speed_scale = 4.5
@@ -106,3 +84,5 @@ trail_enabled = true
 trail_lifetime = 0.15
 trail_sections = 2
 trail_section_subdivisions = 1
+texture = SubResource("GradientTexture1D_htjoo")
+process_material = SubResource("ParticleProcessMaterial_p4ukf")
