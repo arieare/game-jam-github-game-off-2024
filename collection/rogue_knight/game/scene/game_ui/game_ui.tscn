@@ -1,0 +1,580 @@
+[gd_scene load_steps=41 format=3 uid="uid://ejs4rvnvx38w"]
+
+[ext_resource type="FontFile" uid="uid://cyaqcdtcngyo0" path="res://content/font/m6x11plus.ttf" id="1_ki5wy"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/score_label.gd" id="2_0m8uu"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/ui_btn_move.gd" id="2_t3juk"]
+[ext_resource type="Shader" path="res://content/shader/canvas_transition_diamond.gdshader" id="3_8o3lu"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/money_label.gd" id="3_561vr"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/move_label.gd" id="3_ex05q"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/winning_bg.gd" id="4_jn0lq"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/moveset_label.gd" id="4_o5gk1"]
+[ext_resource type="AudioStream" uid="uid://cmxlr7dd5603m" path="res://collection/rogue_knight/content/sfx/African4.wav" id="5_p506p"]
+[ext_resource type="AudioStream" uid="uid://cnsmc68nlhclg" path="res://collection/rogue_knight/content/sfx/African3.wav" id="5_s8ge6"]
+[ext_resource type="AudioStream" uid="uid://y5xjy5f3fcbm" path="res://collection/rogue_knight/content/sfx/African2.wav" id="6_3vmvp"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/ui_btn_reset.gd" id="6_ogilc"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/game_over.gd" id="6_q5rda"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/game_over_label.gd" id="6_sld0a"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/winning_round.gd" id="8_vi7j0"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/losing_bg.gd" id="12_4jhyq"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/patch_panel.gd" id="13_2qjwg"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/score_panel.gd" id="13_ne0us"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/ui_btn_start.gd" id="14_0vnbx"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/ui_btn_cancel.gd" id="14_44463"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/money_ui.gd" id="15_1lq7n"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/btn_patch.gd" id="16_rxi2h"]
+[ext_resource type="Shader" path="res://content/shader/canvas_shimer.gdshader" id="17_hj6m8"]
+[ext_resource type="Texture2D" uid="uid://vj3c0bq7j6i3" path="res://content/sprite/patch_rook.png" id="17_wd0mg"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/btn_patch_queen.gd" id="19_ayl8q"]
+[ext_resource type="Texture2D" uid="uid://c44f8vrqcgtml" path="res://content/sprite/patch_queen.png" id="19_yp70d"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/move_panel.gd" id="24_3i4a7"]
+
+[sub_resource type="Theme" id="Theme_bf3o3"]
+default_font = ExtResource("1_ki5wy")
+
+[sub_resource type="Theme" id="Theme_wic7t"]
+default_font = ExtResource("1_ki5wy")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cgwcw"]
+shader = ExtResource("3_8o3lu")
+shader_parameter/progress = 0.0
+shader_parameter/diamondPixelSize = 100.0
+
+[sub_resource type="Gradient" id="Gradient_kyusy"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_585q3"]
+gradient = SubResource("Gradient_kyusy")
+width = 8
+height = 8
+
+[sub_resource type="Gradient" id="Gradient_jm3p0"]
+offsets = PackedFloat32Array(0.4859, 0.733189)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_k8cs2"]
+gradient = SubResource("Gradient_jm3p0")
+
+[sub_resource type="Curve" id="Curve_2cfns"]
+min_value = -1.0
+_data = [Vector2(0.00952381, -0.910289), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4i11t"]
+curve = SubResource("Curve_2cfns")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dm2oa"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+gravity = Vector3(0, 98, 0)
+color_ramp = SubResource("GradientTexture1D_k8cs2")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("CurveTexture_4i11t")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wu7mo"]
+shader = ExtResource("3_8o3lu")
+shader_parameter/progress = 0.0
+shader_parameter/diamondPixelSize = 100.0
+
+[sub_resource type="Theme" id="Theme_6hhjv"]
+default_font = ExtResource("1_ki5wy")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_62dka"]
+shader = ExtResource("17_hj6m8")
+shader_parameter/Line_Smoothness = 0.045
+shader_parameter/Line_Width = 0.09
+shader_parameter/Brightness = 3.0
+shader_parameter/Rotation_deg = 30.0
+shader_parameter/Distortion = 1.8
+shader_parameter/Speed = 0.9
+shader_parameter/Position = 0.0
+shader_parameter/Position_Min = 0.25
+shader_parameter/Position_Max = 0.5
+shader_parameter/Alpha = 1.0
+
+[node name="game_ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_bf3o3")
+
+[node name="margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 72
+theme_override_constants/margin_top = 72
+theme_override_constants/margin_right = 72
+theme_override_constants/margin_bottom = 72
+
+[node name="winning_round" type="CanvasLayer" parent="margin"]
+follow_viewport_enabled = true
+script = ExtResource("8_vi7j0")
+
+[node name="menu" type="Control" parent="margin/winning_round"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_wic7t")
+
+[node name="bg" type="ColorRect" parent="margin/winning_round/menu"]
+material = SubResource("ShaderMaterial_cgwcw")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.021, 0.42, 0.21385, 0.631373)
+script = ExtResource("4_jn0lq")
+
+[node name="vfx_confetti" type="GPUParticles2D" parent="margin/winning_round/menu"]
+position = Vector2(804, 502)
+emitting = false
+amount = 50
+lifetime = 10.0
+one_shot = true
+speed_scale = 2.5
+explosiveness = 1.0
+randomness = 1.0
+texture = SubResource("GradientTexture2D_585q3")
+process_material = SubResource("ParticleProcessMaterial_dm2oa")
+
+[node name="money" type="RichTextLabel" parent="margin/winning_round/menu" node_paths=PackedStringArray("score", "move", "multiplier_vfx")]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -90.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(1, 0.798333, 0.45, 1)
+theme_override_colors/font_shadow_color = Color(0.129412, 0.25098, 0.14902, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_outline_size = 12
+theme_override_font_sizes/normal_font_size = 180
+bbcode_enabled = true
+text = "[wave amp=150.0 freq=6.0 connected=1]$0[/wave]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+script = ExtResource("3_561vr")
+score = NodePath("../../../in_game/margin/score_panel/hbox/score")
+move = NodePath("../../../in_game/margin/score_panel/hbox2/move")
+sfx_coin = ExtResource("6_3vmvp")
+sfx_coin_2 = ExtResource("5_s8ge6")
+sfx_coin_3 = ExtResource("5_p506p")
+multiplier_vfx = NodePath("../vfx_confetti")
+
+[node name="money_label" type="Label" parent="margin/winning_round/menu"]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -75.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.8, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.133249, 0.249638, 0.147689, 1)
+theme_override_constants/shadow_offset_x = 12
+theme_override_constants/shadow_offset_y = 12
+theme_override_font_sizes/font_size = 150
+text = "$0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="winning_label" type="Label" parent="margin/winning_round/menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -240.0
+offset_right = 350.0
+offset_bottom = -39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.133333, 0.25098, 0.14902, 1)
+theme_override_constants/shadow_offset_x = 12
+theme_override_constants/shadow_offset_y = 12
+theme_override_font_sizes/font_size = 100
+text = "SCORE!"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_sld0a")
+
+[node name="game_over" type="CanvasLayer" parent="margin"]
+visible = false
+follow_viewport_enabled = true
+script = ExtResource("6_q5rda")
+
+[node name="menu" type="Control" parent="margin/game_over"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_wic7t")
+
+[node name="bg" type="ColorRect" parent="margin/game_over/menu"]
+material = SubResource("ShaderMaterial_wu7mo")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.683921, 0.160363, 0.383166, 0.631373)
+script = ExtResource("12_4jhyq")
+
+[node name="game_over_label" type="Label" parent="margin/game_over/menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -100.5
+offset_right = 350.0
+offset_bottom = 100.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.42, 0.0504, 0.18592, 1)
+theme_override_constants/shadow_offset_x = 12
+theme_override_constants/shadow_offset_y = 12
+theme_override_font_sizes/font_size = 200
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_sld0a")
+
+[node name="in_game" type="CanvasLayer" parent="margin"]
+follow_viewport_enabled = true
+
+[node name="margin" type="MarginContainer" parent="margin/in_game"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_6hhjv")
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="score_panel" type="BoxContainer" parent="margin/in_game/margin"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 12
+alignment = 1
+vertical = true
+script = ExtResource("13_ne0us")
+
+[node name="hbox" type="HBoxContainer" parent="margin/in_game/margin/score_panel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="score_label" type="Label" parent="margin/in_game/margin/score_panel/hbox"]
+custom_minimum_size = Vector2(105, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.86, 0.885667, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.269925, 0.2295, 0.45, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 5
+theme_override_font_sizes/font_size = 48
+text = "score
+"
+uppercase = true
+
+[node name="colon" type="Label" parent="margin/in_game/margin/score_panel/hbox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.86, 0.885667, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.269925, 0.2295, 0.45, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 5
+theme_override_font_sizes/font_size = 48
+text = ":"
+uppercase = true
+
+[node name="score" type="Label" parent="margin/in_game/margin/score_panel/hbox" node_paths=PackedStringArray("score_label", "colon")]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.86, 0.885667, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.269925, 0.2295, 0.45, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 5
+theme_override_font_sizes/font_size = 48
+text = "0"
+uppercase = true
+script = ExtResource("2_0m8uu")
+score_label = NodePath("../score_label")
+colon = NodePath("../colon")
+
+[node name="hbox2" type="HBoxContainer" parent="margin/in_game/margin/score_panel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="move_label" type="Label" parent="margin/in_game/margin/score_panel/hbox2"]
+custom_minimum_size = Vector2(105, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.86, 0.885667, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.269925, 0.2295, 0.45, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 5
+theme_override_font_sizes/font_size = 48
+text = "moves"
+uppercase = true
+
+[node name="colon" type="Label" parent="margin/in_game/margin/score_panel/hbox2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.86, 0.885667, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.269925, 0.2295, 0.45, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 5
+theme_override_font_sizes/font_size = 48
+text = ":"
+uppercase = true
+
+[node name="move" type="Label" parent="margin/in_game/margin/score_panel/hbox2" node_paths=PackedStringArray("move_label", "colon")]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.86, 0.885667, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.269925, 0.2295, 0.45, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 5
+theme_override_font_sizes/font_size = 48
+text = "10"
+uppercase = true
+script = ExtResource("3_ex05q")
+move_label = NodePath("../move_label")
+colon = NodePath("../colon")
+
+[node name="hbox3" type="HBoxContainer" parent="margin/in_game/margin/score_panel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="money" type="Label" parent="margin/in_game/margin/score_panel/hbox3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.86, 0.885667, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.269925, 0.2295, 0.45, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 5
+theme_override_font_sizes/font_size = 64
+text = "$0"
+uppercase = true
+script = ExtResource("15_1lq7n")
+
+[node name="patch_panel" type="BoxContainer" parent="margin/in_game/margin"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 12
+alignment = 1
+vertical = true
+script = ExtResource("13_2qjwg")
+
+[node name="hbox" type="HBoxContainer" parent="margin/in_game/margin/patch_panel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 2
+
+[node name="patch" type="TextureButton" parent="margin/in_game/margin/patch_panel/hbox"]
+self_modulate = Color(0.3976, 0.516693, 0.56, 1)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+action_mode = 0
+texture_normal = ExtResource("17_wd0mg")
+stretch_mode = 0
+script = ExtResource("16_rxi2h")
+
+[node name="shimer" type="ColorRect" parent="margin/in_game/margin/patch_panel/hbox/patch"]
+material = SubResource("ShaderMaterial_62dka")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.54902)
+
+[node name="patch2" type="TextureButton" parent="margin/in_game/margin/patch_panel/hbox"]
+self_modulate = Color(0.8, 0.632, 0.128, 1)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+action_mode = 0
+texture_normal = ExtResource("19_yp70d")
+stretch_mode = 0
+script = ExtResource("19_ayl8q")
+
+[node name="shimer" type="ColorRect" parent="margin/in_game/margin/patch_panel/hbox/patch2"]
+material = SubResource("ShaderMaterial_62dka")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.54902)
+
+[node name="BoxContainer" type="BoxContainer" parent="margin/in_game/margin/patch_panel"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+vertical = true
+
+[node name="patch_title" type="Label" parent="margin/in_game/margin/patch_panel/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.858824, 0.886275, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.270588, 0.231373, 0.45098, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 5
+theme_override_font_sizes/font_size = 48
+text = "patches"
+horizontal_alignment = 2
+uppercase = true
+
+[node name="ui_btn_start" type="Button" parent="margin/in_game/margin/patch_panel/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 64
+text = "START"
+script = ExtResource("14_0vnbx")
+
+[node name="move_panel" type="BoxContainer" parent="margin/in_game/margin"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 12
+alignment = 2
+vertical = true
+script = ExtResource("24_3i4a7")
+
+[node name="hbox" type="BoxContainer" parent="margin/in_game/margin/move_panel"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="ui_btn_cancel" type="Button" parent="margin/in_game/margin/move_panel/hbox"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 40
+text = "CANCEL [ESC]"
+script = ExtResource("14_44463")
+
+[node name="ui_btn_move" type="Button" parent="margin/in_game/margin/move_panel/hbox"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 40
+text = "GO! [RMB]"
+script = ExtResource("2_t3juk")
+
+[node name="vbox" type="HBoxContainer" parent="margin/in_game/margin/move_panel"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 12
+
+[node name="moveset_label" type="Label" parent="margin/in_game/margin/move_panel/vbox"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.86, 0.885667, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.269925, 0.2295, 0.45, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 5
+theme_override_font_sizes/font_size = 48
+text = "next step"
+uppercase = true
+
+[node name="colon" type="Label" parent="margin/in_game/margin/move_panel/vbox"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.86, 0.885667, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.269925, 0.2295, 0.45, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 5
+theme_override_font_sizes/font_size = 48
+text = ">"
+uppercase = true
+
+[node name="moveset" type="Label" parent="margin/in_game/margin/move_panel/vbox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.86, 0.885667, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.269925, 0.2295, 0.45, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 5
+theme_override_font_sizes/font_size = 48
+text = "xx"
+uppercase = true
+script = ExtResource("4_o5gk1")
+
+[node name="menu_bar" type="BoxContainer" parent="margin/in_game/margin"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/separation = 24
+alignment = 2
+vertical = true
+
+[node name="game_title" type="Label" parent="margin/in_game/margin/menu_bar"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.86, 0.885667, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.269925, 0.2295, 0.45, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 5
+theme_override_font_sizes/font_size = 32
+text = "kardinal v 0.1"
+horizontal_alignment = 2
+uppercase = true
+script = ExtResource("15_1lq7n")
+
+[node name="ui_btn_main_menu" type="Button" parent="margin/in_game/margin/menu_bar"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 40
+text = "MAIN MENU"
+
+[node name="ui_btn_reset" type="Button" parent="margin/in_game/margin/menu_bar"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 40
+text = "RESET [R]"
+script = ExtResource("6_ogilc")

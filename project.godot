@@ -1,0 +1,61 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="rogue knight"
+config/tags=PackedStringArray("game", "wip")
+run/main_scene="res://app/_root.tscn"
+config/features=PackedStringArray("4.4", "Forward Plus")
+config/icon="res://app/app-icon.png"
+
+[autoload]
+
+util="*res://common/utility/utility.gd"
+
+[display]
+
+window/size/viewport_width=1600
+window/size/viewport_height=900
+window/stretch/mode="viewport"
+
+[editor_plugins]
+
+enabled=PackedStringArray()
+
+[file_customization]
+
+folder_colors={
+"res://app/": "pink",
+"res://collection/": "teal",
+"res://common/": "yellow",
+"res://content/": "orange"
+}
+
+[global_group]
+
+player=""
+hit_box=""
+
+[layer_names]
+
+3d_physics/layer_1="environment"
+3d_physics/layer_2="player"
+3d_physics/layer_3="enemies"
+3d_physics/layer_7="hurtbox"
+3d_physics/layer_8="hitbox"
+
+[physics]
+
+3d/physics_engine="JoltPhysics3D"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

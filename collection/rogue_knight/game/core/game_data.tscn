@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlkpara2ogfay"]
+
+[ext_resource type="Script" path="res://collection/rogue_knight/game/core/game_data.gd" id="1_t6djk"]
+
+[node name="game_data" type="Node"]
+script = ExtResource("1_t6djk")

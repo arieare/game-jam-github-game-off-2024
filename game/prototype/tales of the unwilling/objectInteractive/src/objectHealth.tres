@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="HealthPoint" load_steps=2 format=3 uid="uid://b6uohs8v1x5wp"]
-
-[ext_resource type="Script" path="res://src/custom_resource/healthPoint.gd" id="1_u6k44"]
-
-[resource]
-script = ExtResource("1_u6k44")
-maxHealth = 100
-refillRate = 100

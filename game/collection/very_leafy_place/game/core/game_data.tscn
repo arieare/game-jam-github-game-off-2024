@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5ye2do8a5vvk"]
-
-[ext_resource type="Script" path="res://collection/very_leafy_place/game/core/game_data.gd" id="1_7amd0"]
-
-[node name="game_data" type="Node"]
-script = ExtResource("1_7amd0")

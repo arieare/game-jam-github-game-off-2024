@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://module/character/look_at_mouse_module.gd" type="Script" id=1]
-
-[node name="look_at_mouse" type="Node3D"]
-script = ExtResource( 1 )

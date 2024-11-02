@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbubqvu83qba3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hmwlk"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 1, 0.0833333, 0.196078)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_y7jxg"]
+material = SubResource("StandardMaterial3D_hmwlk")
+size = Vector2(0.3, 0.3)
+
+[node name="overlay_tile" type="Node3D"]
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_y7jxg")

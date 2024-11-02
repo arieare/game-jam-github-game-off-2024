@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c44yywa3h7bo7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5u3yp"]
+albedo_color = Color(0.719891, 0.534726, 0.0425547, 1)
+
+[node name="patch" type="CSGBox3D" groups=["patch"]]
+size = Vector3(0.4, 0, 0.4)
+material = SubResource("StandardMaterial3D_5u3yp")
