@@ -1,16 +1,16 @@
-[gd_scene load_steps=55 format=4 uid="uid://bvcli20l48q4w"]
+[gd_scene load_steps=62 format=4 uid="uid://bvcli20l48q4w"]
 
 [ext_resource type="Script" path="res://collection/rogue_knight/game/prefab/chess_piece/chess_piece.gd" id="1_1ngvt"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/board_scene/board.gd" id="1_48f24"]
-[ext_resource type="PackedScene" path="res://collection/rogue_knight/game/prefab/tile/white_tile.tscn" id="1_fx7iy"]
-[ext_resource type="PackedScene" path="res://collection/rogue_knight/game/prefab/tile/black_tile.tscn" id="2_5meet"]
-[ext_resource type="AudioStream" uid="uid://1twauaoxrrt" path="res://collection/rogue_knight/content/sfx/Wood Block1.wav" id="2_6bh4b"]
+[ext_resource type="PackedScene" uid="uid://d0yweq0pamhbs" path="res://collection/rogue_knight/game/prefab/tile/white_tile.tscn" id="1_fx7iy"]
+[ext_resource type="PackedScene" uid="uid://cqlh74hvcroce" path="res://collection/rogue_knight/game/prefab/tile/black_tile.tscn" id="2_5meet"]
 [ext_resource type="PackedScene" uid="uid://dt6hhjgbbxc8q" path="res://collection/rogue_knight/game/prefab/floating_point/point.tscn" id="2_w3dqh"]
 [ext_resource type="Shader" path="res://content/shader/spatial_color_palette.gdshader" id="3_1oksq"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/board_scene/cam.gd" id="3_b8frg"]
 [ext_resource type="AudioStream" uid="uid://b85jhfapylnb3" path="res://collection/rogue_knight/content/sfx/hit_011.wav" id="3_y6182"]
 [ext_resource type="AudioStream" uid="uid://xcxye8y51xxd" path="res://collection/rogue_knight/content/sfx/hit_049.wav" id="4_1uvnb"]
-[ext_resource type="PackedScene" path="res://collection/rogue_knight/game/prefab/tile/overlay_tile.tscn" id="4_3vu4b"]
+[ext_resource type="PackedScene" uid="uid://cbubqvu83qba3" path="res://collection/rogue_knight/game/prefab/tile/overlay_tile.tscn" id="4_3vu4b"]
+[ext_resource type="AudioStream" uid="uid://cyv33gud1trh8" path="res://collection/rogue_knight/content/sfx/Minimalist6.wav" id="4_abaq0"]
 [ext_resource type="AudioStream" uid="uid://y5xjy5f3fcbm" path="res://collection/rogue_knight/content/sfx/African2.wav" id="4_vaq8s"]
 [ext_resource type="AudioStream" uid="uid://cnsmc68nlhclg" path="res://collection/rogue_knight/content/sfx/African3.wav" id="5_athsn"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/board_scene/mouse_aim.gd" id="7_6o2ov"]
@@ -18,17 +18,59 @@
 [ext_resource type="Script" path="res://common/component/camera/component_cam_shake_3d.gd" id="7_xf2cx"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/board_scene/legal_move_overlay.gd" id="8_1nplc"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/core/input_map.gd" id="8_ptlbb"]
-[ext_resource type="AudioStream" uid="uid://cxmo0cd06uhje" path="res://collection/rogue_knight/content/sfx/chips-handle-6.ogg" id="9_cw1pq"]
 [ext_resource type="AudioStream" uid="uid://x6bb6kt2r1g0" path="res://collection/rogue_knight/content/sfx/Minimalist1.wav" id="10_v7n3r"]
+[ext_resource type="AudioStream" uid="uid://b2nxbbly1wbsj" path="res://collection/rogue_knight/content/sfx/Minimalist8.wav" id="13_ir3un"]
+[ext_resource type="PackedScene" uid="uid://b2vt6tfusx1rc" path="res://collection/rogue_knight/game/prefab/tile/overlay_target_tile.tscn" id="16_a5q8e"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/board_scene/patch_manager.gd" id="16_pqdh5"]
-[ext_resource type="PackedScene" path="res://collection/rogue_knight/game/prefab/tile/rook_patch.tscn" id="17_h7j6k"]
-[ext_resource type="PackedScene" path="res://collection/rogue_knight/game/prefab/tile/goal_tile.tscn" id="19_j0jcm"]
+[ext_resource type="PackedScene" uid="uid://c44yywa3h7bo7" path="res://collection/rogue_knight/game/prefab/tile/rook_patch.tscn" id="17_h7j6k"]
+[ext_resource type="PackedScene" uid="uid://dhewjymsou8p4" path="res://collection/rogue_knight/game/prefab/tile/goal_tile.tscn" id="19_j0jcm"]
 [ext_resource type="AudioStream" uid="uid://bg7qana0n7dvh" path="res://collection/rogue_knight/content/sfx/Minimalist3.wav" id="20_ir0tl"]
+[ext_resource type="PackedScene" uid="uid://btbxl2vbpg8r4" path="res://collection/rogue_knight/game/prefab/tile/block_tile.tscn" id="22_6ro3j"]
 
 [sub_resource type="Environment" id="Environment_5xvva"]
 background_mode = 1
-background_color = Color(0.2142, 0.23821, 0.42, 1)
+background_color = Color(0.0525, 0.35, 0.206208, 1)
 tonemap_mode = 3
+tonemap_exposure = 1.1
+glow_enabled = true
+glow_normalized = true
+glow_blend_mode = 1
+glow_hdr_threshold = 0.57
+fog_enabled = true
+fog_light_color = Color(0.0941176, 0.101961, 0.14902, 1)
+volumetric_fog_density = 0.01
+volumetric_fog_emission = Color(0.88582, 0.36526, 0.674072, 1)
+adjustment_enabled = true
+adjustment_brightness = 1.1
+adjustment_contrast = 1.05
+adjustment_saturation = 0.75
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hvo10"]
+diffuse_mode = 3
+albedo_color = Color(0.706375, 0.575511, 0.488854, 1)
+roughness = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_6of80"]
+material = SubResource("StandardMaterial3D_hvo10")
+size = Vector3(0.18, 0.15, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ur6i6"]
+diffuse_mode = 3
+albedo_color = Color(0.880977, 0.743886, 0.764537, 1)
+roughness = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_gpqtv"]
+material = SubResource("StandardMaterial3D_ur6i6")
+size = Vector3(0.13, 0.2, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dg6a7"]
+material = SubResource("StandardMaterial3D_hvo10")
+size = Vector3(0.2, 0.15, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_llas1"]
+diffuse_mode = 3
+albedo_color = Color(0.72, 0.55764, 0.4824, 1)
+roughness = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ffv8f"]
 diffuse_mode = 3
@@ -37,19 +79,6 @@ roughness = 0.0
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 0.5
-
-[sub_resource type="BoxMesh" id="BoxMesh_dg6a7"]
-material = SubResource("StandardMaterial3D_ffv8f")
-size = Vector3(0.3, 0.75, 0.3)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hvo10"]
-diffuse_mode = 3
-albedo_color = Color(0.58, 0.522483, 0.377, 1)
-roughness = 0.0
-
-[sub_resource type="BoxMesh" id="BoxMesh_6of80"]
-material = SubResource("StandardMaterial3D_hvo10")
-size = Vector3(0.2, 0.2, 0.2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_o7exr"]
 material = SubResource("StandardMaterial3D_ffv8f")
@@ -140,49 +169,57 @@ height = 0.2
 transparency = 1
 albedo_color = Color(1, 1, 1, 0)
 
-[sub_resource type="Curve" id="Curve_7rusp"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_xud3g"]
+max_value = 10.0
+_data = [Vector2(0, 2.7184), 0.0, -6.8247, 0, 0, Vector2(1, 0), -0.442241, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_670dx"]
+curve = SubResource("Curve_xud3g")
+
+[sub_resource type="Curve" id="Curve_7rusp"]
+_data = [Vector2(0, 0), 0.0, 3.13467, 0, 0, Vector2(0.151057, 0.609198), 0.0, 0.0, 0, 0, Vector2(0.329305, 0.0012846), 0.0311437, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_enxbo"]
 curve = SubResource("Curve_7rusp")
 
 [sub_resource type="Curve" id="Curve_wj7qd"]
 max_value = 3.0
-_data = [Vector2(0, 0.109296), 0.0, 0.0, 0, 0, Vector2(1, 1.53015), 0.0, 0.0, 0, 0]
+_data = [Vector2(0.220544, 0), 0.0, 0.0, 0, 0, Vector2(0.716012, 2.22842), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_1wj6p"]
 curve = SubResource("Curve_wj7qd")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_imvx1"]
-emission_shape_scale = Vector3(0.02, 0.01, 0.02)
-emission_shape = 6
-emission_ring_axis = Vector3(0, 1, 0)
-emission_ring_height = 1.0
-emission_ring_radius = 1.0
-emission_ring_inner_radius = 0.0
-emission_ring_cone_angle = 90.0
+emission_shape_scale = Vector3(0.01, 0.01, 0.01)
+emission_shape = 2
+emission_sphere_radius = 1.0
 direction = Vector3(0, 0, 0)
 spread = 180.0
 flatness = 1.0
-initial_velocity_min = 3.0
-initial_velocity_max = 5.0
-gravity = Vector3(0, 5, 0)
-radial_accel_min = 17.19
-radial_accel_max = 17.19
-scale_min = 0.5
+initial_velocity_min = 0.2
+initial_velocity_max = 1.0
+radial_velocity_min = 0.999978
+radial_velocity_max = 2.99998
+gravity = Vector3(0, 0.2, 0)
+radial_accel_min = -2.23517e-06
+radial_accel_max = 10.0
+radial_accel_curve = SubResource("CurveTexture_670dx")
+scale_min = 0.2
+scale_max = 0.4
 scale_curve = SubResource("CurveTexture_enxbo")
 scale_over_velocity_max = 4.0
 scale_over_velocity_curve = SubResource("CurveTexture_1wj6p")
-turbulence_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fbjt7"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_by5kx"]
 material = SubResource("StandardMaterial3D_fbjt7")
-radius = 0.1
-height = 0.2
+radius = 0.2
+height = 0.3
+radial_segments = 24
 
 [sub_resource type="Gradient" id="Gradient_ub7rr"]
 interpolation_mode = 1
@@ -222,29 +259,55 @@ shake_node = NodePath("component_cam_shake")
 script = ExtResource("7_xf2cx")
 
 [node name="light" type="DirectionalLight3D" parent="env"]
-transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 0, 0)
+transform = Transform3D(0.999999, -0.00153589, -6.71359e-11, 0, -4.37114e-08, 1, -0.00153589, -0.999999, -4.37113e-08, 0, 0, 0)
+light_color = Color(1, 0.74, 0.74, 1)
+light_energy = 0.5
 shadow_enabled = true
 
-[node name="chess_piece" type="Node3D" parent="." node_paths=PackedStringArray("point_spawner", "legal_move_overlay_spawner", "board_node", "mesh_knight", "mesh_rook", "mesh_queen", "vfx_landing")]
+[node name="chess_piece" type="Node3D" parent="." node_paths=PackedStringArray("point_spawner", "legal_move_overlay_spawner", "board_node", "mesh_knight", "mesh_rook", "mesh_queen", "vfx_landing", "aim", "chess_piece_head", "chess_piece_body", "cam")]
 script = ExtResource("1_1ngvt")
 point_spawner = NodePath("../point_label_spawner")
 legal_move_overlay_spawner = NodePath("../legal_move_overlay")
 board_node = NodePath("../board")
-mesh_knight = NodePath("knight")
+mesh_knight = NodePath("piece_knight/body/knight")
 mesh_rook = NodePath("rook")
 mesh_queen = NodePath("queen")
-sfx_step = ExtResource("2_6bh4b")
+sfx_step = ExtResource("4_abaq0")
 vfx_landing = NodePath("../vfx_puff_landing")
+aim = NodePath("../control")
+chess_piece_head = NodePath("piece_knight/head")
+chess_piece_body = NodePath("piece_knight/body")
+cam = NodePath("../env/cam")
 
-[node name="knight" type="MeshInstance3D" parent="chess_piece"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
-visible = false
+[node name="piece_knight" type="Node3D" parent="chess_piece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0315793, 0)
+
+[node name="head" type="Node3D" parent="chess_piece/piece_knight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0885751, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="chess_piece/piece_knight/head"]
+transform = Transform3D(1, 0, 0, 0, 0.480729, -0.876869, 0, 0.876869, 0.480729, 0, 0.408353, -0.0271273)
+mesh = SubResource("BoxMesh_6of80")
+skeleton = NodePath("../../body/knight")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="chess_piece/piece_knight/head"]
+transform = Transform3D(1, 0, 0, 0, 0.971669, -0.236346, 0, 0.236346, 0.971669, 0, 0.430053, -0.147058)
+mesh = SubResource("BoxMesh_gpqtv")
+skeleton = NodePath("../../body/knight")
+
+[node name="body" type="Node3D" parent="chess_piece/piece_knight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0885751, 0)
+
+[node name="knight" type="MeshInstance3D" parent="chess_piece/piece_knight/body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.172403, 0)
 mesh = SubResource("BoxMesh_dg6a7")
 skeleton = NodePath("../../root/@EditorNode@17800/@Panel@13/@VBoxContainer@14/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@25/DockVSplitCenter/@VSplitContainer@52/@VBoxContainer@53/@EditorMainScreen@98/MainScreen/@CanvasItemEditor@9915/@VSplitContainer@9737/@HSplitContainer@9739/@HSplitContainer@9741/@Control@9742/@SubViewportContainer@9743/@SubViewport@9744/stage")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="chess_piece/knight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.321278, -0.129314)
-mesh = SubResource("BoxMesh_6of80")
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="chess_piece/piece_knight/body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+radius = 0.2
+height = 0.1
+material = SubResource("StandardMaterial3D_llas1")
 
 [node name="rook" type="MeshInstance3D" parent="chess_piece"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
@@ -262,6 +325,7 @@ mesh = SubResource("BoxMesh_gvq0g")
 
 [node name="queen" type="MeshInstance3D" parent="chess_piece"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
 mesh = SubResource("BoxMesh_lbl5u")
 skeleton = NodePath("../../root/@EditorNode@17800/@Panel@13/@VBoxContainer@14/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@25/DockVSplitCenter/@VSplitContainer@52/@VBoxContainer@53/@EditorMainScreen@98/MainScreen/@CanvasItemEditor@9915/@VSplitContainer@9737/@HSplitContainer@9739/@HSplitContainer@9741/@Control@9742/@SubViewportContainer@9743/@SubViewport@9744/stage")
 
@@ -331,11 +395,12 @@ mesh = SubResource("SphereMesh_fjr44")
 [node name="point_label_spawner" type="Node3D" parent="."]
 script = ExtResource("7_v8wdi")
 point_label = ExtResource("2_w3dqh")
-sfx_score_added = ExtResource("9_cw1pq")
+sfx_score_added = ExtResource("13_ir3un")
 
 [node name="legal_move_overlay" type="Node3D" parent="." node_paths=PackedStringArray("board_node")]
 script = ExtResource("8_1nplc")
 square_overlay = ExtResource("4_3vu4b")
+square_overlay_target = ExtResource("16_a5q8e")
 board_node = NodePath("../board")
 
 [node name="patch_manager" type="Node3D" parent="." node_paths=PackedStringArray("control")]
@@ -354,6 +419,7 @@ script = ExtResource("1_48f24")
 white_square = ExtResource("1_fx7iy")
 black_square = ExtResource("2_5meet")
 goal_square = ExtResource("19_j0jcm")
+block_square = ExtResource("22_6ro3j")
 sfx_tile_spawn = ExtResource("20_ir0tl")
 
 [node name="input" type="Node" parent="."]
@@ -362,15 +428,14 @@ script = ExtResource("8_ptlbb")
 [node name="vfx_puff_landing" type="GPUParticles3D" parent="."]
 cast_shadow = 0
 emitting = false
-amount = 10
-lifetime = 0.4
 one_shot = true
-speed_scale = 0.65
+speed_scale = 0.75
 explosiveness = 1.0
 fixed_fps = 24
 process_material = SubResource("ParticleProcessMaterial_imvx1")
 draw_pass_1 = SubResource("SphereMesh_by5kx")
 
 [node name="cam_filter" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("BoxMesh_l5fij")
 skeleton = NodePath("../env")

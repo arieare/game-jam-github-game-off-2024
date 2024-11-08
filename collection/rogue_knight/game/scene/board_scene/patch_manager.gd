@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 			if !control.cast.collider.is_in_group("board"):
 				elapsed = 0.0
 				picked_up_patch.rotation_degrees.x = lerp_angle(45.0,0,elapsed)
-				picked_up_patch.position.y = lerpf(0,1,elapsed)
+				picked_up_patch.position.y = lerpf(0,10,elapsed)
 				picked_up_patch.scale.x = lerpf(1.75,1,elapsed)
 				picked_up_patch.scale.y = lerpf(1.75,1,elapsed)
 				picked_up_patch.scale.z = lerpf(1.75,1,elapsed)

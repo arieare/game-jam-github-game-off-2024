@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://btbxl2vbpg8r4"]
+
+[sub_resource type="Gradient" id="Gradient_k4t8y"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.611684, 0.632302, 1)
+colors = PackedColorArray(0.122576, 0.00764983, 0.337155, 1, 1, 1, 1, 1, 0.3081, 0.00387496, 0.472266, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y2uw3"]
+gradient = SubResource("Gradient_k4t8y")
+use_hdr = true
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j2maw"]
+shading_mode = 0
+albedo_color = Color(0.569333, 0.24, 1, 1)
+albedo_texture = SubResource("GradientTexture2D_y2uw3")
+albedo_texture_force_srgb = true
+heightmap_scale = -16.0
+texture_filter = 0
+disable_receive_shadows = true
+
+[node name="block_tile" type="CSGBox3D" groups=["block", "board"]]
+size = Vector3(0.5, 0.1, 0.5)
+material = SubResource("StandardMaterial3D_j2maw")

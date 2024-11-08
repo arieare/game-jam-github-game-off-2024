@@ -36,9 +36,10 @@ func _process(delta: float) -> void:
 		else:
 			prev_hovered_board = current_hovered_board
 			current_hovered_board = null
-		self.global_position = cast.position.snappedf(0.5)
+		if cast:	
+			self.global_position = cast.position.snappedf(0.5)
 
-	if util.root.data_instance.current_game_state == util.root.data_instance.GAME_STATE.PLANNING:
+	elif util.root.data_instance.current_game_state == util.root.data_instance.GAME_STATE.PLANNING:
 		for member in get_tree().get_nodes_in_group("board"):
 			_on_square_un_hovered(member)
 		cast = util.mouse.cast(get_viewport().get_camera_3d(), get_viewport())
@@ -51,13 +52,18 @@ func _process(delta: float) -> void:
 		else:
 			prev_hovered_board = current_hovered_board
 			#if cast and !cast.collider.is_in_group("patch"):
-			#current_hovered_board = null		
-		self.global_position = cast.position.snappedf(0.5)
+			#current_hovered_board = null
+		
+		if cast:
+			self.global_position = cast.position.snappedf(0.5)
+	else:
+		_on_square_un_hovered(cast.collider)
 
 func _input(event: InputEvent) -> void:
 	if util.root.data_instance.current_game_state == util.root.data_instance.GAME_STATE.PLAYING:
 		if !event.is_echo() and event.is_action_pressed("confirm") and self.current_hovered_board:
 			if chess_piece.set_next_tile(self.current_hovered_board):
+				legal_move_overlay_spawner.spawn_target_move_hint(self.current_hovered_board)
 				audio_player_confirm.play()
 			else:
 				cam.shake_node.shake(0.05)

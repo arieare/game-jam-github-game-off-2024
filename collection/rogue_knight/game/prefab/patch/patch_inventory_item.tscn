@@ -1,0 +1,99 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvb28qbqqsg06"]
+
+[ext_resource type="Texture2D" uid="uid://bws13tn8vdghw" path="res://collection/rogue_knight/content/sprite/patch/patch_log_pose.png" id="1_cnpe5"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/play/btn_patch_inventory.gd" id="2_whm2j"]
+[ext_resource type="Shader" path="res://content/shader/canvas_shimer.gdshader" id="3_2hmf8"]
+[ext_resource type="StyleBox" uid="uid://e3tupv4x15yx" path="res://collection/rogue_knight/content/ui/ui_panel_normal.tres" id="4_wkadx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_62dka"]
+shader = ExtResource("3_2hmf8")
+shader_parameter/Line_Smoothness = 0.045
+shader_parameter/Line_Width = 0.09
+shader_parameter/Brightness = 3.0
+shader_parameter/Rotation_deg = 30.0
+shader_parameter/Distortion = 1.8
+shader_parameter/Speed = 0.9
+shader_parameter/Position = 0.0
+shader_parameter/Position_Min = 0.25
+shader_parameter/Position_Max = 0.5
+shader_parameter/Alpha = 1.0
+
+[node name="btn_patch" type="TextureButton" node_paths=PackedStringArray("description_panel", "patch_name", "patch_description")]
+self_modulate = Color(0.79, 0.3634, 0.44872, 1)
+custom_minimum_size = Vector2(64, 64)
+action_mode = 0
+texture_normal = ExtResource("1_cnpe5")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("2_whm2j")
+description_panel = NodePath("patch_info")
+patch_name = NodePath("patch_info/margin/box/patch_name")
+patch_description = NodePath("patch_info/margin/box/patch_description")
+
+[node name="shimer" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_62dka")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.54902)
+
+[node name="patch_info" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -161.5
+offset_top = -232.0
+offset_right = 161.5
+offset_bottom = -71.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = ExtResource("4_wkadx")
+
+[node name="margin" type="MarginContainer" parent="patch_info"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="box" type="BoxContainer" parent="patch_info/margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+vertical = true
+
+[node name="patch_name" type="RichTextLabel" parent="patch_info/margin/box"]
+clip_contents = false
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[bgcolor=PLUM][wave freq=4.0 amp=0.2 connected=1]LOG POSE[/wave][/bgcolor]"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="divider" type="ColorRect" parent="patch_info/margin/box"]
+custom_minimum_size = Vector2(100, 2)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+color = Color(0.678431, 0.694118, 0.819608, 1)
+
+[node name="patch_description" type="RichTextLabel" parent="patch_info/margin/box"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 0.705882)
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "PLACE IN [bgcolor=LIGHT_CORAL]ANY TILE[/bgcolor]. CHART THE PATH TO THE [bgcolor=GREEN_YELLOW]GOAL[/bgcolor] IN 1ST MOVE."
+fit_content = true
+autowrap_mode = 2
+horizontal_alignment = 1

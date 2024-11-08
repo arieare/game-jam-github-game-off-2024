@@ -1,0 +1,156 @@
+[gd_scene load_steps=7 format=3 uid="uid://bovsmbers774q"]
+
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/shop/shop_item.gd" id="1_88pq3"]
+[ext_resource type="Texture2D" uid="uid://cr8t5vqcgmd6w" path="res://collection/rogue_knight/content/sprite/patch/patch_queen.png" id="2_v7nho"]
+[ext_resource type="Shader" path="res://content/shader/canvas_shimer.gdshader" id="3_pibm3"]
+[ext_resource type="StyleBox" uid="uid://e3tupv4x15yx" path="res://collection/rogue_knight/content/ui/ui_panel_normal.tres" id="6_e2evi"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/prefab/shop/ui_btn_purchase.gd" id="7_jlmv2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_62dka"]
+shader = ExtResource("3_pibm3")
+shader_parameter/Line_Smoothness = 0.045
+shader_parameter/Line_Width = 0.09
+shader_parameter/Brightness = 3.0
+shader_parameter/Rotation_deg = 30.0
+shader_parameter/Distortion = 1.8
+shader_parameter/Speed = 0.9
+shader_parameter/Position = 0.0
+shader_parameter/Position_Min = 0.25
+shader_parameter/Position_Max = 0.5
+shader_parameter/Alpha = 0.537
+
+[node name="item" type="Control" node_paths=PackedStringArray("item_info", "item_image", "patch_name", "patch_price", "patch_description", "btn_purchase")]
+custom_minimum_size = Vector2(300, 72)
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+script = ExtResource("1_88pq3")
+item_info = NodePath("item_info")
+item_image = NodePath("purchase_row/item_container/item_image")
+patch_name = NodePath("purchase_row/patch_name")
+patch_price = NodePath("")
+patch_description = NodePath("item_info/margin/patch_description")
+btn_purchase = NodePath("purchase_row/ui_btn_purchase")
+
+[node name="purchase_row" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 12
+
+[node name="item_container" type="Control" parent="purchase_row"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="item_image" type="TextureRect" parent="purchase_row/item_container"]
+self_modulate = Color(1, 0.843137, 0, 1)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0698132
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_v7nho")
+expand_mode = 1
+
+[node name="shimer" type="ColorRect" parent="purchase_row/item_container/item_image"]
+material = SubResource("ShaderMaterial_62dka")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.54902)
+
+[node name="patch_name" type="RichTextLabel" parent="purchase_row"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[wave freq=4.0 amp=0.2 connected=1]QUEEN[/wave]"
+fit_content = true
+scroll_active = false
+
+[node name="ui_btn_purchase" type="Button" parent="purchase_row" node_paths=PackedStringArray("price_text")]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+script = ExtResource("7_jlmv2")
+price_text = NodePath("btn_label")
+
+[node name="btn_label" type="RichTextLabel" parent="purchase_row/ui_btn_purchase"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -9.5
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+bbcode_enabled = true
+text = "[wave amp=10.0 freq=10.0 connected=1]$10[/wave]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="item_info" type="PanelContainer" parent="."]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 86.0
+offset_top = -62.0
+offset_right = 414.0
+grow_vertical = 0
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("6_e2evi")
+
+[node name="margin" type="MarginContainer" parent="item_info"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="patch_description" type="RichTextLabel" parent="item_info/margin"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/default_color = Color(0, 0, 0, 0.705882)
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "xx"
+fit_content = true
+scroll_active = false
+autowrap_mode = 2

@@ -1,25 +1,104 @@
-[gd_scene load_steps=2 format=3 uid="uid://dhewjymsou8p4"]
+[gd_scene load_steps=16 format=3 uid="uid://dhewjymsou8p4"]
+
+[ext_resource type="Script" path="res://collection/rogue_knight/game/prefab/tile/goal_tile.gd" id="1_ag3mt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_268ar"]
 diffuse_mode = 3
-albedo_color = Color(0.32, 0.966, 1, 1)
+albedo_color = Color(0.955379, 0.489521, 0.395985, 1)
+albedo_texture_force_srgb = true
 roughness = 0.0
-emission_enabled = true
-emission = Color(0, 0.95, 1, 1)
-emission_energy_multiplier = 0.75
+emission_energy_multiplier = 0.18
+rim = 0.24
+subsurf_scatter_strength = 0.4
+subsurf_scatter_skin_mode = true
+subsurf_scatter_transmittance_enabled = true
+subsurf_scatter_transmittance_depth = 0.001
 
-[node name="goal_tile" type="CSGBox3D" groups=["board", "goal"]]
+[sub_resource type="Curve" id="Curve_10b6g"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_43oex"]
+curve = SubResource("Curve_10b6g")
+
+[sub_resource type="Gradient" id="Gradient_5h4o4"]
+offsets = PackedFloat32Array(0.614232, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6bwjt"]
+gradient = SubResource("Gradient_5h4o4")
+
+[sub_resource type="Gradient" id="Gradient_xbgda"]
+offsets = PackedFloat32Array(0.337079, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_o8qs5"]
+gradient = SubResource("Gradient_xbgda")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_x105y"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_yfvu2"]
+curve = SubResource("Curve_x105y")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sevsg"]
+emission_shape = 3
+emission_box_extents = Vector3(0.3, 0.1, 0.3)
+gravity = Vector3(0, 0.5, 0)
+color_ramp = SubResource("GradientTexture1D_o8qs5")
+color_initial_ramp = SubResource("GradientTexture1D_6bwjt")
+alpha_curve = SubResource("CurveTexture_43oex")
+emission_curve = SubResource("CurveTexture_yfvu2")
+turbulence_noise_strength = 0.5
+turbulence_noise_scale = 1.58
+
+[sub_resource type="Gradient" id="Gradient_ymthi"]
+offsets = PackedFloat32Array(0.425455, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t57jw"]
+gradient = SubResource("Gradient_ymthi")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ovplv"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_color = Color(1, 0.63, 0.63, 0.72549)
+albedo_texture = SubResource("GradientTexture2D_t57jw")
+emission_enabled = true
+emission = Color(1, 0.283333, 0, 1)
+emission_energy_multiplier = 5.0
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_62kpf"]
+material = SubResource("StandardMaterial3D_ovplv")
+size = Vector2(0.02, 0.02)
+
+[node name="goal_tile" type="CSGBox3D" node_paths=PackedStringArray("vfx_glow") groups=["board", "goal"]]
 use_collision = true
 size = Vector3(0.5, 0.1, 0.5)
 material = SubResource("StandardMaterial3D_268ar")
+script = ExtResource("1_ag3mt")
+vfx_glow = NodePath("vfx_goal")
 
 [node name="glow" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.587859, 0)
-visible = false
-light_color = Color(0.7275, 0.97, 0.860875, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.347698, 0)
+light_color = Color(0.90722, 0.509686, 0.548692, 1)
 shadow_enabled = true
-shadow_blur = 0.5
-distance_fade_enabled = true
-omni_range = 1.0
-omni_attenuation = 5.0
+shadow_blur = 0.1
+omni_range = 0.5
 omni_shadow_mode = 0
+
+[node name="vfx_goal" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.371839, 0)
+cast_shadow = 0
+emitting = false
+amount = 10
+lifetime = 2.0
+speed_scale = 0.75
+process_material = SubResource("ParticleProcessMaterial_sevsg")
+draw_pass_1 = SubResource("QuadMesh_62kpf")

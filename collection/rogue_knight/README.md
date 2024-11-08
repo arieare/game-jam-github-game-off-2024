@@ -1,4 +1,4 @@
-- Kardinal is a roguelike single-player chess with an objective to move a knight to the goal square.
+- Rogue Knight is a roguelike single-player chess with an objective to move a knight to the goal square.
 - player can plan ahead their moves bevore clicking "move" button.
 - if player chain the movement without stop, combo will multiply the score
 - each step yields a score points

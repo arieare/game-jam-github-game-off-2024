@@ -1,19 +1,76 @@
-[gd_scene load_steps=7 format=3 uid="uid://jlhtgd2fwtq2"]
+[gd_scene load_steps=20 format=3 uid="uid://jlhtgd2fwtq2"]
 
-[ext_resource type="FontFile" uid="uid://cyaqcdtcngyo0" path="res://content/font/m6x11plus.ttf" id="1_yx4r2"]
+[ext_resource type="FontFile" uid="uid://bjabcu2ujewb6" path="res://collection/rogue_knight/content/font/groundhog.ttf" id="1_f7j8t"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/main_menu/ui_btn_play.gd" id="2_1amt2"]
-[ext_resource type="Script" path="res://common/component/ui_component/component_ui_btn_quit.gd" id="2_jpvnj"]
 [ext_resource type="Shader" path="res://content/shader/canvas_transition_diamond.gdshader" id="2_r6uiu"]
+[ext_resource type="FontFile" uid="uid://bru7qwmgrxwbf" path="res://collection/rogue_knight/content/font/AvenuePixel-Regular.ttf" id="3_04i4n"]
+[ext_resource type="StyleBox" uid="uid://01iooad34frr" path="res://collection/rogue_knight/content/ui/ui_btn_big_white_hover.tres" id="9_y1raq"]
+[ext_resource type="StyleBox" uid="uid://del0n7dmhpqey" path="res://collection/rogue_knight/content/ui/ui_btn_big_white.tres" id="10_vscdp"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/main_menu/ui_btn_quit.gd" id="11_57frg"]
 
 [sub_resource type="Theme" id="Theme_25tdh"]
-default_font = ExtResource("1_yx4r2")
+default_font = ExtResource("1_f7j8t")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_il74b"]
 shader = ExtResource("2_r6uiu")
 shader_parameter/progress = 0.279
 shader_parameter/diamondPixelSize = 50.0
 
+[sub_resource type="Gradient" id="Gradient_4cauf"]
+offsets = PackedFloat32Array(0.5, 0.9)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_feanq"]
+gradient = SubResource("Gradient_4cauf")
+width = 200
+height = 1000
+fill_from = Vector2(1, 0)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_ofcwy"]
+offsets = PackedFloat32Array(0, 0.868771, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ch7yc"]
+gradient = SubResource("Gradient_ofcwy")
+
+[sub_resource type="Curve" id="Curve_3h353"]
+max_value = 100.0
+_data = [Vector2(0, 100), 0.0, 0.0, 0, 0, Vector2(1, 0), -338.697, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5ramn"]
+curve = SubResource("Curve_3h353")
+
+[sub_resource type="Curve" id="Curve_jiwo3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.53931, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_vuw1w"]
+curve = SubResource("Curve_jiwo3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hobh8"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(500, 500, 1)
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+angular_velocity_min = 30.0
+angular_velocity_max = 60.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_vuw1w")
+color = Color(0.783602, 0.312305, 0.32907, 1)
+color_ramp = SubResource("GradientTexture1D_ch7yc")
+emission_curve = SubResource("CurveTexture_5ramn")
+turbulence_enabled = true
+
+[sub_resource type="Theme" id="Theme_2k7ep"]
+default_font = ExtResource("3_04i4n")
+
 [node name="main_menu" type="Control"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,7 +86,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.2968, 0.327507, 0.56, 1)
+color = Color(0.0944174, 0.103316, 0.150323, 1)
 
 [node name="pattern" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_il74b")
@@ -39,7 +96,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.3864, 0.49772, 0.69, 1)
+color = Color(0.143951, 0.122072, 0.245438, 1)
+
+[node name="Node2D" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+
+[node name="PointLight2D" type="PointLight2D" parent="Node2D"]
+position = Vector2(-20, 153)
+rotation = 0.0872664
+texture = SubResource("GradientTexture2D_feanq")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Node2D"]
+position = Vector2(20, 153)
+rotation = -0.0872664
+texture = SubResource("GradientTexture2D_feanq")
+
+[node name="vfx_firefly" type="GPUParticles2D" parent="Node2D"]
+amount = 50
+lifetime = 5.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_hobh8")
 
 [node name="margin" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -59,241 +139,157 @@ size_flags_vertical = 4
 theme_override_constants/separation = 72
 vertical = true
 
-[node name="title2" type="RichTextLabel" parent="margin/vbox"]
+[node name="title" type="RichTextLabel" parent="margin/vbox"]
+clip_contents = false
 layout_mode = 2
-theme_override_colors/font_outline_color = Color(0.2226, 0.24563, 0.42, 1)
-theme_override_colors/font_shadow_color = Color(0.223529, 0.247059, 0.419608, 1)
-theme_override_constants/outline_size = 32
-theme_override_constants/shadow_offset_y = 16
-theme_override_constants/shadow_offset_x = 4
+theme = SubResource("Theme_2k7ep")
+theme_override_colors/default_color = Color(0.451391, 0.815744, 0.597556, 1)
+theme_override_colors/font_shadow_color = Color(0.0600185, 0.0703604, 0.140893, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_outline_size = 12
-theme_override_font_sizes/normal_font_size = 180
+theme_override_font_sizes/normal_font_size = 220
 bbcode_enabled = true
-text = "[wave amp=150.0 freq=2.0 connected=1][shake rate=10.0 level=5.0 connected=1]K A R D I N A L[/shake][/wave]"
+text = "[tornado radius=4.0 freq=2.0 connected=1][shake rate=10.0 level=5.0 connected=1]KARDINAL[/shake][/tornado]"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
-
-[node name="title" type="BoxContainer" parent="margin/vbox"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-theme_override_constants/separation = -2
-
-[node name="title_r" type="Label" parent="margin/vbox/title"]
-custom_minimum_size = Vector2(0, 200)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.2028, 0.39, 0.38688, 1)
-theme_override_colors/font_outline_color = Color(0.203922, 0.388235, 0.388235, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 10
-theme_override_constants/outline_size = 18
-theme_override_font_sizes/font_size = 160
-text = "R
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-
-[node name="title_o" type="Label" parent="margin/vbox/title"]
-custom_minimum_size = Vector2(0, 200)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.2028, 0.39, 0.38688, 1)
-theme_override_colors/font_outline_color = Color(0.203922, 0.388235, 0.388235, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 10
-theme_override_constants/outline_size = 18
-theme_override_font_sizes/font_size = 160
-text = "o
-"
-horizontal_alignment = 1
-vertical_alignment = 2
-uppercase = true
-
-[node name="title_g" type="Label" parent="margin/vbox/title"]
-custom_minimum_size = Vector2(0, 200)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.2028, 0.39, 0.38688, 1)
-theme_override_colors/font_outline_color = Color(0.203922, 0.388235, 0.388235, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 10
-theme_override_constants/outline_size = 18
-theme_override_font_sizes/font_size = 160
-text = "g"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-
-[node name="title_u" type="Label" parent="margin/vbox/title"]
-custom_minimum_size = Vector2(0, 200)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.2028, 0.39, 0.38688, 1)
-theme_override_colors/font_outline_color = Color(0.203922, 0.388235, 0.388235, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 10
-theme_override_constants/outline_size = 18
-theme_override_font_sizes/font_size = 160
-text = "u"
-horizontal_alignment = 1
-uppercase = true
-
-[node name="title_e" type="Label" parent="margin/vbox/title"]
-custom_minimum_size = Vector2(0, 200)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.2028, 0.39, 0.38688, 1)
-theme_override_colors/font_outline_color = Color(0.203922, 0.388235, 0.388235, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 10
-theme_override_constants/outline_size = 18
-theme_override_font_sizes/font_size = 160
-text = "e"
-horizontal_alignment = 1
-uppercase = true
-
-[node name="title_k" type="Label" parent="margin/vbox/title"]
-custom_minimum_size = Vector2(0, 200)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.2028, 0.39, 0.38688, 1)
-theme_override_colors/font_outline_color = Color(0.203922, 0.388235, 0.388235, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 10
-theme_override_constants/outline_size = 18
-theme_override_font_sizes/font_size = 160
-text = "K"
-horizontal_alignment = 1
-vertical_alignment = 2
-uppercase = true
-
-[node name="title_n" type="Label" parent="margin/vbox/title"]
-custom_minimum_size = Vector2(0, 200)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.2028, 0.39, 0.38688, 1)
-theme_override_colors/font_outline_color = Color(0.203922, 0.388235, 0.388235, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 10
-theme_override_constants/outline_size = 18
-theme_override_font_sizes/font_size = 160
-text = "n
-"
-horizontal_alignment = 1
-uppercase = true
-
-[node name="title_i" type="Label" parent="margin/vbox/title"]
-custom_minimum_size = Vector2(0, 200)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.2028, 0.39, 0.38688, 1)
-theme_override_colors/font_outline_color = Color(0.203922, 0.388235, 0.388235, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 10
-theme_override_constants/outline_size = 18
-theme_override_font_sizes/font_size = 160
-text = "i
-"
-horizontal_alignment = 1
-uppercase = true
-
-[node name="title_g2" type="Label" parent="margin/vbox/title"]
-custom_minimum_size = Vector2(0, 200)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.2028, 0.39, 0.38688, 1)
-theme_override_colors/font_outline_color = Color(0.203922, 0.388235, 0.388235, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 10
-theme_override_constants/outline_size = 18
-theme_override_font_sizes/font_size = 160
-text = "g
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-
-[node name="title_h" type="Label" parent="margin/vbox/title"]
-custom_minimum_size = Vector2(0, 200)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.2028, 0.39, 0.38688, 1)
-theme_override_colors/font_outline_color = Color(0.203922, 0.388235, 0.388235, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 10
-theme_override_constants/outline_size = 18
-theme_override_font_sizes/font_size = 160
-text = "h
-"
-horizontal_alignment = 1
-uppercase = true
-
-[node name="title_t" type="Label" parent="margin/vbox/title"]
-custom_minimum_size = Vector2(0, 200)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.2028, 0.39, 0.38688, 1)
-theme_override_colors/font_outline_color = Color(0.203922, 0.388235, 0.388235, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 10
-theme_override_constants/outline_size = 18
-theme_override_font_sizes/font_size = 160
-text = "t"
-horizontal_alignment = 1
-uppercase = true
 
 [node name="hbox" type="BoxContainer" parent="margin/vbox"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 32
 
-[node name="ui_btn_play" type="Button" parent="margin/vbox/hbox"]
-custom_minimum_size = Vector2(200, 72)
+[node name="ui_btn_play" type="Button" parent="margin/vbox/hbox" node_paths=PackedStringArray("btn_label")]
+custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 56
-text = "PLAY
-"
 script = ExtResource("2_1amt2")
+btn_label = NodePath("btn_label")
 
-[node name="ui_btn_preference" type="Button" parent="margin/vbox/hbox"]
-custom_minimum_size = Vector2(200, 72)
-layout_mode = 2
-size_flags_horizontal = 4
+[node name="btn_label" type="RichTextLabel" parent="margin/vbox/hbox/ui_btn_play"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -9.5
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 56
+mouse_filter = 2
+bbcode_enabled = true
+text = "[wave amp=10.0 freq=10.0 connected=1]PLAY[/wave]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="ui_btn_setting" type="Button" parent="margin/vbox/hbox"]
+visible = false
+custom_minimum_size = Vector2(177, 56)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 64
+theme_override_styles/hover = ExtResource("9_y1raq")
+theme_override_styles/normal = ExtResource("10_vscdp")
+
+[node name="margin" type="MarginContainer" parent="margin/vbox/hbox/ui_btn_setting"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+
+[node name="btn_label" type="RichTextLabel" parent="margin/vbox/hbox/ui_btn_setting/margin"]
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.312443, 0.164024, 0.51371, 1)
+theme_override_colors/font_shadow_color = Color(0.772315, 0.794099, 1, 1)
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
 text = "SETTING"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
 
 [node name="ui_btn_tutorial" type="Button" parent="margin/vbox/hbox"]
-custom_minimum_size = Vector2(200, 72)
+visible = false
+custom_minimum_size = Vector2(177, 56)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 8
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 56
-text = "TUTORIAL"
+theme_override_font_sizes/font_size = 64
+theme_override_styles/hover = ExtResource("9_y1raq")
+theme_override_styles/normal = ExtResource("10_vscdp")
 
-[node name="ui_btn_quit" type="Button" parent="margin/vbox/hbox"]
-custom_minimum_size = Vector2(200, 72)
+[node name="margin" type="MarginContainer" parent="margin/vbox/hbox/ui_btn_tutorial"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+
+[node name="btn_label" type="RichTextLabel" parent="margin/vbox/hbox/ui_btn_tutorial/margin"]
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.312443, 0.164024, 0.51371, 1)
+theme_override_colors/font_shadow_color = Color(0.772315, 0.794099, 1, 1)
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "TUTORIAL"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="ui_btn_quit" type="Button" parent="margin/vbox/hbox" node_paths=PackedStringArray("btn_label")]
+custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 56
-text = "QUIT
-"
-script = ExtResource("2_jpvnj")
+script = ExtResource("11_57frg")
+btn_label = NodePath("btn_label")
+
+[node name="btn_label" type="RichTextLabel" parent="margin/vbox/hbox/ui_btn_quit"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -9.5
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+bbcode_enabled = true
+text = "QUIT"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="copyright" type="Label" parent="margin/vbox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.565138, 0.579514, 0.777938, 1)
+theme_override_constants/line_spacing = 6
+theme_override_font_sizes/font_size = 24
+text = "a game by @arieare — jestersuitgame, as submission for #GithubGameOff
+game jam version v 0.1 ©️2024"
+horizontal_alignment = 1

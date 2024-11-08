@@ -3,7 +3,7 @@ extends  class_chess_move_set
 
 var step_size: int = 2
 
-var knight_move_set = [Vector2(2, 1), Vector2(2, -1), Vector2(-2, 1), Vector2(-2, -1), Vector2(1, 2), Vector2(1, -2), Vector2(-1, 2), Vector2(-1, -2)]
+var move_set = [Vector2(2, 1), Vector2(2, -1), Vector2(-2, 1), Vector2(-2, -1), Vector2(1, 2), Vector2(1, -2), Vector2(-1, 2), Vector2(-1, -2)]
 var knight_one_tile_move_set = [Vector2(1, 0), Vector2(-1, 0), Vector2(0, 1), Vector2(0, -1)]
 var knight_two_tile_move_set = [Vector2(2, 0), Vector2(-2, 0), Vector2(0, 2), Vector2(0, -2)]
 var knight_all_two_tile_move_set = [Vector2(2, 0), Vector2(-2, 0), Vector2(0, 2), Vector2(0, -2),Vector2(1, 0), Vector2(-1, 0), Vector2(0, 1), Vector2(0, -1)]
@@ -20,7 +20,9 @@ func get_legal_move(current_position:Vector2) -> Array:
 			consult_knight_legal_move(legal_move,knight_two_tile_move_set,current_position, true)		
 		if chess_piece.max_move_step == 1:
 			consult_knight_legal_move(legal_move,knight_one_tile_move_set,current_position, true)
-	return legal_move
+	var moves = subtract_array(legal_move, util.root.data_instance.game_data.board_data.blocked_index)
+	
+	return moves
 #
 func consult_knight_legal_move(returned_move_set: Array, move_set: Array, current_position_index: Vector2, with_perpendicular_check: bool):
 	var next_x: int
