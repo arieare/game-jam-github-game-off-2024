@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://dpwptdy7uwyy6"]
 
 [ext_resource type="Script" path="res://app/root_main_menu/btn_start.gd" id="1_8twxj"]
-[ext_resource type="FontFile" uid="uid://bjabcu2ujewb6" path="res://collection/rogue_knight/content/font/groundhog.ttf" id="1_cs42w"]
+[ext_resource type="FontFile" uid="uid://0qu55fxexoae" path="res://collection/rogue_knight/content/font/Beholden-Bold-Italic.ttf" id="1_igifm"]
 
 [sub_resource type="Theme" id="Theme_ce6ek"]
-default_font = ExtResource("1_cs42w")
+default_font = ExtResource("1_igifm")
 
 [node name="root_main_menu" type="Control"]
 layout_mode = 3

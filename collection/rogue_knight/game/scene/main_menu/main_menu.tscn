@@ -1,15 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://jlhtgd2fwtq2"]
+[gd_scene load_steps=24 format=3 uid="uid://jlhtgd2fwtq2"]
 
-[ext_resource type="FontFile" uid="uid://bjabcu2ujewb6" path="res://collection/rogue_knight/content/font/groundhog.ttf" id="1_f7j8t"]
+[ext_resource type="FontFile" uid="uid://0qu55fxexoae" path="res://collection/rogue_knight/content/font/Beholden-Bold-Italic.ttf" id="1_wb5jr"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/main_menu/ui_btn_play.gd" id="2_1amt2"]
 [ext_resource type="Shader" path="res://content/shader/canvas_transition_diamond.gdshader" id="2_r6uiu"]
-[ext_resource type="FontFile" uid="uid://bru7qwmgrxwbf" path="res://collection/rogue_knight/content/font/AvenuePixel-Regular.ttf" id="3_04i4n"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/main_menu/main_menu.gd" id="2_wb5jr"]
 [ext_resource type="StyleBox" uid="uid://01iooad34frr" path="res://collection/rogue_knight/content/ui/ui_btn_big_white_hover.tres" id="9_y1raq"]
 [ext_resource type="StyleBox" uid="uid://del0n7dmhpqey" path="res://collection/rogue_knight/content/ui/ui_btn_big_white.tres" id="10_vscdp"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/main_menu/ui_btn_quit.gd" id="11_57frg"]
 
 [sub_resource type="Theme" id="Theme_25tdh"]
-default_font = ExtResource("1_f7j8t")
+default_font = ExtResource("1_wb5jr")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_il74b"]
 shader = ExtResource("2_r6uiu")
@@ -66,8 +66,45 @@ color_ramp = SubResource("GradientTexture1D_ch7yc")
 emission_curve = SubResource("CurveTexture_5ramn")
 turbulence_enabled = true
 
-[sub_resource type="Theme" id="Theme_2k7ep"]
-default_font = ExtResource("3_04i4n")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wb5jr"]
+bg_color = Color(0.236, 0.59, 0.3304, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.239216, 0.592157, 0.329412, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pdpad"]
+bg_color = Color(0.236, 0.59, 0.3304, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.239216, 0.592157, 0.329412, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cxtrh"]
+bg_color = Color(0.236, 0.59, 0.3304, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.239216, 0.592157, 0.329412, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sgrny"]
+bg_color = Color(0.236, 0.59, 0.3304, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.239216, 0.592157, 0.329412, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pntso"]
+bg_color = Color(0.236, 0.59, 0.3304, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.239216, 0.592157, 0.329412, 1)
 
 [node name="main_menu" type="Control"]
 texture_filter = 1
@@ -78,6 +115,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_25tdh")
+script = ExtResource("2_wb5jr")
 
 [node name="bg" type="ColorRect" parent="."]
 layout_mode = 1
@@ -139,20 +177,269 @@ size_flags_vertical = 4
 theme_override_constants/separation = 72
 vertical = true
 
-[node name="title" type="RichTextLabel" parent="margin/vbox"]
-clip_contents = false
+[node name="title2" type="Control" parent="margin/vbox"]
+custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
-theme = SubResource("Theme_2k7ep")
-theme_override_colors/default_color = Color(0.451391, 0.815744, 0.597556, 1)
-theme_override_colors/font_shadow_color = Color(0.0600185, 0.0703604, 0.140893, 1)
-theme_override_constants/shadow_offset_y = 10
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_outline_size = 12
-theme_override_font_sizes/normal_font_size = 220
+
+[node name="Control" type="Control" parent="margin/vbox/title2"]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="logo" type="BoxContainer" parent="margin/vbox/title2/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+rotation = 0.0698132
+vertical = true
+
+[node name="BoxContainer" type="BoxContainer" parent="margin/vbox/title2/Control/logo"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="margin/vbox/title2/Control/logo/BoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wb5jr")
+
+[node name="Label" type="RichTextLabel" parent="margin/vbox/title2/Control/logo/BoxContainer/Panel"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.145098, 0.121569, 0.247059, 1)
+theme_override_font_sizes/normal_font_size = 64
 bbcode_enabled = true
-text = "[tornado radius=4.0 freq=2.0 connected=1][shake rate=10.0 level=5.0 connected=1]KARDINAL[/shake][/tornado]"
+text = "[tornado radius=4.0 freq=2.0 connected=1][shake rate=10.0 level=5.0 connected=1]K[/shake][/tornado]"
 fit_content = true
-scroll_active = false
+horizontal_alignment = 1
+
+[node name="Panel2" type="Panel" parent="margin/vbox/title2/Control/logo/BoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pdpad")
+
+[node name="Label" type="RichTextLabel" parent="margin/vbox/title2/Control/logo/BoxContainer/Panel2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[tornado radius=4.0 freq=2.0 connected=1][shake rate=10.0 level=5.0 connected=1]A[/shake][/tornado]"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Panel3" type="Panel" parent="margin/vbox/title2/Control/logo/BoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wb5jr")
+
+[node name="Label" type="RichTextLabel" parent="margin/vbox/title2/Control/logo/BoxContainer/Panel3"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.145098, 0.121569, 0.247059, 1)
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[tornado radius=4.0 freq=2.0 connected=1][shake rate=10.0 level=5.0 connected=1]R[/shake][/tornado]"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="BoxContainer2" type="BoxContainer" parent="margin/vbox/title2/Control/logo"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="margin/vbox/title2/Control/logo/BoxContainer2"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cxtrh")
+
+[node name="Label" type="RichTextLabel" parent="margin/vbox/title2/Control/logo/BoxContainer2/Panel"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[tornado radius=4.0 freq=2.0 connected=1][shake rate=10.0 level=5.0 connected=1]D[/shake][/tornado]"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Panel2" type="Panel" parent="margin/vbox/title2/Control/logo/BoxContainer2"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wb5jr")
+
+[node name="Label" type="RichTextLabel" parent="margin/vbox/title2/Control/logo/BoxContainer2/Panel2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.145098, 0.121569, 0.247059, 1)
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[tornado radius=4.0 freq=2.0 connected=1][shake rate=10.0 level=5.0 connected=1]I[/shake][/tornado]"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Panel3" type="Panel" parent="margin/vbox/title2/Control/logo/BoxContainer2"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sgrny")
+
+[node name="Label" type="RichTextLabel" parent="margin/vbox/title2/Control/logo/BoxContainer2/Panel3"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[tornado radius=4.0 freq=2.0 connected=1][shake rate=10.0 level=5.0 connected=1]N[/shake][/tornado]"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="BoxContainer3" type="BoxContainer" parent="margin/vbox/title2/Control/logo"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="margin/vbox/title2/Control/logo/BoxContainer3"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wb5jr")
+
+[node name="Label" type="RichTextLabel" parent="margin/vbox/title2/Control/logo/BoxContainer3/Panel"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.145098, 0.121569, 0.247059, 1)
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[tornado radius=4.0 freq=2.0 connected=1][shake rate=10.0 level=5.0 connected=1]A[/shake][/tornado]"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Panel2" type="Panel" parent="margin/vbox/title2/Control/logo/BoxContainer3"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pntso")
+
+[node name="Label" type="RichTextLabel" parent="margin/vbox/title2/Control/logo/BoxContainer3/Panel2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[tornado radius=4.0 freq=2.0 connected=1][shake rate=10.0 level=5.0 connected=1]L[/shake][/tornado]"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Panel3" type="Panel" parent="margin/vbox/title2/Control/logo/BoxContainer3"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wb5jr")
+
+[node name="Label" type="RichTextLabel" parent="margin/vbox/title2/Control/logo/BoxContainer3/Panel3"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.145098, 0.121569, 0.247059, 1)
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[tornado radius=4.0 freq=2.0 connected=1][shake rate=10.0 level=5.0 connected=1].[/shake][/tornado]"
+fit_content = true
 horizontal_alignment = 1
 
 [node name="hbox" type="BoxContainer" parent="margin/vbox"]
@@ -259,6 +546,7 @@ scroll_active = false
 horizontal_alignment = 1
 
 [node name="ui_btn_quit" type="Button" parent="margin/vbox/hbox" node_paths=PackedStringArray("btn_label")]
+visible = false
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -291,5 +579,5 @@ theme_override_colors/font_color = Color(0.565138, 0.579514, 0.777938, 1)
 theme_override_constants/line_spacing = 6
 theme_override_font_sizes/font_size = 24
 text = "a game by @arieare — jestersuitgame, as submission for #GithubGameOff
-game jam version v 0.1 ©️2024"
+game jam version v 0.2 ©️2024"
 horizontal_alignment = 1

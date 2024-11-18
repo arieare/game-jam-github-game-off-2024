@@ -65,7 +65,7 @@ func min_moves(move_set: Array, start: Vector2, target: Vector2, restricted_coor
 		step = 0
 		path = queue_path.pop_front()
 		
-		print(pos)
+		#print(pos)
 		if pos == target:
 			if path is Array:
 				return {"moves": flatten_array(path).size()-1, "path": flatten_array(path)}

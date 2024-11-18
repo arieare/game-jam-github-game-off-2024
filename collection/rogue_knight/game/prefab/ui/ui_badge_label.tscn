@@ -1,28 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvmevgyve63df"]
+[gd_scene load_steps=2 format=3 uid="uid://dvmevgyve63df"]
 
 [ext_resource type="Script" path="res://collection/rogue_knight/game/prefab/ui/ui_badge_label.gd" id="1_ifhmb"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_617g4"]
-bg_color = Color(0.858824, 0.882353, 1, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
 
 [node name="ui_badge_label" type="PanelContainer" node_paths=PackedStringArray("label")]
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_617g4")
 script = ExtResource("1_ifhmb")
-label = NodePath("margin/label")
+label = NodePath("label")
 
-[node name="margin" type="MarginContainer" parent="."]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_right = 7
-theme_override_constants/margin_bottom = 1
-
-[node name="label" type="RichTextLabel" parent="margin"]
+[node name="label" type="RichTextLabel" parent="."]
 clip_contents = false
 layout_mode = 2
 size_flags_vertical = 4

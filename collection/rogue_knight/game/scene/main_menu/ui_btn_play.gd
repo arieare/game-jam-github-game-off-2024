@@ -9,7 +9,11 @@ func _ready():
 
 func scene_update():
 	super()
+	if util.root.data_instance.audio.sfx_dictionary.bgm_intro.sfx.playing:
+		util.root.data_instance.audio.sfx_dictionary.bgm_intro.sfx.stop()
+	if util.root.data_instance and !util.root.data_instance.audio.sfx_dictionary.bgm_in_game_1.sfx.playing:
+		util.root.data_instance.audio.sfx_dictionary.bgm_in_game_1.sfx.play()		
 	util.root.data_instance.current_game_state = util.root.data_instance.GAME_STATE.PLANNING
 
 func _process(delta: float) -> void:
-	util.root.data_instance.button_styler(self, btn_label, "purple", "big", false, false)
+	util.root.data_instance.stylesheet.button_styler(self, btn_label, "white", "big", false, false)

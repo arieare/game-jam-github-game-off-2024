@@ -1,0 +1,41 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=9 format=3 uid="uid://ixl3bngc3ics"]
+
+[sub_resource type="Curve" id="Curve_10b6g"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_43oex"]
+curve = SubResource("Curve_10b6g")
+
+[sub_resource type="Gradient" id="Gradient_5h4o4"]
+offsets = PackedFloat32Array(0.614232, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6bwjt"]
+gradient = SubResource("Gradient_5h4o4")
+
+[sub_resource type="Gradient" id="Gradient_xbgda"]
+offsets = PackedFloat32Array(0.337079, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_o8qs5"]
+gradient = SubResource("Gradient_xbgda")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_x105y"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_yfvu2"]
+curve = SubResource("Curve_x105y")
+
+[resource]
+emission_shape = 3
+emission_box_extents = Vector3(0.3, 0.1, 0.3)
+gravity = Vector3(0, 0.5, 0)
+color_ramp = SubResource("GradientTexture1D_o8qs5")
+color_initial_ramp = SubResource("GradientTexture1D_6bwjt")
+alpha_curve = SubResource("CurveTexture_43oex")
+emission_curve = SubResource("CurveTexture_yfvu2")
+turbulence_noise_strength = 0.5
+turbulence_noise_scale = 1.58

@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://dt6hhjgbbxc8q"]
 
-[ext_resource type="FontFile" uid="uid://cyaqcdtcngyo0" path="res://content/font/m6x11plus.ttf" id="1_fkdcy"]
+[ext_resource type="FontFile" uid="uid://dvp16ku5c6nat" path="res://collection/rogue_knight/content/font/Beholden-Bold.ttf" id="1_w2xig"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/prefab/floating_point/point.gd" id="2_opofu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6hxit"]
 shading_mode = 0
-albedo_color = Color(0, 0, 0, 1)
+albedo_color = Color(0.847059, 0.662745, 0, 1)
 billboard_mode = 3
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
@@ -17,12 +17,15 @@ size = Vector2(0.25, 0.25)
 
 [node name="point" type="Label3D"]
 billboard = 1
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(0.847059, 0.662745, 0, 1)
 text = "+1"
-font = ExtResource("1_fkdcy")
+font = ExtResource("1_w2xig")
 font_size = 56
-outline_size = 10
+outline_size = 15
 uppercase = true
 script = ExtResource("2_opofu")
 
 [node name="bg" type="MeshInstance3D" parent="."]
+cast_shadow = 0
 mesh = SubResource("QuadMesh_sj8pp")

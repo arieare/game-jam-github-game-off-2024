@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 	if is_image_hovered and Input.is_action_just_pressed("confirm"):
 		if util.root.data_instance.game_data.patch_inventory.size() < util.root.data_instance.game_data.max_patch_inventory:
 			if item_data["price"] < util.root.data_instance.game_data.money:
-				print(item_data)
+				#print(item_data)
 				util.root.data_instance.game_data.patch_inventory.append(item_data)
 				util.root.data_instance.add_patch_to_inventory.emit(item_data)
 				util.root.data_instance.money_amount_change.emit(-item_data["price"])

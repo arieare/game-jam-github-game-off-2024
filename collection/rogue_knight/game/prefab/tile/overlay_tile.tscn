@@ -16,7 +16,7 @@ fill_from = Vector2(0.5, 0.5)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xnx8l"]
 transparency = 1
 shading_mode = 0
-albedo_color = Color(0, 1, 0.133333, 1)
+albedo_color = Color(0, 0, 0, 1)
 albedo_texture = SubResource("GradientTexture2D_eknu7")
 albedo_texture_force_srgb = true
 

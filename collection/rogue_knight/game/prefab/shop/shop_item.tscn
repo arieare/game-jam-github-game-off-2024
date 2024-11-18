@@ -19,7 +19,7 @@ shader_parameter/Position_Min = 0.25
 shader_parameter/Position_Max = 0.5
 shader_parameter/Alpha = 0.537
 
-[node name="item" type="Control" node_paths=PackedStringArray("item_info", "item_image", "patch_name", "patch_price", "patch_description", "btn_purchase")]
+[node name="item" type="Control" node_paths=PackedStringArray("item_info", "item_image", "patch_name", "patch_description", "btn_purchase")]
 custom_minimum_size = Vector2(300, 72)
 layout_mode = 3
 anchors_preset = 0
@@ -29,7 +29,6 @@ script = ExtResource("1_88pq3")
 item_info = NodePath("item_info")
 item_image = NodePath("purchase_row/item_container/item_image")
 patch_name = NodePath("purchase_row/patch_name")
-patch_price = NodePath("")
 patch_description = NodePath("item_info/margin/patch_description")
 btn_purchase = NodePath("purchase_row/ui_btn_purchase")
 

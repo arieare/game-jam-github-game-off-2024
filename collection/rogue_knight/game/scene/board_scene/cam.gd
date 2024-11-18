@@ -5,6 +5,7 @@ extends Camera3D
 
 func _ready() -> void:
 	await board_node.ready
+	util.root.data_instance.game_data.current_cam = self #dependency injection
 	var pos = util.root.data_instance.game_data.board_data.size/2 * 0.5
 	self.position.x = pos
 	self.position.z = pos + 11.5

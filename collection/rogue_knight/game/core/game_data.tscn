@@ -1,6 +1,66 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlkpara2ogfay"]
+[gd_scene load_steps=28 format=3 uid="uid://dlkpara2ogfay"]
 
 [ext_resource type="Script" path="res://collection/rogue_knight/game/core/game_data.gd" id="1_t6djk"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/core/audio.gd" id="2_gyhgi"]
+[ext_resource type="AudioStream" uid="uid://bka7shfx6lyra" path="res://collection/rogue_knight/content/bgm/LOOP_Exploration Cue 2 100 BMP 1_00 minutes.wav" id="3_ukhes"]
+[ext_resource type="AudioStream" uid="uid://bvfqcf8a3uwyo" path="res://collection/rogue_knight/content/sfx/play/chip-lay-2.ogg" id="3_w4dsn"]
+[ext_resource type="AudioStream" uid="uid://d4l4hfdm7ixj6" path="res://collection/rogue_knight/content/sfx/play/Wood Block2.wav" id="5_ggvm2"]
+[ext_resource type="AudioStream" uid="uid://bg7qana0n7dvh" path="res://collection/rogue_knight/content/sfx/play/Minimalist3.wav" id="6_nc7ha"]
+[ext_resource type="AudioStream" uid="uid://y5xjy5f3fcbm" path="res://collection/rogue_knight/content/sfx/play/African2.wav" id="6_sxlf1"]
+[ext_resource type="AudioStream" uid="uid://cnsmc68nlhclg" path="res://collection/rogue_knight/content/sfx/play/African3.wav" id="7_fsop4"]
+[ext_resource type="PackedScene" uid="uid://cbubqvu83qba3" path="res://collection/rogue_knight/game/prefab/tile/overlay_tile.tscn" id="7_tqmcr"]
+[ext_resource type="AudioStream" uid="uid://cmxlr7dd5603m" path="res://collection/rogue_knight/content/sfx/play/African4.wav" id="8_8dxr5"]
+[ext_resource type="PackedScene" uid="uid://b2vt6tfusx1rc" path="res://collection/rogue_knight/game/prefab/tile/overlay_target_tile.tscn" id="8_w1hp4"]
+[ext_resource type="AudioStream" uid="uid://x6bb6kt2r1g0" path="res://collection/rogue_knight/content/sfx/play/Minimalist1.wav" id="9_fsop4"]
+[ext_resource type="PackedScene" uid="uid://dt6hhjgbbxc8q" path="res://collection/rogue_knight/game/prefab/floating_point/point.tscn" id="9_gm7rh"]
+[ext_resource type="AudioStream" uid="uid://cvbjnvcralxy8" path="res://collection/rogue_knight/content/sfx/play/menu_041.wav" id="10_8dxr5"]
+[ext_resource type="AudioStream" uid="uid://wx4ol31bxwye" path="res://collection/rogue_knight/content/sfx/play/Modern8.wav" id="11_3a33o"]
+[ext_resource type="AudioStream" uid="uid://t222ew2ej6dp" path="res://collection/rogue_knight/content/bgm/LOOP_Tension Cue 3 @  100 BMP 1_00 minutes.wav" id="12_im1lj"]
+[ext_resource type="AudioStream" uid="uid://duxhfx3mbmrai" path="res://collection/rogue_knight/content/sfx/play/Modern9.wav" id="12_t2jvl"]
+[ext_resource type="AudioStream" uid="uid://cxmo0cd06uhje" path="res://collection/rogue_knight/content/sfx/play/chips-handle-6.ogg" id="13_bg74a"]
+[ext_resource type="AudioStream" uid="uid://bb1mmhwgy4k4h" path="res://collection/rogue_knight/content/sfx/play/Minimalist4.wav" id="14_1awq6"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/core/stylesheet.gd" id="16_088of"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/core/vfx.gd" id="17_rxl6d"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/core/instance_pool.gd" id="18_gjdfd"]
+[ext_resource type="PackedScene" uid="uid://d0yweq0pamhbs" path="res://collection/rogue_knight/game/prefab/tile/white_tile.tscn" id="19_luton"]
+[ext_resource type="PackedScene" uid="uid://cqlh74hvcroce" path="res://collection/rogue_knight/game/prefab/tile/black_tile.tscn" id="20_1ybi4"]
+[ext_resource type="PackedScene" uid="uid://dhewjymsou8p4" path="res://collection/rogue_knight/game/prefab/tile/goal_tile.tscn" id="21_50qbp"]
+[ext_resource type="PackedScene" uid="uid://btbxl2vbpg8r4" path="res://collection/rogue_knight/game/prefab/tile/block_tile.tscn" id="22_fa0hw"]
+[ext_resource type="AudioStream" uid="uid://dmegl6pnmbpvp" path="res://collection/rogue_knight/content/sfx/play/card-shove-2.ogg" id="25_2oyni"]
 
 [node name="game_data" type="Node"]
 script = ExtResource("1_t6djk")
+
+[node name="instance_pool" type="Node" parent="."]
+script = ExtResource("18_gjdfd")
+white_tile = ExtResource("19_luton")
+black_tile = ExtResource("20_1ybi4")
+goal_tile = ExtResource("21_50qbp")
+block_tile = ExtResource("22_fa0hw")
+overlay_tile = ExtResource("7_tqmcr")
+overlay_goal_tile = ExtResource("8_w1hp4")
+point_label = ExtResource("9_gm7rh")
+
+[node name="audio" type="Node" parent="."]
+script = ExtResource("2_gyhgi")
+bgm_main_menu_file = ExtResource("3_ukhes")
+bgm_in_game_1 = ExtResource("12_im1lj")
+sfx_caching_file = ExtResource("3_w4dsn")
+sfx_step_on_board_file = ExtResource("5_ggvm2")
+sfx_board_initialized_file = ExtResource("6_nc7ha")
+sfx_coin_1_file = ExtResource("6_sxlf1")
+sfx_coin_2_file = ExtResource("7_fsop4")
+sfx_coin_3_file = ExtResource("8_8dxr5")
+sfx_tile_hover_file = ExtResource("9_fsop4")
+sfx_tile_select_deny_file = ExtResource("10_8dxr5")
+sfx_tile_select_confirm_file = ExtResource("11_3a33o")
+sfx_tile_select_move_file = ExtResource("12_t2jvl")
+sfx_shop_item_added_file = ExtResource("13_bg74a")
+sfx_point_spawned_file = ExtResource("14_1awq6")
+sfx_patch_selected_file = ExtResource("25_2oyni")
+
+[node name="stylesheet" type="Node" parent="."]
+script = ExtResource("16_088of")
+
+[node name="vfx" type="Node" parent="."]
+script = ExtResource("17_rxl6d")

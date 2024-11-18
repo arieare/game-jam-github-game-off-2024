@@ -30,24 +30,87 @@ theme_override_constants/margin_right = 72
 theme_override_constants/margin_bottom = 72
 
 [node name="title" type="RichTextLabel" parent="margin"]
-visible = false
 layout_mode = 2
 text = "credit"
 
-[node name="box" type="BoxContainer" parent="margin"]
+[node name="BoxContainer" type="BoxContainer" parent="margin"]
+layout_mode = 2
+size_flags_horizontal = 8
+vertical = true
+
+[node name="box" type="BoxContainer" parent="margin/BoxContainer"]
 custom_minimum_size = Vector2(400, 64)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="label" type="RichTextLabel" parent="margin/box"]
+[node name="label" type="RichTextLabel" parent="margin/BoxContainer/box"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "font"
 
-[node name="font" type="RichTextLabel" parent="margin/box"]
+[node name="font" type="RichTextLabel" parent="margin/BoxContainer/box"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "groundhog by ChevyRay's Pixel Fonts @ChevyRay
+text = "Groundhog
+by ChevyRay's Pixel Fonts @ChevyRay
 "
 fit_content = true
+
+[node name="box3" type="BoxContainer" parent="margin/BoxContainer"]
+custom_minimum_size = Vector2(400, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="label" type="RichTextLabel" parent="margin/BoxContainer/box3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "font"
+
+[node name="font" type="RichTextLabel" parent="margin/BoxContainer/box3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Avenue Pixel
+by Jesse D. Jimenez jdjimenez.itch.io
+"
+fit_content = true
+
+[node name="box2" type="BoxContainer" parent="margin/BoxContainer"]
+custom_minimum_size = Vector2(400, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="label" type="RichTextLabel" parent="margin/BoxContainer/box2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "sfx"
+
+[node name="font" type="RichTextLabel" parent="margin/BoxContainer/box2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Casino Audio (1.1)
+by  Kenney Vleugels (Kenney.nl)"
+fit_content = true
+
+[node name="box4" type="BoxContainer" parent="margin/BoxContainer"]
+custom_minimum_size = Vector2(400, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="label" type="RichTextLabel" parent="margin/BoxContainer/box4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "bgm"
+
+[node name="font" type="RichTextLabel" parent="margin/BoxContainer/box4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Exploration Cue 2 - Complete Mysterious Forest Game Music Pack
+by  Pablo Game Audio www.pablowunderlich.com"
+fit_content = true
+
+[node name="btn_main_menu" type="Button" parent="margin"]
+layout_mode = 2

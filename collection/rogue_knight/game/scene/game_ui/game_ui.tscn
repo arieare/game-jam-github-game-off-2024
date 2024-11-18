@@ -1,18 +1,14 @@
-[gd_scene load_steps=50 format=3 uid="uid://ejs4rvnvx38w"]
+[gd_scene load_steps=43 format=3 uid="uid://ejs4rvnvx38w"]
 
+[ext_resource type="FontFile" uid="uid://0qu55fxexoae" path="res://collection/rogue_knight/content/font/Beholden-Bold-Italic.ttf" id="1_sjdp3"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/play/score_label.gd" id="2_0m8uu"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/play/ui_btn_move.gd" id="2_t3juk"]
 [ext_resource type="Shader" path="res://content/shader/canvas_transition_diamond.gdshader" id="3_8o3lu"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/win/money_label.gd" id="3_561vr"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/play/move_label.gd" id="3_ex05q"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/win/winning_bg.gd" id="4_jn0lq"]
-[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/play/moveset_label.gd" id="4_o5gk1"]
-[ext_resource type="AudioStream" uid="uid://cmxlr7dd5603m" path="res://collection/rogue_knight/content/sfx/African4.wav" id="5_p506p"]
-[ext_resource type="AudioStream" uid="uid://cnsmc68nlhclg" path="res://collection/rogue_knight/content/sfx/African3.wav" id="5_s8ge6"]
-[ext_resource type="AudioStream" uid="uid://y5xjy5f3fcbm" path="res://collection/rogue_knight/content/sfx/African2.wav" id="6_3vmvp"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/lose/game_over.gd" id="6_q5rda"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/win/winning_round.gd" id="8_vi7j0"]
-[ext_resource type="FontFile" uid="uid://bjabcu2ujewb6" path="res://collection/rogue_knight/content/font/groundhog.ttf" id="11_a0616"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/shop/shop_scrim.gd" id="11_utjgm"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/lose/losing_bg.gd" id="12_4jhyq"]
 [ext_resource type="PackedScene" uid="uid://dvmevgyve63df" path="res://collection/rogue_knight/game/prefab/ui/ui_badge_label.tscn" id="12_tnn8x"]
@@ -21,97 +17,74 @@
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/play/ui_btn_start.gd" id="14_0vnbx"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/play/ui_btn_cancel_move.gd" id="14_44463"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/play/money_ui.gd" id="15_1lq7n"]
-[ext_resource type="AudioStream" uid="uid://bdw0eoctoxc3l" path="res://collection/rogue_knight/content/sfx/chip-lay-1.ogg" id="17_pbqc5"]
+[ext_resource type="Texture2D" uid="uid://c5ftpu0lu5is5" path="res://collection/rogue_knight/content/ui/icon_point.png" id="19_5mswx"]
+[ext_resource type="Texture2D" uid="uid://bebggupy1lafu" path="res://collection/rogue_knight/content/ui/icon_move.png" id="19_lxvgo"]
 [ext_resource type="PackedScene" uid="uid://bvb28qbqqsg06" path="res://collection/rogue_knight/game/prefab/patch/patch_inventory_item.tscn" id="23_4lg16"]
+[ext_resource type="FontFile" uid="uid://lmjciv1bex47" path="res://content/font/AvenuePixel-Regular.ttf" id="23_lxvgo"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/play/move_panel.gd" id="24_3i4a7"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/game_level_label.gd" id="32_wa3v5"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/win/ui_btn_claim.gd" id="35_c3ffn"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/shop/ui_btn_redeem.gd" id="37_3g7t4"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/play/ui_btn_main_menu.gd" id="37_6rr6p"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/shop/shop_panel.gd" id="37_nekbv"]
-[ext_resource type="AudioStream" uid="uid://cxmo0cd06uhje" path="res://collection/rogue_knight/content/sfx/chips-handle-6.ogg" id="39_bpj3v"]
 
 [sub_resource type="Theme" id="Theme_bf3o3"]
+default_font = ExtResource("1_sjdp3")
 
 [sub_resource type="Theme" id="Theme_wic7t"]
-default_font = ExtResource("11_a0616")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wu7mo"]
 shader = ExtResource("3_8o3lu")
-shader_parameter/progress = 0.0
+shader_parameter/progress = 0.026
 shader_parameter/diamondPixelSize = 100.0
+
+[sub_resource type="Gradient" id="Gradient_2txnq"]
+offsets = PackedFloat32Array(0.156398, 0.559242, 0.658768)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.235294, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lxvgo"]
+gradient = SubResource("Gradient_2txnq")
+width = 1000
+height = 1000
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5mswx"]
+texture = SubResource("GradientTexture2D_lxvgo")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2txnq"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cgwcw"]
 shader = ExtResource("3_8o3lu")
-shader_parameter/progress = 1.0
+shader_parameter/progress = 0.808
 shader_parameter/diamondPixelSize = 100.0
 
-[sub_resource type="Gradient" id="Gradient_kyusy"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_585q3"]
-gradient = SubResource("Gradient_kyusy")
-width = 8
-height = 8
-
-[sub_resource type="Gradient" id="Gradient_jm3p0"]
-offsets = PackedFloat32Array(0.4859, 0.733189)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_k8cs2"]
-gradient = SubResource("Gradient_jm3p0")
-
-[sub_resource type="Curve" id="Curve_2cfns"]
-min_value = -1.0
-_data = [Vector2(0.00952381, -0.910289), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_4i11t"]
-curve = SubResource("Curve_2cfns")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dm2oa"]
-particle_flag_disable_z = true
-direction = Vector3(0, -1, 0)
-spread = 180.0
-initial_velocity_min = 100.0
-initial_velocity_max = 500.0
-gravity = Vector3(0, 98, 0)
-color_ramp = SubResource("GradientTexture1D_k8cs2")
-hue_variation_min = -1.0
-hue_variation_max = 1.0
-hue_variation_curve = SubResource("CurveTexture_4i11t")
+[sub_resource type="Theme" id="Theme_6hhjv"]
 
 [sub_resource type="Gradient" id="Gradient_lu1hd"]
-offsets = PackedFloat32Array(0, 0.683706)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+offsets = PackedFloat32Array(0, 0.656613)
+colors = PackedColorArray(0, 0, 0, 0.419608, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_cav10"]
 gradient = SubResource("Gradient_lu1hd")
 width = 1000
 height = 1000
+use_hdr = true
 fill = 1
-fill_from = Vector2(0, 1)
+fill_from = Vector2(1, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ga6ao"]
 texture = SubResource("GradientTexture2D_cav10")
-
-[sub_resource type="Gradient" id="Gradient_fd3l3"]
-offsets = PackedFloat32Array(0, 0.405751)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_klgli"]
-gradient = SubResource("Gradient_fd3l3")
-width = 1000
-height = 1000
-fill = 1
-fill_from = Vector2(0.5, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0iada"]
-texture = SubResource("GradientTexture2D_klgli")
-
-[sub_resource type="Theme" id="Theme_6hhjv"]
-default_font = ExtResource("11_a0616")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cdxde"]
 content_margin_left = 12.0
@@ -131,33 +104,35 @@ shadow_size = 1
 shadow_offset = Vector2(0, 3)
 anti_aliasing = false
 
+[sub_resource type="Theme" id="Theme_2txnq"]
+
+[sub_resource type="Theme" id="Theme_5mswx"]
+default_font = ExtResource("1_sjdp3")
+
 [node name="game_ui" type="Control"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = SubResource("Theme_bf3o3")
 
-[node name="margin" type="MarginContainer" parent="."]
+[node name="game_over" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 72
-theme_override_constants/margin_top = 72
-theme_override_constants/margin_right = 72
-theme_override_constants/margin_bottom = 72
-
-[node name="game_over" type="CanvasLayer" parent="margin"]
-follow_viewport_enabled = true
+mouse_filter = 2
 script = ExtResource("6_q5rda")
 
-[node name="menu" type="Control" parent="margin/game_over"]
-layout_mode = 3
+[node name="menu" type="Control" parent="game_over"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -165,7 +140,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_wic7t")
 
-[node name="bg" type="ColorRect" parent="margin/game_over/menu"]
+[node name="bg" type="ColorRect" parent="game_over/menu"]
 material = SubResource("ShaderMaterial_wu7mo")
 layout_mode = 1
 anchors_preset = 15
@@ -173,10 +148,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.16, 0.0288, 0.0288, 0.784314)
+color = Color(0.16, 0, 0, 0.784314)
 script = ExtResource("12_4jhyq")
 
-[node name="game_over_label" type="RichTextLabel" parent="margin/game_over/menu"]
+[node name="game_over_label" type="RichTextLabel" parent="game_over/menu"]
+visible = false
 clip_contents = false
 layout_mode = 1
 anchors_preset = 14
@@ -201,74 +177,227 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 
-[node name="winning_round" type="CanvasLayer" parent="margin"]
-follow_viewport_enabled = true
-script = ExtResource("8_vi7j0")
-
-[node name="menu" type="Control" parent="margin/winning_round"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="result" type="Control" parent="game_over/menu"]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_wic7t")
 
-[node name="bg" type="ColorRect" parent="margin/winning_round/menu"]
-material = SubResource("ShaderMaterial_cgwcw")
+[node name="shadow" type="Panel" parent="game_over/menu/result"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -400.0
+offset_right = 400.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5mswx")
+
+[node name="result_panel" type="PanelContainer" parent="game_over/menu/result"]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0349066
+theme_override_styles/panel = SubResource("StyleBoxFlat_2txnq")
+
+[node name="margin" type="MarginContainer" parent="game_over/menu/result/result_panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="BoxContainer" type="BoxContainer" parent="game_over/menu/result/result_panel/margin"]
+layout_mode = 2
+theme_override_constants/separation = 48
+vertical = true
+
+[node name="title" type="RichTextLabel" parent="game_over/menu/result/result_panel/margin/BoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 0.379497, 0.453934, 1)
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[pulse freq=2.0 color=#ffffff00 ease=-100.0][shake rate=10.0 level=5.0 connected=1]GAME OVER[/shake][/pulse]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="BoxContainer4" type="BoxContainer" parent="game_over/menu/result/result_panel/margin/BoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+vertical = true
+
+[node name="BoxContainer" type="BoxContainer" parent="game_over/menu/result/result_panel/margin/BoxContainer/BoxContainer4"]
+layout_mode = 2
+
+[node name="title2" type="RichTextLabel" parent="game_over/menu/result/result_panel/margin/BoxContainer/BoxContainer4/BoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 28
+text = "Highest Run Points"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 2
+
+[node name="title3" type="RichTextLabel" parent="game_over/menu/result/result_panel/margin/BoxContainer/BoxContainer4/BoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 28
+text = "340"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="BoxContainer2" type="BoxContainer" parent="game_over/menu/result/result_panel/margin/BoxContainer/BoxContainer4"]
+layout_mode = 2
+
+[node name="title2" type="RichTextLabel" parent="game_over/menu/result/result_panel/margin/BoxContainer/BoxContainer4/BoxContainer2"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 28
+text = "Shortest Move"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 2
+
+[node name="title3" type="RichTextLabel" parent="game_over/menu/result/result_panel/margin/BoxContainer/BoxContainer4/BoxContainer2"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 28
+text = "1"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="BoxContainer3" type="BoxContainer" parent="game_over/menu/result/result_panel/margin/BoxContainer/BoxContainer4"]
+layout_mode = 2
+
+[node name="title2" type="RichTextLabel" parent="game_over/menu/result/result_panel/margin/BoxContainer/BoxContainer4/BoxContainer3"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 28
+text = "Letter Collected"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 2
+
+[node name="title3" type="RichTextLabel" parent="game_over/menu/result/result_panel/margin/BoxContainer/BoxContainer4/BoxContainer3"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 28
+text = "S-A-D"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="ui_btn_main_menu" type="Button" parent="game_over/menu/result/result_panel/margin/BoxContainer" node_paths=PackedStringArray("btn_label")]
+layout_mode = 2
+size_flags_vertical = 6
+script = ExtResource("37_6rr6p")
+btn_label = NodePath("btn_label")
+
+[node name="btn_label" type="RichTextLabel" parent="game_over/menu/result/result_panel/margin/BoxContainer/ui_btn_main_menu"]
+clip_contents = false
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -17.0
+offset_right = 50.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+bbcode_enabled = true
+text = "MAIN MENU"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="winning_round" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("8_vi7j0")
+
+[node name="bg" type="ColorRect" parent="winning_round"]
+material = SubResource("ShaderMaterial_cgwcw")
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 720.0
+offset_top = -335.0
+offset_right = -430.0
+offset_bottom = 115.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.523599
 color = Color(0, 0, 0, 0.784314)
 script = ExtResource("4_jn0lq")
 
-[node name="vfx_confetti" type="GPUParticles2D" parent="margin/winning_round/menu"]
-position = Vector2(804, 502)
-emitting = false
-amount = 50
-lifetime = 10.0
-one_shot = true
-speed_scale = 2.5
-explosiveness = 1.0
-randomness = 1.0
-texture = SubResource("GradientTexture2D_585q3")
-process_material = SubResource("ParticleProcessMaterial_dm2oa")
-
-[node name="money" type="RichTextLabel" parent="margin/winning_round/menu" node_paths=PackedStringArray("score", "move", "multiplier_vfx", "btn_claim")]
+[node name="money" type="RichTextLabel" parent="winning_round" node_paths=PackedStringArray("score", "move", "btn_claim")]
 clip_contents = false
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -45.5
-offset_bottom = 45.5
+offset_top = -54.0
+offset_bottom = 54.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(1, 0.798333, 0.45, 1)
-theme_override_colors/font_shadow_color = Color(0.129412, 0.25098, 0.14902, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.352941)
 theme_override_constants/shadow_offset_y = 10
 theme_override_constants/shadow_offset_x = 4
-theme_override_constants/shadow_outline_size = 12
-theme_override_font_sizes/normal_font_size = 90
+theme_override_font_sizes/normal_font_size = 72
 bbcode_enabled = true
 text = "[wave amp=120.0 freq=2.0 connected=1]$0[/wave]"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 script = ExtResource("3_561vr")
-score = NodePath("../../../in_game/margin/score_panel/point/node/score")
-move = NodePath("../../../in_game/margin/score_panel/move/move")
-sfx_coin = ExtResource("6_3vmvp")
-sfx_coin_2 = ExtResource("5_s8ge6")
-sfx_coin_3 = ExtResource("5_p506p")
-multiplier_vfx = NodePath("../vfx_confetti")
+score = NodePath("../../in_game/side_bar/box/score_panel/point/node/score_label")
+move = NodePath("../../in_game/side_bar/box/score_panel/move/move_label")
 btn_claim = NodePath("../ui_btn_claim")
 
-[node name="winning_label" type="Label" parent="margin/winning_round/menu"]
+[node name="winning_label" type="Label" parent="winning_round"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -282,7 +411,7 @@ offset_bottom = -4.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.133333, 0.25098, 0.14902, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.690196)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 6
 theme_override_font_sizes/font_size = 50
@@ -290,7 +419,8 @@ text = "SCORE!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ui_btn_claim" type="Button" parent="margin/winning_round/menu" node_paths=PackedStringArray("btn_label", "money")]
+[node name="ui_btn_claim" type="Button" parent="winning_round" node_paths=PackedStringArray("btn_label", "money")]
+custom_minimum_size = Vector2(100, 32)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -309,7 +439,7 @@ script = ExtResource("35_c3ffn")
 btn_label = NodePath("btn_label")
 money = NodePath("../money")
 
-[node name="btn_label" type="RichTextLabel" parent="margin/winning_round/menu/ui_btn_claim"]
+[node name="btn_label" type="RichTextLabel" parent="winning_round/ui_btn_claim"]
 clip_contents = false
 layout_mode = 1
 anchors_preset = 14
@@ -328,72 +458,432 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 
-[node name="in_game" type="CanvasLayer" parent="margin"]
-follow_viewport_enabled = true
+[node name="in_game" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
-[node name="shop_scrim" type="Control" parent="margin/in_game"]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="shop" type="Control" parent="in_game"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1118.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = SubResource("Theme_6hhjv")
+
+[node name="shop_scrim" type="Control" parent="in_game/shop"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("11_utjgm")
 
-[node name="Panel" type="Panel" parent="margin/in_game/shop_scrim"]
-layout_mode = 0
-offset_left = -11.0
-offset_top = 283.0
-offset_right = 599.0
-offset_bottom = 920.0
+[node name="overlay" type="Panel" parent="in_game/shop/shop_scrim"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -610.0
+offset_top = -637.0
+grow_horizontal = 0
+grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_ga6ao")
 
-[node name="Panel2" type="Panel" parent="margin/in_game/shop_scrim"]
-layout_mode = 0
-offset_left = 495.0
-offset_top = 283.0
-offset_right = 1105.0
-offset_bottom = 920.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_0iada")
+[node name="margin" type="MarginContainer" parent="in_game/shop"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
 
-[node name="move_panel" type="BoxContainer" parent="margin/in_game" node_paths=PackedStringArray("button_box")]
-custom_minimum_size = Vector2(0, 64)
-offset_left = 32.0
-offset_top = 914.0
-offset_right = 414.0
-offset_bottom = 978.0
-size_flags_horizontal = 4
-size_flags_vertical = 8
-theme_override_constants/separation = 16
-alignment = 2
-script = ExtResource("24_3i4a7")
-button_box = NodePath("hbox")
-
-[node name="vbox" type="HBoxContainer" parent="margin/in_game/move_panel"]
+[node name="BoxContainer" type="BoxContainer" parent="in_game/shop/margin"]
 layout_mode = 2
-size_flags_vertical = 4
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/separation = 24
+vertical = true
+
+[node name="game_title" type="Label" parent="in_game/shop/margin/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0823529, 0.160784, 0.643137)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 20
+text = "kardinal v 0.2"
+horizontal_alignment = 2
+vertical_alignment = 2
+uppercase = true
+
+[node name="patch_panel" type="BoxContainer" parent="in_game/shop/margin/BoxContainer" node_paths=PackedStringArray("patch_inventory_list", "patch_inventory_heading")]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 12
+alignment = 1
+vertical = true
+script = ExtResource("13_2qjwg")
+patch_template = ExtResource("23_4lg16")
+patch_inventory_list = NodePath("patch_inventory_list")
+patch_inventory_heading = NodePath("vbox/heading")
+
+[node name="vbox" type="BoxContainer" parent="in_game/shop/margin/BoxContainer/patch_panel"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+alignment = 1
+vertical = true
+
+[node name="heading" type="BoxContainer" parent="in_game/shop/margin/BoxContainer/patch_panel/vbox"]
+layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="ui_badge_label" parent="margin/in_game/move_panel/vbox" instance=ExtResource("12_tnn8x")]
+[node name="divider" type="ColorRect" parent="in_game/shop/margin/BoxContainer/patch_panel/vbox/heading"]
+custom_minimum_size = Vector2(20, 1)
 layout_mode = 2
-label_text = "Next Step >"
+size_flags_vertical = 4
 
-[node name="moveset" type="Label" parent="margin/in_game/move_panel/vbox"]
+[node name="patch_title" type="Label" parent="in_game/shop/margin/BoxContainer/patch_panel/vbox/heading"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.86, 0.885667, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.269925, 0.2295, 0.45, 1)
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0823529, 0.160784, 0.643137)
 theme_override_constants/shadow_offset_x = 3
 theme_override_constants/shadow_offset_y = 5
-theme_override_font_sizes/font_size = 36
-text = "xx"
-script = ExtResource("4_o5gk1")
+theme_override_font_sizes/font_size = 28
+text = "Patches"
+horizontal_alignment = 1
+uppercase = true
 
-[node name="hbox" type="BoxContainer" parent="margin/in_game/move_panel"]
+[node name="divider2" type="ColorRect" parent="in_game/shop/margin/BoxContainer/patch_panel/vbox/heading"]
+custom_minimum_size = Vector2(100, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="patch_inventory_list" type="HBoxContainer" parent="in_game/shop/margin/BoxContainer/patch_panel"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Panel" type="Panel" parent="in_game/shop/margin/BoxContainer/patch_panel/patch_inventory_list"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="in_game/shop/margin/BoxContainer/patch_panel/patch_inventory_list"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="Panel3" type="Panel" parent="in_game/shop/margin/BoxContainer/patch_panel/patch_inventory_list"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="shop_panel" type="BoxContainer" parent="in_game/shop/margin/BoxContainer"]
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_constants/separation = 16
+size_flags_vertical = 8
+theme_override_constants/separation = 24
+vertical = true
+script = ExtResource("37_nekbv")
+
+[node name="heading" type="BoxContainer" parent="in_game/shop/margin/BoxContainer/shop_panel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="divider" type="ColorRect" parent="in_game/shop/margin/BoxContainer/shop_panel/heading"]
+custom_minimum_size = Vector2(20, 1)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="shop_title" type="Label" parent="in_game/shop/margin/BoxContainer/shop_panel/heading"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.0959733, 0.0816, 0.16, 0.643137)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 5
+theme_override_font_sizes/font_size = 28
+text = "Merchants"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="divider2" type="ColorRect" parent="in_game/shop/margin/BoxContainer/shop_panel/heading"]
+custom_minimum_size = Vector2(48, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="redeem_box" type="BoxContainer" parent="in_game/shop/margin/BoxContainer/shop_panel"]
+layout_mode = 2
+theme_override_constants/separation = 12
 alignment = 1
 
-[node name="ui_btn_cancel_move" type="Button" parent="margin/in_game/move_panel/hbox" node_paths=PackedStringArray("btn_label")]
+[node name="input" type="TextEdit" parent="in_game/shop/margin/BoxContainer/shop_panel/redeem_box"]
+clip_contents = false
+custom_minimum_size = Vector2(230, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_placeholder_color = Color(0.448704, 0.363772, 0.608121, 1)
+theme_override_constants/line_spacing = 9
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_cdxde")
+placeholder_text = "COUPON CODE"
+wrap_mode = 1
+scroll_fit_content_height = true
+
+[node name="ui_btn_redeem" type="Button" parent="in_game/shop/margin/BoxContainer/shop_panel/redeem_box" node_paths=PackedStringArray("btn_label")]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("37_3g7t4")
+btn_label = NodePath("btn_label")
+
+[node name="btn_label" type="RichTextLabel" parent="in_game/shop/margin/BoxContainer/shop_panel/redeem_box/ui_btn_redeem"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -17.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+bbcode_enabled = true
+text = "REDEEM"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="side_bar" type="MarginContainer" parent="in_game"]
+texture_filter = 1
+layout_mode = 1
+offset_right = 164.0
+offset_bottom = 316.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="box" type="BoxContainer" parent="in_game/side_bar"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 32
+vertical = true
+
+[node name="title" type="BoxContainer" parent="in_game/side_bar/box"]
+layout_mode = 2
+theme_override_constants/separation = 8
+vertical = true
+
+[node name="game_level" parent="in_game/side_bar/box/title" node_paths=PackedStringArray("game_level_name") instance=ExtResource("12_tnn8x")]
+layout_mode = 2
+size_flags_horizontal = 0
+script = ExtResource("32_wa3v5")
+game_level_name = NodePath("../game_level_name")
+
+[node name="game_level_name" type="Label" parent="in_game/side_bar/box/title"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.270588, 0.231373, 0.45098, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 2
+uppercase = true
+
+[node name="menu_bar" type="BoxContainer" parent="in_game/side_bar/box"]
+visible = false
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 16
+vertical = true
+
+[node name="ui_btn_main_menu" type="Button" parent="in_game/side_bar/box/menu_bar" node_paths=PackedStringArray("btn_label")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+script = ExtResource("37_6rr6p")
+btn_label = NodePath("btn_label")
+
+[node name="btn_label" type="RichTextLabel" parent="in_game/side_bar/box/menu_bar/ui_btn_main_menu"]
+clip_contents = false
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -17.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+bbcode_enabled = true
+text = "MAIN MENU"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="score_panel" type="BoxContainer" parent="in_game/side_bar/box" node_paths=PackedStringArray("point_row", "move_row", "money_row")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 16
+alignment = 1
+vertical = true
+script = ExtResource("13_ne0us")
+point_row = NodePath("point")
+move_row = NodePath("move")
+money_row = NodePath("money")
+
+[node name="money" type="HBoxContainer" parent="in_game/side_bar/box/score_panel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="placeholder" type="Control" parent="in_game/side_bar/box/score_panel/money"]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+
+[node name="money" type="Label" parent="in_game/side_bar/box/score_panel/money/placeholder" node_paths=PackedStringArray("money_value_updater")]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -24.0
+offset_right = 48.0
+offset_bottom = 24.0
+grow_vertical = 2
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 5
+theme_override_font_sizes/font_size = 48
+text = "$0"
+uppercase = true
+script = ExtResource("15_1lq7n")
+money_value_updater = NodePath("../money_value_updates")
+
+[node name="money_value_updates" parent="in_game/side_bar/box/score_panel/money/placeholder" instance=ExtResource("12_tnn8x")]
+layout_mode = 0
+script = null
+
+[node name="point" type="HBoxContainer" parent="in_game/side_bar/box/score_panel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="icon_point" type="TextureRect" parent="in_game/side_bar/box/score_panel/point"]
+visible = false
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 2
+texture = ExtResource("19_5mswx")
+expand_mode = 1
+
+[node name="points_title" type="Label" parent="in_game/side_bar/box/score_panel/point"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0823529, 0.160784, 0.643137)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 32
+text = "points"
+vertical_alignment = 1
+
+[node name="node" type="Control" parent="in_game/side_bar/box/score_panel/point"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="score_label" parent="in_game/side_bar/box/score_panel/point/node" instance=ExtResource("12_tnn8x")]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
+theme = SubResource("Theme_2txnq")
+script = ExtResource("2_0m8uu")
+
+[node name="score_value_update" type="RichTextLabel" parent="in_game/side_bar/box/score_panel/point/node"]
+visible = false
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("23_lxvgo")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[bgcolor=BLACK]+1[/bgcolor]"
+fit_content = true
+scroll_active = false
+
+[node name="move" type="HBoxContainer" parent="in_game/side_bar/box/score_panel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="icon_move" type="TextureRect" parent="in_game/side_bar/box/score_panel/move"]
+visible = false
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 2
+texture = ExtResource("19_lxvgo")
+expand_mode = 1
+
+[node name="move_title" type="Label" parent="in_game/side_bar/box/score_panel/move"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0823529, 0.160784, 0.643137)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 32
+text = "moves"
+vertical_alignment = 1
+
+[node name="move_label" parent="in_game/side_bar/box/score_panel/move" instance=ExtResource("12_tnn8x")]
+layout_mode = 2
+script = ExtResource("3_ex05q")
+
+[node name="move_panel" type="BoxContainer" parent="in_game"]
+layout_mode = 1
+offset_top = -32.0
+offset_right = 260.0
+size_flags_horizontal = 0
+theme = SubResource("Theme_5mswx")
+theme_override_constants/separation = 16
+alignment = 1
+script = ExtResource("24_3i4a7")
+
+[node name="ui_btn_cancel_move" type="Button" parent="in_game/move_panel" node_paths=PackedStringArray("btn_label")]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -401,7 +891,7 @@ size_flags_vertical = 4
 script = ExtResource("14_44463")
 btn_label = NodePath("btn_label")
 
-[node name="btn_label" type="RichTextLabel" parent="margin/in_game/move_panel/hbox/ui_btn_cancel_move"]
+[node name="btn_label" type="RichTextLabel" parent="in_game/move_panel/ui_btn_cancel_move"]
 clip_contents = false
 layout_mode = 1
 anchors_preset = 14
@@ -420,7 +910,22 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 
-[node name="ui_btn_move" type="Button" parent="margin/in_game/move_panel/hbox" node_paths=PackedStringArray("btn_label")]
+[node name="ui_badge_label" parent="in_game/move_panel/ui_btn_cancel_move" instance=ExtResource("12_tnn8x")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = 28.0
+offset_right = -32.0
+offset_bottom = 28.0
+grow_horizontal = 0
+grow_vertical = 0
+label_text = "(esc.)"
+
+[node name="ui_btn_move" type="Button" parent="in_game/move_panel" node_paths=PackedStringArray("btn_label")]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -428,7 +933,7 @@ size_flags_vertical = 4
 script = ExtResource("2_t3juk")
 btn_label = NodePath("btn_label")
 
-[node name="btn_label" type="RichTextLabel" parent="margin/in_game/move_panel/hbox/ui_btn_move"]
+[node name="btn_label" type="RichTextLabel" parent="in_game/move_panel/ui_btn_move"]
 clip_contents = false
 layout_mode = 1
 anchors_preset = 14
@@ -442,217 +947,32 @@ grow_vertical = 2
 size_flags_vertical = 4
 mouse_filter = 2
 bbcode_enabled = true
-text = "→"
+text = ">"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 
-[node name="margin" type="MarginContainer" parent="margin/in_game"]
-texture_filter = 1
-anchors_preset = 15
-anchor_right = 1.0
+[node name="ui_badge_label" parent="in_game/move_panel/ui_btn_move" instance=ExtResource("12_tnn8x")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-theme = SubResource("Theme_6hhjv")
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 32
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
+offset_left = 32.0
+offset_top = 28.0
+offset_right = 32.0
+offset_bottom = 28.0
+grow_vertical = 0
+label_text = "(space)"
 
-[node name="score_panel" type="BoxContainer" parent="margin/in_game/margin" node_paths=PackedStringArray("point_row", "move_row", "money_row")]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme_override_constants/separation = 16
-alignment = 1
-vertical = true
-script = ExtResource("13_ne0us")
-point_row = NodePath("point")
-move_row = NodePath("move")
-money_row = NodePath("money")
-
-[node name="money" type="HBoxContainer" parent="margin/in_game/margin/score_panel"]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="placeholder" type="Control" parent="margin/in_game/margin/score_panel/money"]
-custom_minimum_size = Vector2(100, 72)
-layout_mode = 2
-
-[node name="money" type="Label" parent="margin/in_game/margin/score_panel/money/placeholder" node_paths=PackedStringArray("money_value_updater")]
-layout_mode = 2
-offset_right = 67.0
-offset_bottom = 67.0
-theme_override_colors/font_color = Color(0.86, 0.885667, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.269925, 0.2295, 0.45, 1)
-theme_override_constants/shadow_offset_x = 3
-theme_override_constants/shadow_offset_y = 5
-theme_override_font_sizes/font_size = 56
-text = "$0"
-uppercase = true
-script = ExtResource("15_1lq7n")
-money_value_updater = NodePath("../money_value_update")
-sfx_caching = ExtResource("17_pbqc5")
-
-[node name="money_value_update" type="RichTextLabel" parent="margin/in_game/margin/score_panel/money/placeholder"]
-custom_minimum_size = Vector2(120, 0)
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -20.0
-offset_right = 40.0
-offset_bottom = 20.0
-grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 32
-bbcode_enabled = true
-text = "[bgcolor=BLACK]+1[/bgcolor]"
-fit_content = true
-scroll_active = false
-
-[node name="point" type="HBoxContainer" parent="margin/in_game/margin/score_panel"]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="ui_badge_label" parent="margin/in_game/margin/score_panel/point" instance=ExtResource("12_tnn8x")]
-layout_mode = 2
-label_text = "Points"
-
-[node name="node" type="Control" parent="margin/in_game/margin/score_panel/point"]
-custom_minimum_size = Vector2(100, 45)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="score" type="Label" parent="margin/in_game/margin/score_panel/point/node"]
-layout_mode = 2
-offset_right = 23.0
-offset_bottom = 43.0
-size_flags_horizontal = 8
-theme_override_colors/font_color = Color(0.86, 0.885667, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.269925, 0.2295, 0.45, 1)
-theme_override_constants/shadow_offset_x = 3
-theme_override_constants/shadow_offset_y = 5
-theme_override_font_sizes/font_size = 36
-text = "0"
-horizontal_alignment = 2
-vertical_alignment = 1
-uppercase = true
-script = ExtResource("2_0m8uu")
-
-[node name="score_value_update" type="RichTextLabel" parent="margin/in_game/margin/score_panel/point/node"]
-visible = false
-custom_minimum_size = Vector2(120, 0)
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -20.0
-offset_right = 40.0
-offset_bottom = 20.0
-grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 32
-bbcode_enabled = true
-text = "[bgcolor=BLACK]+1[/bgcolor]"
-fit_content = true
-scroll_active = false
-
-[node name="move" type="HBoxContainer" parent="margin/in_game/margin/score_panel"]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="ui_badge_label" parent="margin/in_game/margin/score_panel/move" instance=ExtResource("12_tnn8x")]
-layout_mode = 2
-label_text = "Moves"
-
-[node name="move" type="Label" parent="margin/in_game/margin/score_panel/move"]
+[node name="ui_btn_start" type="Button" parent="in_game/move_panel" node_paths=PackedStringArray("btn_label")]
+custom_minimum_size = Vector2(100, 32)
 layout_mode = 2
 size_flags_horizontal = 8
-theme_override_colors/font_color = Color(0.86, 0.885667, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.269925, 0.2295, 0.45, 1)
-theme_override_constants/shadow_offset_x = 3
-theme_override_constants/shadow_offset_y = 5
-theme_override_font_sizes/font_size = 36
-text = "10"
-horizontal_alignment = 2
-vertical_alignment = 1
-uppercase = true
-script = ExtResource("3_ex05q")
-
-[node name="patch_panel" type="BoxContainer" parent="margin/in_game/margin" node_paths=PackedStringArray("patch_inventory_list", "patch_inventory_heading")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-theme_override_constants/separation = 12
-alignment = 1
-vertical = true
-script = ExtResource("13_2qjwg")
-patch_template = ExtResource("23_4lg16")
-patch_inventory_list = NodePath("patch_inventory_list")
-patch_inventory_heading = NodePath("vbox/heading")
-
-[node name="patch_inventory_list" type="HBoxContainer" parent="margin/in_game/margin/patch_panel"]
-layout_mode = 2
-theme_override_constants/separation = 12
-alignment = 1
-
-[node name="Panel" type="Panel" parent="margin/in_game/margin/patch_panel/patch_inventory_list"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-
-[node name="Panel2" type="Panel" parent="margin/in_game/margin/patch_panel/patch_inventory_list"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-
-[node name="Panel3" type="Panel" parent="margin/in_game/margin/patch_panel/patch_inventory_list"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-
-[node name="vbox" type="BoxContainer" parent="margin/in_game/margin/patch_panel"]
-custom_minimum_size = Vector2(0, 64)
-layout_mode = 2
-theme_override_constants/separation = 12
-alignment = 1
-vertical = true
-
-[node name="heading" type="BoxContainer" parent="margin/in_game/margin/patch_panel/vbox"]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="divider" type="ColorRect" parent="margin/in_game/margin/patch_panel/vbox/heading"]
-custom_minimum_size = Vector2(100, 1)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-
-[node name="patch_title" type="Label" parent="margin/in_game/margin/patch_panel/vbox/heading"]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(0.858824, 0.886275, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.270588, 0.231373, 0.45098, 1)
-theme_override_constants/shadow_offset_x = 3
-theme_override_constants/shadow_offset_y = 5
-theme_override_font_sizes/font_size = 28
-text = "Patches"
-horizontal_alignment = 1
-
-[node name="divider2" type="ColorRect" parent="margin/in_game/margin/patch_panel/vbox/heading"]
-custom_minimum_size = Vector2(100, 1)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-
-[node name="ui_btn_start" type="Button" parent="margin/in_game/margin/patch_panel/vbox" node_paths=PackedStringArray("btn_label")]
-layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("14_0vnbx")
 btn_label = NodePath("btn_label")
 
-[node name="btn_label" type="RichTextLabel" parent="margin/in_game/margin/patch_panel/vbox/ui_btn_start"]
+[node name="btn_label" type="RichTextLabel" parent="in_game/move_panel/ui_btn_start"]
 clip_contents = false
 layout_mode = 1
 anchors_preset = 14
@@ -671,159 +991,15 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 
-[node name="menu_bar" type="BoxContainer" parent="margin/in_game/margin"]
-custom_minimum_size = Vector2(0, 64)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-theme_override_constants/separation = 16
-alignment = 2
-vertical = true
-
-[node name="ui_btn_main_menu" type="Button" parent="margin/in_game/margin/menu_bar" node_paths=PackedStringArray("btn_label")]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 4
-script = ExtResource("37_6rr6p")
-btn_label = NodePath("btn_label")
-
-[node name="btn_label" type="RichTextLabel" parent="margin/in_game/margin/menu_bar/ui_btn_main_menu"]
-clip_contents = false
+[node name="ui_badge_label" parent="in_game/move_panel/ui_btn_start" instance=ExtResource("12_tnn8x")]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -17.0
-offset_bottom = 17.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = 24.0
+offset_bottom = 24.0
 grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 4
-mouse_filter = 2
-bbcode_enabled = true
-text = "MAIN MENU"
-fit_content = true
-scroll_active = false
-horizontal_alignment = 1
-
-[node name="hbox" type="BoxContainer" parent="margin/in_game/margin/menu_bar"]
-layout_mode = 2
-theme_override_constants/separation = -4
-vertical = true
-
-[node name="game_level" type="Label" parent="margin/in_game/margin/menu_bar/hbox" node_paths=PackedStringArray("game_level_name")]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(0.86, 0.885667, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.269925, 0.2295, 0.45, 1)
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 3
-theme_override_font_sizes/font_size = 24
-text = "LEVEL 1"
-horizontal_alignment = 2
-uppercase = true
-script = ExtResource("32_wa3v5")
-game_level_name = NodePath("../game_level_name")
-
-[node name="game_level_name" type="Label" parent="margin/in_game/margin/menu_bar/hbox"]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(0.86, 0.885667, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.269925, 0.2295, 0.45, 1)
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 3
-theme_override_font_sizes/font_size = 40
-horizontal_alignment = 2
-uppercase = true
-
-[node name="shop_panel" type="BoxContainer" parent="margin/in_game/margin"]
-visible = false
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-theme_override_constants/separation = 24
-vertical = true
-script = ExtResource("37_nekbv")
-sfx_shop_item_added = ExtResource("39_bpj3v")
-
-[node name="game_title" type="Label" parent="margin/in_game/margin/shop_panel"]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(0.86, 0.885667, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.269925, 0.2295, 0.45, 1)
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 3
-theme_override_font_sizes/font_size = 20
-text = "kardinal v 0.1"
-uppercase = true
-
-[node name="heading" type="BoxContainer" parent="margin/in_game/margin/shop_panel"]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="divider" type="ColorRect" parent="margin/in_game/margin/shop_panel/heading"]
-custom_minimum_size = Vector2(48, 1)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-
-[node name="shop_title" type="Label" parent="margin/in_game/margin/shop_panel/heading"]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(0.858824, 0.886275, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.270588, 0.231373, 0.45098, 1)
-theme_override_constants/shadow_offset_x = 3
-theme_override_constants/shadow_offset_y = 5
-theme_override_font_sizes/font_size = 28
-text = "Merchants"
-horizontal_alignment = 1
-
-[node name="divider2" type="ColorRect" parent="margin/in_game/margin/shop_panel/heading"]
-custom_minimum_size = Vector2(48, 1)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-
-[node name="redeem_box" type="BoxContainer" parent="margin/in_game/margin/shop_panel"]
-layout_mode = 2
-theme_override_constants/separation = 12
-alignment = 1
-
-[node name="input" type="TextEdit" parent="margin/in_game/margin/shop_panel/redeem_box"]
-clip_contents = false
-custom_minimum_size = Vector2(230, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_placeholder_color = Color(0.448704, 0.363772, 0.608121, 1)
-theme_override_constants/line_spacing = 9
-theme_override_font_sizes/font_size = 28
-theme_override_styles/normal = SubResource("StyleBoxFlat_cdxde")
-placeholder_text = "COUPON CODE"
-wrap_mode = 1
-scroll_fit_content_height = true
-
-[node name="ui_btn_redeem" type="Button" parent="margin/in_game/margin/shop_panel/redeem_box" node_paths=PackedStringArray("btn_label")]
-layout_mode = 2
-size_flags_horizontal = 4
-script = ExtResource("37_3g7t4")
-btn_label = NodePath("btn_label")
-
-[node name="btn_label" type="RichTextLabel" parent="margin/in_game/margin/shop_panel/redeem_box/ui_btn_redeem"]
-clip_contents = false
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -17.0
-offset_bottom = 17.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 4
-mouse_filter = 2
-bbcode_enabled = true
-text = "REDEEM"
-fit_content = true
-scroll_active = false
-horizontal_alignment = 1
+grow_vertical = 0
+label_text = "(space)"

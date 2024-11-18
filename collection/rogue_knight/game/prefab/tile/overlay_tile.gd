@@ -1,10 +1,10 @@
 extends Node3D
 var frequence = 0.0
 func _ready() -> void:
-	frequence = randf_range(0.2,0.4)
+	frequence = randf_range(0.01,0.02)
 	
-func _process(delta: float) -> void:
-	animate_floating(delta, 0.1)
+func _physics_process(delta: float) -> void:
+	animate_floating(delta, 0.05)
 	pass
 
 func animate_floating(delta, scale):

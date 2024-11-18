@@ -4,7 +4,8 @@ extends Button
 
 func _ready() -> void:
 	#self.top_level
-	util.root.data_instance.button_styler(self, btn_label, "red_secondary", "medium", false, false)
+	util.root.data_instance.stylesheet.button_styler(self, btn_label, "red_secondary", "medium", false, false)
+	util.root.data_instance.connect("game_state_change", _on_game_state_change)
 	self.hide()
 
 func _process(delta: float) -> void:
@@ -20,4 +21,13 @@ func _process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if !event.is_echo() and self.button_pressed and !util.root.data_instance.game_data.chess_piece.is_moving:
+		util.root.data_instance.game_data.current_cam.shake_node.shake(0.035)
+		util.root.data_instance.audio.sfx_dictionary.tile_select_deny.sfx.play()		
 		util.root.data_instance.game_data.chess_piece.remove_move()
+
+func _on_game_state_change(state):
+	match state:
+		util.root.data_instance.GAME_STATE.PLAYING:
+			self.show()
+		util.root.data_instance.GAME_STATE.PLANNING:
+			self.hide()

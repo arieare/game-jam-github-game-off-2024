@@ -4,7 +4,6 @@ extends Control
 
 
 func _ready() -> void:
-	init_audio()
 	util.root.data_instance.connect("board_ready", _on_board_ready)
 
 
@@ -36,7 +35,7 @@ func _on_board_ready():
 			var rarity:int=get_item_rarity()
 			var item = util.root.data_instance.patch_dictionary[rarity].values().pick_random()
 			init_shop_item(rarity,item["id"])
-			audio_player_item_added.play()
+			util.root.data_instance.audio.sfx_dictionary.shop_item_added.sfx.play()
 			await get_tree().create_timer(0.05).timeout		
 
 var rng:=RandomNumberGenerator.new()
@@ -51,16 +50,3 @@ func get_item_rarity():
 		if item <= n:
 			return n
 		item -= n
-
-var audio_player_item_added:=AudioStreamPlayer.new()
-@export var sfx_shop_item_added: AudioStream
-func init_audio():
-	audio_player_item_added.max_polyphony = 128
-	audio_player_item_added.pitch_scale = 0.8
-	var random_audio := AudioStreamRandomizer.new()
-	audio_player_item_added.stream = random_audio
-
-	random_audio.add_stream(0, sfx_shop_item_added, 1.0)
-	random_audio.playback_mode = AudioStreamRandomizer.PLAYBACK_SEQUENTIAL
-	random_audio.random_pitch = 1.25
-	self.add_child(audio_player_item_added)	

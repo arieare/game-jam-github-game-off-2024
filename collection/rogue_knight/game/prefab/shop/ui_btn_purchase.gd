@@ -5,14 +5,14 @@ extends Button
 	
 
 func _ready() -> void:
-	util.root.data_instance.button_styler(self, price_text, "green", "medium", false, false)
+	util.root.data_instance.stylesheet.button_styler(self, price_text, "green_secondary", "medium", false, false)
 	
 	price_text.text = "$" + item_root.patch_price_text
 	
 	if item_root.item_data["price"] > util.root.data_instance.game_data.money:
-		util.root.data_instance.button_styler(self, price_text, "green", "medium", true, false)
+		util.root.data_instance.stylesheet.button_styler(self, price_text, "green_secondary", "medium", true, false)
 	else:
-		util.root.data_instance.button_styler(self, price_text, "green", "medium", false, false)	
+		util.root.data_instance.stylesheet.button_styler(self, price_text, "green_secondary", "medium", false, false)	
 		
 
 func _input(event: InputEvent) -> void:
@@ -27,9 +27,9 @@ func _input(event: InputEvent) -> void:
 	
 func _process(delta: float) -> void:
 	if item_root.item_data["price"] >= util.root.data_instance.game_data.money:
-		util.root.data_instance.button_styler(self, price_text, "green", "medium", true, false)
+		util.root.data_instance.stylesheet.button_styler(self, price_text, "green_secondary", "medium", true, false)
 	else:
-		util.root.data_instance.button_styler(self, price_text, "green", "medium", false, false)		
+		util.root.data_instance.stylesheet.button_styler(self, price_text, "green_secondary", "medium", false, false)		
 	
 	
 #func button_enabled(is_btn_enabled:bool):

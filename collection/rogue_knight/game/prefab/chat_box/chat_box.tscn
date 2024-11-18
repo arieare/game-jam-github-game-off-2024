@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://5rqv8gbrjcok"]
+
+[ext_resource type="Script" path="res://collection/rogue_knight/game/prefab/chat_box/chat_box.gd" id="1_5rsav"]
+[ext_resource type="FontFile" uid="uid://0qu55fxexoae" path="res://collection/rogue_knight/content/font/Beholden-Bold-Italic.ttf" id="2_e187y"]
+
+[node name="chat_box" type="PanelContainer" node_paths=PackedStringArray("text")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5rsav")
+text = NodePath("text")
+
+[node name="text" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(256, 100)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_e187y")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+autowrap_mode = 2

@@ -1,13 +1,14 @@
 extends Label
 
 func _process(delta: float) -> void:
-	self.text = ""
-	for step in util.root.data_instance.game_data.move_step:
-		self.text += alphabet[str(step.y + 1)]
-		self.text += str(step.x + 1)
-		self.text += " "
-	if util.root.data_instance.current_game_state == util.root.data_instance.GAME_STATE.WINNING or util.root.data_instance.current_game_state == util.root.data_instance.GAME_STATE.LOSING:
-		self.get_parent().hide()
+	pass
+	#self.text = ""
+	#for step in util.root.data_instance.game_data.move_step:
+		#self.text += alphabet[str(step.y + 1)]
+		#self.text += str(step.x + 1)
+		#self.text += " "
+	#if util.root.data_instance.current_game_state == util.root.data_instance.GAME_STATE.WINNING or util.root.data_instance.current_game_state == util.root.data_instance.GAME_STATE.LOSING:
+		#self.get_parent().hide()
 
 var alphabet:Dictionary = {
 	"1":"A",

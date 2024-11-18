@@ -15,12 +15,12 @@ fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1drc3"]
 transparency = 1
-albedo_color = Color(0.5655, 0.21, 1, 1)
+albedo_color = Color(0.1674, 0.21708, 0.54, 1)
 albedo_texture = SubResource("GradientTexture2D_nv31q")
 albedo_texture_force_srgb = true
 emission_enabled = true
-emission = Color(0.564706, 0.211765, 1, 1)
-emission_energy_multiplier = 3.0
+emission = Color(0.1794, 0.58788, 0.69, 1)
+emission_energy_multiplier = 1.5
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_5f7he"]
 material = SubResource("StandardMaterial3D_1drc3")
