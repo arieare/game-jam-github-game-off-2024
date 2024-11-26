@@ -3,6 +3,15 @@ extends Node3D
 var board_array : Dictionary = {}
 var board_index : Dictionary = {}
 
+func subtract_array(array_a: Array, array_b: Array) -> Array:
+	var clean_array = []
+	
+	for item in array_a:
+		if item not in array_b:
+			clean_array.append(item)
+	
+	return clean_array
+
 func generate_board(board_size:int):
 	## Reset Variables
 	if util.root.data_instance.instance_pool.board_tile_node.get_children():
@@ -17,19 +26,8 @@ func generate_board(board_size:int):
 	util.root.data_instance.game_data.score = 0
 	util.root.data_instance.game_data.board_data.board_array.clear()
 	
-	if util.root.data_instance.level_data.has(util.root.data_instance.game_data.current_level) and util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].blocked_index != []:
-		util.root.data_instance.game_data.board_data.blocked_index = util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].blocked_index
-	## Add goal tile
+	init_tile_position(board_size)
 	
-	var goal_tile_pos_x: int
-	var goal_tile_pos_y: int		
-	if util.root.data_instance.level_data.has(util.root.data_instance.game_data.current_level) and util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].target_position != null:
-		goal_tile_pos_x = int(util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].target_position.x)
-		goal_tile_pos_y = int(util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].target_position.y)
-	else:
-		goal_tile_pos_x = randi_range(0, board_size-1)
-		goal_tile_pos_y = randi_range(0, board_size-1)	
-	util.root.data_instance.game_data.target_position = Vector2(goal_tile_pos_x,goal_tile_pos_y) 		
 
 	var current_square
 	var tile_count:= 0
@@ -40,7 +38,8 @@ func generate_board(board_size:int):
 				current_square = util.root.data_instance.instance_pool.white_tile_array[tile_count]
 			else:
 				current_square = util.root.data_instance.instance_pool.black_tile_array[tile_count]
-			if i == util.root.data_instance.game_data.target_position.x and j == util.root.data_instance.game_data.target_position.y:
+			
+			if i == util.root.data_instance.game_data.board_data.target_position.x and j == util.root.data_instance.game_data.board_data.target_position.y:
 				current_square = util.root.data_instance.instance_pool.goal_tile_array[tile_count]
 				util.root.data_instance.vfx.vfx_goal_tile.position = Vector3(j * 0.5,0,i* 0.5)
 				
@@ -50,7 +49,6 @@ func generate_board(board_size:int):
 			current_square.hide()
 			tile_count += 1
 			current_square.reparent(util.root.data_instance.instance_pool.board_tile_node)
-			#util.root.data_instance.instance_pool.board_tile_node.add_child(current_square)
 			
 			board_array_col[j] = current_square
 			board_array[i] = board_array_col
@@ -64,7 +62,7 @@ func generate_board(board_size:int):
 			
 			board_array[i][j].show()
 			var hover_tween: Tween = create_tween().set_trans(Tween.TRANS_BOUNCE)
-			hover_tween.tween_property(board_array[i][j],"scale", Vector3(1.2,1,1.2),0.05)
+			hover_tween.tween_property(board_array[i][j],"scale", Vector3(1.25,1,1.25),0.05)
 			hover_tween.tween_property(board_array[i][j],"position:y",0.1,0.02)
 			hover_tween.tween_property(board_array[i][j],"rotation_degrees:z", randf_range(-45.0, 45.0),0.2)
 			hover_tween.tween_property(board_array[i][j],"rotation_degrees:x", randf_range(-45.0, 45.0),0.1)	
@@ -79,7 +77,7 @@ func generate_board(board_size:int):
 			await get_tree().create_timer(board_spawn_speed - (i/2)).timeout
 	
 	for j in util.root.data_instance.game_data.board_data.blocked_index:
-		#print(j)
+		await get_tree().create_timer(0.05).timeout
 		board_array[int(j.x)][int(j.y)].hide()
 	
 	util.root.data_instance.board_ready.emit()
@@ -102,19 +100,50 @@ func _on_game_state_change(state):
 			var board_spawn_speed:= 0.05
 			for i in board_size:
 				for j in board_size:
-			
-					#board_array[i][j].show()
 					var hover_tween: Tween = create_tween().set_trans(Tween.TRANS_CIRC)
-					#hover_tween.tween_property(board_array[i][j],"scale", Vector3(1.2,1,1.2),0.05)
 					hover_tween.tween_property(board_array[i][j],"position:y",50,2.0)
-					#hover_tween.tween_property(board_array[i][j],"rotation_degrees:z", randf_range(-45.0, 45.0),0.2)
-					#hover_tween.tween_property(board_array[i][j],"rotation_degrees:x", randf_range(-45.0, 45.0),0.1)	
-					#hover_tween.tween_interval(0.2)
-					#hover_tween.tween_property(board_array[i][j],"scale", Vector3(1,1,1),0.05)
-					#hover_tween.tween_property(board_array[i][j],"position:y",0,0.03)
-					#hover_tween.tween_property(board_array[i][j],"rotation_degrees:z", 0.0,0.02)
-					#hover_tween.tween_property(board_array[i][j],"rotation_degrees:x", 0.0,0.02)
-					
-					#util.root.data_instance.audio.sfx_dictionary.board_initialized.sfx.play()
-
 					await get_tree().create_timer(board_spawn_speed - (i/2)).timeout	
+
+func init_tile_position(board_size):
+	## Set Starting Position, Goal Tile, and Obstacle Position	
+	var board_vector_array	= []
+	for i in board_size:
+		for j in board_size:
+			board_vector_array.append(Vector2(int(i),int(j)))
+	### Check if level_data is set:
+	if util.root.data_instance.level_data.has(util.root.data_instance.game_data.current_level):
+		### Check obstacle
+		if util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].blocked_index != []:
+			util.root.data_instance.game_data.board_data.blocked_index = util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].blocked_index
+			board_vector_array = subtract_array(board_vector_array, util.root.data_instance.game_data.board_data.blocked_index)
+			print("obstacle available:" + str(board_vector_array))
+		else:
+			util.root.data_instance.game_data.board_data.blocked_index = []
+		
+		### Check if both starting and goal is null
+		if util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].starting_position == null and util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].target_position == null:
+			util.root.data_instance.game_data.board_data.starting_position = board_vector_array.pick_random()
+			board_vector_array.erase(util.root.data_instance.game_data.board_data.starting_position)	
+			util.root.data_instance.game_data.board_data.target_position = board_vector_array.pick_random()	
+			board_vector_array.clear()
+			print("both random")
+		### Check if starting position is null
+		elif util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].starting_position == null and util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].target_position != null:
+			util.root.data_instance.game_data.board_data.target_position = util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].target_position
+			board_vector_array.erase(util.root.data_instance.game_data.board_data.target_position)	
+			util.root.data_instance.game_data.board_data.starting_position = board_vector_array.pick_random()
+			board_vector_array.clear()
+			print("starting position random")
+		### Check if target position is null
+		elif util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].starting_position != null and util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].target_position == null:
+			util.root.data_instance.game_data.board_data.starting_position = util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].starting_position
+			board_vector_array.erase(util.root.data_instance.game_data.board_data.starting_position)	
+			util.root.data_instance.game_data.board_data.target_position = board_vector_array.pick_random()	
+			board_vector_array.clear()
+			print("target position random")
+		### Check if both preset
+		else:
+			util.root.data_instance.game_data.board_data.starting_position = util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].starting_position
+			util.root.data_instance.game_data.board_data.target_position = util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].target_position
+			board_vector_array.clear()
+			print("both preset")	

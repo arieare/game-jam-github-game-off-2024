@@ -1,8 +1,8 @@
 extends BoxContainer
 
-
 func _ready() -> void:
 	self.top_level
+
 	
 func _process(delta: float) -> void:
 	var board_half_size = floori(util.root.data_instance.game_data.board_data.size/2)

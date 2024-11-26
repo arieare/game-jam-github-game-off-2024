@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dm1hm6715752q"
+path="res://.godot/imported/Stinger 2.wav-595b442ac1acf4b3ee9a8958945d8933.sample"
+
+[deps]
+
+source_file="res://collection/rogue_knight/content/bgm/Stinger 2.wav"
+dest_files=["res://.godot/imported/Stinger 2.wav-595b442ac1acf4b3ee9a8958945d8933.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

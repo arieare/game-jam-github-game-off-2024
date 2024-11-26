@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://jkh0b80l8515"
+path="res://.godot/imported/LOOP_Action Battle Cue 2 @  125 BMP 1_00 minutes.wav-65ad0648dba8185bcca71eb94446fbac.sample"
+
+[deps]
+
+source_file="res://collection/rogue_knight/content/bgm/LOOP_Action Battle Cue 2 @  125 BMP 1_00 minutes.wav"
+dest_files=["res://.godot/imported/LOOP_Action Battle Cue 2 @  125 BMP 1_00 minutes.wav-65ad0648dba8185bcca71eb94446fbac.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

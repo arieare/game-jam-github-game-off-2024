@@ -1,11 +1,12 @@
-[gd_scene load_steps=24 format=3 uid="uid://jlhtgd2fwtq2"]
+[gd_scene load_steps=29 format=3 uid="uid://jlhtgd2fwtq2"]
 
 [ext_resource type="FontFile" uid="uid://0qu55fxexoae" path="res://collection/rogue_knight/content/font/Beholden-Bold-Italic.ttf" id="1_wb5jr"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/main_menu/ui_btn_play.gd" id="2_1amt2"]
 [ext_resource type="Shader" path="res://content/shader/canvas_transition_diamond.gdshader" id="2_r6uiu"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/main_menu/main_menu.gd" id="2_wb5jr"]
-[ext_resource type="StyleBox" uid="uid://01iooad34frr" path="res://collection/rogue_knight/content/ui/ui_btn_big_white_hover.tres" id="9_y1raq"]
-[ext_resource type="StyleBox" uid="uid://del0n7dmhpqey" path="res://collection/rogue_knight/content/ui/ui_btn_big_white.tres" id="10_vscdp"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/main_menu/ui_btn_credit.gd" id="5_if4v1"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/main_menu/ui_btn_setting.gd" id="6_fryuj"]
+[ext_resource type="Texture2D" uid="uid://b4534xwym1lu1" path="res://app/splatter.png" id="8_wb5jr"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/main_menu/ui_btn_quit.gd" id="11_57frg"]
 
 [sub_resource type="Theme" id="Theme_25tdh"]
@@ -106,7 +107,61 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.239216, 0.592157, 0.329412, 1)
 
-[node name="main_menu" type="Control"]
+[sub_resource type="Animation" id="Animation_n5ph4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("overlay:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mvjp1"]
+resource_name = "fade_in"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("overlay:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 1.75, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wb5jr"]
+resource_name = "fade_out"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("overlay:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qq4uk"]
+_data = {
+&"RESET": SubResource("Animation_n5ph4"),
+&"fade_in": SubResource("Animation_mvjp1"),
+&"fade_out": SubResource("Animation_wb5jr")
+}
+
+[node name="main_menu" type="Control" node_paths=PackedStringArray("fade_in_player", "splash_tex", "splash_layer")]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -116,6 +171,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_25tdh")
 script = ExtResource("2_wb5jr")
+fade_in_player = NodePath("splash/player")
+splash_tex = NodePath("splash/image")
+splash_layer = NodePath("splash")
 
 [node name="bg" type="ColorRect" parent="."]
 layout_mode = 1
@@ -475,72 +533,58 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 
-[node name="ui_btn_setting" type="Button" parent="margin/vbox/hbox"]
-visible = false
-custom_minimum_size = Vector2(177, 56)
+[node name="ui_btn_credit" type="Button" parent="margin/vbox/hbox" node_paths=PackedStringArray("btn_label")]
+custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 64
-theme_override_styles/hover = ExtResource("9_y1raq")
-theme_override_styles/normal = ExtResource("10_vscdp")
+script = ExtResource("5_if4v1")
+btn_label = NodePath("btn_label")
 
-[node name="margin" type="MarginContainer" parent="margin/vbox/hbox/ui_btn_setting"]
+[node name="btn_label" type="RichTextLabel" parent="margin/vbox/hbox/ui_btn_credit"]
+clip_contents = false
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
+offset_top = -9.5
+offset_bottom = 9.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_right = 12
-
-[node name="btn_label" type="RichTextLabel" parent="margin/vbox/hbox/ui_btn_setting/margin"]
-clip_contents = false
-layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 4
 mouse_filter = 2
-theme_override_colors/default_color = Color(0.312443, 0.164024, 0.51371, 1)
-theme_override_colors/font_shadow_color = Color(0.772315, 0.794099, 1, 1)
-theme_override_constants/shadow_offset_y = 3
-theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
-text = "SETTING"
+text = "CREDIT"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 
-[node name="ui_btn_tutorial" type="Button" parent="margin/vbox/hbox"]
-visible = false
-custom_minimum_size = Vector2(177, 56)
+[node name="ui_btn_setting" type="Button" parent="margin/vbox/hbox" node_paths=PackedStringArray("btn_label")]
+custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 64
-theme_override_styles/hover = ExtResource("9_y1raq")
-theme_override_styles/normal = ExtResource("10_vscdp")
+script = ExtResource("6_fryuj")
+btn_label = NodePath("btn_label")
 
-[node name="margin" type="MarginContainer" parent="margin/vbox/hbox/ui_btn_tutorial"]
+[node name="btn_label" type="RichTextLabel" parent="margin/vbox/hbox/ui_btn_setting"]
+clip_contents = false
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
+offset_top = -9.5
+offset_bottom = 9.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_right = 12
-
-[node name="btn_label" type="RichTextLabel" parent="margin/vbox/hbox/ui_btn_tutorial/margin"]
-clip_contents = false
-layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 4
 mouse_filter = 2
-theme_override_colors/default_color = Color(0.312443, 0.164024, 0.51371, 1)
-theme_override_colors/font_shadow_color = Color(0.772315, 0.794099, 1, 1)
-theme_override_constants/shadow_offset_y = 3
-theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
-text = "TUTORIAL"
+text = "OPTION"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
@@ -579,5 +623,33 @@ theme_override_colors/font_color = Color(0.565138, 0.579514, 0.777938, 1)
 theme_override_constants/line_spacing = 6
 theme_override_font_sizes/font_size = 24
 text = "a game by @arieare — jestersuitgame, as submission for #GithubGameOff
-game jam version v 0.2 ©️2024"
+game jam version v 1.0 ©️2024"
 horizontal_alignment = 1
+
+[node name="splash" type="CanvasLayer" parent="."]
+
+[node name="image" type="TextureRect" parent="splash"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_wb5jr")
+expand_mode = 1
+
+[node name="overlay" type="ColorRect" parent="splash"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="player" type="AnimationPlayer" parent="splash"]
+libraries = {
+&"": SubResource("AnimationLibrary_qq4uk")
+}
+
+[connection signal="pressed" from="margin/vbox/hbox/ui_btn_play" to="margin/vbox/hbox/ui_btn_play" method="_on_pressed"]
+[connection signal="pressed" from="margin/vbox/hbox/ui_btn_credit" to="margin/vbox/hbox/ui_btn_credit" method="_on_pressed"]
+[connection signal="pressed" from="margin/vbox/hbox/ui_btn_setting" to="margin/vbox/hbox/ui_btn_setting" method="_on_pressed"]

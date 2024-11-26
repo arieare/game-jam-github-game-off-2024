@@ -1,21 +1,81 @@
-[gd_scene load_steps=3 format=3 uid="uid://5rqv8gbrjcok"]
+[gd_scene load_steps=7 format=3 uid="uid://5rqv8gbrjcok"]
 
 [ext_resource type="Script" path="res://collection/rogue_knight/game/prefab/chat_box/chat_box.gd" id="1_5rsav"]
 [ext_resource type="FontFile" uid="uid://0qu55fxexoae" path="res://collection/rogue_knight/content/font/Beholden-Bold-Italic.ttf" id="2_e187y"]
+[ext_resource type="FontFile" uid="uid://ba700idfwhfh0" path="res://collection/rogue_knight/content/font/Beholden-Medium.ttf" id="2_f0pbi"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/prefab/ui/ui_badge_label.gd" id="3_1rmac"]
 
-[node name="chat_box" type="PanelContainer" node_paths=PackedStringArray("text")]
-anchors_preset = 15
-anchor_right = 1.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rmac"]
+bg_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 20.0
+expand_margin_top = 20.0
+expand_margin_right = 20.0
+expand_margin_bottom = 20.0
+shadow_color = Color(0, 0, 0, 0.0392157)
+shadow_size = 12
+shadow_offset = Vector2(0, 12)
+
+[sub_resource type="Theme" id="Theme_osavj"]
+default_font = ExtResource("2_e187y")
+
+[node name="chat_box" type="PanelContainer" node_paths=PackedStringArray("text", "label")]
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_top = -108.0
+offset_right = 264.0
+grow_vertical = 0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_1rmac")
 script = ExtResource("1_5rsav")
 text = NodePath("text")
+label = NodePath("layer/ui_badge_label")
 
 [node name="text" type="RichTextLabel" parent="."]
-custom_minimum_size = Vector2(256, 100)
+clip_contents = false
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("2_e187y")
-theme_override_font_sizes/normal_font_size = 40
+theme_override_colors/default_color = Color(0.866667, 0.866667, 0.866667, 1)
+theme_override_fonts/normal_font = ExtResource("2_f0pbi")
+theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
+fit_content = true
 autowrap_mode = 2
+
+[node name="layer" type="CanvasLayer" parent="."]
+
+[node name="ui_badge_label" type="PanelContainer" parent="layer" node_paths=PackedStringArray("label")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = SubResource("Theme_osavj")
+script = ExtResource("3_1rmac")
+label = NodePath("label")
+label_text = "next (Z)"
+
+[node name="label" type="RichTextLabel" parent="layer/ui_badge_label"]
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(0.392157, 0.423529, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.682353, 0.705882, 1, 1)
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1

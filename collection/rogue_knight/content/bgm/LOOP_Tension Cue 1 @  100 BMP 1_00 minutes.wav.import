@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bg1v0p0bmjxjh"
+path="res://.godot/imported/LOOP_Tension Cue 1 @  100 BMP 1_00 minutes.wav-37ccc1cc95516c398a02b37245a7025a.sample"
+
+[deps]
+
+source_file="res://collection/rogue_knight/content/bgm/LOOP_Tension Cue 1 @  100 BMP 1_00 minutes.wav"
+dest_files=["res://.godot/imported/LOOP_Tension Cue 1 @  100 BMP 1_00 minutes.wav-37ccc1cc95516c398a02b37245a7025a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

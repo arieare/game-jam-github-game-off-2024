@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://ejs4rvnvx38w"]
+[gd_scene load_steps=63 format=3 uid="uid://ejs4rvnvx38w"]
 
 [ext_resource type="FontFile" uid="uid://0qu55fxexoae" path="res://collection/rogue_knight/content/font/Beholden-Bold-Italic.ttf" id="1_sjdp3"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/play/score_label.gd" id="2_0m8uu"]
@@ -7,26 +7,39 @@
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/win/money_label.gd" id="3_561vr"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/play/move_label.gd" id="3_ex05q"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/win/winning_bg.gd" id="4_jn0lq"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/game_over_pattern.gd" id="5_aqlms"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/game_over_score_text.gd" id="6_k0a3w"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/lose/game_over.gd" id="6_q5rda"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/game_over_point_text.gd" id="7_kx1ov"]
+[ext_resource type="Shader" path="res://collection/rogue_knight/content/shader/shine.gdshader" id="8_2gsj2"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/game_over_move_text.gd" id="8_6jj62"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/win/winning_round.gd" id="8_vi7j0"]
-[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/shop/shop_scrim.gd" id="11_utjgm"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/game_over_letter_text.gd" id="9_kp7gp"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/ui_btn_rerun.gd" id="10_hpvp3"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/lose/losing_bg.gd" id="12_4jhyq"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/ui_btn_submit.gd" id="12_hl5h7"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/finale_ui.gd" id="12_ojfji"]
 [ext_resource type="PackedScene" uid="uid://dvmevgyve63df" path="res://collection/rogue_knight/game/prefab/ui/ui_badge_label.tscn" id="12_tnn8x"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/play/patch_panel.gd" id="13_2qjwg"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/play/score_panel.gd" id="13_ne0us"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/play/ui_btn_start.gd" id="14_0vnbx"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/play/ui_btn_cancel_move.gd" id="14_44463"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/play/money_ui.gd" id="15_1lq7n"]
-[ext_resource type="Texture2D" uid="uid://c5ftpu0lu5is5" path="res://collection/rogue_knight/content/ui/icon_point.png" id="19_5mswx"]
-[ext_resource type="Texture2D" uid="uid://bebggupy1lafu" path="res://collection/rogue_knight/content/ui/icon_move.png" id="19_lxvgo"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/shop.gd" id="18_iitck"]
 [ext_resource type="PackedScene" uid="uid://bvb28qbqqsg06" path="res://collection/rogue_knight/game/prefab/patch/patch_inventory_item.tscn" id="23_4lg16"]
 [ext_resource type="FontFile" uid="uid://lmjciv1bex47" path="res://content/font/AvenuePixel-Regular.ttf" id="23_lxvgo"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/play/move_panel.gd" id="24_3i4a7"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/tutorial.gd" id="28_aqlms"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/dialog_manager.gd" id="28_sjdp3"]
+[ext_resource type="PackedScene" uid="uid://5rqv8gbrjcok" path="res://collection/rogue_knight/game/prefab/chat_box/chat_box.tscn" id="29_6hqkd"]
+[ext_resource type="Texture2D" uid="uid://b7o2b2m6lxud0" path="res://collection/rogue_knight/content/sprite/tutorial_vertical.png" id="29_aqlms"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/game_level_label.gd" id="32_wa3v5"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/the_end.gd" id="34_v0hl8"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/win/ui_btn_claim.gd" id="35_c3ffn"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/shop/ui_btn_redeem.gd" id="37_3g7t4"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/play/ui_btn_main_menu.gd" id="37_6rr6p"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/shop/shop_panel.gd" id="37_nekbv"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/fin_bg.gd" id="39_iitck"]
 
 [sub_resource type="Theme" id="Theme_bf3o3"]
 default_font = ExtResource("1_sjdp3")
@@ -35,27 +48,34 @@ default_font = ExtResource("1_sjdp3")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wu7mo"]
 shader = ExtResource("3_8o3lu")
-shader_parameter/progress = 0.026
+shader_parameter/progress = 0.98
 shader_parameter/diamondPixelSize = 100.0
 
-[sub_resource type="Gradient" id="Gradient_2txnq"]
-offsets = PackedFloat32Array(0.156398, 0.559242, 0.658768)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.235294, 0, 0, 0, 0)
+[sub_resource type="Shader" id="Shader_6hqkd"]
+code = "shader_type canvas_item;
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_lxvgo"]
-gradient = SubResource("Gradient_2txnq")
-width = 1000
-height = 1000
-use_hdr = true
-fill = 1
-fill_from = Vector2(0.5, 0.5)
+// Ranges from 0 to 1 over the course of the transition.
+// We use this to actually animate the shader.
+uniform float progress : hint_range(0, 1);
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5mswx"]
-texture = SubResource("GradientTexture2D_lxvgo")
-texture_margin_left = 32.0
-texture_margin_top = 32.0
-texture_margin_right = 32.0
-texture_margin_bottom = 32.0
+// Size of each diamond, in pixels.
+uniform float diamondPixelSize = 10.0;
+
+void fragment() {
+	float xFraction = fract(FRAGCOORD.x / diamondPixelSize);
+	float yFraction = fract(FRAGCOORD.y / diamondPixelSize);
+	float xDistance = abs(xFraction - 0.5);
+	float yDistance = abs(yFraction - 0.5);
+	if (xDistance + yDistance + UV.x + UV.y > progress * 4.0) {
+		discard;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aqlms"]
+resource_local_to_scene = true
+shader = SubResource("Shader_6hqkd")
+shader_parameter/progress = 0.4
+shader_parameter/diamondPixelSize = 100.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2txnq"]
 bg_color = Color(0, 0, 0, 1)
@@ -63,28 +83,40 @@ corner_radius_top_left = 40
 corner_radius_top_right = 40
 corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
+shadow_color = Color(0, 0, 0, 0.227451)
+shadow_size = 45
+shadow_offset = Vector2(10, 20)
+
+[sub_resource type="Gradient" id="Gradient_2gsj2"]
+offsets = PackedFloat32Array(0.516129, 1)
+colors = PackedColorArray(0.474982, 0.240595, 0.177609, 1, 1, 0.966667, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hl5h7"]
+gradient = SubResource("Gradient_2gsj2")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hl5h7"]
+shader = ExtResource("8_2gsj2")
+shader_parameter/gradient = SubResource("GradientTexture2D_hl5h7")
+shader_parameter/spread = 0.5
+shader_parameter/cutoff = 0.4
+shader_parameter/size = 0.8
+shader_parameter/speed = 1.0
+shader_parameter/ray1_density = 8.0
+shader_parameter/ray2_density = 30.0
+shader_parameter/ray2_intensity = 0.3
+shader_parameter/core_intensity = 2.0
+shader_parameter/hdr = true
+shader_parameter/seed = 5.0
+
+[sub_resource type="Gradient" id="Gradient_hl5h7"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ojfji"]
+gradient = SubResource("Gradient_hl5h7")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cgwcw"]
 shader = ExtResource("3_8o3lu")
 shader_parameter/progress = 0.808
 shader_parameter/diamondPixelSize = 100.0
-
-[sub_resource type="Theme" id="Theme_6hhjv"]
-
-[sub_resource type="Gradient" id="Gradient_lu1hd"]
-offsets = PackedFloat32Array(0, 0.656613)
-colors = PackedColorArray(0, 0, 0, 0.419608, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_cav10"]
-gradient = SubResource("Gradient_lu1hd")
-width = 1000
-height = 1000
-use_hdr = true
-fill = 1
-fill_from = Vector2(1, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ga6ao"]
-texture = SubResource("GradientTexture2D_cav10")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cdxde"]
 content_margin_left = 12.0
@@ -104,10 +136,60 @@ shadow_size = 1
 shadow_offset = Vector2(0, 3)
 anti_aliasing = false
 
+[sub_resource type="Theme" id="Theme_6hhjv"]
+
+[sub_resource type="Gradient" id="Gradient_lu1hd"]
+offsets = PackedFloat32Array(0, 0.656613)
+colors = PackedColorArray(0, 0, 0, 0.419608, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cav10"]
+gradient = SubResource("Gradient_lu1hd")
+width = 1000
+height = 1000
+use_hdr = true
+fill = 1
+fill_from = Vector2(1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ga6ao"]
+texture = SubResource("GradientTexture2D_cav10")
+
 [sub_resource type="Theme" id="Theme_2txnq"]
 
 [sub_resource type="Theme" id="Theme_5mswx"]
 default_font = ExtResource("1_sjdp3")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjdp3"]
+bg_color = Color(0, 0, 0, 0.768627)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="Shader" id="Shader_hpvp3"]
+code = "shader_type canvas_item;
+
+// Ranges from 0 to 1 over the course of the transition.
+// We use this to actually animate the shader.
+uniform float progress : hint_range(0, 1);
+
+// Size of each diamond, in pixels.
+uniform float diamondPixelSize = 10.0;
+
+void fragment() {
+	float xFraction = fract(FRAGCOORD.x / diamondPixelSize);
+	float yFraction = fract(FRAGCOORD.y / diamondPixelSize);
+	float xDistance = abs(xFraction - 0.5);
+	float yDistance = abs(yFraction - 0.5);
+	if (xDistance + yDistance + UV.x + UV.y > progress * 4.0) {
+		discard;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fef6t"]
+resource_local_to_scene = true
+shader = SubResource("Shader_hpvp3")
+shader_parameter/progress = 1.0
+shader_parameter/diamondPixelSize = 200.0
 
 [node name="game_ui" type="Control"]
 texture_filter = 1
@@ -121,7 +203,6 @@ mouse_filter = 2
 theme = SubResource("Theme_bf3o3")
 
 [node name="game_over" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -148,8 +229,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.16, 0, 0, 0.784314)
+color = Color(0.35, 0, 0, 0.905882)
 script = ExtResource("12_4jhyq")
+
+[node name="pattern" type="ColorRect" parent="game_over/menu"]
+material = SubResource("ShaderMaterial_aqlms")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.194892, 8.37776e-07, 4.45209e-07, 0.905882)
+script = ExtResource("5_aqlms")
 
 [node name="game_over_label" type="RichTextLabel" parent="game_over/menu"]
 visible = false
@@ -192,21 +284,6 @@ offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="shadow" type="Panel" parent="game_over/menu/result"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -400.0
-offset_top = -400.0
-offset_right = 400.0
-offset_bottom = 400.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_5mswx")
-
 [node name="result_panel" type="PanelContainer" parent="game_over/menu/result"]
 custom_minimum_size = Vector2(500, 500)
 layout_mode = 1
@@ -224,19 +301,19 @@ grow_vertical = 2
 rotation = 0.0349066
 theme_override_styles/panel = SubResource("StyleBoxFlat_2txnq")
 
-[node name="margin" type="MarginContainer" parent="game_over/menu/result/result_panel"]
+[node name="_margin" type="MarginContainer" parent="game_over/menu/result/result_panel"]
 layout_mode = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
+theme_override_constants/margin_bottom = 48
 
-[node name="BoxContainer" type="BoxContainer" parent="game_over/menu/result/result_panel/margin"]
+[node name="BoxContainer" type="BoxContainer" parent="game_over/menu/result/result_panel/_margin"]
 layout_mode = 2
 theme_override_constants/separation = 48
 vertical = true
 
-[node name="title" type="RichTextLabel" parent="game_over/menu/result/result_panel/margin/BoxContainer"]
+[node name="title" type="RichTextLabel" parent="game_over/menu/result/result_panel/_margin/BoxContainer"]
 layout_mode = 2
 theme_override_colors/default_color = Color(1, 0.379497, 0.453934, 1)
 theme_override_font_sizes/normal_font_size = 64
@@ -246,81 +323,154 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 
-[node name="BoxContainer4" type="BoxContainer" parent="game_over/menu/result/result_panel/margin/BoxContainer"]
+[node name="_box" type="BoxContainer" parent="game_over/menu/result/result_panel/_margin/BoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 24
+theme_override_constants/separation = 16
 vertical = true
 
-[node name="BoxContainer" type="BoxContainer" parent="game_over/menu/result/result_panel/margin/BoxContainer/BoxContainer4"]
+[node name="BoxContainer4" type="BoxContainer" parent="game_over/menu/result/result_panel/_margin/BoxContainer/_box"]
 layout_mode = 2
+theme_override_constants/separation = 16
 
-[node name="title2" type="RichTextLabel" parent="game_over/menu/result/result_panel/margin/BoxContainer/BoxContainer4/BoxContainer"]
-custom_minimum_size = Vector2(250, 0)
+[node name="title2" type="RichTextLabel" parent="game_over/menu/result/result_panel/_margin/BoxContainer/_box/BoxContainer4"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 28
-text = "Highest Run Points"
+text = "¢ Score"
 fit_content = true
 scroll_active = false
-horizontal_alignment = 2
 
-[node name="title3" type="RichTextLabel" parent="game_over/menu/result/result_panel/margin/BoxContainer/BoxContainer4/BoxContainer"]
+[node name="title3" type="RichTextLabel" parent="game_over/menu/result/result_panel/_margin/BoxContainer/_box/BoxContainer4"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "600000"
+fit_content = true
+scroll_active = false
+script = ExtResource("6_k0a3w")
+
+[node name="BoxContainer" type="BoxContainer" parent="game_over/menu/result/result_panel/_margin/BoxContainer/_box"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="title2" type="RichTextLabel" parent="game_over/menu/result/result_panel/_margin/BoxContainer/_box/BoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
 theme_override_font_sizes/normal_font_size = 28
+text = "Highest Points"
+fit_content = true
+scroll_active = false
+
+[node name="title3" type="RichTextLabel" parent="game_over/menu/result/result_panel/_margin/BoxContainer/_box/BoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
 text = "340"
 fit_content = true
 scroll_active = false
-horizontal_alignment = 1
+script = ExtResource("7_kx1ov")
 
-[node name="BoxContainer2" type="BoxContainer" parent="game_over/menu/result/result_panel/margin/BoxContainer/BoxContainer4"]
+[node name="BoxContainer2" type="BoxContainer" parent="game_over/menu/result/result_panel/_margin/BoxContainer/_box"]
 layout_mode = 2
+theme_override_constants/separation = 16
 
-[node name="title2" type="RichTextLabel" parent="game_over/menu/result/result_panel/margin/BoxContainer/BoxContainer4/BoxContainer2"]
-custom_minimum_size = Vector2(250, 0)
+[node name="title2" type="RichTextLabel" parent="game_over/menu/result/result_panel/_margin/BoxContainer/_box/BoxContainer2"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 28
 text = "Shortest Move"
 fit_content = true
 scroll_active = false
-horizontal_alignment = 2
 
-[node name="title3" type="RichTextLabel" parent="game_over/menu/result/result_panel/margin/BoxContainer/BoxContainer4/BoxContainer2"]
+[node name="title3" type="RichTextLabel" parent="game_over/menu/result/result_panel/_margin/BoxContainer/_box/BoxContainer2"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
 text = "1"
 fit_content = true
 scroll_active = false
-horizontal_alignment = 1
+script = ExtResource("8_6jj62")
 
-[node name="BoxContainer3" type="BoxContainer" parent="game_over/menu/result/result_panel/margin/BoxContainer/BoxContainer4"]
+[node name="divider3" type="ColorRect" parent="game_over/menu/result/result_panel/_margin/BoxContainer/_box"]
+custom_minimum_size = Vector2(20, 1)
 layout_mode = 2
+size_flags_vertical = 4
 
-[node name="title2" type="RichTextLabel" parent="game_over/menu/result/result_panel/margin/BoxContainer/BoxContainer4/BoxContainer3"]
-custom_minimum_size = Vector2(250, 0)
+[node name="BoxContainer3" type="BoxContainer" parent="game_over/menu/result/result_panel/_margin/BoxContainer/_box"]
+layout_mode = 2
+theme_override_constants/separation = 12
+vertical = true
+
+[node name="title2" type="RichTextLabel" parent="game_over/menu/result/result_panel/_margin/BoxContainer/_box/BoxContainer3"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 28
-text = "Letter Collected"
+text = "Secret Letter Collected"
 fit_content = true
 scroll_active = false
-horizontal_alignment = 2
 
-[node name="title3" type="RichTextLabel" parent="game_over/menu/result/result_panel/margin/BoxContainer/BoxContainer4/BoxContainer3"]
+[node name="title3" type="RichTextLabel" parent="game_over/menu/result/result_panel/_margin/BoxContainer/_box/BoxContainer3"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
 text = "S-A-D"
 fit_content = true
 scroll_active = false
+script = ExtResource("9_kp7gp")
+
+[node name="_margin" type="MarginContainer" parent="game_over/menu/result/result_panel/_margin/BoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_right = 24
+
+[node name="_box" type="BoxContainer" parent="game_over/menu/result/result_panel/_margin/BoxContainer/_margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ui_btn_rerun" type="Button" parent="game_over/menu/result/result_panel/_margin/BoxContainer/_margin/_box" node_paths=PackedStringArray("btn_label")]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+script = ExtResource("10_hpvp3")
+btn_label = NodePath("btn_label")
+
+[node name="btn_label" type="RichTextLabel" parent="game_over/menu/result/result_panel/_margin/BoxContainer/_margin/_box/ui_btn_rerun"]
+clip_contents = false
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -17.0
+offset_right = 50.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+bbcode_enabled = true
+text = "RE-RUN"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 
-[node name="ui_btn_main_menu" type="Button" parent="game_over/menu/result/result_panel/margin/BoxContainer" node_paths=PackedStringArray("btn_label")]
+[node name="ui_btn_main_menu" type="Button" parent="game_over/menu/result/result_panel/_margin/BoxContainer/_margin/_box" node_paths=PackedStringArray("btn_label")]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 6
 script = ExtResource("37_6rr6p")
 btn_label = NodePath("btn_label")
 
-[node name="btn_label" type="RichTextLabel" parent="game_over/menu/result/result_panel/margin/BoxContainer/ui_btn_main_menu"]
+[node name="btn_label" type="RichTextLabel" parent="game_over/menu/result/result_panel/_margin/BoxContainer/_margin/_box/ui_btn_main_menu"]
 clip_contents = false
 custom_minimum_size = Vector2(100, 32)
 layout_mode = 1
@@ -353,6 +503,24 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("8_vi7j0")
+
+[node name="shine" type="TextureRect" parent="winning_round"]
+visible = false
+material = SubResource("ShaderMaterial_hl5h7")
+custom_minimum_size = Vector2(800, 800)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ojfji")
 
 [node name="bg" type="ColorRect" parent="winning_round"]
 material = SubResource("ShaderMaterial_cgwcw")
@@ -388,13 +556,13 @@ theme_override_constants/shadow_offset_y = 10
 theme_override_constants/shadow_offset_x = 4
 theme_override_font_sizes/normal_font_size = 72
 bbcode_enabled = true
-text = "[wave amp=120.0 freq=2.0 connected=1]$0[/wave]"
+text = "[wave amp=120.0 freq=2.0 connected=1]ø0[/wave]"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 script = ExtResource("3_561vr")
-score = NodePath("../../in_game/side_bar/box/score_panel/point/node/score_label")
-move = NodePath("../../in_game/side_bar/box/score_panel/move/move_label")
+score = NodePath("../../in_game/side_bar/_box/score_panel/point/node/score_label")
+move = NodePath("../../in_game/side_bar/_box/score_panel/move/move_label")
 btn_claim = NodePath("../ui_btn_claim")
 
 [node name="winning_label" type="Label" parent="winning_round"]
@@ -458,6 +626,91 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 
+[node name="finale_ui" type="Control" parent="." node_paths=PackedStringArray("input_field")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_ojfji")
+input_field = NodePath("_box/ui_password_input")
+
+[node name="bg2" type="ColorRect" parent="finale_ui"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 105.0
+offset_top = -160.0
+offset_right = 105.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.380482
+color = Color(0, 0, 0, 0.784314)
+
+[node name="_box" type="BoxContainer" parent="finale_ui"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -93.0
+offset_bottom = 93.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+vertical = true
+
+[node name="ui_password_input" type="TextEdit" parent="finale_ui/_box"]
+clip_contents = false
+custom_minimum_size = Vector2(230, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_placeholder_color = Color(0.448704, 0.363772, 0.608121, 1)
+theme_override_constants/line_spacing = 9
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_cdxde")
+placeholder_text = "SECRET CODE"
+wrap_mode = 1
+scroll_fit_content_height = true
+caret_blink = true
+
+[node name="ui_btn_submit" type="Button" parent="finale_ui/_box" node_paths=PackedStringArray("btn_label", "input_field")]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("12_hl5h7")
+btn_label = NodePath("btn_label")
+input_field = NodePath("../ui_password_input")
+
+[node name="btn_label" type="RichTextLabel" parent="finale_ui/_box/ui_btn_submit"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -9.5
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+bbcode_enabled = true
+text = "[wave amp=10.0 freq=10.0 connected=1]SUBMIT[/wave]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
 [node name="in_game" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -477,6 +730,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 theme = SubResource("Theme_6hhjv")
+script = ExtResource("18_iitck")
 
 [node name="shop_scrim" type="Control" parent="in_game/shop"]
 layout_mode = 1
@@ -486,7 +740,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-script = ExtResource("11_utjgm")
 
 [node name="overlay" type="Panel" parent="in_game/shop/shop_scrim"]
 layout_mode = 1
@@ -501,7 +754,7 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_ga6ao")
 
-[node name="margin" type="MarginContainer" parent="in_game/shop"]
+[node name="_margin" type="MarginContainer" parent="in_game/shop"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -513,27 +766,27 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="BoxContainer" type="BoxContainer" parent="in_game/shop/margin"]
+[node name="_box" type="BoxContainer" parent="in_game/shop/_margin"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 theme_override_constants/separation = 24
 vertical = true
 
-[node name="game_title" type="Label" parent="in_game/shop/margin/BoxContainer"]
+[node name="game_title" type="Label" parent="in_game/shop/_margin/_box"]
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.72, 0.72, 0.72, 1)
 theme_override_colors/font_shadow_color = Color(0.0941176, 0.0823529, 0.160784, 0.643137)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 3
 theme_override_font_sizes/font_size = 20
-text = "kardinal v 0.2"
+text = "kardinal v 1.0"
 horizontal_alignment = 2
 vertical_alignment = 2
 uppercase = true
 
-[node name="patch_panel" type="BoxContainer" parent="in_game/shop/margin/BoxContainer" node_paths=PackedStringArray("patch_inventory_list", "patch_inventory_heading")]
+[node name="patch_panel" type="BoxContainer" parent="in_game/shop/_margin/_box" node_paths=PackedStringArray("patch_inventory_list", "patch_inventory_heading")]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 12
@@ -544,7 +797,7 @@ patch_template = ExtResource("23_4lg16")
 patch_inventory_list = NodePath("patch_inventory_list")
 patch_inventory_heading = NodePath("vbox/heading")
 
-[node name="vbox" type="BoxContainer" parent="in_game/shop/margin/BoxContainer/patch_panel"]
+[node name="vbox" type="BoxContainer" parent="in_game/shop/_margin/_box/patch_panel"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_vertical = 3
@@ -552,16 +805,16 @@ theme_override_constants/separation = 12
 alignment = 1
 vertical = true
 
-[node name="heading" type="BoxContainer" parent="in_game/shop/margin/BoxContainer/patch_panel/vbox"]
+[node name="heading" type="BoxContainer" parent="in_game/shop/_margin/_box/patch_panel/vbox"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="divider" type="ColorRect" parent="in_game/shop/margin/BoxContainer/patch_panel/vbox/heading"]
+[node name="divider" type="ColorRect" parent="in_game/shop/_margin/_box/patch_panel/vbox/heading"]
 custom_minimum_size = Vector2(20, 1)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="patch_title" type="Label" parent="in_game/shop/margin/BoxContainer/patch_panel/vbox/heading"]
+[node name="patch_title" type="Label" parent="in_game/shop/_margin/_box/patch_panel/vbox/heading"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -573,29 +826,29 @@ text = "Patches"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="divider2" type="ColorRect" parent="in_game/shop/margin/BoxContainer/patch_panel/vbox/heading"]
+[node name="divider2" type="ColorRect" parent="in_game/shop/_margin/_box/patch_panel/vbox/heading"]
 custom_minimum_size = Vector2(100, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="patch_inventory_list" type="HBoxContainer" parent="in_game/shop/margin/BoxContainer/patch_panel"]
+[node name="patch_inventory_list" type="HBoxContainer" parent="in_game/shop/_margin/_box/patch_panel"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Panel" type="Panel" parent="in_game/shop/margin/BoxContainer/patch_panel/patch_inventory_list"]
+[node name="Panel" type="Panel" parent="in_game/shop/_margin/_box/patch_panel/patch_inventory_list"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 
-[node name="Panel2" type="Panel" parent="in_game/shop/margin/BoxContainer/patch_panel/patch_inventory_list"]
+[node name="Panel2" type="Panel" parent="in_game/shop/_margin/_box/patch_panel/patch_inventory_list"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 
-[node name="Panel3" type="Panel" parent="in_game/shop/margin/BoxContainer/patch_panel/patch_inventory_list"]
+[node name="Panel3" type="Panel" parent="in_game/shop/_margin/_box/patch_panel/patch_inventory_list"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 
-[node name="shop_panel" type="BoxContainer" parent="in_game/shop/margin/BoxContainer"]
+[node name="shop_panel" type="BoxContainer" parent="in_game/shop/_margin/_box"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -604,16 +857,16 @@ theme_override_constants/separation = 24
 vertical = true
 script = ExtResource("37_nekbv")
 
-[node name="heading" type="BoxContainer" parent="in_game/shop/margin/BoxContainer/shop_panel"]
+[node name="heading" type="BoxContainer" parent="in_game/shop/_margin/_box/shop_panel"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="divider" type="ColorRect" parent="in_game/shop/margin/BoxContainer/shop_panel/heading"]
+[node name="divider" type="ColorRect" parent="in_game/shop/_margin/_box/shop_panel/heading"]
 custom_minimum_size = Vector2(20, 1)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="shop_title" type="Label" parent="in_game/shop/margin/BoxContainer/shop_panel/heading"]
+[node name="shop_title" type="Label" parent="in_game/shop/_margin/_box/shop_panel/heading"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -625,18 +878,18 @@ text = "Merchants"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="divider2" type="ColorRect" parent="in_game/shop/margin/BoxContainer/shop_panel/heading"]
+[node name="divider2" type="ColorRect" parent="in_game/shop/_margin/_box/shop_panel/heading"]
 custom_minimum_size = Vector2(48, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="redeem_box" type="BoxContainer" parent="in_game/shop/margin/BoxContainer/shop_panel"]
+[node name="redeem_box" type="BoxContainer" parent="in_game/shop/_margin/_box/shop_panel"]
 layout_mode = 2
 theme_override_constants/separation = 12
 alignment = 1
 
-[node name="input" type="TextEdit" parent="in_game/shop/margin/BoxContainer/shop_panel/redeem_box"]
+[node name="input" type="TextEdit" parent="in_game/shop/_margin/_box/shop_panel/redeem_box"]
 clip_contents = false
 custom_minimum_size = Vector2(230, 0)
 layout_mode = 2
@@ -646,17 +899,17 @@ theme_override_constants/line_spacing = 9
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxFlat_cdxde")
 placeholder_text = "COUPON CODE"
-wrap_mode = 1
 scroll_fit_content_height = true
 
-[node name="ui_btn_redeem" type="Button" parent="in_game/shop/margin/BoxContainer/shop_panel/redeem_box" node_paths=PackedStringArray("btn_label")]
+[node name="ui_btn_redeem" type="Button" parent="in_game/shop/_margin/_box/shop_panel/redeem_box" node_paths=PackedStringArray("btn_label", "input_box")]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("37_3g7t4")
 btn_label = NodePath("btn_label")
+input_box = NodePath("../input")
 
-[node name="btn_label" type="RichTextLabel" parent="in_game/shop/margin/BoxContainer/shop_panel/redeem_box/ui_btn_redeem"]
+[node name="btn_label" type="RichTextLabel" parent="in_game/shop/_margin/_box/shop_panel/redeem_box/ui_btn_redeem"]
 clip_contents = false
 layout_mode = 1
 anchors_preset = 14
@@ -678,8 +931,10 @@ horizontal_alignment = 1
 [node name="side_bar" type="MarginContainer" parent="in_game"]
 texture_filter = 1
 layout_mode = 1
-offset_right = 164.0
-offset_bottom = 316.0
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 254.0
+grow_horizontal = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
@@ -688,24 +943,17 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="box" type="BoxContainer" parent="in_game/side_bar"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_constants/separation = 32
-vertical = true
-
-[node name="title" type="BoxContainer" parent="in_game/side_bar/box"]
+[node name="title" type="BoxContainer" parent="in_game/side_bar"]
 layout_mode = 2
 theme_override_constants/separation = 8
 vertical = true
 
-[node name="game_level" parent="in_game/side_bar/box/title" node_paths=PackedStringArray("game_level_name") instance=ExtResource("12_tnn8x")]
+[node name="game_level" parent="in_game/side_bar/title" node_paths=PackedStringArray("game_level_name") instance=ExtResource("12_tnn8x")]
 layout_mode = 2
-size_flags_horizontal = 0
 script = ExtResource("32_wa3v5")
 game_level_name = NodePath("../game_level_name")
 
-[node name="game_level_name" type="Label" parent="in_game/side_bar/box/title"]
+[node name="game_level_name" type="Label" parent="in_game/side_bar/title"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -713,10 +961,124 @@ theme_override_colors/font_shadow_color = Color(0.270588, 0.231373, 0.45098, 1)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 3
 theme_override_font_sizes/font_size = 40
-horizontal_alignment = 2
+text = "limbo"
+horizontal_alignment = 1
 uppercase = true
 
-[node name="menu_bar" type="BoxContainer" parent="in_game/side_bar/box"]
+[node name="_box" type="BoxContainer" parent="in_game/side_bar"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 32
+vertical = true
+
+[node name="score_panel" type="BoxContainer" parent="in_game/side_bar/_box" node_paths=PackedStringArray("point_row", "move_row", "money_row")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 12
+alignment = 1
+vertical = true
+script = ExtResource("13_ne0us")
+point_row = NodePath("point")
+move_row = NodePath("move")
+money_row = NodePath("money")
+
+[node name="money" type="HBoxContainer" parent="in_game/side_bar/_box/score_panel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="placeholder" type="Control" parent="in_game/side_bar/_box/score_panel/money"]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+
+[node name="money" type="Label" parent="in_game/side_bar/_box/score_panel/money/placeholder" node_paths=PackedStringArray("money_value_updater")]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -24.0
+offset_right = 48.0
+offset_bottom = 24.0
+grow_vertical = 2
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 48
+text = "¢0"
+uppercase = true
+script = ExtResource("15_1lq7n")
+money_value_updater = NodePath("../money_value_updates")
+
+[node name="money_value_updates" parent="in_game/side_bar/_box/score_panel/money/placeholder" instance=ExtResource("12_tnn8x")]
+layout_mode = 0
+script = null
+
+[node name="point" type="HBoxContainer" parent="in_game/side_bar/_box/score_panel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="points_title" type="Label" parent="in_game/side_bar/_box/score_panel/point"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0823529, 0.160784, 0.643137)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 32
+text = "points"
+vertical_alignment = 1
+
+[node name="node" type="Control" parent="in_game/side_bar/_box/score_panel/point"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="score_label" parent="in_game/side_bar/_box/score_panel/point/node" instance=ExtResource("12_tnn8x")]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
+theme = SubResource("Theme_2txnq")
+script = ExtResource("2_0m8uu")
+
+[node name="score_value_update" type="RichTextLabel" parent="in_game/side_bar/_box/score_panel/point/node"]
+visible = false
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("23_lxvgo")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[bgcolor=BLACK]+1[/bgcolor]"
+fit_content = true
+scroll_active = false
+
+[node name="move" type="HBoxContainer" parent="in_game/side_bar/_box/score_panel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="move_title" type="Label" parent="in_game/side_bar/_box/score_panel/move"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0823529, 0.160784, 0.643137)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 32
+text = "moves"
+vertical_alignment = 1
+
+[node name="move_label" parent="in_game/side_bar/_box/score_panel/move" instance=ExtResource("12_tnn8x")]
+layout_mode = 2
+script = ExtResource("3_ex05q")
+
+[node name="menu_bar" type="BoxContainer" parent="in_game/side_bar/_box"]
 visible = false
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
@@ -725,14 +1087,14 @@ size_flags_vertical = 0
 theme_override_constants/separation = 16
 vertical = true
 
-[node name="ui_btn_main_menu" type="Button" parent="in_game/side_bar/box/menu_bar" node_paths=PackedStringArray("btn_label")]
+[node name="ui_btn_main_menu" type="Button" parent="in_game/side_bar/_box/menu_bar" node_paths=PackedStringArray("btn_label")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 script = ExtResource("37_6rr6p")
 btn_label = NodePath("btn_label")
 
-[node name="btn_label" type="RichTextLabel" parent="in_game/side_bar/box/menu_bar/ui_btn_main_menu"]
+[node name="btn_label" type="RichTextLabel" parent="in_game/side_bar/_box/menu_bar/ui_btn_main_menu"]
 clip_contents = false
 custom_minimum_size = Vector2(100, 32)
 layout_mode = 1
@@ -752,126 +1114,10 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 
-[node name="score_panel" type="BoxContainer" parent="in_game/side_bar/box" node_paths=PackedStringArray("point_row", "move_row", "money_row")]
+[node name="dialog_manager" type="Control" parent="in_game/side_bar/_box"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme_override_constants/separation = 16
-alignment = 1
-vertical = true
-script = ExtResource("13_ne0us")
-point_row = NodePath("point")
-move_row = NodePath("move")
-money_row = NodePath("money")
-
-[node name="money" type="HBoxContainer" parent="in_game/side_bar/box/score_panel"]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="placeholder" type="Control" parent="in_game/side_bar/box/score_panel/money"]
-custom_minimum_size = Vector2(100, 60)
-layout_mode = 2
-
-[node name="money" type="Label" parent="in_game/side_bar/box/score_panel/money/placeholder" node_paths=PackedStringArray("money_value_updater")]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -24.0
-offset_right = 48.0
-offset_bottom = 24.0
-grow_vertical = 2
-theme_override_constants/shadow_offset_x = 3
-theme_override_constants/shadow_offset_y = 5
-theme_override_font_sizes/font_size = 48
-text = "$0"
-uppercase = true
-script = ExtResource("15_1lq7n")
-money_value_updater = NodePath("../money_value_updates")
-
-[node name="money_value_updates" parent="in_game/side_bar/box/score_panel/money/placeholder" instance=ExtResource("12_tnn8x")]
-layout_mode = 0
-script = null
-
-[node name="point" type="HBoxContainer" parent="in_game/side_bar/box/score_panel"]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="icon_point" type="TextureRect" parent="in_game/side_bar/box/score_panel/point"]
-visible = false
-custom_minimum_size = Vector2(56, 56)
-layout_mode = 2
-texture = ExtResource("19_5mswx")
-expand_mode = 1
-
-[node name="points_title" type="Label" parent="in_game/side_bar/box/score_panel/point"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.0941176, 0.0823529, 0.160784, 0.643137)
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 3
-theme_override_font_sizes/font_size = 32
-text = "points"
-vertical_alignment = 1
-
-[node name="node" type="Control" parent="in_game/side_bar/box/score_panel/point"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="score_label" parent="in_game/side_bar/box/score_panel/point/node" instance=ExtResource("12_tnn8x")]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-grow_vertical = 2
-theme = SubResource("Theme_2txnq")
-script = ExtResource("2_0m8uu")
-
-[node name="score_value_update" type="RichTextLabel" parent="in_game/side_bar/box/score_panel/point/node"]
-visible = false
-custom_minimum_size = Vector2(120, 0)
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -20.0
-offset_right = 40.0
-offset_bottom = 20.0
-grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("23_lxvgo")
-theme_override_font_sizes/normal_font_size = 32
-bbcode_enabled = true
-text = "[bgcolor=BLACK]+1[/bgcolor]"
-fit_content = true
-scroll_active = false
-
-[node name="move" type="HBoxContainer" parent="in_game/side_bar/box/score_panel"]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="icon_move" type="TextureRect" parent="in_game/side_bar/box/score_panel/move"]
-visible = false
-custom_minimum_size = Vector2(56, 56)
-layout_mode = 2
-texture = ExtResource("19_lxvgo")
-expand_mode = 1
-
-[node name="move_title" type="Label" parent="in_game/side_bar/box/score_panel/move"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.0941176, 0.0823529, 0.160784, 0.643137)
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 3
-theme_override_font_sizes/font_size = 32
-text = "moves"
-vertical_alignment = 1
-
-[node name="move_label" parent="in_game/side_bar/box/score_panel/move" instance=ExtResource("12_tnn8x")]
-layout_mode = 2
-script = ExtResource("3_ex05q")
+script = ExtResource("28_sjdp3")
+chat_box = ExtResource("29_6hqkd")
 
 [node name="move_panel" type="BoxContainer" parent="in_game"]
 layout_mode = 1
@@ -883,13 +1129,14 @@ theme_override_constants/separation = 16
 alignment = 1
 script = ExtResource("24_3i4a7")
 
-[node name="ui_btn_cancel_move" type="Button" parent="in_game/move_panel" node_paths=PackedStringArray("btn_label")]
+[node name="ui_btn_cancel_move" type="Button" parent="in_game/move_panel" node_paths=PackedStringArray("btn_label", "badge_label")]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("14_44463")
 btn_label = NodePath("btn_label")
+badge_label = NodePath("ui_badge_label")
 
 [node name="btn_label" type="RichTextLabel" parent="in_game/move_panel/ui_btn_cancel_move"]
 clip_contents = false
@@ -925,13 +1172,14 @@ grow_horizontal = 0
 grow_vertical = 0
 label_text = "(esc.)"
 
-[node name="ui_btn_move" type="Button" parent="in_game/move_panel" node_paths=PackedStringArray("btn_label")]
+[node name="ui_btn_move" type="Button" parent="in_game/move_panel" node_paths=PackedStringArray("btn_label", "badge_label")]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("2_t3juk")
 btn_label = NodePath("btn_label")
+badge_label = NodePath("ui_badge_label")
 
 [node name="btn_label" type="RichTextLabel" parent="in_game/move_panel/ui_btn_move"]
 clip_contents = false
@@ -964,13 +1212,14 @@ offset_bottom = 28.0
 grow_vertical = 0
 label_text = "(space)"
 
-[node name="ui_btn_start" type="Button" parent="in_game/move_panel" node_paths=PackedStringArray("btn_label")]
+[node name="ui_btn_start" type="Button" parent="in_game/move_panel" node_paths=PackedStringArray("btn_label", "badge_label")]
 custom_minimum_size = Vector2(100, 32)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 script = ExtResource("14_0vnbx")
 btn_label = NodePath("btn_label")
+badge_label = NodePath("ui_badge_label")
 
 [node name="btn_label" type="RichTextLabel" parent="in_game/move_panel/ui_btn_start"]
 clip_contents = false
@@ -1003,3 +1252,130 @@ offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 0
 label_text = "(space)"
+
+[node name="tutorial" type="Control" parent="in_game" node_paths=PackedStringArray("panel")]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -410.0
+offset_bottom = 410.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("28_aqlms")
+panel = NodePath("PanelContainer")
+
+[node name="PanelContainer" type="PanelContainer" parent="in_game/tutorial"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.0
+offset_top = -400.5
+offset_right = 155.0
+offset_bottom = 400.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sjdp3")
+
+[node name="TextureRect" type="TextureRect" parent="in_game/tutorial/PanelContainer"]
+layout_mode = 2
+texture = ExtResource("29_aqlms")
+expand_mode = 1
+
+[node name="the_end" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("34_v0hl8")
+
+[node name="bg" type="ColorRect" parent="the_end" node_paths=PackedStringArray("control")]
+material = SubResource("ShaderMaterial_fef6t")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("39_iitck")
+control = NodePath("../_box")
+
+[node name="_box" type="BoxContainer" parent="the_end"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -93.0
+offset_bottom = 93.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+alignment = 1
+vertical = true
+
+[node name="the_end_label" type="RichTextLabel" parent="the_end/_box"]
+clip_contents = false
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 56
+bbcode_enabled = true
+text = "[wave amp=50.0 freq=2.0 connected=1]fin.[/wave]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="the_end_label2" type="RichTextLabel" parent="the_end/_box"]
+clip_contents = false
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "thanks for playing kardinal."
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="ui_btn_main_menu" type="Button" parent="the_end/_box" node_paths=PackedStringArray("btn_label")]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+script = ExtResource("37_6rr6p")
+btn_label = NodePath("btn_label")
+
+[node name="btn_label" type="RichTextLabel" parent="the_end/_box/ui_btn_main_menu"]
+clip_contents = false
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -17.0
+offset_right = 50.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+bbcode_enabled = true
+text = "MAIN MENU"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[connection signal="pressed" from="game_over/menu/result/result_panel/_margin/BoxContainer/_margin/_box/ui_btn_rerun" to="game_over/menu/result/result_panel/_margin/BoxContainer/_margin/_box/ui_btn_rerun" method="_on_pressed"]

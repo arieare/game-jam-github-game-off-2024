@@ -27,6 +27,19 @@ func _process(delta: float) -> void:
 			current_hovered_board = null
 		if cast:	
 			self.global_position = cast.position.snappedf(0.5)
+			
+		#keyboard input
+		#if Input.is_action_just_released("right"):
+			#for member in get_tree().get_nodes_in_group("board"):
+				#_on_square_un_hovered(member)
+			#
+			#prev_hovered_board = chess_piece.current_square
+			#current_hovered_board = board_node.board_array[int(chess_piece.current_square_index.x)][int(chess_piece.current_square_index.y + 1)]
+			#emit_signal("square_hovered", current_hovered_board)		
+
+	#current_square = board_node.board_array[int(starting_pos.x)][int(starting_pos.y)]
+	#current_square_index = board_node.board_index[current_square.name]						
+						
 
 	elif util.root.data_instance.current_game_state == util.root.data_instance.GAME_STATE.PLANNING:
 		for member in get_tree().get_nodes_in_group("board"):
@@ -48,30 +61,33 @@ func _process(delta: float) -> void:
 		_on_square_un_hovered(cast.collider)
 
 func _input(event: InputEvent) -> void:
-	if util.root.data_instance.current_game_state == util.root.data_instance.GAME_STATE.PLAYING:
-		if !event.is_echo() and event.is_action_pressed("confirm") and self.current_hovered_board:
-			if chess_piece.set_next_tile(self.current_hovered_board):
-				### show glow
-				#var mat = self.current_hovered_board.material
-				#if mat:
-					#var next_mat = mat.get_next_pass()
-					#if next_mat:
-						#next_mat.set_shader_parameter("aura_color",Color.FIREBRICK)
-						#print("selected mat" + str(next_mat))
-						
-				legal_move_overlay_spawner.spawn_target_move_hint(self.current_hovered_board)
-				util.root.data_instance.audio.sfx_dictionary.tile_select_confirm.sfx.play()
+	match util.root.data_instance.current_game_state:
+		util.root.data_instance.GAME_STATE.PLAYING:
+			if !event.is_echo() and event.is_action_pressed("confirm") and self.current_hovered_board:
+				
+				if chess_piece.set_next_tile(self.current_hovered_board):
+					### show glow
+					legal_move_overlay_spawner.spawn_target_move_hint(self.current_hovered_board)
+					util.root.data_instance.audio.sfx_dictionary.tile_select_confirm.sfx.play()
 
-			else:
+				else:
+					util.root.data_instance.game_data.current_cam.shake_node.shake(0.035)
+					util.root.data_instance.audio.sfx_dictionary.tile_select_deny.sfx.play()
+
+			
+			if !event.is_echo() and event.is_action_pressed("cancel"):
 				util.root.data_instance.game_data.current_cam.shake_node.shake(0.035)
 				util.root.data_instance.audio.sfx_dictionary.tile_select_deny.sfx.play()
 
-		
-		if !event.is_echo() and event.is_action_pressed("cancel"):
-			util.root.data_instance.game_data.current_cam.shake_node.shake(0.035)
-			util.root.data_instance.audio.sfx_dictionary.tile_select_deny.sfx.play()
-
-			chess_piece.remove_move()
+				chess_piece.remove_move()
+		util.root.data_instance.GAME_STATE.PLANNING:
+			if !event.is_echo() and event.is_action_pressed("confirm") and self.current_hovered_board:
+				var clicked_tile_vector = board_node.board_index[self.current_hovered_board.name]
+				if util.root.data_instance.game_data.patch_data.has(str(clicked_tile_vector)):
+					util.root.data_instance.remove_patch_from_board.emit(util.root.data_instance.game_data.patch_data[str(clicked_tile_vector)], clicked_tile_vector)
+					current_hovered_board = null
+					#print(util.root.data_instance.game_data.patch_data)
+	
 
 func _on_square_hovered(square):	
 	var hover_tween: Tween

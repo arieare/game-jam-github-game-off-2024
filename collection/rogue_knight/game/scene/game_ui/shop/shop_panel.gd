@@ -6,13 +6,6 @@ extends Control
 func _ready() -> void:
 	util.root.data_instance.connect("board_ready", _on_board_ready)
 
-
-func _process(delta: float) -> void:
-	if util.root.data_instance.current_game_state == util.root.data_instance.GAME_STATE.PLANNING and util.root.data_instance.game_data.current_level > 2:
-		self.show()
-	else:
-		self.hide()		
-
 var item_array := []
 func init_shop_item(rarity:int, id:String):
 	var new_item = shop_item.instantiate()
@@ -30,13 +23,12 @@ func init_shop_item(rarity:int, id:String):
 	self.add_child(new_item)
 	
 func _on_board_ready():
-	if util.root.data_instance.game_data.current_level > 2:
-		for i in util.root.data_instance.game_data.max_shop_size:
-			var rarity:int=get_item_rarity()
-			var item = util.root.data_instance.patch_dictionary[rarity].values().pick_random()
-			init_shop_item(rarity,item["id"])
-			util.root.data_instance.audio.sfx_dictionary.shop_item_added.sfx.play()
-			await get_tree().create_timer(0.05).timeout		
+	for i in util.root.data_instance.game_data.max_shop_size:
+		var rarity:int=get_item_rarity()
+		var item = util.root.data_instance.patch_dictionary[rarity].values().pick_random()
+		init_shop_item(rarity,item["id"])
+		util.root.data_instance.audio.sfx_dictionary.shop_item_added.sfx.play()
+		await get_tree().create_timer(0.05).timeout		
 
 var rng:=RandomNumberGenerator.new()
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bovsmbers774q"]
+[gd_scene load_steps=8 format=3 uid="uid://bovsmbers774q"]
 
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/shop/shop_item.gd" id="1_88pq3"]
 [ext_resource type="Texture2D" uid="uid://cr8t5vqcgmd6w" path="res://collection/rogue_knight/content/sprite/patch/patch_queen.png" id="2_v7nho"]
 [ext_resource type="Shader" path="res://content/shader/canvas_shimer.gdshader" id="3_pibm3"]
+[ext_resource type="FontFile" uid="uid://ba700idfwhfh0" path="res://collection/rogue_knight/content/font/Beholden-Medium.ttf" id="6_dpvfc"]
 [ext_resource type="StyleBox" uid="uid://e3tupv4x15yx" path="res://collection/rogue_knight/content/ui/ui_panel_normal.tres" id="6_e2evi"]
-[ext_resource type="Script" path="res://collection/rogue_knight/game/prefab/shop/ui_btn_purchase.gd" id="7_jlmv2"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/shop/ui_btn_purchase.gd" id="7_jlmv2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_62dka"]
 shader = ExtResource("3_pibm3")
@@ -147,6 +148,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_colors/default_color = Color(0, 0, 0, 0.705882)
+theme_override_fonts/normal_font = ExtResource("6_dpvfc")
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "xx"

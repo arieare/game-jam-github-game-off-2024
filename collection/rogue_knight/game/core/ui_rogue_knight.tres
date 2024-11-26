@@ -1,12 +1,16 @@
-[gd_resource type="Resource" script_class="UINodeList" load_steps=4 format=3 uid="uid://n0sfbycysh1m"]
+[gd_resource type="Resource" script_class="UINodeList" load_steps=6 format=3 uid="uid://n0sfbycysh1m"]
 
 [ext_resource type="Script" path="res://common/resource/ui_node.gd" id="1_ju74c"]
 [ext_resource type="PackedScene" uid="uid://jlhtgd2fwtq2" path="res://collection/rogue_knight/game/scene/main_menu/main_menu.tscn" id="2_x8has"]
 [ext_resource type="PackedScene" uid="uid://ejs4rvnvx38w" path="res://collection/rogue_knight/game/scene/game_ui/game_ui.tscn" id="3_yo4fe"]
+[ext_resource type="PackedScene" uid="uid://dcsk2bmoh0a6o" path="res://collection/rogue_knight/game/scene/credit_menu.tscn" id="4_1psgp"]
+[ext_resource type="PackedScene" uid="uid://dfjn1jvkbhnkk" path="res://collection/rogue_knight/game/scene/setting_menu/setting_menu.tscn" id="5_sjdtj"]
 
 [resource]
 script = ExtResource("1_ju74c")
 ui_node = Dictionary[String, PackedScene]({
+"credit_menu": ExtResource("4_1psgp"),
 "game_ui": ExtResource("3_yo4fe"),
-"main_menu": ExtResource("2_x8has")
+"main_menu": ExtResource("2_x8has"),
+"setting_menu": ExtResource("5_sjdtj")
 })

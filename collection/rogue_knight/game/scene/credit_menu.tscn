@@ -1,4 +1,17 @@
-[gd_scene format=3 uid="uid://dcsk2bmoh0a6o"]
+[gd_scene load_steps=7 format=3 uid="uid://dcsk2bmoh0a6o"]
+
+[ext_resource type="FontFile" uid="uid://ba700idfwhfh0" path="res://collection/rogue_knight/content/font/Beholden-Medium.ttf" id="1_o7jpk"]
+[ext_resource type="Shader" path="res://content/shader/canvas_transition_diamond.gdshader" id="2_mdu34"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/play/ui_btn_main_menu.gd" id="3_mdu34"]
+[ext_resource type="FontFile" uid="uid://0qu55fxexoae" path="res://collection/rogue_knight/content/font/Beholden-Bold-Italic.ttf" id="4_2aq1c"]
+
+[sub_resource type="Theme" id="Theme_2aq1c"]
+default_font = ExtResource("1_o7jpk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6olyf"]
+shader = ExtResource("2_mdu34")
+shader_parameter/progress = 0.227
+shader_parameter/diamondPixelSize = 100.0
 
 [node name="credit_menu" type="Control"]
 layout_mode = 3
@@ -7,6 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_2aq1c")
 
 [node name="bg" type="ColorRect" parent="."]
 layout_mode = 1
@@ -15,7 +29,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.126105, 0.1029, 0.21, 1)
+
+[node name="pattern" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_6olyf")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0975, 0.075, 0.1, 1)
 
 [node name="margin" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -29,88 +53,203 @@ theme_override_constants/margin_top = 72
 theme_override_constants/margin_right = 72
 theme_override_constants/margin_bottom = 72
 
-[node name="title" type="RichTextLabel" parent="margin"]
+[node name="BoxContainer2" type="BoxContainer" parent="margin"]
 layout_mode = 2
-text = "credit"
 
-[node name="BoxContainer" type="BoxContainer" parent="margin"]
+[node name="HBoxContainer" type="BoxContainer" parent="margin/BoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_constants/separation = 56
 vertical = true
 
-[node name="box" type="BoxContainer" parent="margin/BoxContainer"]
-custom_minimum_size = Vector2(400, 64)
+[node name="title" type="RichTextLabel" parent="margin/BoxContainer2/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_o7jpk")
+theme_override_font_sizes/normal_font_size = 96
+bbcode_enabled = true
+text = "credits."
+fit_content = true
+
+[node name="copyright" type="Label" parent="margin/BoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.565138, 0.579514, 0.777938, 1)
+theme_override_constants/line_spacing = 6
+theme_override_font_sizes/font_size = 24
+text = "\"kardinal\" a game by @arieare — jestersuitgame, as submission for #GithubGameOff game jam version v 1.0 ©️2024"
+autowrap_mode = 3
+
+[node name="ui_btn_main_menu" type="Button" parent="margin/BoxContainer2/HBoxContainer" node_paths=PackedStringArray("btn_label")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+script = ExtResource("3_mdu34")
+btn_label = NodePath("btn_label")
+
+[node name="btn_label" type="RichTextLabel" parent="margin/BoxContainer2/HBoxContainer/ui_btn_main_menu"]
+clip_contents = false
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -17.0
+offset_right = 50.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_2aq1c")
+bbcode_enabled = true
+text = "MAIN MENU"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="_box" type="BoxContainer" parent="margin/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 40
+vertical = true
+
+[node name="box" type="BoxContainer" parent="margin/BoxContainer2/_box"]
+custom_minimum_size = Vector2(750, 64)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+theme_override_constants/separation = 32
 
-[node name="label" type="RichTextLabel" parent="margin/BoxContainer/box"]
+[node name="label" type="RichTextLabel" parent="margin/BoxContainer2/_box/box"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.564706, 0.580392, 0.776471, 1)
+theme_override_fonts/normal_font = ExtResource("4_2aq1c")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[wave amp=1.0 freq=5.0 connected=1]font[wave]"
+horizontal_alignment = 2
+
+[node name="item" type="RichTextLabel" parent="margin/BoxContainer2/_box/box"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "font"
-
-[node name="font" type="RichTextLabel" parent="margin/BoxContainer/box"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Groundhog
-by ChevyRay's Pixel Fonts @ChevyRay
+theme_override_constants/line_separation = 8
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "Beholden
+by Amorphous
+amorphic.space
 "
 fit_content = true
 
-[node name="box3" type="BoxContainer" parent="margin/BoxContainer"]
-custom_minimum_size = Vector2(400, 64)
+[node name="box3" type="BoxContainer" parent="margin/BoxContainer2/_box"]
+custom_minimum_size = Vector2(750, 64)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+theme_override_constants/separation = 32
 
-[node name="label" type="RichTextLabel" parent="margin/BoxContainer/box3"]
+[node name="label" type="RichTextLabel" parent="margin/BoxContainer2/_box/box3"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.564706, 0.580392, 0.776471, 1)
+theme_override_fonts/normal_font = ExtResource("4_2aq1c")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[wave amp=1.0 freq=5.0 connected=1]sfx[wave]"
+horizontal_alignment = 2
+
+[node name="item" type="RichTextLabel" parent="margin/BoxContainer2/_box/box3"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "font"
-
-[node name="font" type="RichTextLabel" parent="margin/BoxContainer/box3"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Avenue Pixel
-by Jesse D. Jimenez jdjimenez.itch.io
-"
+theme_override_constants/line_separation = 8
+theme_override_font_sizes/normal_font_size = 24
+text = "Universal UI Soundpack
+by Nathan Gibson
+nathangibson.myportfolio.com"
 fit_content = true
 
-[node name="box2" type="BoxContainer" parent="margin/BoxContainer"]
-custom_minimum_size = Vector2(400, 64)
+[node name="box2" type="BoxContainer" parent="margin/BoxContainer2/_box"]
+custom_minimum_size = Vector2(750, 64)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+theme_override_constants/separation = 32
 
-[node name="label" type="RichTextLabel" parent="margin/BoxContainer/box2"]
+[node name="label" type="RichTextLabel" parent="margin/BoxContainer2/_box/box2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.564706, 0.580392, 0.776471, 1)
+theme_override_fonts/normal_font = ExtResource("4_2aq1c")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[wave amp=1.0 freq=5.0 connected=1]sfx[wave]"
+horizontal_alignment = 2
+
+[node name="item" type="RichTextLabel" parent="margin/BoxContainer2/_box/box2"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "sfx"
-
-[node name="font" type="RichTextLabel" parent="margin/BoxContainer/box2"]
-layout_mode = 2
-size_flags_horizontal = 3
+theme_override_constants/line_separation = 8
+theme_override_font_sizes/normal_font_size = 24
 text = "Casino Audio (1.1)
-by  Kenney Vleugels (Kenney.nl)"
+by  Kenney Vleugels
+Kenney.nl"
 fit_content = true
 
-[node name="box4" type="BoxContainer" parent="margin/BoxContainer"]
-custom_minimum_size = Vector2(400, 64)
+[node name="box4" type="BoxContainer" parent="margin/BoxContainer2/_box"]
+custom_minimum_size = Vector2(750, 64)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+theme_override_constants/separation = 32
 
-[node name="label" type="RichTextLabel" parent="margin/BoxContainer/box4"]
+[node name="label" type="RichTextLabel" parent="margin/BoxContainer2/_box/box4"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.564706, 0.580392, 0.776471, 1)
+theme_override_fonts/normal_font = ExtResource("4_2aq1c")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
 text = "bgm"
+horizontal_alignment = 2
 
-[node name="font" type="RichTextLabel" parent="margin/BoxContainer/box4"]
+[node name="item" type="RichTextLabel" parent="margin/BoxContainer2/_box/box4"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Exploration Cue 2 - Complete Mysterious Forest Game Music Pack
-by  Pablo Game Audio www.pablowunderlich.com"
+theme_override_constants/line_separation = 8
+theme_override_font_sizes/normal_font_size = 24
+text = "Mysterious Forest Game Music Pack
+by  Pablo Game Audio
+pablowunderlich.com"
 fit_content = true
 
-[node name="btn_main_menu" type="Button" parent="margin"]
+[node name="box5" type="BoxContainer" parent="margin/BoxContainer2/_box"]
+custom_minimum_size = Vector2(750, 64)
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 32
+
+[node name="label" type="RichTextLabel" parent="margin/BoxContainer2/_box/box5"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.564706, 0.580392, 0.776471, 1)
+theme_override_fonts/normal_font = ExtResource("4_2aq1c")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[wave amp=1.0 freq=5.0 connected=1]shader[wave]"
+horizontal_alignment = 2
+
+[node name="item" type="RichTextLabel" parent="margin/BoxContainer2/_box/box5"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/line_separation = 8
+theme_override_font_sizes/normal_font_size = 24
+text = "Screen-Space Edge Detection Outline Shader
+by  _lightning_storm
+godotshaders.com/shader/screen-space-edge-detection-outline-shader/"
+fit_content = true

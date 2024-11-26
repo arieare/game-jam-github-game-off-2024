@@ -7,7 +7,7 @@ func _ready():
 	game_node = util.root.game_instance.rogue_knight.game.game_node.scene_0
 	ui_node = util.root.game_instance.rogue_knight.ui.ui_node.game_ui
 	self.grab_focus()
-	util.root.data_instance.stylesheet.button_styler(self, btn_label, "black", "big", false, true)	
+	util.root.data_instance.stylesheet.button_styler(self, btn_label, "white", "big", false, true)	
 	#data_node = null
 
 func scene_update():

@@ -7,7 +7,7 @@ extends PanelContainer
 func _ready() -> void:
 	
 	label.text = label_text
-	util.root.data_instance.stylesheet.badge_styler(self, "black", "big")
+	util.root.data_instance.stylesheet.badge_styler(self, "black", "medium")
 	util.root.data_instance.connect("score_added", _on_score_added)
 	self.pivot_offset = self.size/2
 
@@ -21,7 +21,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if util.root.data_instance.current_game_state == util.root.data_instance.GAME_STATE.PLAYING:
 		label.text = str(util.root.data_instance.game_data.score)
-	util.root.data_instance.stylesheet.badge_styler(self, "black", "big")
+	util.root.data_instance.stylesheet.badge_styler(self, "black", "medium")
 
 func _on_score_added(score):
 	var current_pos := self.position

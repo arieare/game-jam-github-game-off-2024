@@ -5,9 +5,19 @@ extends BoxContainer
 @export var money_row: BoxContainer
 
 func _process(delta: float) -> void:
-	if util.root.data_instance.current_game_state == util.root.data_instance.GAME_STATE.PLANNING:
-		point_row.hide()
-		move_row.hide()
-	else:
-		point_row.show()
-		move_row.show()
+	match util.root.data_instance.current_game_state:
+		util.root.data_instance.GAME_STATE.PLANNING:
+			point_row.hide()
+			move_row.hide()
+		util.root.data_instance.GAME_STATE.PLAYING:
+			self.show()
+			point_row.show()
+			move_row.show()
+		util.root.data_instance.GAME_STATE.WINNING:
+			self.show()
+			point_row.show()
+			move_row.show()						
+		_:
+			self.hide()
+			point_row.hide()
+			move_row.hide()			

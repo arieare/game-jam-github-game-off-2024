@@ -23,13 +23,13 @@ func spawn_legal_move_hint(square_index, legal_move_array: Array):
 				var albedo = mat.albedo_color				
 				var next_mat = mat.next_pass
 				if next_mat:
-					next_mat.set_shader_parameter("aura_color",Color(Color.DARK_GREEN,0.4))
+					next_mat.set_shader_parameter("aura_color",Color(Color.GREEN,0.4))
 
 func clear_legal_move_hint():
-	#for nodes in util.root.data_instance.instance_pool.overlay_tile_array:
-		#nodes.hide()
-	#util.root.data_instance.instance_pool.overlay_goal_tile_instance.hide()
-	#overlay_array.clear()
+	for nodes in util.root.data_instance.instance_pool.overlay_tile_array:
+		nodes.hide()
+	util.root.data_instance.instance_pool.overlay_goal_tile_instance.hide()
+	overlay_array.clear()
 	#move_hint = null
 	for i in board_node.board_array.size():
 		for j in board_node.board_array[int(i)]:
@@ -52,6 +52,7 @@ func spawn_target_move_hint(square_index):
 	tween_spawn.tween_interval(0.05)
 	tween_spawn.tween_property(overlay,"scale",Vector3(1,1,1),0.1)		
 	move_hint = overlay
+	
 
 func _ready() -> void:
 	clear_legal_move_hint()

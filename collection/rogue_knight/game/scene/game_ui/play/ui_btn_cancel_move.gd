@@ -1,12 +1,16 @@
 extends Button
 
 @export var btn_label: RichTextLabel
+@export var badge_label: PanelContainer
 
 func _ready() -> void:
 	#self.top_level
 	util.root.data_instance.stylesheet.button_styler(self, btn_label, "red_secondary", "medium", false, false)
 	util.root.data_instance.connect("game_state_change", _on_game_state_change)
 	self.hide()
+	badge_label.hide()
+	if util.root.data_instance.is_tutorial_flag:
+		badge_label.show()	
 
 func _process(delta: float) -> void:
 	

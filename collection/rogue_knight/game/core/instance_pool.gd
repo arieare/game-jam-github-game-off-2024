@@ -83,10 +83,10 @@ func _ready():
 		goal_tile_node.add_child(goal_tile_array[i])
 		goal_tile_array[i].position = Vector3(999,999,999)
 		
-		overlay_tile_array.append(overlay_tile.instantiate())
-		overlay_tile_array[i].hide()
-		overlay_tile_node.add_child(overlay_tile_array[i])
-		overlay_tile_array[i].position = Vector3(999,999,999)
+		#overlay_tile_array.append(overlay_tile.instantiate())
+		#overlay_tile_array[i].hide()
+		#overlay_tile_node.add_child(overlay_tile_array[i])
+		#overlay_tile_array[i].position = Vector3(999,999,999)
 	
 	overlay_goal_tile_instance = overlay_goal_tile.instantiate()
 	overlay_goal_tile_instance.hide()

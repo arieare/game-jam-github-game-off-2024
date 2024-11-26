@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvb28qbqqsg06"]
+[gd_scene load_steps=7 format=3 uid="uid://bvb28qbqqsg06"]
 
 [ext_resource type="Texture2D" uid="uid://bws13tn8vdghw" path="res://collection/rogue_knight/content/sprite/patch/patch_log_pose.png" id="1_cnpe5"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/play/btn_patch_inventory.gd" id="2_whm2j"]
 [ext_resource type="Shader" path="res://content/shader/canvas_shimer.gdshader" id="3_2hmf8"]
 [ext_resource type="StyleBox" uid="uid://e3tupv4x15yx" path="res://collection/rogue_knight/content/ui/ui_panel_normal.tres" id="4_wkadx"]
+[ext_resource type="FontFile" uid="uid://ba700idfwhfh0" path="res://collection/rogue_knight/content/font/Beholden-Medium.ttf" id="5_hhfgp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_62dka"]
 shader = ExtResource("3_2hmf8")
@@ -20,7 +21,7 @@ shader_parameter/Alpha = 1.0
 
 [node name="btn_patch" type="TextureButton" node_paths=PackedStringArray("description_panel", "patch_name", "patch_description")]
 self_modulate = Color(0.79, 0.3634, 0.44872, 1)
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(80, 80)
 action_mode = 0
 texture_normal = ExtResource("1_cnpe5")
 ignore_texture_size = true
@@ -91,6 +92,7 @@ color = Color(0.678431, 0.694118, 0.819608, 1)
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 0.705882)
+theme_override_fonts/normal_font = ExtResource("5_hhfgp")
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "PLACE IN [bgcolor=LIGHT_CORAL]ANY TILE[/bgcolor]. CHART THE PATH TO THE [bgcolor=GREEN_YELLOW]GOAL[/bgcolor] IN 1ST MOVE."

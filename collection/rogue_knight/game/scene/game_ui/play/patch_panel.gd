@@ -18,18 +18,18 @@ func _ready() -> void:
 	util.root.data_instance.connect("add_patch_to_inventory", _on_patch_inventory_added)
 	util.root.data_instance.connect("remove_patch_from_inventory", _on_patch_inventory_removed)
 	
-	if util.root.data_instance.game_data.current_level > 2:
-		patch_inventory_list.show()
-		patch_inventory_heading.show()
-	else:
-		patch_inventory_list.hide()
-		patch_inventory_heading.hide()
+	#if util.root.data_instance.game_data.current_level > 0:
+		#patch_inventory_list.show()
+		#patch_inventory_heading.show()
+	#else:
+		#patch_inventory_list.hide()
+		#patch_inventory_heading.hide()
 
-func _process(delta: float) -> void:
-	if util.root.data_instance.current_game_state == util.root.data_instance.GAME_STATE.PLANNING and util.root.data_instance.game_data.current_level > 2:
-		self.show()
-	else:
-		self.hide()		
+#func _process(delta: float) -> void:
+	#if util.root.data_instance.current_game_state == util.root.data_instance.GAME_STATE.PLANNING and util.root.data_instance.game_data.current_level > 0:
+		#self.show()
+	#else:
+		#self.hide()		
 
 func _on_patch_inventory_added(patch_data:Dictionary):
 	placeholder_inventory_array[array_cursor].hide()
@@ -43,12 +43,11 @@ func _on_patch_inventory_added(patch_data:Dictionary):
 	new_patch.patch_color = patch_data["color"]
 	new_patch.rotation_degrees = randf_range(-3.0,3.0)
 	new_patch.description_panel.rotation_degrees = new_patch.rotation_degrees * -1
-	control_parent.custom_minimum_size = Vector2(64,64)
+	control_parent.custom_minimum_size = Vector2(80,80)
 	control_parent.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	patch_inventory_list.add_child(control_parent)
 	control_parent.add_child(new_patch)
 	
-
 	var spawn_tween: Tween
 	spawn_tween = create_tween().set_trans(Tween.TRANS_CIRC)
 	spawn_tween.tween_property(new_patch,"scale", Vector2(1.4,1.4),0.05)

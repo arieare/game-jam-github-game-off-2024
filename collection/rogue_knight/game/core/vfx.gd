@@ -12,11 +12,9 @@ func _physics_process(delta: float) -> void:
 	if frame > 3:
 		set_physics_process(false)
 		is_loaded = true
-		print("is_loaded" + str(is_loaded))
 	else:
 		frame += 1
 
-#how to use -> util.root.data_instance.vfx.vfx_goal_tile.emitting = true
 
 var vfx_goal_tile_glow = preload("res://collection/rogue_knight/content/vfx/vfx_goal_tile_glow.tres")
 var vfx_goal_tile_glow_mesh = preload("res://collection/rogue_knight/content/vfx/vfx_goal_tile_glow_mesh.tres")

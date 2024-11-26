@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dpwptdy7uwyy6"]
 
 [ext_resource type="Script" path="res://app/root_main_menu/btn_start.gd" id="1_8twxj"]
-[ext_resource type="FontFile" uid="uid://0qu55fxexoae" path="res://collection/rogue_knight/content/font/Beholden-Bold-Italic.ttf" id="1_igifm"]
+[ext_resource type="FontFile" uid="uid://ba700idfwhfh0" path="res://collection/rogue_knight/content/font/Beholden-Medium.ttf" id="1_igifm"]
 
 [sub_resource type="Theme" id="Theme_ce6ek"]
 default_font = ExtResource("1_igifm")
@@ -39,7 +39,8 @@ theme_override_constants/margin_bottom = 32
 [node name="start_btn" type="Button" parent="margin"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 40
+theme_override_colors/font_color = Color(0.0946, 0.86, 0.222167, 1)
+theme_override_font_sizes/font_size = 56
 text = "click anywhere to play \"KARDINAL\" game"
 flat = true
 script = ExtResource("1_8twxj")
