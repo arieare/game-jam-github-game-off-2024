@@ -27,7 +27,7 @@ func display_text(text_to_display:String):
 
 	#await self.resized
 	self.custom_minimum_size.x = min(text_size_x, max_width)
-	print(text.size.y)
+	#print(text.size.y)
 	
 	if text.size.x > max_width:
 		text.autowrap_mode = TextServer.AUTOWRAP_WORD

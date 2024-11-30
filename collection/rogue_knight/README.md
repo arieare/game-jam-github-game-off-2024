@@ -1,5 +1,5 @@
-- Rogue Knight is a roguelike single-player chess with an objective to move a knight to the goal square.
-- player can plan ahead their moves bevore clicking "move" button.
-- if player chain the movement without stop, combo will multiply the score
-- each step yields a score points
-- there is limited move on each round.
+Kardinal is a short movement-based puzzle game about duty, honor, and friendship. Play as the kind-hearted chess' knight and solve puzzles by moving across the board.
+Fulfill the promise and uncovering the mysteries and secret of the kingdom.
+
+a game by @arieare — jestersuitgames, as submission for #GithubGameOff
+game jam version v 1.1 ©️2024

@@ -30,6 +30,8 @@ var max_move_step := 3
 
 var point_granted:=1
 
+@export var vfx_powerup:GPUParticles3D
+
 func _ready() -> void:
 	self.scale = Vector3.ZERO
 	point_spawner.hide_point()
@@ -128,7 +130,9 @@ func _on_game_state_change(value):
 			## Patch Checking Region
 			
 			var legal_move = movement_strategy.min_moves(movement_strategy.move_set,current_square_index,util.root.data_instance.game_data.board_data.target_position,util.root.data_instance.game_data.board_data.blocked_index)["path"]
+			
 			var is_log_pose_available = false
+			
 			for coord in util.root.data_instance.game_data.patch_data:
 				if util.root.data_instance.game_data.patch_data[coord].patch_id == "log_pose":
 					is_log_pose_available = true
@@ -192,11 +196,74 @@ func tween_move(new_pos, next_tile):
 		util.root.data_instance.audio.sfx_dictionary.step_on_board.sfx.play()
 		
 		cam.shake_node.shake(0.025)
-		
+
+
+func move_one_up():
+	cam.shake_node.shake(0.04)
+	var move_towards = Vector2(current_square_index.x - 1, current_square_index.y) 
+	var new_pos
+	if util.root.data_instance.game_data.chess_piece.board_node.board_array.has(int(move_towards.x)):
+		if util.root.data_instance.game_data.chess_piece.board_node.board_array[int(move_towards.x)].has(int(move_towards.y)):
+			new_pos = util.root.data_instance.game_data.chess_piece.board_node.board_array[int(move_towards.x)][int(move_towards.y)].position
+			var temp_current_square = util.root.data_instance.game_data.chess_piece.board_node.board_array[int(move_towards.x)][int(move_towards.y)]
+			var temp_current_square_index = board_node.board_index[temp_current_square.name]		
+			var buff
+			if util.root.data_instance.game_data.patch_data.has(str(temp_current_square_index)):
+				buff = util.root.data_instance.game_data.patch_data[str(temp_current_square_index)].patch_id
+				match buff:
+					"dir_down_1":
+						return			
+		else:
+			return
+	else:
+		return
+	if util.root.data_instance.current_game_state == util.root.data_instance.GAME_STATE.PLAYING:
+		var move_tween: Tween
+		if move_tween:
+			move_tween.kill()
+		move_tween = create_tween().set_trans(Tween.TRANS_SINE)
+		move_tween.tween_property(self,"position",new_pos,0.15)
+		move_tween.tween_property(self,"rotation_degrees:x",0,0.1)
+		current_square = util.root.data_instance.game_data.chess_piece.board_node.board_array[int(move_towards.x)][int(move_towards.y)]
+		current_square_index = board_node.board_index[current_square.name]
+		util.root.data_instance.move_performed.emit(0)
+
+func move_one_down():
+	cam.shake_node.shake(0.04)
+	var move_towards = Vector2(current_square_index.x + 1, current_square_index.y) 
+	var new_pos
+	if util.root.data_instance.game_data.chess_piece.board_node.board_array.has(int(move_towards.x)):
+		if util.root.data_instance.game_data.chess_piece.board_node.board_array[int(move_towards.x)].has(int(move_towards.y)):
+			new_pos = util.root.data_instance.game_data.chess_piece.board_node.board_array[int(move_towards.x)][int(move_towards.y)].position
+			var temp_current_square = util.root.data_instance.game_data.chess_piece.board_node.board_array[int(move_towards.x)][int(move_towards.y)]
+			var temp_current_square_index = board_node.board_index[temp_current_square.name]		
+			var buff
+			if util.root.data_instance.game_data.patch_data.has(str(temp_current_square_index)):
+				buff = util.root.data_instance.game_data.patch_data[str(temp_current_square_index)].patch_id
+				match buff:
+					"dir_up_1":
+						return
+		else:
+			return
+	else:
+		return
+	if util.root.data_instance.current_game_state == util.root.data_instance.GAME_STATE.PLAYING:
+
+		var move_tween: Tween
+		if move_tween:
+			move_tween.kill()
+		move_tween = create_tween().set_trans(Tween.TRANS_SINE)
+		move_tween.tween_property(self,"position",new_pos,0.15)
+		move_tween.tween_property(self,"rotation_degrees:x",0,0.1)
+		current_square = util.root.data_instance.game_data.chess_piece.board_node.board_array[int(move_towards.x)][int(move_towards.y)]
+		current_square_index = board_node.board_index[current_square.name]
+		util.root.data_instance.move_performed.emit(0)		
+			
 
 func add_move(move:Vector2):
 	if util.root.data_instance.game_data.move_step.size() < 2:
 		util.root.data_instance.game_data.move_step.append(move)
+		util.root.data_instance.move_added.emit()
 	else:
 		util.root.data_instance.game_data.move_step[1] = move
 
@@ -208,6 +275,7 @@ func remove_move():
 
 
 func set_next_tile(selected_tile) -> bool:
+	
 	var move_array_size = util.root.data_instance.game_data.move_step.size()
 	if move_array_size == 0:
 		target_square_index = current_square_index
@@ -216,11 +284,43 @@ func set_next_tile(selected_tile) -> bool:
 		target_square = selected_tile
 		target_square_index = board_node.board_index[target_square.name]
 		max_move_step -= current_square_index.distance_to(target_square_index)
+		
 		add_move(target_square_index)
-		legal_move_overlay_spawner.spawn_legal_move_hint(target_square_index, movement_strategy.get_legal_move(target_square_index))
+		legal_move_overlay_spawner.spawn_legal_move_hint(target_square_index, movement_strategy.get_legal_move(target_square_index))	
 		return true
 	else:
 		return false
+
+var curve_hint := []
+func draw_direction():
+		var coordinate_array := []
+		coordinate_array.append(current_square.global_position)
+		for step in util.root.data_instance.game_data.move_step:
+			coordinate_array.append(board_node.board_array[int(step.x)][int(step.y)].global_position)
+		
+		for i in coordinate_array.size()-1:
+			#var start = coordinate_array[i]
+			var start = Vector3(coordinate_array[i].x, 0.2, coordinate_array[i].z)
+			var end = Vector3.ZERO
+			if coordinate_array[i+1]:
+				end = Vector3(coordinate_array[i+1].x, 0.2, coordinate_array[i+1].z)
+				#end = coordinate_array[i+1]
+			var curve_height = 0.0  # Height of the curve at the control point
+			var resolution = 0.15  # Smaller resolution = denser points on the curve
+
+			var bezier_points = util.curve_3d.draw_bezier_curve_3d(start, end, curve_height, resolution)
+			for point in bezier_points:
+				var new_mesh:=CSGSphere3D.new()
+				var mat:=StandardMaterial3D.new()
+				new_mesh.radius = 0.015
+				new_mesh.radial_segments = 4
+				new_mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+				new_mesh.position = point
+				mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+				mat.albedo_color = Color.BLACK
+				new_mesh.material = mat
+				board_node.add_child(new_mesh)
+				curve_hint.append(new_mesh)		
 
 var is_moving: bool = false
 func parse_movement():
@@ -229,11 +329,16 @@ func parse_movement():
 	var move_set = util.root.data_instance.game_data.move_step
 	if move_set:
 		for move in movement_strategy.get_steps_between():
-			var move_towards = util.root.data_instance.game_data.chess_piece.board_node.board_array[int(move.x)][int(move.y)].position
-			util.root.data_instance.game_data.chess_piece.tween_move(move_towards, Vector2(int(move.x),int(move.y)))
-			util.root.data_instance.game_data.chess_piece.current_square = util.root.data_instance.game_data.chess_piece.board_node.board_array[int(move.x)][int(move.y)]
-			util.root.data_instance.game_data.chess_piece.current_square_index = move
-			await get_tree().create_timer(0.25).timeout
+			if util.root.data_instance.current_game_state != util.root.data_instance.GAME_STATE.BOARD_CRUMBLE:
+				var move_towards = util.root.data_instance.game_data.chess_piece.board_node.board_array[int(move.x)][int(move.y)].position
+				util.root.data_instance.game_data.chess_piece.tween_move(move_towards, Vector2(int(move.x),int(move.y)))
+				util.root.data_instance.game_data.chess_piece.current_square = util.root.data_instance.game_data.chess_piece.board_node.board_array[int(move.x)][int(move.y)]
+				util.root.data_instance.game_data.chess_piece.current_square_index = move
+				await get_tree().create_timer(0.25).timeout
+			else:
+				is_moving = false
+				util.root.data_instance.move_performed.emit(1)
+				break
 	
 	util.root.data_instance.game_data.chess_piece.remove_move()
 	util.root.data_instance.move_performed.emit(1)
@@ -246,6 +351,10 @@ func animate_breathe_idle(delta):
 
 func _on_move_performed(val):
 ## Check game state
+	if curve_hint != []:
+		for meshes in curve_hint:
+			meshes.queue_free()
+		curve_hint.clear()		
 	if util.root.data_instance.game_data.max_move < 1:
 		legal_move_overlay_spawner.clear_legal_move_hint()
 		util.root.data_instance.current_game_state = util.root.data_instance.GAME_STATE.LOSING
@@ -267,12 +376,30 @@ func _on_move_performed(val):
 			"rook":
 				point_granted = 5
 				movement_strategy = rook_movement
+				vfx_powerup.restart()
+				vfx_powerup.emitting = true
 			"queen":
 				point_granted = 9
 				movement_strategy = queen_movement
+				vfx_powerup.restart()
+				vfx_powerup.emitting = true
 			"bishop":
 				point_granted = 3
 				movement_strategy = bishop_movement
+				vfx_powerup.restart()
+				vfx_powerup.emitting = true
+			"dir_up_1":
+				move_one_up()
+				vfx_powerup.restart()
+				vfx_powerup.emitting = true
+				#point_granted = 1
+				#movement_strategy = knight_movement		
+			"dir_down_1":
+				move_one_down()
+				vfx_powerup.restart()
+				vfx_powerup.emitting = true
+				#point_granted = 1
+				#movement_strategy = knight_movement								
 			_:
 				buff = ""
 				point_granted = 1

@@ -1,10 +1,9 @@
-[gd_scene load_steps=55 format=4 uid="uid://bvcli20l48q4w"]
+[gd_scene load_steps=65 format=4 uid="uid://bvcli20l48q4w"]
 
 [ext_resource type="Script" path="res://collection/rogue_knight/game/prefab/chess_piece/chess_piece.gd" id="1_1ngvt"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/board_scene/env.gd" id="1_2o0b1"]
 [ext_resource type="Shader" path="res://collection/rogue_knight/content/shader/starry_sky.gdshader" id="1_3xqf3"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/board_scene/board.gd" id="1_48f24"]
-[ext_resource type="Shader" path="res://collection/rogue_knight/content/shader/outline_depth.gdshader" id="1_bjssn"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/board_scene/cam.gd" id="3_b8frg"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/prefab/chess_piece/queen.gd" id="6_3xqf3"]
 [ext_resource type="Shader" path="res://collection/rogue_knight/content/shader/wood.gdshader" id="6_a62fb"]
@@ -276,6 +275,63 @@ diffuse_mode = 3
 metallic = 0.65
 roughness = 0.0
 
+[sub_resource type="Curve" id="Curve_3xqf3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.54691, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_bjssn"]
+curve = SubResource("Curve_3xqf3")
+
+[sub_resource type="Gradient" id="Gradient_xa0t1"]
+offsets = PackedFloat32Array(0.413636, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_a62fb"]
+gradient = SubResource("Gradient_xa0t1")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_228he"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_nqcsm"]
+curve = SubResource("Curve_228he")
+
+[sub_resource type="Curve" id="Curve_k5nil"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.946428, 0.211461), 0.0, 0.0, 0, 0, Vector2(1, 0), -6.1871, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_w36mb"]
+curve = SubResource("Curve_k5nil")
+
+[sub_resource type="Curve" id="Curve_sjna3"]
+max_value = 3.0
+_data = [Vector2(0, 0.660523), 0.0, 0.0, 0, 0, Vector2(0.900794, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_b0mjc"]
+curve = SubResource("Curve_sjna3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3xqf3"]
+emission_shape = 2
+emission_sphere_radius = 0.2
+gravity = Vector3(0, 20, 0)
+scale_curve = SubResource("CurveTexture_w36mb")
+scale_over_velocity_max = 565.57
+scale_over_velocity_curve = SubResource("CurveTexture_b0mjc")
+color_ramp = SubResource("GradientTexture1D_a62fb")
+alpha_curve = SubResource("CurveTexture_bjssn")
+emission_curve = SubResource("CurveTexture_nqcsm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sqnrj"]
+shading_mode = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_bjssn"]
+material = SubResource("StandardMaterial3D_sqnrj")
+radius = 0.02
+radial_segments = 4
+rings = 12
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_5753f"]
 _surfaces = [{
 "aabb": AABB(-0.108, 1.01224, -0.108, 0.216, 0.277134, 0.216),
@@ -450,20 +506,6 @@ height = 0.2
 transparency = 1
 albedo_color = Color(1, 1, 1, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xa0t1"]
-render_priority = 0
-shader = ExtResource("1_bjssn")
-shader_parameter/outline_mode = 3
-shader_parameter/outline_intensity = 0.75
-shader_parameter/_round = true
-shader_parameter/outline_bias = -10.0
-shader_parameter/outline_color = Color(0.1065, 0.045, 0.25, 1)
-
-[sub_resource type="QuadMesh" id="QuadMesh_a62fb"]
-material = SubResource("ShaderMaterial_xa0t1")
-flip_faces = true
-size = Vector2(2, 2)
-
 [node name="stage" type="Node3D"]
 
 [node name="env" type="WorldEnvironment" parent="." node_paths=PackedStringArray("light_node")]
@@ -472,8 +514,8 @@ script = ExtResource("1_2o0b1")
 light_node = NodePath("light")
 
 [node name="cam" type="Camera3D" parent="env" node_paths=PackedStringArray("board_node", "shake_node")]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 20, 0)
-fov = 12.0
+transform = Transform3D(1, 0, 0, 0, 0.422618, 0.906307, 0, -0.906307, 0.422618, 0, 30, 0)
+fov = 15.0
 size = 5.0
 script = ExtResource("3_b8frg")
 board_node = NodePath("../../board")
@@ -488,7 +530,7 @@ light_color = Color(1, 0.74, 0.74, 1)
 shadow_enabled = true
 shadow_opacity = 0.75
 
-[node name="chess_piece" type="Node3D" parent="." node_paths=PackedStringArray("point_spawner", "legal_move_overlay_spawner", "board_node", "mesh_rook", "aim", "chess_piece_head", "chess_piece_body", "cam")]
+[node name="chess_piece" type="Node3D" parent="." node_paths=PackedStringArray("point_spawner", "legal_move_overlay_spawner", "board_node", "mesh_rook", "aim", "chess_piece_head", "chess_piece_body", "cam", "vfx_powerup")]
 script = ExtResource("1_1ngvt")
 point_spawner = NodePath("../point_label_spawner")
 legal_move_overlay_spawner = NodePath("../legal_move_overlay")
@@ -498,6 +540,7 @@ aim = NodePath("../control")
 chess_piece_head = NodePath("piece_knight/_head")
 chess_piece_body = NodePath("piece_knight/body")
 cam = NodePath("../env/cam")
+vfx_powerup = NodePath("vfx_powerup")
 
 [node name="piece_knight" type="Node3D" parent="chess_piece"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0315793, 0)
@@ -547,6 +590,17 @@ mesh = SubResource("ArrayMesh_20hm4")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_grwxg")
 
+[node name="vfx_powerup" type="GPUParticles3D" parent="chess_piece"]
+cast_shadow = 0
+emitting = false
+amount = 32
+lifetime = 0.3
+one_shot = true
+speed_scale = 2.5
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_3xqf3")
+draw_pass_1 = SubResource("SphereMesh_bjssn")
+
 [node name="queen" type="Node3D" parent="." node_paths=PackedStringArray("board_node")]
 visible = false
 script = ExtResource("6_3xqf3")
@@ -586,8 +640,9 @@ mesh = SubResource("SphereMesh_fjr44")
 [node name="point_label_spawner" type="Node3D" parent="."]
 script = ExtResource("7_v8wdi")
 
-[node name="legal_move_overlay" type="Node3D" parent="." node_paths=PackedStringArray("board_node")]
+[node name="legal_move_overlay" type="Node3D" parent="." node_paths=PackedStringArray("chess_piece", "board_node")]
 script = ExtResource("8_1nplc")
+chess_piece = NodePath("../chess_piece")
 board_node = NodePath("../board")
 
 [node name="patch_manager" type="Node3D" parent="." node_paths=PackedStringArray("control")]
@@ -603,9 +658,3 @@ size = Vector3(50, 1, 50)
 
 [node name="board" type="Node3D" parent="."]
 script = ExtResource("1_48f24")
-
-[node name="outline_filter" type="MeshInstance3D" parent="."]
-cast_shadow = 0
-extra_cull_margin = 16384.0
-mesh = SubResource("QuadMesh_a62fb")
-skeleton = NodePath("../env")

@@ -11,10 +11,15 @@ func input_setting():
 	InputMap.action_add_event("confirm", event_left_click)
 	InputMap.action_add_event("confirm", event_space)	
 	
-	var event_escape := InputEventKey.new()
-	event_escape.physical_keycode = KEY_ESCAPE
+	var event_x := InputEventKey.new()
+	event_x.physical_keycode = KEY_X
 	InputMap.add_action("cancel")
-	InputMap.action_add_event("cancel", event_escape)	
+	InputMap.action_add_event("cancel", event_x)	
+	
+	var event_r := InputEventKey.new()
+	event_r.physical_keycode = KEY_R
+	InputMap.add_action("restart")
+	InputMap.action_add_event("restart", event_r)		
 	
 	var event_right_click := InputEventMouseButton.new()
 	event_right_click.button_index = MOUSE_BUTTON_RIGHT

@@ -11,10 +11,6 @@ func _ready() -> void:
 	util.root.data_instance.connect("score_added", _on_score_added)
 	self.pivot_offset = self.size/2
 
-#extends Label
-
-@export var score_label: Label
-
 #func _ready() -> void:
 	#util.root.data_instance.connect("score_added", _on_score_added)
 

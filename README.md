@@ -1,9 +1,5 @@
-This is `arieare`/`jestersuitgame`'s submission to [GitHub Game Off 2024](https://itch.io/jam/game-off-2024) with the theme **SECRETS**.
+Kardinal is a short movement-based puzzle game about duty, honor, and friendship. Play as the kind-hearted chess' knight and solve puzzles by moving across the board.
+Fulfill the promise and uncovering the mysteries and secret of the kingdom.
 
-Wildcards for the themes includes: *Small Palette,* *Cheat Mode*, and *Speed Run*.
-
-## Theme interpretation
-
-Play as a chess-piece – a knight – going rogue from a battle after discovering secrets of the war.
-
-As a player you will be moving through several chess-board while uncovering the mysteries surrounding the war, and the story about the knight itself.
+a game by @arieare — jestersuitgames, as submission for #GithubGameOff
+game jam version v 1.1 ©️2024

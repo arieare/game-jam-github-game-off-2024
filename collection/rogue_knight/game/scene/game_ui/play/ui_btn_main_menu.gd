@@ -26,5 +26,5 @@ func _process(delta: float) -> void:
 		self.rotation_degrees = 0
 	
 func _on_press():
-	print("press")
+	#print("press")
 	util.root.data_instance.audio.sfx_dictionary.tile_select_confirm.sfx.play()

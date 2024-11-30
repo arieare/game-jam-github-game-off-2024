@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpwptdy7uwyy6"]
+[gd_scene load_steps=6 format=3 uid="uid://dpwptdy7uwyy6"]
 
+[ext_resource type="FontFile" uid="uid://0qu55fxexoae" path="res://collection/rogue_knight/content/font/Beholden-Bold-Italic.ttf" id="1_1kv0n"]
 [ext_resource type="Script" path="res://app/root_main_menu/btn_start.gd" id="1_8twxj"]
-[ext_resource type="FontFile" uid="uid://ba700idfwhfh0" path="res://collection/rogue_knight/content/font/Beholden-Medium.ttf" id="1_igifm"]
+[ext_resource type="Theme" uid="uid://b65kj6xp1d4ud" path="res://content/ui/button_style.tres" id="2_c0l1i"]
+[ext_resource type="Script" path="res://app/root_main_menu/loading_screen.gd" id="5_4pmg0"]
 
 [sub_resource type="Theme" id="Theme_ce6ek"]
-default_font = ExtResource("1_igifm")
+default_font = ExtResource("1_1kv0n")
 
 [node name="root_main_menu" type="Control"]
 layout_mode = 3
@@ -22,7 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0980984, 0.0980985, 0.0980985, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="margin" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -36,11 +38,83 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="start_btn" type="Button" parent="margin"]
+[node name="vbox" type="VBoxContainer" parent="margin"]
+layout_mode = 2
+
+[node name="title" type="Label" parent="margin/vbox"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 120
+text = "THE HIDDEN JAM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="vbox" type="VBoxContainer" parent="margin/vbox"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.0946, 0.86, 0.222167, 1)
-theme_override_font_sizes/font_size = 56
-text = "click anywhere to play \"KARDINAL\" game"
-flat = true
+
+[node name="start_btn" type="Button" parent="margin/vbox/vbox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_c0l1i")
+text = "click anywhere to play"
 script = ExtResource("1_8twxj")
+
+[node name="copyright" type="Label" parent="margin/vbox"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "a collection of gamejam's game
+by jestersuitgame / @arieare"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="loading_screen" type="CanvasLayer" parent="."]
+script = ExtResource("5_4pmg0")
+
+[node name="bg" type="ColorRect" parent="loading_screen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="progress" type="ProgressBar" parent="loading_screen"]
+visible = false
+custom_minimum_size = Vector2(200, 64)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -230.0
+offset_top = -94.0
+offset_right = -30.0
+offset_bottom = -30.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 80
+value = 60.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="loading_screen"]
+clip_contents = false
+custom_minimum_size = Vector2(200, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -24.0
+offset_right = 100.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_1kv0n")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = " [wave amp=50.0 freq=5.0 connected=1]loading...[/wave]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1

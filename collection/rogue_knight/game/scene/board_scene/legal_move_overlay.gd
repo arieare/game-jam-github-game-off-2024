@@ -1,26 +1,21 @@
 extends Node3D
 
 var overlay_array := []
+@export var chess_piece: Node3D
 @export var board_node: Node3D
 var move_hint
+var curve_hint := []
 
 func spawn_legal_move_hint(square_index, legal_move_array: Array):
 	clear_legal_move_hint()
 	var overlay_count := 0
 	for square in legal_move_array:
 		if int(square.x) < util.root.data_instance.game_data.board_data.size and int(square.y) < util.root.data_instance.game_data.board_data.size: 
-			#var overlay = util.root.data_instance.instance_pool.overlay_tile_array[overlay_count]
-			#overlay.position = board_node.board_array[int(square.x)][int(square.y)].position
-			#overlay.position.y = 0.15
-			##self.get_parent().add_child.call_deferred(overlay)
-			#overlay_array.append(overlay)
-			#overlay.show()
-			#overlay_count += 1	
 			## show glow
 			var mat = board_node.board_array[int(square.x)][int(square.y)].material
 			#var mat = board_node.board_array[int(i)][int(j)].material
 			if mat:
-				var albedo = mat.albedo_color				
+				#var albedo = mat.albedo_color				
 				var next_mat = mat.next_pass
 				if next_mat:
 					next_mat.set_shader_parameter("aura_color",Color(Color.GREEN,0.4))
@@ -30,13 +25,17 @@ func clear_legal_move_hint():
 		nodes.hide()
 	util.root.data_instance.instance_pool.overlay_goal_tile_instance.hide()
 	overlay_array.clear()
+	
+	for mesh in curve_hint:
+		mesh.queue_free()
+	curve_hint.clear()
 	#move_hint = null
 	for i in board_node.board_array.size():
 		for j in board_node.board_array[int(i)]:
 			#print(board_node.board_array[int(i)][int(j)])
 			var mat = board_node.board_array[int(i)][int(j)].material
 			if mat:
-				var albedo = mat.albedo_color				
+				#var albedo = mat.albedo_color				
 				var next_mat = mat.next_pass
 				if next_mat:
 					next_mat.set_shader_parameter("aura_color",Color.TRANSPARENT)		

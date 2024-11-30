@@ -16,7 +16,11 @@ extends Node
 @onready var child_node := util_get_child_node.new()
 @onready var save_load := util_save_load.new()
 
+@onready var curve_3d := draw_curve.new()
+
 signal root_ready
+signal data_ready
+signal data_instance_ready
 var root: Variant
 func _ready() -> void:
 	self.connect("root_ready",_on_root_ready)

@@ -16,10 +16,10 @@ root_game_select_menu = ExtResource("3_kacif")
 [node name="app" type="Node" parent="."]
 script = ExtResource("2_26n78")
 
-[node name="data" type="Node" parent="."]
-
 [node name="game" type="Node" parent="."]
 
 [node name="ui" type="Node" parent="."]
 
 [node name="fx_transition" type="CanvasLayer" parent="ui"]
+
+[node name="data" type="Node" parent="."]

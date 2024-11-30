@@ -3,24 +3,32 @@ extends ui_btn_change_scene
 @export var btn_label: RichTextLabel
 
 func _ready():
+	#util.connect("root_ready", _on_root_ready)
+	game_node = util.root.game_instance.rogue_knight.game.game_node.scene_0
+	ui_node = util.root.game_instance.rogue_knight.ui.ui_node.game_ui	
 	self.grab_focus()
 	self.action_mode = BaseButton.ACTION_MODE_BUTTON_RELEASE
-	game_node = util.root.game_instance.rogue_knight.game.game_node.scene_0
-	ui_node = util.root.game_instance.rogue_knight.ui.ui_node.game_ui
+	#await util.root.ready
+	#game_node = util.root.game_instance.rogue_knight.game.game_node.scene_0
+	#ui_node = util.root.game_instance.rogue_knight.ui.ui_node.game_ui
+
+#func _on_root_ready(node):
+	#print("root ready")
 
 func scene_update():
-	super()
-	if util.root.data_instance: 
-		if util.root.data_instance.audio.sfx_dictionary.bgm_player.randomizer.get_stream(0) == util.root.data_instance.audio.bgm_in_game_1:
-			if !util.root.data_instance.audio.sfx_dictionary.bgm_player.sfx.playing:
-				util.root.data_instance.audio.sfx_dictionary.bgm_player.sfx.play()	
-		else:
-			util.root.data_instance.audio.sfx_dictionary.bgm_player.sfx.stop()		
-			util.root.data_instance.audio.sfx_dictionary.bgm_player.randomizer.remove_stream(0)
-			util.root.data_instance.audio.sfx_dictionary.bgm_player.randomizer.add_stream(0,util.root.data_instance.audio.bgm_in_game_1, 1.0)	
-			util.root.data_instance.audio.sfx_dictionary.bgm_player.sfx.play()			
-	
-	util.root.data_instance.current_game_state = util.root.data_instance.GAME_STATE.PLANNING
+	if game_node and ui_node:
+		super()
+		if util.root.data_instance: 
+			if util.root.data_instance.audio.sfx_dictionary.bgm_player.randomizer.get_stream(0) == util.root.data_instance.audio.bgm_in_game_1:
+				if !util.root.data_instance.audio.sfx_dictionary.bgm_player.sfx.playing:
+					util.root.data_instance.audio.sfx_dictionary.bgm_player.sfx.play()	
+			else:
+				util.root.data_instance.audio.sfx_dictionary.bgm_player.sfx.stop()		
+				util.root.data_instance.audio.sfx_dictionary.bgm_player.randomizer.remove_stream(0)
+				util.root.data_instance.audio.sfx_dictionary.bgm_player.randomizer.add_stream(0,util.root.data_instance.audio.bgm_in_game_1, 1.0)	
+				util.root.data_instance.audio.sfx_dictionary.bgm_player.sfx.play()			
+		
+		util.root.data_instance.current_game_state = util.root.data_instance.GAME_STATE.PLANNING
 
 var is_it_hovered:=false
 func _process(delta: float) -> void:

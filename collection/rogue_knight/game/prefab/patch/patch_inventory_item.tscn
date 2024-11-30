@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bvb28qbqqsg06"]
 
-[ext_resource type="Texture2D" uid="uid://bws13tn8vdghw" path="res://collection/rogue_knight/content/sprite/patch/patch_log_pose.png" id="1_cnpe5"]
+[ext_resource type="Texture2D" uid="uid://c2coxi567h25a" path="res://collection/rogue_knight/content/sprite/patch/patch_log_pose.png" id="1_cnpe5"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/play/btn_patch_inventory.gd" id="2_whm2j"]
 [ext_resource type="Shader" path="res://content/shader/canvas_shimer.gdshader" id="3_2hmf8"]
 [ext_resource type="StyleBox" uid="uid://e3tupv4x15yx" path="res://collection/rogue_knight/content/ui/ui_panel_normal.tres" id="4_wkadx"]

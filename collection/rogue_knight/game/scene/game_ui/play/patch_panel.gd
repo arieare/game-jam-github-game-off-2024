@@ -32,29 +32,30 @@ func _ready() -> void:
 		#self.hide()		
 
 func _on_patch_inventory_added(patch_data:Dictionary):
-	placeholder_inventory_array[array_cursor].hide()
-	array_cursor += 1
-	var new_patch = patch_template.instantiate()
-	var control_parent = Control.new()
-	new_patch.patch_id = patch_data["id"]
-	new_patch.patch_name_text = patch_data["name"]
-	new_patch.patch_description_text = patch_data["description"]
-	new_patch.patch_image = patch_data["image"]
-	new_patch.patch_color = patch_data["color"]
-	new_patch.rotation_degrees = randf_range(-3.0,3.0)
-	new_patch.description_panel.rotation_degrees = new_patch.rotation_degrees * -1
-	control_parent.custom_minimum_size = Vector2(80,80)
-	control_parent.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	patch_inventory_list.add_child(control_parent)
-	control_parent.add_child(new_patch)
+	if array_cursor < placeholder_inventory_array.size():
+		placeholder_inventory_array[array_cursor].hide()
+		array_cursor += 1
+		var new_patch = patch_template.instantiate()
+		var control_parent = Control.new()
+		new_patch.patch_id = patch_data["id"]
+		new_patch.patch_name_text = patch_data["name"]
+		new_patch.patch_description_text = patch_data["description"]
+		new_patch.patch_image = patch_data["image"]
+		new_patch.patch_color = patch_data["color"]
+		new_patch.rotation_degrees = randf_range(-3.0,3.0)
+		new_patch.description_panel.rotation_degrees = new_patch.rotation_degrees * -1
+		control_parent.custom_minimum_size = Vector2(80,80)
+		control_parent.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		patch_inventory_list.add_child(control_parent)
+		control_parent.add_child(new_patch)
 	
-	var spawn_tween: Tween
-	spawn_tween = create_tween().set_trans(Tween.TRANS_CIRC)
-	spawn_tween.tween_property(new_patch,"scale", Vector2(1.4,1.4),0.05)
-	spawn_tween.tween_property(new_patch,"position:y", -20,0.02)
-	spawn_tween.tween_interval(0.02)
-	spawn_tween.tween_property(new_patch,"scale", Vector2(1,1),0.05)	
-	spawn_tween.tween_property(new_patch,"position:y", 0,0.02)
+		var spawn_tween: Tween
+		spawn_tween = create_tween().set_trans(Tween.TRANS_CIRC)
+		spawn_tween.tween_property(new_patch,"scale", Vector2(1.4,1.4),0.05)
+		spawn_tween.tween_property(new_patch,"position:y", -20,0.02)
+		spawn_tween.tween_interval(0.02)
+		spawn_tween.tween_property(new_patch,"scale", Vector2(1,1),0.05)	
+		spawn_tween.tween_property(new_patch,"position:y", 0,0.02)
 
 func _on_patch_inventory_removed(patch_data:String):
 	array_cursor -= 1

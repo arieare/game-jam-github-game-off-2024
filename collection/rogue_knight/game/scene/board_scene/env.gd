@@ -3,18 +3,22 @@ extends WorldEnvironment
 @export var light_node: DirectionalLight3D
 
 var theme_color = {
-	"blue" : {
-		"fog_color" : "#395a7f",
-		"light_color" : "#fda9a9",
+	"high_noon" : {
+		#395a7f
+		#fda9a9
+		"fog_color" : "#4379F2",
+		"light_color" : "#F29F58",
 	},
 	"lavender" : { 
 		"fog_color" : "#2e0a30", 
-		"light_color" : "#6cb9c9",
+		"light_color" : "#9ABF80",
+		#"light_color" : "#6cb9c9",
 	},
 	"moss" : { 
-		"fog_color" : "#6d7769", 
-		"light_color" : "#F2DDA4",
-		#"light_color" : "#e5c5a8",
+		#6d7769
+		"fog_color" : "#557C56", 
+		"light_color" : "#E68369",
+		#"light_color" : "#E68369",
 	},	
 	"boss" : {
 		"fog_color" : "#5e363e", 
@@ -25,13 +29,17 @@ var theme_color = {
 		"light_color" : "#cccccc",
 	},	
 	"snow" : {
-		"fog_color" : "#eeeeee", 
-		"light_color" : "#aaaaaa",
+		"fog_color" : "#666666", 
+		"light_color" : "#d5bbd5",
 	},		
 	"deep_sea" : {
 		"fog_color" : "#262d2f", 
-		"light_color" : "#83b3b0",
-	},					
+		"light_color" : "#605EA1",
+	},	
+	"sunset" : {
+		"fog_color" : "#8D493A", 
+		"light_color" : "#FFB22C",
+	},						
 }
 
 var env = self.environment
@@ -65,7 +73,7 @@ func _on_redeem_theme_bw():
 	light_node.light_color = theme.light_color	
 
 func _on_redeem_theme_blue():
-	theme = theme_color["blue"]
+	theme = theme_color["high_noon"]
 	env.sky.sky_material.set_shader_parameter("sky_color",Color.from_string(theme.fog_color,Color.BLACK))
 	env.background_color = theme.fog_color
 	light_node.light_color = theme.light_color		

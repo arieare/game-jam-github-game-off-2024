@@ -53,7 +53,7 @@ func _process(delta: float) -> void:
 		input_box.select_all()
 	
 	if current_text != input_box.text:
-		print("changed")
+		#print("changed")
 		current_text = input_box.text
 		util.root.data_instance.game_data.current_cam.shake_node.shake(0.035)
 		util.root.data_instance.audio.sfx_dictionary.typing.sfx.play()

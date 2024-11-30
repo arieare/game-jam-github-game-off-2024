@@ -27,7 +27,7 @@ func scene_update():
 	util.root.data_instance.game_data.patch_data = {}
 	util.root.data_instance.game_data.patch_inventory = []
 	util.root.data_instance.game_data.max_patch_inventory = 3
-	util.root.data_instance.game_data.max_shop_size = 2
+	util.root.data_instance.game_data.max_shop_size = 3
 	util.root.data_instance.game_data.current_level = 1
 	#util.root.data_instance.game_data.secret_string = "ROYAL BLOOM UNVEIL KARDINAL TRUTH"
 	#util.root.data_instance.game_data.secret_string_array =[]

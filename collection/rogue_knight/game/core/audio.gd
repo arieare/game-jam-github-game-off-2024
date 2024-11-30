@@ -18,6 +18,8 @@ extends Node
 @export var sfx_shop_item_added_file: AudioStream
 @export var sfx_point_spawned_file: AudioStream
 @export var sfx_patch_selected_file: AudioStream
+@export var sfx_patch_put_down_file: AudioStream
+@export var sfx_patch_burn_file: AudioStream
 @export var sfx_typing_file: AudioStream
 @export var sfx_redeem_confirm_file: AudioStream
 @export var sfx_redeem_deny_file: AudioStream
@@ -75,8 +77,8 @@ extends Node
 		"randomizer": AudioStreamRandomizer.new(),
 		"file": sfx_step_on_board_file,
 		"random_var": 1.05,
-		"base_pitch": 1.0,
-		"base_volume": 1.0,
+		"base_pitch": 2.0,
+		"base_volume": 2.0,
 		"bus": &"sfx",
 	},
 	"board_initialized": {
@@ -174,10 +176,28 @@ extends Node
 		"randomizer": AudioStreamRandomizer.new(),
 		"file": sfx_patch_selected_file,
 		"random_var": 1.1,
-		"base_pitch": 1.0,
-		"base_volume": 1.0,
+		"base_pitch": 2.0,
+		"base_volume": 2.0,
 		"bus": &"sfx",
 	},
+	"patch_put_down": {
+		"sfx": AudioStreamPlayer.new(),
+		"randomizer": AudioStreamRandomizer.new(),
+		"file": sfx_patch_put_down_file,
+		"random_var": 1.1,
+		"base_pitch": 3.0,
+		"base_volume": 2.0,
+		"bus": &"sfx",
+	},	
+	"patch_burn": {
+		"sfx": AudioStreamPlayer.new(),
+		"randomizer": AudioStreamRandomizer.new(),
+		"file": sfx_patch_burn_file,
+		"random_var": 1.1,
+		"base_pitch": -2.0,
+		"base_volume": 1.0,
+		"bus": &"sfx",
+	},	
 	"typing": {
 		"sfx": AudioStreamPlayer.new(),
 		"randomizer": AudioStreamRandomizer.new(),
@@ -211,7 +231,7 @@ extends Node
 		"file": sfx_chat_bubble_file,
 		"random_var": 6.0,
 		"base_pitch": 1.0,
-		"base_volume": 1.0,
+		"base_volume": 0.3,
 		"bus": &"sfx",
 	},	
 	"reach_goal": {
@@ -229,7 +249,7 @@ func init_audio():
 	for sfx in sfx_dictionary:
 		sfx_dictionary[sfx]["sfx"].max_polyphony = 128
 		sfx_dictionary[sfx]["sfx"].pitch_scale = sfx_dictionary[sfx]["base_pitch"]
-		sfx_dictionary[sfx]["sfx"].volume_db = linear_to_db(sfx_dictionary[sfx]["base_volume"])
+		sfx_dictionary[sfx]["sfx"].volume_db = linear_to_db(float(sfx_dictionary[sfx]["base_volume"]))
 		sfx_dictionary[sfx]["sfx"].stream = sfx_dictionary[sfx]["randomizer"]
 		sfx_dictionary[sfx]["sfx"].bus = sfx_dictionary[sfx]["bus"]
 		sfx_dictionary[sfx]["randomizer"].add_stream(0,sfx_dictionary[sfx]["file"], 1.0)

@@ -1,10 +1,12 @@
-[gd_scene load_steps=34 format=3 uid="uid://dlkpara2ogfay"]
+[gd_scene load_steps=39 format=3 uid="uid://dlkpara2ogfay"]
 
 [ext_resource type="Script" path="res://collection/rogue_knight/game/core/game_data.gd" id="1_t6djk"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/core/audio.gd" id="2_gyhgi"]
 [ext_resource type="AudioStream" uid="uid://bka7shfx6lyra" path="res://collection/rogue_knight/content/bgm/LOOP_Exploration Cue 2 100 BMP 1_00 minutes.wav" id="3_ukhes"]
 [ext_resource type="AudioStream" uid="uid://bvfqcf8a3uwyo" path="res://collection/rogue_knight/content/sfx/chip-lay-2.ogg" id="3_w4dsn"]
+[ext_resource type="PackedScene" uid="uid://bsfl2r6r7lpsn" path="res://collection/rogue_knight/game/prefab/tile/glass_black_tile.tscn" id="5_4evs7"]
 [ext_resource type="AudioStream" uid="uid://d4l4hfdm7ixj6" path="res://collection/rogue_knight/content/sfx/Wood Block2.wav" id="5_ggvm2"]
+[ext_resource type="PackedScene" uid="uid://c6mde0o7kat43" path="res://collection/rogue_knight/game/prefab/tile/glass_white_tile.tscn" id="6_ldeyw"]
 [ext_resource type="AudioStream" uid="uid://bg7qana0n7dvh" path="res://collection/rogue_knight/content/sfx/Minimalist3.wav" id="6_nc7ha"]
 [ext_resource type="AudioStream" uid="uid://y5xjy5f3fcbm" path="res://collection/rogue_knight/content/sfx/African2.wav" id="6_sxlf1"]
 [ext_resource type="AudioStream" uid="uid://cnsmc68nlhclg" path="res://collection/rogue_knight/content/sfx/African3.wav" id="7_fsop4"]
@@ -15,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dt6hhjgbbxc8q" path="res://collection/rogue_knight/game/prefab/floating_point/point.tscn" id="9_gm7rh"]
 [ext_resource type="AudioStream" uid="uid://cvbjnvcralxy8" path="res://collection/rogue_knight/content/sfx/menu_041.wav" id="10_8dxr5"]
 [ext_resource type="AudioStream" uid="uid://wx4ol31bxwye" path="res://collection/rogue_knight/content/sfx/Modern8.wav" id="11_3a33o"]
+[ext_resource type="PackedScene" uid="uid://c7mqbkun3t7k4" path="res://collection/rogue_knight/game/prefab/prop_sword.tscn" id="12_37wa5"]
 [ext_resource type="AudioStream" uid="uid://duxhfx3mbmrai" path="res://collection/rogue_knight/content/sfx/Modern9.wav" id="12_t2jvl"]
 [ext_resource type="AudioStream" uid="uid://ilhaotbfe646" path="res://collection/rogue_knight/content/bgm/LOOP_Exploration Cue 3 100 BMP 1_00 minutes.wav" id="12_xtufc"]
 [ext_resource type="AudioStream" uid="uid://cxmo0cd06uhje" path="res://collection/rogue_knight/content/sfx/chips-handle-6.ogg" id="13_bg74a"]
@@ -33,6 +36,8 @@
 [ext_resource type="AudioStream" uid="uid://dorbrl0mmqt87" path="res://collection/rogue_knight/content/sfx/Coffee2.wav" id="26_pxnlv"]
 [ext_resource type="AudioStream" uid="uid://vt08vl7jojyg" path="res://collection/rogue_knight/content/sfx/Stinger Found something 3.wav" id="26_xtufc"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/core/input_map.gd" id="28_3tsl1"]
+[ext_resource type="AudioStream" uid="uid://dgl37lb6ak8j0" path="res://collection/rogue_knight/content/sfx/card-place-1.ogg" id="31_vfsmm"]
+[ext_resource type="AudioStream" uid="uid://dwkwtnogrtnjm" path="res://collection/rogue_knight/content/sfx/hit_016.wav" id="32_ebxat"]
 
 [node name="game_data" type="Node"]
 script = ExtResource("1_t6djk")
@@ -41,11 +46,14 @@ script = ExtResource("1_t6djk")
 script = ExtResource("18_gjdfd")
 white_tile = ExtResource("19_luton")
 black_tile = ExtResource("20_1ybi4")
+glass_black_tile = ExtResource("5_4evs7")
+glass_white_tile = ExtResource("6_ldeyw")
 goal_tile = ExtResource("21_50qbp")
 block_tile = ExtResource("22_fa0hw")
 overlay_tile = ExtResource("7_tqmcr")
 overlay_goal_tile = ExtResource("8_w1hp4")
 point_label = ExtResource("9_gm7rh")
+prop_sword = ExtResource("12_37wa5")
 
 [node name="audio" type="Node" parent="."]
 script = ExtResource("2_gyhgi")
@@ -67,6 +75,8 @@ sfx_tile_select_move_file = ExtResource("12_t2jvl")
 sfx_shop_item_added_file = ExtResource("13_bg74a")
 sfx_point_spawned_file = ExtResource("14_1awq6")
 sfx_patch_selected_file = ExtResource("25_2oyni")
+sfx_patch_put_down_file = ExtResource("31_vfsmm")
+sfx_patch_burn_file = ExtResource("32_ebxat")
 sfx_typing_file = ExtResource("6_nc7ha")
 sfx_redeem_confirm_file = ExtResource("8_8dxr5")
 sfx_redeem_deny_file = ExtResource("10_8dxr5")

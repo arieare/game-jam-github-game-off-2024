@@ -19,7 +19,7 @@ func generate_board(board_size:int):
 			i.name = "void"
 			i.hide()
 			i.reparent(util.root.data_instance.instance_pool.temp_board_tile_node)
-			i.position = Vector3(999,999,999)
+			i.position = Vector3(99,99,99)
 
 	board_array.clear()
 	util.root.data_instance.game_data.patch_data.clear()
@@ -35,9 +35,14 @@ func generate_board(board_size:int):
 		var board_array_col : Dictionary = {}
 		for j in board_size:
 			if (i + j) % 2 == 0:
-				current_square = util.root.data_instance.instance_pool.white_tile_array[tile_count]
+				#current_square = util.root.data_instance.instance_pool.white_tile_array[tile_count]
+				current_square = util.root.data_instance.instance_pool.glass_white_tile_array[tile_count]
 			else:
-				current_square = util.root.data_instance.instance_pool.black_tile_array[tile_count]
+				#var random_tile = randi_range(0,1)
+				#if random_tile == 0:
+					#current_square = util.root.data_instance.instance_pool.black_tile_array[tile_count]
+				#else:
+				current_square = util.root.data_instance.instance_pool.glass_black_tile_array[tile_count]
 			
 			if i == util.root.data_instance.game_data.board_data.target_position.x and j == util.root.data_instance.game_data.board_data.target_position.y:
 				current_square = util.root.data_instance.instance_pool.goal_tile_array[tile_count]
@@ -77,14 +82,26 @@ func generate_board(board_size:int):
 			await get_tree().create_timer(board_spawn_speed - (i/2)).timeout
 	
 	for j in util.root.data_instance.game_data.board_data.blocked_index:
-		await get_tree().create_timer(0.05).timeout
+		await get_tree().create_timer(0.025).timeout
 		board_array[int(j.x)][int(j.y)].hide()
+		util.root.data_instance.audio.sfx_dictionary.typing.sfx.play()		
 	
 	util.root.data_instance.board_ready.emit()
 	util.root.data_instance.vfx.vfx_goal_tile.emitting = true
+	
+	## Props
+	if util.root.data_instance.level_data.has(util.root.data_instance.game_data.current_level):
+		if util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].has("prop"):
+			for key in util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].prop:
+				if key == "sword":
+					for pos in util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].prop.sword:
+						util.root.data_instance.instance_pool.prop_sword_intance.position = board_array[int(pos.x)][int(pos.y)].position
+						util.root.data_instance.instance_pool.prop_sword_intance.show()
 			
 func _ready() -> void:
-
+	for prop in util.root.data_instance.instance_pool.prop_node.get_children():
+		prop.hide()
+	util.root.data_instance.instance_pool
 	util.root.data_instance.connect("game_state_change", _on_game_state_change)
 	if util.root.data_instance.level_data.has(util.root.data_instance.game_data.current_level):
 		util.root.data_instance.game_data.board_data.size = util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].board_size
@@ -116,7 +133,7 @@ func init_tile_position(board_size):
 		if util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].blocked_index != []:
 			util.root.data_instance.game_data.board_data.blocked_index = util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].blocked_index
 			board_vector_array = subtract_array(board_vector_array, util.root.data_instance.game_data.board_data.blocked_index)
-			print("obstacle available:" + str(board_vector_array))
+			#print("obstacle available:" + str(board_vector_array))
 		else:
 			util.root.data_instance.game_data.board_data.blocked_index = []
 		
@@ -126,24 +143,24 @@ func init_tile_position(board_size):
 			board_vector_array.erase(util.root.data_instance.game_data.board_data.starting_position)	
 			util.root.data_instance.game_data.board_data.target_position = board_vector_array.pick_random()	
 			board_vector_array.clear()
-			print("both random")
+			#print("both random")
 		### Check if starting position is null
 		elif util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].starting_position == null and util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].target_position != null:
 			util.root.data_instance.game_data.board_data.target_position = util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].target_position
 			board_vector_array.erase(util.root.data_instance.game_data.board_data.target_position)	
 			util.root.data_instance.game_data.board_data.starting_position = board_vector_array.pick_random()
 			board_vector_array.clear()
-			print("starting position random")
+			#print("starting position random")
 		### Check if target position is null
 		elif util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].starting_position != null and util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].target_position == null:
 			util.root.data_instance.game_data.board_data.starting_position = util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].starting_position
 			board_vector_array.erase(util.root.data_instance.game_data.board_data.starting_position)	
 			util.root.data_instance.game_data.board_data.target_position = board_vector_array.pick_random()	
 			board_vector_array.clear()
-			print("target position random")
+			#print("target position random")
 		### Check if both preset
 		else:
 			util.root.data_instance.game_data.board_data.starting_position = util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].starting_position
 			util.root.data_instance.game_data.board_data.target_position = util.root.data_instance.level_data[util.root.data_instance.game_data.current_level].target_position
 			board_vector_array.clear()
-			print("both preset")	
+			#print("both preset")	

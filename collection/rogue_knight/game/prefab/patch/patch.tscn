@@ -1,9 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://c44yywa3h7bo7"]
+[gd_scene load_steps=7 format=3 uid="uid://c44yywa3h7bo7"]
 
 [ext_resource type="Texture2D" uid="uid://d0vkvvwhqna1t" path="res://collection/rogue_knight/content/sprite/patch/patch_rook.png" id="1_5c1nl"]
+[ext_resource type="Shader" path="res://collection/rogue_knight/game/prefab/patch/spatial_burn.gdshader" id="2_4gi74"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4gi74"]
+noise_type = 2
+fractal_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pqo28"]
+noise = SubResource("FastNoiseLite_4gi74")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pqo28"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_4gi74")
+shader_parameter/noise_color = Color(1, 1, 1, 1)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_pqo28")
+shader_parameter/tolerance = 0.0
+shader_parameter/noise_scale = 0.8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5u3yp"]
 resource_local_to_scene = true
+next_pass = SubResource("ShaderMaterial_pqo28")
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsfl2r6r7lpsn"]
+
+[ext_resource type="Shader" path="res://collection/rogue_knight/content/shader/pulse_aura.gdshader" id="1_qa6po"]
+[ext_resource type="Shader" path="res://content/shader/glass.gdshader" id="1_y2ulh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x138s"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_qa6po")
+shader_parameter/aura_color = Color(2, 1, 0, 0.09)
+shader_parameter/aura_thickness = 0.01
+shader_parameter/apply_to_mesh = false
+shader_parameter/pulse_speed = 5.0
+shader_parameter/pulse_strength = 0.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qa6po"]
+resource_local_to_scene = true
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_x138s")
+shader = ExtResource("1_y2ulh")
+shader_parameter/albedo = Color(0.32, 0.32, 0.32, 0.588235)
+shader_parameter/roughness = 0.15
+shader_parameter/normal_strength = 1.0
+shader_parameter/edge_color = Color(1, 1, 1, 0.705882)
+
+[node name="glass_black_tile" type="CSGBox3D" groups=["board"]]
+use_collision = true
+size = Vector3(0.5, 0.1, 0.5)
+material = SubResource("ShaderMaterial_qa6po")

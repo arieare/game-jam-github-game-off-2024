@@ -1,10 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfbb7vdq7d4e0"]
+[gd_scene load_steps=3 format=3 uid="uid://cfbb7vdq7d4e0"]
 
-[ext_resource type="FontFile" uid="uid://c6fpvgggmmj81" path="res://content/font/Ranyth.ttf" id="1_ajo5c"]
 [ext_resource type="Script" path="res://app/game_selection_menu/game_selection_menu.gd" id="1_txec2"]
 
 [sub_resource type="Theme" id="Theme_y7a5l"]
-default_font = ExtResource("1_ajo5c")
 
 [node name="game_selection_menu" type="Control" node_paths=PackedStringArray("button_container", "game_title_label")]
 layout_mode = 3
@@ -49,4 +47,4 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 80
-text = "game_title"
+text = "play kardinal"

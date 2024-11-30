@@ -1,5 +1,5 @@
 extends Node3D
-var child_mesh:MeshInstance3D
+@export var child_mesh:MeshInstance3D
 func _ready() -> void:
 	self.connect("visibility_changed", _on_show)
 	var tween_spawn = create_tween().set_trans(Tween.TRANS_BOUNCE)

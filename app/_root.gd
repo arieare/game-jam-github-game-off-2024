@@ -38,7 +38,7 @@ var data_instance: Node
 		#},	
 	"rogue_knight": {
 		"name": "Rogue Knight",
-		"icon":  "res://collection/carchemy_survival/content/icon.png",
+		"icon":  "res://collection/rogue_knight/content/icon.png",
 		"data": "res://collection/rogue_knight/game/core/game_data.tscn",
 		"game": "res://collection/rogue_knight/game/core/game_rogue_knight.tres",
 		"ui": "res://collection/rogue_knight/game/core/ui_rogue_knight.tres",
@@ -55,6 +55,7 @@ var array_thread: Array
 var array_progress: Array
 var variable_thread := {}
 func _ready() -> void:
+	util.emit_signal("root_ready", self)
 	ui_container.add_child(root_menu.instantiate())
 	
 	var x = 0
@@ -68,7 +69,6 @@ func _ready() -> void:
 				#loaded_items[data] = ResourceLoader.load_threaded_get(game_instance_path[instance][data])
 				#game_instance[instance] = loaded_items					
 				x += 1
-	#util.emit_signal("root_ready", self)
 
 
 var progress: Array[float]
@@ -96,4 +96,3 @@ func _process(delta: float) -> void:
 								
 			if is_loading == false:
 				util.emit_signal("data_ready")
-				util.emit_signal("root_ready", self)

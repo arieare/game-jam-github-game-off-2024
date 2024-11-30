@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://ejs4rvnvx38w"]
+[gd_scene load_steps=68 format=3 uid="uid://ejs4rvnvx38w"]
 
 [ext_resource type="FontFile" uid="uid://0qu55fxexoae" path="res://collection/rogue_knight/content/font/Beholden-Bold-Italic.ttf" id="1_sjdp3"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/play/score_label.gd" id="2_0m8uu"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/game_over_score_text.gd" id="6_k0a3w"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/lose/game_over.gd" id="6_q5rda"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/game_over_point_text.gd" id="7_kx1ov"]
-[ext_resource type="Shader" path="res://collection/rogue_knight/content/shader/shine.gdshader" id="8_2gsj2"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/game_over_move_text.gd" id="8_6jj62"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/win/winning_round.gd" id="8_vi7j0"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/game_over_letter_text.gd" id="9_kp7gp"]
@@ -25,21 +24,28 @@
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/play/ui_btn_start.gd" id="14_0vnbx"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/play/ui_btn_cancel_move.gd" id="14_44463"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/play/money_ui.gd" id="15_1lq7n"]
+[ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/bg_finale.gd" id="17_8cvp8"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/shop.gd" id="18_iitck"]
 [ext_resource type="PackedScene" uid="uid://bvb28qbqqsg06" path="res://collection/rogue_knight/game/prefab/patch/patch_inventory_item.tscn" id="23_4lg16"]
-[ext_resource type="FontFile" uid="uid://lmjciv1bex47" path="res://content/font/AvenuePixel-Regular.ttf" id="23_lxvgo"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/play/move_panel.gd" id="24_3i4a7"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/tutorial.gd" id="28_aqlms"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/dialog_manager.gd" id="28_sjdp3"]
 [ext_resource type="PackedScene" uid="uid://5rqv8gbrjcok" path="res://collection/rogue_knight/game/prefab/chat_box/chat_box.tscn" id="29_6hqkd"]
-[ext_resource type="Texture2D" uid="uid://b7o2b2m6lxud0" path="res://collection/rogue_knight/content/sprite/tutorial_vertical.png" id="29_aqlms"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/game_level_label.gd" id="32_wa3v5"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/the_end.gd" id="34_v0hl8"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/win/ui_btn_claim.gd" id="35_c3ffn"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/shop/ui_btn_redeem.gd" id="37_3g7t4"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/play/ui_btn_main_menu.gd" id="37_6rr6p"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/shop/shop_panel.gd" id="37_nekbv"]
+[ext_resource type="Texture2D" uid="uid://2744ldqm4b6y" path="res://collection/rogue_knight/content/sprite/tutorial_0.png" id="38_fef6t"]
+[ext_resource type="Texture2D" uid="uid://bwbjwjloku6yw" path="res://collection/rogue_knight/content/sprite/tutorial_1.png" id="39_fef6t"]
 [ext_resource type="Script" path="res://collection/rogue_knight/game/scene/game_ui/fin_bg.gd" id="39_iitck"]
+[ext_resource type="Texture2D" uid="uid://cuxffkylot8yv" path="res://collection/rogue_knight/content/sprite/tutorial_2.png" id="40_b40po"]
+[ext_resource type="Texture2D" uid="uid://onlyyuf8dtps" path="res://collection/rogue_knight/content/sprite/tutorial_3.png" id="41_is4dn"]
+[ext_resource type="Texture2D" uid="uid://cpn7kcilqcayg" path="res://collection/rogue_knight/content/sprite/tutorial_4_1.png" id="42_8cvp8"]
+[ext_resource type="Texture2D" uid="uid://bpxtqiq1dl1ef" path="res://collection/rogue_knight/content/sprite/tutorial_4_2.png" id="43_ib1ro"]
+[ext_resource type="Texture2D" uid="uid://ci2svxbd68nwv" path="res://collection/rogue_knight/content/sprite/tutorial_4_3.png" id="44_npux5"]
+[ext_resource type="Texture2D" uid="uid://dbju2pcq0duy4" path="res://collection/rogue_knight/content/sprite/tutorial_4_4.png" id="45_y6rdc"]
 
 [sub_resource type="Theme" id="Theme_bf3o3"]
 default_font = ExtResource("1_sjdp3")
@@ -87,36 +93,16 @@ shadow_color = Color(0, 0, 0, 0.227451)
 shadow_size = 45
 shadow_offset = Vector2(10, 20)
 
-[sub_resource type="Gradient" id="Gradient_2gsj2"]
-offsets = PackedFloat32Array(0.516129, 1)
-colors = PackedColorArray(0.474982, 0.240595, 0.177609, 1, 1, 0.966667, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_hl5h7"]
-gradient = SubResource("Gradient_2gsj2")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hl5h7"]
-shader = ExtResource("8_2gsj2")
-shader_parameter/gradient = SubResource("GradientTexture2D_hl5h7")
-shader_parameter/spread = 0.5
-shader_parameter/cutoff = 0.4
-shader_parameter/size = 0.8
-shader_parameter/speed = 1.0
-shader_parameter/ray1_density = 8.0
-shader_parameter/ray2_density = 30.0
-shader_parameter/ray2_intensity = 0.3
-shader_parameter/core_intensity = 2.0
-shader_parameter/hdr = true
-shader_parameter/seed = 5.0
-
-[sub_resource type="Gradient" id="Gradient_hl5h7"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ojfji"]
-gradient = SubResource("Gradient_hl5h7")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cgwcw"]
 shader = ExtResource("3_8o3lu")
-shader_parameter/progress = 0.808
-shader_parameter/diamondPixelSize = 100.0
+shader_parameter/progress = 0.0
+shader_parameter/diamondPixelSize = 50.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8cvp8"]
+resource_local_to_scene = true
+shader = ExtResource("3_8o3lu")
+shader_parameter/progress = null
+shader_parameter/diamondPixelSize = 50.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cdxde"]
 content_margin_left = 12.0
@@ -165,6 +151,44 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
+[sub_resource type="Animation" id="Animation_g2qh7"]
+resource_name = "flip_card"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BoxContainer/img:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5, 2.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("42_8cvp8"), ExtResource("43_ib1ro"), ExtResource("44_npux5"), ExtResource("45_y6rdc")]
+}
+
+[sub_resource type="Animation" id="Animation_5b08s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BoxContainer/img:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("40_b40po")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hol0a"]
+_data = {
+&"RESET": SubResource("Animation_5b08s"),
+&"flip_card": SubResource("Animation_g2qh7")
+}
+
 [sub_resource type="Shader" id="Shader_hpvp3"]
 code = "shader_type canvas_item;
 
@@ -192,7 +216,7 @@ shader_parameter/progress = 1.0
 shader_parameter/diamondPixelSize = 200.0
 
 [node name="game_ui" type="Control"]
-texture_filter = 1
+texture_filter = 4
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -203,6 +227,7 @@ mouse_filter = 2
 theme = SubResource("Theme_bf3o3")
 
 [node name="game_over" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -504,24 +529,6 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("8_vi7j0")
 
-[node name="shine" type="TextureRect" parent="winning_round"]
-visible = false
-material = SubResource("ShaderMaterial_hl5h7")
-custom_minimum_size = Vector2(800, 800)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -100.0
-offset_right = 100.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_ojfji")
-
 [node name="bg" type="ColorRect" parent="winning_round"]
 material = SubResource("ShaderMaterial_cgwcw")
 layout_mode = 1
@@ -550,13 +557,13 @@ offset_top = -54.0
 offset_bottom = 54.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/default_color = Color(1, 0.798333, 0.45, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.352941)
-theme_override_constants/shadow_offset_y = 10
+theme_override_colors/default_color = Color(1, 0.843, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.652)
+theme_override_constants/shadow_offset_y = 4
 theme_override_constants/shadow_offset_x = 4
 theme_override_font_sizes/normal_font_size = 72
 bbcode_enabled = true
-text = "[wave amp=120.0 freq=2.0 connected=1]ø0[/wave]"
+text = "[wave amp=120.0 freq=2.0 connected=1]¢0[/wave]"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
@@ -579,9 +586,9 @@ offset_bottom = -4.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.690196)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 6
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.65098)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 4
 theme_override_font_sizes/font_size = 50
 text = "SCORE!"
 horizontal_alignment = 1
@@ -644,6 +651,7 @@ script = ExtResource("12_ojfji")
 input_field = NodePath("_box/ui_password_input")
 
 [node name="bg2" type="ColorRect" parent="finale_ui"]
+material = SubResource("ShaderMaterial_8cvp8")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -656,6 +664,7 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.380482
 color = Color(0, 0, 0, 0.784314)
+script = ExtResource("17_8cvp8")
 
 [node name="_box" type="BoxContainer" parent="finale_ui"]
 layout_mode = 1
@@ -776,12 +785,12 @@ vertical = true
 [node name="game_title" type="Label" parent="in_game/shop/_margin/_box"]
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_colors/font_color = Color(0.72, 0.72, 0.72, 1)
-theme_override_colors/font_shadow_color = Color(0.0941176, 0.0823529, 0.160784, 0.643137)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.866667)
 theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 20
-text = "kardinal v 1.0"
+text = "kardinal v 1.1"
 horizontal_alignment = 2
 vertical_alignment = 2
 uppercase = true
@@ -818,9 +827,9 @@ size_flags_vertical = 4
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.0941176, 0.0823529, 0.160784, 0.643137)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.866667)
 theme_override_constants/shadow_offset_x = 3
-theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_offset_y = 3
 theme_override_font_sizes/font_size = 28
 text = "Patches"
 horizontal_alignment = 1
@@ -870,9 +879,9 @@ size_flags_vertical = 4
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.0959733, 0.0816, 0.16, 0.643137)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.866667)
 theme_override_constants/shadow_offset_x = 3
-theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_offset_y = 3
 theme_override_font_sizes/font_size = 28
 text = "Merchants"
 horizontal_alignment = 1
@@ -957,7 +966,7 @@ game_level_name = NodePath("../game_level_name")
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.270588, 0.231373, 0.45098, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.866667)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 3
 theme_override_font_sizes/font_size = 40
@@ -1020,7 +1029,7 @@ theme_override_constants/separation = 12
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.0941176, 0.0823529, 0.160784, 0.643137)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.866667)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 3
 theme_override_font_sizes/font_size = 32
@@ -1041,24 +1050,6 @@ grow_vertical = 2
 theme = SubResource("Theme_2txnq")
 script = ExtResource("2_0m8uu")
 
-[node name="score_value_update" type="RichTextLabel" parent="in_game/side_bar/_box/score_panel/point/node"]
-visible = false
-custom_minimum_size = Vector2(120, 0)
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -20.0
-offset_right = 40.0
-offset_bottom = 20.0
-grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("23_lxvgo")
-theme_override_font_sizes/normal_font_size = 32
-bbcode_enabled = true
-text = "[bgcolor=BLACK]+1[/bgcolor]"
-fit_content = true
-scroll_active = false
-
 [node name="move" type="HBoxContainer" parent="in_game/side_bar/_box/score_panel"]
 layout_mode = 2
 theme_override_constants/separation = 12
@@ -1067,7 +1058,7 @@ theme_override_constants/separation = 12
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.0941176, 0.0823529, 0.160784, 0.643137)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.866667)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 3
 theme_override_font_sizes/font_size = 32
@@ -1170,7 +1161,7 @@ offset_right = -32.0
 offset_bottom = 28.0
 grow_horizontal = 0
 grow_vertical = 0
-label_text = "(esc.)"
+label_text = "(x)"
 
 [node name="ui_btn_move" type="Button" parent="in_game/move_panel" node_paths=PackedStringArray("btn_label", "badge_label")]
 custom_minimum_size = Vector2(64, 0)
@@ -1253,8 +1244,7 @@ grow_horizontal = 2
 grow_vertical = 0
 label_text = "(space)"
 
-[node name="tutorial" type="Control" parent="in_game" node_paths=PackedStringArray("panel")]
-visible = false
+[node name="tutorial" type="Control" parent="in_game" node_paths=PackedStringArray("tut_1", "tut_2", "tut_3", "tut_3_anim")]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -1267,27 +1257,105 @@ offset_bottom = 410.0
 grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("28_aqlms")
-panel = NodePath("PanelContainer")
+tut_1 = NodePath("tut_1")
+tut_2 = NodePath("tut_2")
+tut_3 = NodePath("tut_3")
+tut_3_anim = NodePath("tut_3/AnimationPlayer")
 
-[node name="PanelContainer" type="PanelContainer" parent="in_game/tutorial"]
+[node name="tut_1" type="PanelContainer" parent="in_game/tutorial"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -155.0
-offset_top = -400.5
-offset_right = 155.0
-offset_bottom = 400.5
+offset_left = -160.0
+offset_top = -320.0
+offset_right = 160.0
+offset_bottom = 320.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_sjdp3")
 
-[node name="TextureRect" type="TextureRect" parent="in_game/tutorial/PanelContainer"]
+[node name="BoxContainer" type="BoxContainer" parent="in_game/tutorial/tut_1"]
 layout_mode = 2
-texture = ExtResource("29_aqlms")
+vertical = true
+
+[node name="img" type="TextureRect" parent="in_game/tutorial/tut_1/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("38_fef6t")
 expand_mode = 1
+
+[node name="img2" type="TextureRect" parent="in_game/tutorial/tut_1/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("39_fef6t")
+expand_mode = 1
+
+[node name="tut_2" type="PanelContainer" parent="in_game/tutorial"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -320.0
+offset_right = 160.0
+offset_bottom = 320.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sjdp3")
+
+[node name="BoxContainer" type="BoxContainer" parent="in_game/tutorial/tut_2"]
+layout_mode = 2
+vertical = true
+
+[node name="img" type="TextureRect" parent="in_game/tutorial/tut_2/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("40_b40po")
+expand_mode = 1
+
+[node name="img2" type="TextureRect" parent="in_game/tutorial/tut_2/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("41_is4dn")
+expand_mode = 1
+
+[node name="tut_3" type="PanelContainer" parent="in_game/tutorial"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -160.0
+offset_right = 160.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sjdp3")
+
+[node name="BoxContainer" type="BoxContainer" parent="in_game/tutorial/tut_3"]
+layout_mode = 2
+vertical = true
+
+[node name="img" type="TextureRect" parent="in_game/tutorial/tut_3/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("40_b40po")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="in_game/tutorial/tut_3"]
+libraries = {
+&"": SubResource("AnimationLibrary_hol0a")
+}
 
 [node name="the_end" type="Control" parent="."]
 visible = false
@@ -1317,8 +1385,8 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -93.0
-offset_bottom = 93.0
+offset_top = -123.0
+offset_bottom = 123.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 24
@@ -1345,6 +1413,15 @@ bbcode_enabled = true
 text = "thanks for playing kardinal."
 fit_content = true
 scroll_active = false
+horizontal_alignment = 1
+
+[node name="copyright" type="Label" parent="the_end/_box"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.61, 0.61, 0.61, 1)
+theme_override_constants/line_spacing = 2
+theme_override_font_sizes/font_size = 16
+text = "\"kardinal.\" a game by @arieare — jestersuitgames, as submission for #GithubGameOff
+game jam version v 1.1 ©️2024"
 horizontal_alignment = 1
 
 [node name="ui_btn_main_menu" type="Button" parent="the_end/_box" node_paths=PackedStringArray("btn_label")]

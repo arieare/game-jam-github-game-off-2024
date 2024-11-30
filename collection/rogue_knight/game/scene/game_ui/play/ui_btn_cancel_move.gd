@@ -28,6 +28,10 @@ func _input(event: InputEvent) -> void:
 		util.root.data_instance.game_data.current_cam.shake_node.shake(0.035)
 		util.root.data_instance.audio.sfx_dictionary.tile_select_deny.sfx.play()		
 		util.root.data_instance.game_data.chess_piece.remove_move()
+		if util.root.data_instance.game_data.chess_piece.curve_hint != [] and util.root.data_instance.is_tutorial_flag:
+			for meshes in util.root.data_instance.game_data.chess_piece.curve_hint:
+				meshes.queue_free()
+			util.root.data_instance.game_data.chess_piece.curve_hint.clear()		
 
 func _on_game_state_change(state):
 	match state:

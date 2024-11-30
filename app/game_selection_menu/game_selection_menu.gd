@@ -21,22 +21,28 @@ func _ready() -> void:
 				if icon_path != null:
 					btn.texture_normal = util.root.game_instance[key][attribute]
 				button_container.add_child(btn)
-			elif attribute == "name":
+			#elif attribute == "name":
+			else:
 				game_button_dictionary[key] = btn
-				game_title_dictionary[key] = util.root.game_instance[key][attribute]
+				game_title_dictionary[key] = key
 		btn.grab_focus()
-		game_title_label.text = game_title_dictionary[key]
+		#game_title_label.text = key
+		
+		# Kardinal specific
+		game_title_label.text ="play kardinal."
+		util.scene_manager.change( util.root.ui_container, util.root.game_instance["rogue_knight"].ui.ui_node.main_menu)
+		util.scene_manager.change( util.root.data_container, util.root.game_instance["rogue_knight"].data)
+		util.root.data_instance = util.root.data_container.get_child(0)		
 
 func _input(event: InputEvent) -> void:
 	for key in game_button_dictionary:
 		if !event.is_echo() and game_button_dictionary[key].button_pressed:
 			util.scene_manager.change( util.root.ui_container, util.root.game_instance[key].ui.ui_node.main_menu)
-			#print(util.root.game_instance.data[key])
 			util.scene_manager.change( util.root.data_container, util.root.game_instance[key].data)
 			util.root.data_instance = util.root.data_container.get_child(0)
 	for key in game_button_dictionary:
 		if !event.is_echo() and game_button_dictionary[key].is_hovered() or game_button_dictionary[key].has_focus():
-			game_title_label.text = game_title_dictionary[key]
+			#game_title_label.text = game_title_dictionary[key]
 			game_button_dictionary[key].grab_focus()
 			
 
@@ -46,6 +52,6 @@ func instance_game_menu_button() -> TextureButton:
 	game_menu_btn.stretch_mode = TextureButton.STRETCH_SCALE
 	game_menu_btn.custom_minimum_size.x = 300.0
 	game_menu_btn.custom_minimum_size.y = 300.0
-	game_menu_btn.texture_focused = preload("res://content/texture/dither_tex.png")
+	#game_menu_btn.texture_focused = preload("res://content/texture/dither_tex.png") 
 	return game_menu_btn
 	

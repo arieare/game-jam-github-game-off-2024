@@ -30,12 +30,15 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if util.root.data_instance.current_game_state == util.root.data_instance.GAME_STATE.PLANNING:
 		if !event.is_echo() and self.button_pressed:
+			#print("patch button pressed")
 			util.root.data_instance.patch_picked.emit(patch_dictionary)
 			util.root.data_instance.remove_patch_from_inventory.emit(patch_dictionary)
 			for patch in util.root.data_instance.game_data.patch_inventory:
 				if patch["id"] == patch_id:
 					util.root.data_instance.game_data.patch_inventory.erase(patch)
+			self.release_focus()
 			self.get_parent().queue_free()
+			
 		if !event.is_echo() and self.is_hovered():
 			description_panel.show()
 			self.position.y = -20

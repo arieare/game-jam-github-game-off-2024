@@ -19,8 +19,9 @@ func _ready() -> void:
 	
 
 func _input(event: InputEvent) -> void:
-	if !event.is_echo() and self.button_pressed:
-		util.root.data_instance.current_game_state = util.root.data_instance.GAME_STATE.PLAYING
+	if util.root.data_instance.current_game_state == util.root.data_instance.GAME_STATE.PLANNING:
+		if !event.is_echo() and self.button_pressed or event.is_action_released("begin_run"):
+			util.root.data_instance.current_game_state = util.root.data_instance.GAME_STATE.PLAYING
 
 func _on_board_ready():
 	var move_emphasis: Tween

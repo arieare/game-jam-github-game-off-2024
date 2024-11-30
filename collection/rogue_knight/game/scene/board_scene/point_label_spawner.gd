@@ -11,6 +11,7 @@ func _ready() -> void:
 
 var secret_letter_iterator:=0
 func spawn_point(score, location):
+	var sfx = util.root.data_instance.audio.sfx_dictionary.point_spawned.sfx
 	if iterator > util.root.data_instance.instance_pool.point_label_array.size()-1:
 		iterator = 0
 	point = util.root.data_instance.instance_pool.point_label_array[iterator]
@@ -34,10 +35,11 @@ func spawn_point(score, location):
 							
 							util.root.data_instance.secret_letter_spawned.emit()
 							
-							point.tween_spawn(Color.GREEN_YELLOW, Color.BLACK)
+							point.tween_spawn(Color.GREEN_YELLOW, Color.ORANGE_RED)
+							sfx = util.root.data_instance.audio.sfx_dictionary.tile_select_confirm.sfx
 			
 	util.root.data_instance.score_added.emit(score)
-	util.root.data_instance.audio.sfx_dictionary.point_spawned.sfx.play()
+	sfx.play()
 
 func hide_point():
 	if point:

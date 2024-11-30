@@ -35,8 +35,8 @@ resource_local_to_scene = true
 render_priority = 0
 shader = SubResource("Shader_4ymdl")
 shader_parameter/aura_color = Color(1, 0.5, 0, 0)
-shader_parameter/aura_thickness = 0.01
-shader_parameter/apply_to_mesh = false
+shader_parameter/aura_thickness = 0.05
+shader_parameter/apply_to_mesh = true
 shader_parameter/pulse_speed = 5.0
 shader_parameter/pulse_strength = 0.3
 
@@ -45,9 +45,8 @@ resource_local_to_scene = true
 next_pass = SubResource("ShaderMaterial_21up5")
 albedo_color = Color(0.95, 0.92625, 0.8075, 1)
 
-[node name="white_tile" type="CSGBox3D" node_paths=PackedStringArray("feature_grass") groups=["board"]]
+[node name="white_tile" type="CSGBox3D" groups=["board"]]
 use_collision = true
 size = Vector3(0.5, 0.1, 0.5)
 material = SubResource("StandardMaterial3D_vs5x8")
 script = ExtResource("1_f3e6m")
-feature_grass = NodePath("")

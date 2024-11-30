@@ -10,7 +10,6 @@ func _ready() -> void:
 	#util.root.data_instance.connect("board_ready", _on_board_ready)
 	util.root.data_instance.connect("game_state_change", _on_game_state_change)
 	util.root.data_instance.stylesheet.button_styler(self, btn_label, "white", "big", false, false)
-	util.root.data_instance.connect("game_state_change", _on_game_state_change)
 
 var can_interact:=false
 func _on_game_state_change(state):
@@ -33,12 +32,12 @@ func _input(event: InputEvent) -> void:
 				secret_code = secret_code.replace(c,"")		
 				submitted_code = submitted_code.replace(c,"")
 			if submitted_code == secret_code:
-				print("secret code is " + secret_code)
-				print("submitted code is " + submitted_code)
-				print("match")
+				#print("secret code is " + secret_code)
+				#print("submitted code is " + submitted_code)
+				#print("match")
 				util.root.data_instance.current_game_state = util.root.data_instance.GAME_STATE.FINALE_SECRET_CORRECT	
 			else:
-				print("mismatch")
+				#print("mismatch")
 				util.root.data_instance.current_game_state = util.root.data_instance.GAME_STATE.FINALE_SECRET_WRONG	
 		
 
